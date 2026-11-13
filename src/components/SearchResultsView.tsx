@@ -1,7 +1,16 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import type { SearchResult } from '../utils/searchEngine';
 import type { FlatVerse } from '../types/bible';
-import { Copy, BookOpen, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, ArrowLeft } from 'lucide-react';
+import {
+  Copy,
+  BookOpen,
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+  ArrowLeft,
+  Sparkles,
+} from 'lucide-react';
 import { renderFormattedText, copyRichScripture } from '../utils/clipboard';
 
 interface SearchResultsViewProps {
@@ -24,6 +33,7 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
   previousLocation,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   // Reset to page 1 whenever the query / search result changes
   useEffect(() => {
@@ -62,41 +72,31 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
   };
 
   const handlePageChange = (page: number) => {
-    if (page >= 1 && page <= totalPages && page !== currentPage) {
-      setCurrentPage(page);
+    const target = Math.max(1, Math.min(totalPages, page));
+    if (target !== currentPage) {
+      setCurrentPage(target);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
-  // Google-style pagination window: e.g. [1, 2, 3, 4, 5, '...', 45, 46, 47]
-  const paginationRange = useMemo(() => {
-    const delta = 2; // how many pages on each side of currentPage
-    const range: (number | string)[] = [];
-    const rangeWithDots: (number | string)[] = [];
-    let l: number | undefined;
+  // Percentage along track for the floating indicator (0% to 100%)
+  const progressPercent = totalPages > 1
+    ? ((currentPage - 1) / (totalPages - 1)) * 100
+    : 0;
 
-    for (let i = 1; i <= totalPages; i++) {
-      if (i === 1 || i === totalPages || (i >= currentPage - delta && i <= currentPage + delta)) {
-        range.push(i);
-      }
+  // Selected landmark pages (e.g., 1, 25%, 50%, 75%, 100%)
+  const landmarkPages = useMemo(() => {
+    if (totalPages <= 7) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
     }
-
-    for (const i of range) {
-      if (typeof i === 'number') {
-        if (l !== undefined) {
-          if (i - l === 2) {
-            rangeWithDots.push(l + 1);
-          } else if (i - l !== 1) {
-            rangeWithDots.push('...');
-          }
-        }
-        rangeWithDots.push(i);
-        l = i;
-      }
+    const step = Math.floor(totalPages / 6) || 1;
+    const marks: number[] = [1];
+    for (let p = step; p < totalPages; p += step) {
+      if (!marks.includes(p)) marks.push(p);
     }
-
-    return rangeWithDots;
-  }, [totalPages, currentPage]);
+    if (!marks.includes(totalPages)) marks.push(totalPages);
+    return marks;
+  }, [totalPages]);
 
   return (
     <div className="max-w-4xl mx-auto py-6 px-4 sm:px-6">
@@ -213,17 +213,20 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
             </div>
           ))}
 
-          {/* Google-Style Pagination Footer with Fast-Scrub Slider & Direct Jump */}
+          {/* Unified Sleek Integrated Slider & Track-Riding Number Rail */}
           {totalPages > 1 && (
-            <div className="pt-8 pb-12 flex flex-col items-center justify-center space-y-4">
-              {/* Fast Scrub Slider (for 10+ pages) */}
-              <div className="w-full max-w-md bg-slate-900/90 border border-slate-800 p-3.5 rounded-2xl shadow-lg space-y-2">
-                <div className="flex items-center justify-between text-xs text-slate-400">
-                  <span className="font-medium flex items-center gap-1.5 text-slate-300">
-                    <span>⚡ Fast Page Scrub</span>
-                  </span>
-                  <div className="flex items-center space-x-1.5">
-                    <span className="text-[11px] text-slate-500">Jump to:</span>
+            <div className="pt-10 pb-14 max-w-2xl mx-auto w-full px-2">
+              <div className="bg-gradient-to-b from-slate-900/90 to-slate-950/95 border border-slate-800/90 rounded-3xl p-5 sm:p-6 shadow-2xl backdrop-blur-md space-y-5">
+                
+                {/* Header of Rail Controller */}
+                <div className="flex items-center justify-between text-xs">
+                  <div className="flex items-center space-x-2 text-slate-300 font-medium">
+                    <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
+                    <span>Concordance Navigator</span>
+                  </div>
+
+                  <div className="flex items-center space-x-2">
+                    <span className="text-[11px] text-slate-400">Jump to:</span>
                     <input
                       type="number"
                       min={1}
@@ -231,125 +234,133 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
                       value={currentPage}
                       onChange={(e) => {
                         const val = parseInt(e.target.value, 10);
-                        if (!isNaN(val)) {
-                          handlePageChange(Math.max(1, Math.min(totalPages, val)));
-                        }
+                        if (!isNaN(val)) handlePageChange(val);
                       }}
-                      className="w-14 px-2 py-0.5 bg-slate-800 border border-slate-750 rounded-md text-xs font-bold text-amber-400 text-center focus:outline-none focus:ring-1 focus:ring-amber-500"
+                      className="w-14 px-2 py-1 bg-slate-800/90 border border-slate-700 rounded-lg text-xs font-bold text-amber-400 text-center focus:outline-none focus:ring-1 focus:ring-amber-500"
                     />
-                    <span className="text-[11px] text-slate-500">/ {totalPages.toLocaleString()}</span>
+                    <span className="text-slate-500 text-xs font-semibold">of {totalPages.toLocaleString()}</span>
                   </div>
                 </div>
 
-                {/* Range Slider for ultra-smooth gliding across 100s of pages */}
-                <input
-                  type="range"
-                  min={1}
-                  max={totalPages}
-                  value={currentPage}
-                  onChange={(e) => handlePageChange(parseInt(e.target.value, 10))}
-                  className="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500 hover:accent-amber-400 transition"
-                  title={`Slide to jump anywhere across all ${totalPages} pages`}
-                />
-              </div>
+                {/* The Integrated Rail with Live Floating Badge Riding on Top */}
+                <div className="relative pt-7 pb-2 px-3" ref={trackRef}>
+                  {/* Floating Thumb Badge that directly rides the rail */}
+                  <div
+                    className="absolute top-0 -translate-x-1/2 transition-all duration-75 pointer-events-none z-20 flex flex-col items-center"
+                    style={{ left: `calc(${progressPercent}% + ${12 - progressPercent * 0.24}px)` }}
+                  >
+                    <div className="px-2.5 py-1 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-extrabold text-xs rounded-full shadow-lg shadow-amber-500/30 whitespace-nowrap border border-amber-300 flex items-center gap-1 scale-105">
+                      <span>p.{currentPage}</span>
+                    </div>
+                    {/* Tiny downward arrow indicator */}
+                    <div className="w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[5px] border-t-amber-500 -mt-0.5" />
+                  </div>
 
-              {/* Step Buttons & Numeric Pills */}
-              <div className="flex items-center space-x-1 sm:space-x-1.5 bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800 shadow-xl overflow-x-auto max-w-full">
-                {/* First Page Button */}
-                <button
-                  onClick={() => handlePageChange(1)}
-                  disabled={currentPage === 1}
-                  className={`p-2 rounded-xl text-xs font-medium transition flex items-center ${
-                    currentPage === 1
-                      ? 'text-slate-600 cursor-not-allowed'
-                      : 'text-slate-300 hover:bg-slate-800 hover:text-amber-400 cursor-pointer'
-                  }`}
-                  title="First Page"
-                >
-                  <ChevronsLeft className="w-4 h-4" />
-                </button>
+                  {/* Track Bar Container */}
+                  <div className="relative w-full h-3 bg-slate-800/90 rounded-full border border-slate-700/60 overflow-hidden flex items-center">
+                    {/* Active Golden Progress Fill */}
+                    <div
+                      className="h-full bg-gradient-to-r from-amber-500/80 to-amber-400 rounded-full transition-all duration-75"
+                      style={{ width: `${progressPercent}%` }}
+                    />
+                  </div>
 
-                {/* Previous Button */}
-                <button
-                  onClick={() => handlePageChange(currentPage - 1)}
-                  disabled={currentPage === 1}
-                  className={`flex items-center space-x-1 px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
-                    currentPage === 1
-                      ? 'text-slate-600 cursor-not-allowed'
-                      : 'text-slate-300 hover:bg-slate-800 hover:text-amber-400 cursor-pointer'
-                  }`}
-                  title="Previous Page"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                  <span className="hidden sm:inline">Previous</span>
-                </button>
+                  {/* HTML Range Input Overlay for 100% Native Touch and Drag Dragging */}
+                  <input
+                    type="range"
+                    min={1}
+                    max={totalPages}
+                    value={currentPage}
+                    onChange={(e) => handlePageChange(parseInt(e.target.value, 10))}
+                    className="absolute top-7 left-3 right-3 w-[calc(100%-24px)] h-3 opacity-0 cursor-pointer z-30"
+                    title={`Slide anywhere from page 1 to ${totalPages}`}
+                  />
 
-                {/* Numbered Page Buttons with Dots */}
-                <div className="flex items-center space-x-1">
-                  {paginationRange.map((item, index) => {
-                    if (item === '...') {
-                      return (
-                        <span
-                          key={`dots-${index}`}
-                          className="px-2 py-1 text-slate-600 text-xs font-bold tracking-widest select-none"
-                        >
-                          …
-                        </span>
-                      );
-                    }
-
-                    const pageNum = item as number;
-                    const isCurrent = pageNum === currentPage;
-
-                    return (
+                  {/* Landmark Numbers Stationed Along the Rail */}
+                  <div className="flex justify-between items-center text-[10px] text-slate-500 font-mono mt-2.5 px-0.5 select-none">
+                    {landmarkPages.map((pageNum) => (
                       <button
                         key={pageNum}
                         onClick={() => handlePageChange(pageNum)}
-                        className={`min-w-8 h-8 px-2 rounded-xl text-xs font-bold transition flex items-center justify-center cursor-pointer ${
-                          isCurrent
-                            ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20 font-extrabold scale-105'
-                            : 'text-slate-300 hover:bg-slate-800 hover:text-amber-400'
+                        className={`hover:text-amber-400 transition cursor-pointer font-semibold ${
+                          pageNum === currentPage ? 'text-amber-400 font-bold scale-110' : ''
                         }`}
+                        title={`Jump to page ${pageNum}`}
                       >
                         {pageNum}
                       </button>
-                    );
-                  })}
+                    ))}
+                  </div>
                 </div>
 
-                {/* Next Button */}
-                <button
-                  onClick={() => handlePageChange(currentPage + 1)}
-                  disabled={currentPage === totalPages}
-                  className={`flex items-center space-x-1 px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
-                    currentPage === totalPages
-                      ? 'text-slate-600 cursor-not-allowed'
-                      : 'text-slate-300 hover:bg-slate-800 hover:text-amber-400 cursor-pointer'
-                  }`}
-                  title="Next Page"
-                >
-                  <span className="hidden sm:inline">Next</span>
-                  <ChevronRight className="w-4 h-4" />
-                </button>
+                {/* Controls Bar: First, Prev, Step, Next, Last */}
+                <div className="flex items-center justify-between pt-1 border-t border-slate-800/80">
+                  <div className="flex items-center space-x-1.5">
+                    <button
+                      onClick={() => handlePageChange(1)}
+                      disabled={currentPage === 1}
+                      className={`flex items-center space-x-1 px-2.5 py-1.5 rounded-xl text-xs font-semibold transition border border-slate-800 ${
+                        currentPage === 1
+                          ? 'text-slate-600 border-transparent cursor-not-allowed'
+                          : 'text-slate-300 hover:bg-slate-800 hover:text-amber-400 cursor-pointer'
+                      }`}
+                      title="First Page"
+                    >
+                      <ChevronsLeft className="w-3.5 h-3.5" />
+                      <span className="hidden sm:inline">First</span>
+                    </button>
 
-                {/* Last Page Button */}
-                <button
-                  onClick={() => handlePageChange(totalPages)}
-                  disabled={currentPage === totalPages}
-                  className={`p-2 rounded-xl text-xs font-medium transition flex items-center ${
-                    currentPage === totalPages
-                      ? 'text-slate-600 cursor-not-allowed'
-                      : 'text-slate-300 hover:bg-slate-800 hover:text-amber-400 cursor-pointer'
-                  }`}
-                  title="Last Page"
-                >
-                  <ChevronsRight className="w-4 h-4" />
-                </button>
-              </div>
+                    <button
+                      onClick={() => handlePageChange(currentPage - 1)}
+                      disabled={currentPage === 1}
+                      className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition border border-slate-800 ${
+                        currentPage === 1
+                          ? 'text-slate-600 border-transparent cursor-not-allowed'
+                          : 'text-slate-300 hover:bg-slate-800 hover:text-amber-400 cursor-pointer'
+                      }`}
+                      title="Previous Page"
+                    >
+                      <ChevronLeft className="w-3.5 h-3.5" />
+                      <span>Prev</span>
+                    </button>
+                  </div>
 
-              <div className="text-xs text-slate-500">
-                Page <span className="text-slate-300 font-bold">{currentPage}</span> of{' '}
-                <span className="text-slate-300 font-bold">{totalPages.toLocaleString()}</span>
+                  <div className="text-xs text-slate-400 font-medium">
+                    Showing <strong className="text-slate-200">{((currentPage - 1) * PAGE_SIZE + 1).toLocaleString()}</strong> -{' '}
+                    <strong className="text-slate-200">{Math.min(currentPage * PAGE_SIZE, totalVerses).toLocaleString()}</strong>
+                  </div>
+
+                  <div className="flex items-center space-x-1.5">
+                    <button
+                      onClick={() => handlePageChange(currentPage + 1)}
+                      disabled={currentPage === totalPages}
+                      className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition border border-slate-800 ${
+                        currentPage === totalPages
+                          ? 'text-slate-600 border-transparent cursor-not-allowed'
+                          : 'text-slate-300 hover:bg-slate-800 hover:text-amber-400 cursor-pointer'
+                      }`}
+                      title="Next Page"
+                    >
+                      <span>Next</span>
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </button>
+
+                    <button
+                      onClick={() => handlePageChange(totalPages)}
+                      disabled={currentPage === totalPages}
+                      className={`flex items-center space-x-1 px-2.5 py-1.5 rounded-xl text-xs font-semibold transition border border-slate-800 ${
+                        currentPage === totalPages
+                          ? 'text-slate-600 border-transparent cursor-not-allowed'
+                          : 'text-slate-300 hover:bg-slate-800 hover:text-amber-400 cursor-pointer'
+                      }`}
+                      title="Last Page"
+                    >
+                      <span className="hidden sm:inline">Last</span>
+                      <ChevronsRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+
               </div>
             </div>
           )}
