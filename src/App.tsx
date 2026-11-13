@@ -459,6 +459,11 @@ export function App() {
               result={searchResult}
               rawQuery={submittedQuery}
               onSelectVerse={handleSelectVerseFromSearch}
+              onBackToReader={() => setViewMode('reader')}
+              previousLocation={{
+                bookName: currentBook?.name || 'Scripture',
+                chapter: currentChapter,
+              }}
             />
           ) : (
             <ChapterReader

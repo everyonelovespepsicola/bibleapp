@@ -1,13 +1,18 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import type { SearchResult } from '../utils/searchEngine';
 import type { FlatVerse } from '../types/bible';
-import { Copy, BookOpen, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
+import { Copy, BookOpen, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, ArrowLeft } from 'lucide-react';
 import { renderFormattedText, copyRichScripture } from '../utils/clipboard';
 
 interface SearchResultsViewProps {
   result: SearchResult;
   onSelectVerse: (verse: FlatVerse) => void;
+  onBackToReader?: () => void;
   rawQuery?: string;
+  previousLocation?: {
+    bookName: string;
+    chapter: number;
+  };
 }
 
 const PAGE_SIZE = 250; // Verses per page
@@ -15,6 +20,8 @@ const PAGE_SIZE = 250; // Verses per page
 export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
   result,
   onSelectVerse,
+  onBackToReader,
+  previousLocation,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -93,6 +100,21 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
 
   return (
     <div className="max-w-4xl mx-auto py-6 px-4 sm:px-6">
+      {/* Return to Scripture Banner Button */}
+      {onBackToReader && (
+        <div className="mb-4">
+          <button
+            onClick={onBackToReader}
+            className="inline-flex items-center space-x-2 px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-amber-400 hover:text-amber-300 rounded-xl text-xs font-semibold transition border border-slate-750 shadow-md cursor-pointer group"
+          >
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
+            <span>
+              Return to {previousLocation ? `${previousLocation.bookName} ${previousLocation.chapter}` : 'Scripture Reader'}
+            </span>
+          </button>
+        </div>
+      )}
+
       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800 mb-6 gap-3">
         <div>
           <div className="flex items-center space-x-2">
