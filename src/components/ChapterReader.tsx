@@ -135,7 +135,7 @@ export const ChapterReader: React.FC<ChapterReaderProps> = ({
                     }`}
                     title={`Click to copy ${bookName} ${chapterNumber}:${v.verse} for PowerPoint/Word`}
                   >
-                    <sup className="text-xs font-sans font-bold text-amber-400/80 mr-1 select-none">
+                    <sup className="text-xs font-sans font-bold text-amber-400/80 mr-1 selection:bg-amber-400 selection:text-slate-950">
                       {v.verse}
                     </sup>
                     <span>{renderFormattedText(v.text)} </span>
@@ -164,7 +164,7 @@ export const ChapterReader: React.FC<ChapterReaderProps> = ({
                     : 'hover:bg-slate-800/40'
                 }`}
               >
-                <span className="text-xs font-sans font-bold text-amber-400/80 select-none w-6 text-right flex-shrink-0">
+                <span className="text-xs font-sans font-bold text-amber-400/80 w-6 text-right flex-shrink-0 selection:bg-amber-400 selection:text-slate-950">
                   {v.verse}
                 </span>
                 <p className="flex-1 text-slate-100 text-[1.12rem] leading-8 font-serif selection:bg-amber-400 selection:text-slate-950">
