@@ -1,6 +1,6 @@
 import React from 'react';
 import type { StrongsEntry } from '../types/bible';
-import { X, Volume2, Search, Link as LinkIcon, Compass, Sparkles } from 'lucide-react';
+import { X, Volume2, Search, Link as LinkIcon, Compass, Sparkles, ArrowRightLeft } from 'lucide-react';
 
 interface StudyDrawerProps {
   entry: StrongsEntry | null;
@@ -8,6 +8,7 @@ interface StudyDrawerProps {
   onClose: () => void;
   onSearchStrongs: (strongsId: string) => void;
   onSelectRelatedStrongs: (strongsId: string) => void;
+  onFlipToConcordanceFirst?: () => void;
 }
 
 export const StudyDrawer: React.FC<StudyDrawerProps> = ({
@@ -16,6 +17,7 @@ export const StudyDrawer: React.FC<StudyDrawerProps> = ({
   onClose,
   onSearchStrongs,
   onSelectRelatedStrongs,
+  onFlipToConcordanceFirst,
 }) => {
   if (!entry) {
     return (
@@ -52,13 +54,26 @@ export const StudyDrawer: React.FC<StudyDrawerProps> = ({
           </span>
         </div>
 
-        <button
-          onClick={onClose}
-          className="text-slate-400 hover:text-slate-200 p-1.5 rounded-lg hover:bg-slate-800 transition"
-          title="Close panel"
-        >
-          <X className="w-5 h-5" />
-        </button>
+        <div className="flex items-center space-x-2">
+          {onFlipToConcordanceFirst && (
+            <button
+              onClick={onFlipToConcordanceFirst}
+              className="flex items-center space-x-1.5 px-2.5 py-1 text-xs bg-slate-800 hover:bg-slate-700 text-amber-400 hover:text-amber-300 rounded-lg transition border border-slate-700 cursor-pointer shadow-xs mr-1"
+              title="Flip layout: Concordance on Left, Verses on Right"
+            >
+              <ArrowRightLeft className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Flip View</span>
+            </button>
+          )}
+
+          <button
+            onClick={onClose}
+            className="text-slate-400 hover:text-slate-200 p-1.5 rounded-lg hover:bg-slate-800 transition"
+            title="Close panel"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
       </div>
 
       <div className="p-6 space-y-6">

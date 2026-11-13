@@ -10,6 +10,7 @@ import {
   GraduationCap,
   PanelRightClose,
   PanelRightOpen,
+  ArrowRightLeft,
 } from 'lucide-react';
 import type { BibleTranslation, FlatVerse, StrongsEntry } from './types/bible';
 import { parseVerseReference } from './utils/referenceParser';
@@ -19,6 +20,8 @@ import { SearchResultsView } from './components/SearchResultsView';
 import { BookNavigator } from './components/BookNavigator';
 import { JsonImporterModal } from './components/JsonImporterModal';
 import { StudyDrawer } from './components/StudyDrawer';
+import { ConcordanceCardView } from './components/ConcordanceCardView';
+import { VersesStreamDrawer } from './components/VersesStreamDrawer';
 import {
   getAllTranslations,
   saveTranslation,
@@ -43,6 +46,7 @@ export function App() {
 
   // Study Mode & Lexicon State
   const [isStudyMode, setIsStudyMode] = useState<boolean>(false);
+  const [studyLayoutOrientation, setStudyLayoutOrientation] = useState<'scripture-first' | 'concordance-first'>('scripture-first');
   const [strongsLexicon, setStrongsLexicon] = useState<Record<string, StrongsEntry>>({});
   const [selectedStrongsEntry, setSelectedStrongsEntry] = useState<StrongsEntry | null>(null);
   const [selectedWord, setSelectedWord] = useState<string>('');
@@ -128,6 +132,13 @@ export function App() {
 
   const currentBook = activeTranslation?.books[currentBookIndex] || activeTranslation?.books[0];
   const currentChapterObj = currentBook?.chapters.find((c) => c.chapter === currentChapter) || currentBook?.chapters[0];
+
+  // Memoized concordance occurrences for currently selected Strong's root
+  const currentStrongsVerses = React.useMemo(() => {
+    if (!selectedStrongsEntry || !activeTranslation) return [];
+    const searchRes = searchBible(activeTranslation, selectedStrongsEntry.number);
+    return searchRes.verses;
+  }, [selectedStrongsEntry?.number, activeTranslation]);
 
   // Strong's interaction
   const handleWordClick = (word: string, strongsId: string) => {
@@ -350,6 +361,30 @@ export function App() {
               <GraduationCap className="w-4 h-4" />
               <span>Study Mode</span>
             </button>
+
+            {/* Concordance-First vs Scripture-First Flip Switch */}
+            {isStudyMode && selectedStrongsEntry && (
+              <button
+                onClick={() =>
+                  setStudyLayoutOrientation((prev) =>
+                    prev === 'scripture-first' ? 'concordance-first' : 'scripture-first'
+                  )
+                }
+                className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition cursor-pointer border ${
+                  studyLayoutOrientation === 'concordance-first'
+                    ? 'bg-sky-500 text-slate-950 border-sky-400 font-bold shadow-md shadow-sky-500/20'
+                    : 'bg-slate-800 hover:bg-slate-700 text-sky-300 border-slate-700'
+                }`}
+                title="Flip View: Put Concordance/Lexicon on Main Left, Bible Verses stream on Right"
+              >
+                <ArrowRightLeft className="w-3.5 h-3.5" />
+                <span>
+                  {studyLayoutOrientation === 'concordance-first'
+                    ? 'Concordance View'
+                    : 'Flip to Concordance'}
+                </span>
+              </button>
+            )}
           </div>
 
           {/* Search Bar Form */}
@@ -465,6 +500,15 @@ export function App() {
                 chapter: currentChapter,
               }}
             />
+          ) : isStudyMode && studyLayoutOrientation === 'concordance-first' && selectedStrongsEntry ? (
+            <ConcordanceCardView
+              entry={selectedStrongsEntry}
+              selectedWord={selectedWord}
+              concordanceVerses={currentStrongsVerses}
+              onSelectRelatedStrongs={handleSelectRelatedStrongs}
+              onSelectVerse={handleSelectVerseFromSearch}
+              onFlipBackToScriptureFirst={() => setStudyLayoutOrientation('scripture-first')}
+            />
           ) : (
             <ChapterReader
               bookName={currentBook?.name || 'Genesis'}
@@ -484,16 +528,28 @@ export function App() {
           )}
         </main>
 
-        {/* Right Pane: Strong's Concordance & Lexicon Study Drawer (Pinned in place) */}
+        {/* Right Pane: Study Drawer or Verses Stream Drawer */}
         {isStudyMode && isStudyDrawerOpen && (
           <aside className="w-full lg:w-[480px] xl:w-[540px] flex-shrink-0 h-full border-l border-slate-800 hidden md:block overflow-hidden">
-            <StudyDrawer
-              entry={selectedStrongsEntry}
-              selectedWord={selectedWord}
-              onClose={() => setIsStudyDrawerOpen(false)}
-              onSearchStrongs={handleSearchStrongs}
-              onSelectRelatedStrongs={handleSelectRelatedStrongs}
-            />
+            {studyLayoutOrientation === 'concordance-first' ? (
+              <VersesStreamDrawer
+                strongsId={selectedStrongsEntry?.number || ''}
+                selectedWord={selectedWord}
+                verses={currentStrongsVerses}
+                onSelectVerse={handleSelectVerseFromSearch}
+                onFlipBackToScriptureFirst={() => setStudyLayoutOrientation('scripture-first')}
+                onClose={() => setIsStudyDrawerOpen(false)}
+              />
+            ) : (
+              <StudyDrawer
+                entry={selectedStrongsEntry}
+                selectedWord={selectedWord}
+                onClose={() => setIsStudyDrawerOpen(false)}
+                onSearchStrongs={handleSearchStrongs}
+                onSelectRelatedStrongs={handleSelectRelatedStrongs}
+                onFlipToConcordanceFirst={() => setStudyLayoutOrientation('concordance-first')}
+              />
+            )}
           </aside>
         )}
       </div>
@@ -502,13 +558,25 @@ export function App() {
       {isStudyMode && isStudyDrawerOpen && (
         <div className="md:hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex justify-end">
           <div className="w-full max-w-md h-full">
-            <StudyDrawer
-              entry={selectedStrongsEntry}
-              selectedWord={selectedWord}
-              onClose={() => setIsStudyDrawerOpen(false)}
-              onSearchStrongs={handleSearchStrongs}
-              onSelectRelatedStrongs={handleSelectRelatedStrongs}
-            />
+            {studyLayoutOrientation === 'concordance-first' ? (
+              <VersesStreamDrawer
+                strongsId={selectedStrongsEntry?.number || ''}
+                selectedWord={selectedWord}
+                verses={currentStrongsVerses}
+                onSelectVerse={handleSelectVerseFromSearch}
+                onFlipBackToScriptureFirst={() => setStudyLayoutOrientation('scripture-first')}
+                onClose={() => setIsStudyDrawerOpen(false)}
+              />
+            ) : (
+              <StudyDrawer
+                entry={selectedStrongsEntry}
+                selectedWord={selectedWord}
+                onClose={() => setIsStudyDrawerOpen(false)}
+                onSearchStrongs={handleSearchStrongs}
+                onSelectRelatedStrongs={handleSelectRelatedStrongs}
+                onFlipToConcordanceFirst={() => setStudyLayoutOrientation('concordance-first')}
+              />
+            )}
           </div>
         </div>
       )}
