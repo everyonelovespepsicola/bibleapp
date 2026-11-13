@@ -54,11 +54,11 @@ export function App() {
           ? import.meta.env.BASE_URL
           : `${import.meta.env.BASE_URL}/`;
 
-        // 1. Ensure KJV is loaded & has paragraph breaks
+        // 1. Ensure KJV is loaded & has paragraph breaks and italic markup
         const existingKjv = stored.find((t) => t.id === 'kjv');
-        const hasParagraphData = existingKjv?.books?.[0]?.chapters?.[0]?.verses?.[0]?.isParagraphStart;
+        const hasItalicData = existingKjv?.books?.[0]?.chapters?.[0]?.verses?.[1]?.text?.includes('*');
 
-        if (!existingKjv || !hasParagraphData) {
+        if (!existingKjv || !hasItalicData) {
           const resp = await fetch(`${base}kjv.json`);
           if (resp.ok) {
             defaultKjv = await resp.json();

@@ -89,8 +89,9 @@ export function searchBible(
 
     for (const chap of book.chapters) {
       for (const v of chap.verses) {
-        const lowerText = v.text.toLowerCase();
-        const matchesAll = terms.every((t) => lowerText.includes(t));
+        // Strip markdown asterisks so search matches naturally regardless of italics
+        const cleanVerseText = v.text.replace(/\*/g, '').toLowerCase();
+        const matchesAll = terms.every((t) => cleanVerseText.includes(t));
 
         if (matchesAll) {
           results.push({

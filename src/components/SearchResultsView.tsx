@@ -2,6 +2,7 @@ import React from 'react';
 import type { SearchResult } from '../utils/searchEngine';
 import type { FlatVerse } from '../types/bible';
 import { Copy, BookOpen } from 'lucide-react';
+import { renderFormattedText, copyRichScripture } from '../utils/clipboard';
 
 interface SearchResultsViewProps {
   result: SearchResult;
@@ -13,15 +14,19 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
   result,
   onSelectVerse,
 }) => {
-  const copyVerse = (verse: FlatVerse) => {
-    navigator.clipboard.writeText(`${verse.reference} - "${verse.text}"`);
-    alert(`Copied ${verse.reference} to clipboard!`);
+  const copyVerse = async (verse: FlatVerse) => {
+    await copyRichScripture(verse.reference, [
+      { verse: verse.verse, text: verse.text },
+    ]);
+    alert(`Copied ${verse.reference} with formatting (ready to paste in PowerPoint/Word)!`);
   };
 
-  const copyAllResults = () => {
-    const text = result.verses.map((v) => `${v.reference} - "${v.text}"`).join('\n\n');
-    navigator.clipboard.writeText(text);
-    alert(`Copied all ${result.verses.length} verses to clipboard!`);
+  const copyAllResults = async () => {
+    await copyRichScripture(
+      result.title,
+      result.verses.map((v) => ({ verse: v.verse, text: v.text }))
+    );
+    alert(`Copied all ${result.verses.length} verses with formatting to clipboard!`);
   };
 
   return (
@@ -51,8 +56,9 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
           <button
             onClick={copyAllResults}
             className="flex items-center space-x-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-medium transition border border-slate-700"
+            title="Copy all matching verses for PowerPoint/Word"
           >
-            <Copy className="w-3.5 h-3.5" />
+            <Copy className="w-3.5 h-3.5 text-amber-400" />
             <span>Copy All</span>
           </button>
         )}
@@ -83,7 +89,7 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
                   </button>
                 </div>
                 <p className="font-serif text-slate-200 text-base leading-relaxed">
-                  {v.text}
+                  {renderFormattedText(v.text)}
                 </p>
               </div>
 
@@ -97,7 +103,7 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
                 <button
                   onClick={() => copyVerse(v)}
                   className="p-1.5 text-slate-400 hover:text-amber-400 rounded-lg hover:bg-slate-800 transition"
-                  title="Copy verse"
+                  title="Copy verse for PowerPoint/Word"
                 >
                   <Copy className="w-4 h-4" />
                 </button>

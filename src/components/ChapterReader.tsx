@@ -1,6 +1,7 @@
 import React from 'react';
 import { Copy, Check, AlignLeft, List } from 'lucide-react';
 import type { Verse } from '../types/bible';
+import { renderFormattedText, copyRichScripture } from '../utils/clipboard';
 
 interface ChapterReaderProps {
   bookName: string;
@@ -26,20 +27,20 @@ export const ChapterReader: React.FC<ChapterReaderProps> = ({
   const [copiedVerse, setCopiedVerse] = React.useState<number | null>(null);
   const [layoutMode, setLayoutMode] = React.useState<'paragraph' | 'verse'>('paragraph');
 
-  const copyToClipboard = (verseNum: number, text: string) => {
-    const formatted = `${bookName} ${chapterNumber}:${verseNum} - "${text}"`;
-    navigator.clipboard.writeText(formatted);
+  const copySingleVerse = async (verseNum: number, text: string) => {
+    await copyRichScripture(`${bookName} ${chapterNumber}:${verseNum}`, [
+      { verse: verseNum, text },
+    ]);
     setCopiedVerse(verseNum);
     setTimeout(() => setCopiedVerse(null), 2000);
   };
 
-  const copyWholePassage = () => {
-    let passage = `${bookName} Chapter ${chapterNumber}\n\n`;
-    verses.forEach((v) => {
-      passage += `[${v.verse}] ${v.text}\n`;
-    });
-    navigator.clipboard.writeText(passage);
-    alert('Passage copied to clipboard!');
+  const copyWholePassage = async () => {
+    await copyRichScripture(
+      `${bookName} Chapter ${chapterNumber}`,
+      verses.map((v) => ({ verse: v.verse, text: v.text }))
+    );
+    alert('Copied entire chapter with rich formatting (ready to paste into PowerPoint, Word, or Notes)!');
   };
 
   // Group verses into paragraphs based on isParagraphStart
@@ -47,7 +48,6 @@ export const ChapterReader: React.FC<ChapterReaderProps> = ({
   let currentParagraph: Verse[] = [];
 
   verses.forEach((v, idx) => {
-    // If verse is marked as start of paragraph and we already have verses collected
     if (v.isParagraphStart && idx > 0 && currentParagraph.length > 0) {
       paragraphs.push(currentParagraph);
       currentParagraph = [v];
@@ -104,9 +104,9 @@ export const ChapterReader: React.FC<ChapterReaderProps> = ({
           <button
             onClick={copyWholePassage}
             className="text-xs flex items-center space-x-1.5 px-3 py-2 bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 rounded-xl transition border border-slate-700/60"
-            title="Copy Chapter"
+            title="Copy Chapter for PowerPoint/Word"
           >
-            <Copy className="w-3.5 h-3.5" />
+            <Copy className="w-3.5 h-3.5 text-amber-400" />
             <span>Copy All</span>
           </button>
         </div>
@@ -127,18 +127,18 @@ export const ChapterReader: React.FC<ChapterReaderProps> = ({
                   <span
                     key={v.verse}
                     id={`verse-${v.verse}`}
-                    onClick={() => copyToClipboard(v.verse, v.text)}
+                    onClick={() => copySingleVerse(v.verse, v.text)}
                     className={`inline group cursor-pointer transition rounded px-1 py-0.5 ${
                       isHighlighted
                         ? 'bg-amber-500/20 text-amber-200 font-medium ring-1 ring-amber-400/40'
                         : 'hover:bg-slate-800/70'
                     }`}
-                    title={`Click to copy ${bookName} ${chapterNumber}:${v.verse}`}
+                    title={`Click to copy ${bookName} ${chapterNumber}:${v.verse} for PowerPoint/Word`}
                   >
                     <sup className="text-xs font-sans font-bold text-amber-400/80 mr-1 select-none">
                       {v.verse}
                     </sup>
-                    <span>{v.text} </span>
+                    <span>{renderFormattedText(v.text)} </span>
                   </span>
                 );
               })}
@@ -168,13 +168,13 @@ export const ChapterReader: React.FC<ChapterReaderProps> = ({
                   {v.verse}
                 </span>
                 <p className="flex-1 text-slate-100 text-[1.12rem] leading-8 font-serif selection:bg-amber-400 selection:text-slate-950">
-                  {v.text}
+                  {renderFormattedText(v.text)}
                 </p>
 
                 <button
-                  onClick={() => copyToClipboard(v.verse, v.text)}
-                  className="opacity-0 group-hover:opacity-100 transition p-1 text-slate-400 hover:text-amber-400 absolute right-2 top-2"
-                  title="Copy verse"
+                  onClick={() => copySingleVerse(v.verse, v.text)}
+                  className="opacity-0 group-hover:opacity-100 transition p-1.5 text-slate-400 hover:text-amber-400 rounded-lg hover:bg-slate-800 absolute right-2 top-2"
+                  title="Copy verse (PowerPoint/Word rich text)"
                 >
                   {copiedVerse === v.verse ? (
                     <Check className="w-4 h-4 text-emerald-400" />
