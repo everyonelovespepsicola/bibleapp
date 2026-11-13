@@ -245,9 +245,9 @@ export function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-amber-400 selection:text-slate-950">
+    <div className="h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-amber-400 selection:text-slate-950 overflow-hidden">
       {/* Top Navigation Bar */}
-      <header className="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+      <header className="flex-shrink-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
           {/* Logo & Current Book Button */}
           <div className="flex items-center space-x-3 w-full sm:w-auto justify-between sm:justify-start">
@@ -448,9 +448,9 @@ export function App() {
       </header>
 
       {/* Main Content Area (Dual Split Screen in Study Mode) */}
-      <div className="flex-1 flex overflow-hidden">
-        {/* Left / Center: Main Scripture Reader or Search View */}
-        <main className={`flex-1 overflow-y-auto pb-16 transition-all duration-300 ${
+      <div className="flex-1 flex overflow-hidden relative">
+        {/* Left / Center: Main Scripture Reader or Search View with Independent Scrolling */}
+        <main className={`flex-1 h-full overflow-y-auto pb-16 transition-all duration-300 ${
           isStudyMode && isStudyDrawerOpen ? 'lg:pr-4' : ''
         }`}>
           {viewMode === 'search' && searchResult ? (
@@ -478,9 +478,9 @@ export function App() {
           )}
         </main>
 
-        {/* Right Pane: Strong's Concordance & Lexicon Study Drawer */}
+        {/* Right Pane: Strong's Concordance & Lexicon Study Drawer (Pinned in place) */}
         {isStudyMode && isStudyDrawerOpen && (
-          <aside className="w-full lg:w-[480px] xl:w-[540px] flex-shrink-0 h-[calc(100vh-105px)] sticky top-[105px] hidden md:block">
+          <aside className="w-full lg:w-[480px] xl:w-[540px] flex-shrink-0 h-full border-l border-slate-800 hidden md:block overflow-hidden">
             <StudyDrawer
               entry={selectedStrongsEntry}
               selectedWord={selectedWord}
