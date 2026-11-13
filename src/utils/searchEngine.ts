@@ -13,7 +13,7 @@ export function searchBible(
   translation: BibleTranslation,
   query: string,
   filter?: SearchFilter,
-  limit = 200
+  limit = 100000
 ): SearchResult {
   const trimmed = query.trim();
   if (!trimmed) {
