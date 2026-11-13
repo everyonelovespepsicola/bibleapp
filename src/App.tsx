@@ -67,8 +67,8 @@ export function App() {
 
         // Ensure KJV with 100% full-lexical Strongs coverage is loaded
         const existingKjv = stored.find((t) => t.id === 'kjv');
-        const exoVerse = existingKjv?.books?.[1]?.chapters?.[19]?.verses?.[12]?.strongsText;
-        const hasFullCoverage = exoVerse && exoVerse.includes('not[H3808]');
+        const exoVerse = existingKjv?.books?.[0]?.chapters?.[0]?.verses?.[20]?.strongsText;
+        const hasFullCoverage = exoVerse && exoVerse.includes('every[H3605]');
 
         if (!existingKjv || !hasFullCoverage) {
           const resp = await fetch(`${base}kjv.json`);
