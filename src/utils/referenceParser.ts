@@ -57,3 +57,23 @@ export function parseVerseReference(input: string): VerseReferenceQuery | null {
 
   return null;
 }
+
+/**
+ * Parses multi-reference queries separated by semicolons, commas, or line breaks:
+ * e.g. "John 3:16; Genesis 1:1; Romans 8:28, Psalm 23:1"
+ */
+export function parseMultipleReferences(input: string): VerseReferenceQuery[] {
+  const delimiterRegex = /[;\n\r]+|(?<=\d)\s*,\s*(?=[1-9a-zA-Z])/;
+  const parts = input.split(delimiterRegex).map((p) => p.trim()).filter(Boolean);
+  if (parts.length <= 1) return [];
+
+  const parsedList: VerseReferenceQuery[] = [];
+  for (const part of parts) {
+    const parsed = parseVerseReference(part);
+    if (parsed) {
+      parsedList.push(parsed);
+    }
+  }
+
+  return parsedList;
+}

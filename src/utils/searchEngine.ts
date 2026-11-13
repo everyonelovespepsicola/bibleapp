@@ -1,5 +1,5 @@
 import type { BibleTranslation, FlatVerse, SearchFilter } from '../types/bible';
-import { parseVerseReference } from './referenceParser';
+import { parseVerseReference, parseMultipleReferences } from './referenceParser';
 import { CANONICAL_BOOKS, findBookMeta } from './books';
 
 export interface SearchResult {
@@ -20,7 +20,66 @@ export function searchBible(
     return { type: 'keyword', title: '', count: 0, verses: [] };
   }
 
-  // 1. Try Reference Parser first
+  // 1. Try Multiple References Parser first (e.g. "John 3:16; Genesis 1:1; Romans 8:28")
+  const multiRefs = parseMultipleReferences(trimmed);
+  if (multiRefs.length > 0) {
+    const collectedVerses: FlatVerse[] = [];
+    const titles: string[] = [];
+
+    for (const refQuery of multiRefs) {
+      const book = translation.books.find((b) => {
+        const meta = findBookMeta(b.name);
+        return (
+          meta?.index === refQuery.matchedBookIndex ||
+          b.name.toLowerCase() === refQuery.bookName.toLowerCase() ||
+          (b.abbrev && b.abbrev.toLowerCase() === refQuery.bookName.toLowerCase())
+        );
+      });
+
+      if (book) {
+        const chapter = book.chapters.find((c) => c.chapter === refQuery.chapter);
+        if (chapter) {
+          let matchedVerses = chapter.verses;
+          if (refQuery.startVerse !== undefined) {
+            const start = refQuery.startVerse;
+            const end = refQuery.endVerse ?? start;
+            matchedVerses = chapter.verses.filter((v) => v.verse >= start && v.verse <= end);
+          }
+
+          let itemTitle = `${book.name} ${chapter.chapter}`;
+          if (refQuery.startVerse !== undefined) {
+            itemTitle += `:${refQuery.startVerse}`;
+            if (refQuery.endVerse && refQuery.endVerse !== refQuery.startVerse) {
+              itemTitle += `-${refQuery.endVerse}`;
+            }
+          }
+          titles.push(itemTitle);
+
+          for (const v of matchedVerses) {
+            collectedVerses.push({
+              bookIndex: refQuery.matchedBookIndex,
+              bookName: book.name,
+              chapter: chapter.chapter,
+              verse: v.verse,
+              text: v.text,
+              reference: `${book.name} ${chapter.chapter}:${v.verse}`,
+            });
+          }
+        }
+      }
+    }
+
+    if (collectedVerses.length > 0) {
+      return {
+        type: 'reference',
+        title: titles.join('; '),
+        count: collectedVerses.length,
+        verses: collectedVerses,
+      };
+    }
+  }
+
+  // 2. Try Single Reference Parser
   const refQuery = parseVerseReference(trimmed);
   if (refQuery) {
     const book = translation.books.find((b) => {
@@ -69,7 +128,7 @@ export function searchBible(
     }
   }
 
-  // 2. Fall back to Keyword / Word Search
+  // 3. Fall back to Keyword / Word Search
   const terms = trimmed.toLowerCase().split(/\s+/).filter(Boolean);
   const results: FlatVerse[] = [];
 

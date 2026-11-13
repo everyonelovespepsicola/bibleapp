@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest';
-import { parseVerseReference } from './src/utils/referenceParser';
+import { parseVerseReference, parseMultipleReferences } from './src/utils/referenceParser';
 import { searchBible } from './src/utils/searchEngine';
 import kjvData from './public/kjv.json';
 
@@ -38,6 +38,23 @@ test('Search John 3:4-10 pulls exact verses', () => {
   expect(result2.verses[result2.verses.length - 1].verse).toBe(10);
 });
 
+test('Search multiple references at once separated by semicolon', () => {
+  const query = 'Genesis 1:1; John 3:16; Romans 8:28; Psalm 23:1; Matthew 5:3';
+  const parsed = parseMultipleReferences(query);
+  expect(parsed.length).toBe(5);
+
+  const result = searchBible(kjvData as any, query);
+  expect(result.type).toBe('reference');
+  expect(result.count).toBe(5);
+  expect(result.verses.map((v) => v.reference)).toEqual([
+    'Genesis 1:1',
+    'John 3:16',
+    'Romans 8:28',
+    'Psalms 23:1',
+    'Matthew 5:3',
+  ]);
+});
+
 test('Word / Keyword search for "light world"', () => {
   const result = searchBible(kjvData as any, 'light world');
   expect(result.type).toBe('keyword');
@@ -45,4 +62,3 @@ test('Word / Keyword search for "light world"', () => {
   const hasMatt514 = result.verses.some((v) => v.reference === 'Matthew 5:14');
   expect(hasMatt514).toBe(true);
 });
-
