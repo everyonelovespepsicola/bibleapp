@@ -50,20 +50,37 @@ export function App() {
         const stored = await getAllTranslations();
         let defaultKjv: BibleTranslation | null = null;
 
+        const base = import.meta.env.BASE_URL.endsWith('/')
+          ? import.meta.env.BASE_URL
+          : `${import.meta.env.BASE_URL}/`;
+
+        // 1. Ensure KJV is loaded & has paragraph breaks
         const existingKjv = stored.find((t) => t.id === 'kjv');
-        // Always refresh KJV if it lacks paragraph breaks
         const hasParagraphData = existingKjv?.books?.[0]?.chapters?.[0]?.verses?.[0]?.isParagraphStart;
 
         if (!existingKjv || !hasParagraphData) {
-          const base = import.meta.env.BASE_URL.endsWith('/')
-            ? import.meta.env.BASE_URL
-            : `${import.meta.env.BASE_URL}/`;
           const resp = await fetch(`${base}kjv.json`);
           if (resp.ok) {
             defaultKjv = await resp.json();
             if (defaultKjv) {
               await saveTranslation(defaultKjv);
             }
+          }
+        }
+
+        // 2. Ensure WEB (World English Bible) is loaded
+        const existingWeb = stored.find((t) => t.id === 'web');
+        if (!existingWeb) {
+          try {
+            const respWeb = await fetch(`${base}web.json`);
+            if (respWeb.ok) {
+              const webData = await respWeb.json();
+              if (webData) {
+                await saveTranslation(webData);
+              }
+            }
+          } catch (errWeb) {
+            console.warn('Could not preload WEB:', errWeb);
           }
         }
 
