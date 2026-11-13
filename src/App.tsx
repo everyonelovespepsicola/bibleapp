@@ -27,8 +27,8 @@ export function App() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   // Navigation State
-  const [currentBookIndex, setCurrentBookIndex] = useState<number>(42); // Default to John (index 42)
-  const [currentChapter, setCurrentChapter] = useState<number>(3); // John 3
+  const [currentBookIndex, setCurrentBookIndex] = useState<number>(0); // Default to Genesis (index 0)
+  const [currentChapter, setCurrentChapter] = useState<number>(1); // Genesis 1
   const [highlightRange, setHighlightRange] = useState<{ start?: number; end?: number } | undefined>(undefined);
 
   // Search State
