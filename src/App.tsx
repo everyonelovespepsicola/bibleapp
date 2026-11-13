@@ -7,14 +7,18 @@ import {
   Sparkles,
   Library,
   Trash2,
+  GraduationCap,
+  PanelRightClose,
+  PanelRightOpen,
 } from 'lucide-react';
-import type { BibleTranslation, FlatVerse } from './types/bible';
+import type { BibleTranslation, FlatVerse, StrongsEntry } from './types/bible';
 import { parseVerseReference } from './utils/referenceParser';
 import { searchBible, type SearchResult } from './utils/searchEngine';
 import { ChapterReader } from './components/ChapterReader';
 import { SearchResultsView } from './components/SearchResultsView';
 import { BookNavigator } from './components/BookNavigator';
 import { JsonImporterModal } from './components/JsonImporterModal';
+import { StudyDrawer } from './components/StudyDrawer';
 import {
   getAllTranslations,
   saveTranslation,
@@ -27,8 +31,8 @@ export function App() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   // Navigation State
-  const [currentBookIndex, setCurrentBookIndex] = useState<number>(0); // Default to Genesis (index 0)
-  const [currentChapter, setCurrentChapter] = useState<number>(1); // Genesis 1
+  const [currentBookIndex, setCurrentBookIndex] = useState<number>(0); // Genesis
+  const [currentChapter, setCurrentChapter] = useState<number>(1); // Chapter 1
   const [highlightRange, setHighlightRange] = useState<{ start?: number; end?: number } | undefined>(undefined);
 
   // Search State
@@ -37,28 +41,35 @@ export function App() {
   const [searchResult, setSearchResult] = useState<SearchResult | null>(null);
   const [viewMode, setViewMode] = useState<'reader' | 'search'>('reader');
 
+  // Study Mode & Lexicon State
+  const [isStudyMode, setIsStudyMode] = useState<boolean>(false);
+  const [strongsLexicon, setStrongsLexicon] = useState<Record<string, StrongsEntry>>({});
+  const [selectedStrongsEntry, setSelectedStrongsEntry] = useState<StrongsEntry | null>(null);
+  const [selectedWord, setSelectedWord] = useState<string>('');
+  const [isStudyDrawerOpen, setIsStudyDrawerOpen] = useState<boolean>(false);
+
   // Modals & Panels
   const [isImporterOpen, setIsImporterOpen] = useState(false);
   const [isNavigatorOpen, setIsNavigatorOpen] = useState(false);
   const [isTranslationMenuOpen, setIsTranslationMenuOpen] = useState(false);
 
-  // 1. Initialize Default KJV and Custom DB Translations
+  // 1. Initialize Bibles and Strong's Lexicon
   useEffect(() => {
     async function loadData() {
       setIsLoading(true);
       try {
-        const stored = await getAllTranslations();
-        let defaultKjv: BibleTranslation | null = null;
-
         const base = import.meta.env.BASE_URL.endsWith('/')
           ? import.meta.env.BASE_URL
           : `${import.meta.env.BASE_URL}/`;
 
-        // 1. Ensure KJV is loaded & has paragraph breaks and italic markup
-        const existingKjv = stored.find((t) => t.id === 'kjv');
-        const hasItalicData = existingKjv?.books?.[0]?.chapters?.[0]?.verses?.[1]?.text?.includes('*');
+        const stored = await getAllTranslations();
+        let defaultKjv: BibleTranslation | null = null;
 
-        if (!existingKjv || !hasItalicData) {
+        // Ensure KJV with Strongs & Italics is loaded
+        const existingKjv = stored.find((t) => t.id === 'kjv');
+        const hasStrongsData = existingKjv?.books?.[0]?.chapters?.[0]?.verses?.[0]?.strongsText;
+
+        if (!existingKjv || !hasStrongsData) {
           const resp = await fetch(`${base}kjv.json`);
           if (resp.ok) {
             defaultKjv = await resp.json();
@@ -68,7 +79,7 @@ export function App() {
           }
         }
 
-        // 2. Ensure WEB (World English Bible) is loaded
+        // Ensure WEB is loaded
         const existingWeb = stored.find((t) => t.id === 'web');
         if (!existingWeb) {
           try {
@@ -91,6 +102,17 @@ export function App() {
           const kjv = freshList.find((t) => t.id === 'kjv');
           setActiveTranslationId(kjv ? kjv.id : freshList[0].id);
         }
+
+        // Preload Strong's Lexicon
+        try {
+          const respLex = await fetch(`${base}strongs_lexicon.json`);
+          if (respLex.ok) {
+            const lexData = await respLex.json();
+            setStrongsLexicon(lexData);
+          }
+        } catch (eLex) {
+          console.warn('Failed to load Strongs Lexicon:', eLex);
+        }
       } catch (e) {
         console.error('Failed to load translations:', e);
       } finally {
@@ -105,6 +127,33 @@ export function App() {
 
   const currentBook = activeTranslation?.books[currentBookIndex] || activeTranslation?.books[0];
   const currentChapterObj = currentBook?.chapters.find((c) => c.chapter === currentChapter) || currentBook?.chapters[0];
+
+  // Strong's interaction
+  const handleWordClick = (word: string, strongsId: string) => {
+    const entry = strongsLexicon[strongsId.toUpperCase()];
+    if (entry) {
+      setSelectedStrongsEntry(entry);
+      setSelectedWord(word);
+      setIsStudyDrawerOpen(true);
+    }
+  };
+
+  const handleSelectRelatedStrongs = (relatedId: string) => {
+    const entry = strongsLexicon[relatedId.toUpperCase()];
+    if (entry) {
+      setSelectedStrongsEntry(entry);
+      setSelectedWord(entry.lemma);
+      setIsStudyDrawerOpen(true);
+    }
+  };
+
+  const handleSearchStrongs = (strongsId: string) => {
+    setSearchQuery(strongsId);
+    const result = searchBible(activeTranslation, strongsId);
+    setSearchResult(result);
+    setSubmittedQuery(strongsId);
+    setViewMode('search');
+  };
 
   const handleSearchSubmit = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
@@ -189,8 +238,8 @@ export function App() {
     return (
       <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center text-slate-200">
         <div className="w-10 h-10 border-4 border-amber-500 border-t-transparent rounded-full animate-spin mb-4" />
-        <h2 className="text-xl font-serif">Preparing Holy Scriptures...</h2>
-        <p className="text-xs text-slate-500 mt-2">Loading King James Version (KJV)</p>
+        <h2 className="text-xl font-serif">Preparing Holy Scriptures & Strong's Lexicon...</h2>
+        <p className="text-xs text-slate-500 mt-2">Loading King James Version (KJV) & Hebrew/Greek Concordance</p>
       </div>
     );
   }
@@ -280,6 +329,26 @@ export function App() {
                 </div>
               )}
             </div>
+
+            {/* Study Mode Toggle Button */}
+            <button
+              onClick={() => {
+                const nextMode = !isStudyMode;
+                setIsStudyMode(nextMode);
+                if (nextMode) {
+                  setIsStudyDrawerOpen(true);
+                }
+              }}
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition cursor-pointer border ${
+                isStudyMode
+                  ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-md shadow-amber-500/20 font-bold'
+                  : 'bg-slate-800 hover:bg-slate-700 text-slate-300 border-slate-700'
+              }`}
+              title="Toggle Strong's Concordance and Interlinear Study Mode"
+            >
+              <GraduationCap className="w-4 h-4" />
+              <span>Study Mode</span>
+            </button>
           </div>
 
           {/* Search Bar Form */}
@@ -290,7 +359,7 @@ export function App() {
             <div className="relative w-full">
               <input
                 type="text"
-                placeholder='Search "John 3:4-10", "John 3 4-10", or keywords...'
+                placeholder='Search "John 3:4-10", "H7225", or words...'
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-9 pr-24 py-2 bg-slate-800/90 border border-slate-700/80 rounded-xl text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 transition"
@@ -306,8 +375,17 @@ export function App() {
             </div>
           </form>
 
-          {/* Import JSON button */}
+          {/* Actions: Import & Drawer Toggle */}
           <div className="hidden sm:flex items-center space-x-2">
+            {isStudyMode && (
+              <button
+                onClick={() => setIsStudyDrawerOpen(!isStudyDrawerOpen)}
+                className="p-2 text-slate-400 hover:text-amber-400 rounded-xl hover:bg-slate-800 transition border border-slate-800"
+                title={isStudyDrawerOpen ? 'Collapse Study Panel' : 'Expand Study Panel'}
+              >
+                {isStudyDrawerOpen ? <PanelRightClose className="w-4 h-4" /> : <PanelRightOpen className="w-4 h-4" />}
+              </button>
+            )}
             <button
               onClick={() => setIsImporterOpen(true)}
               className="flex items-center space-x-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700/80 rounded-xl text-xs font-medium transition cursor-pointer shadow-xs"
@@ -330,9 +408,9 @@ export function App() {
               'John 3:4-10',
               'John 3 4-10',
               'Genesis 1:1-5',
+              'H7225',
+              'G3056',
               'Psalm 23',
-              'Romans 8:28',
-              'faith hope love',
               'light of the world',
             ].map((eg) => (
               <button
@@ -369,30 +447,65 @@ export function App() {
         </div>
       </header>
 
-      {/* Main Content Area */}
-      <main className="flex-1 pb-16">
-        {viewMode === 'search' && searchResult ? (
-          <SearchResultsView
-            result={searchResult}
-            rawQuery={submittedQuery}
-            onSelectVerse={handleSelectVerseFromSearch}
-          />
-        ) : (
-          <ChapterReader
-            bookName={currentBook?.name || 'Genesis'}
-            chapterNumber={currentChapter}
-            verses={currentChapterObj?.verses || []}
-            highlightRange={highlightRange}
-            onPrevChapter={handlePrevChapter}
-            onNextChapter={handleNextChapter}
-            hasPrev={currentBookIndex > 0 || currentChapter > 1}
-            hasNext={
-              currentBookIndex < (activeTranslation?.books.length || 0) - 1 ||
-              currentChapter < (currentBook?.chapters.length || 0)
-            }
-          />
+      {/* Main Content Area (Dual Split Screen in Study Mode) */}
+      <div className="flex-1 flex overflow-hidden">
+        {/* Left / Center: Main Scripture Reader or Search View */}
+        <main className={`flex-1 overflow-y-auto pb-16 transition-all duration-300 ${
+          isStudyMode && isStudyDrawerOpen ? 'lg:pr-4' : ''
+        }`}>
+          {viewMode === 'search' && searchResult ? (
+            <SearchResultsView
+              result={searchResult}
+              rawQuery={submittedQuery}
+              onSelectVerse={handleSelectVerseFromSearch}
+            />
+          ) : (
+            <ChapterReader
+              bookName={currentBook?.name || 'Genesis'}
+              chapterNumber={currentChapter}
+              verses={currentChapterObj?.verses || []}
+              highlightRange={highlightRange}
+              onPrevChapter={handlePrevChapter}
+              onNextChapter={handleNextChapter}
+              hasPrev={currentBookIndex > 0 || currentChapter > 1}
+              hasNext={
+                currentBookIndex < (activeTranslation?.books.length || 0) - 1 ||
+                currentChapter < (currentBook?.chapters.length || 0)
+              }
+              isStudyMode={isStudyMode}
+              onWordClick={handleWordClick}
+            />
+          )}
+        </main>
+
+        {/* Right Pane: Strong's Concordance & Lexicon Study Drawer */}
+        {isStudyMode && isStudyDrawerOpen && (
+          <aside className="w-full lg:w-[480px] xl:w-[540px] flex-shrink-0 h-[calc(100vh-105px)] sticky top-[105px] hidden md:block">
+            <StudyDrawer
+              entry={selectedStrongsEntry}
+              selectedWord={selectedWord}
+              onClose={() => setIsStudyDrawerOpen(false)}
+              onSearchStrongs={handleSearchStrongs}
+              onSelectRelatedStrongs={handleSelectRelatedStrongs}
+            />
+          </aside>
         )}
-      </main>
+      </div>
+
+      {/* Mobile Drawer Overlay for Study Mode */}
+      {isStudyMode && isStudyDrawerOpen && (
+        <div className="md:hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex justify-end">
+          <div className="w-full max-w-md h-full">
+            <StudyDrawer
+              entry={selectedStrongsEntry}
+              selectedWord={selectedWord}
+              onClose={() => setIsStudyDrawerOpen(false)}
+              onSearchStrongs={handleSearchStrongs}
+              onSelectRelatedStrongs={handleSelectRelatedStrongs}
+            />
+          </div>
+        </div>
+      )}
 
       {/* Book & Chapter Modal Navigator */}
       <BookNavigator

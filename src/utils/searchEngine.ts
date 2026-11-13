@@ -91,7 +91,13 @@ export function searchBible(
       for (const v of chap.verses) {
         // Strip markdown asterisks so search matches naturally regardless of italics
         const cleanVerseText = v.text.replace(/\*/g, '').toLowerCase();
-        const matchesAll = terms.every((t) => cleanVerseText.includes(t));
+        const matchesAll = terms.every((t) => {
+          // If searching by Strong's number e.g. "H7225" or "G3056"
+          if (/^[HG]\d+$/i.test(t)) {
+            return (v.strongsText || '').toLowerCase().includes(`[${t.toLowerCase()}]`);
+          }
+          return cleanVerseText.includes(t);
+        });
 
         if (matchesAll) {
           results.push({

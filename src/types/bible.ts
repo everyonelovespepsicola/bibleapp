@@ -1,7 +1,16 @@
 export interface Verse {
   verse: number;
   text: string;
+  strongsText?: string; // e.g. "In[G1722] the beginning[G746]..."
   isParagraphStart?: boolean;
+}
+
+export interface StrongsEntry {
+  number: string; // e.g. "H7225" or "G3056"
+  lemma: string; // e.g. "רֵאשִׁית" or "λόγος"
+  xlit: string; // Transliteration e.g. "rêʼshîyth"
+  pronounce: string; // e.g. "ray-sheeth'"
+  description: string; // Exhaustive definition & derivation
 }
 
 export interface Chapter {

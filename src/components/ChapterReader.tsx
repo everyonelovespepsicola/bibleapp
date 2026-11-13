@@ -12,6 +12,8 @@ interface ChapterReaderProps {
   onNextChapter?: () => void;
   hasPrev?: boolean;
   hasNext?: boolean;
+  isStudyMode?: boolean;
+  onWordClick?: (word: string, strongsId: string) => void;
 }
 
 export const ChapterReader: React.FC<ChapterReaderProps> = ({
@@ -23,6 +25,8 @@ export const ChapterReader: React.FC<ChapterReaderProps> = ({
   onNextChapter,
   hasPrev,
   hasNext,
+  isStudyMode,
+  onWordClick,
 }) => {
   const [copiedVerse, setCopiedVerse] = React.useState<number | null>(null);
   const [layoutMode, setLayoutMode] = React.useState<'paragraph' | 'verse'>('paragraph');
@@ -59,13 +63,65 @@ export const ChapterReader: React.FC<ChapterReaderProps> = ({
     paragraphs.push(currentParagraph);
   }
 
+  // Helper to render interactive words in Study Mode
+  const renderVerseContent = (v: Verse) => {
+    if (!isStudyMode || !v.strongsText) {
+      return renderFormattedText(v.text);
+    }
+
+    // Parse tokens like: "beginning[H7225]" or "God[H430]" or standard words
+    // Regex splits by: (word)?\[([HG]\d+)\]
+    const regex = /([a-zA-Z’'*\-]+)?\[([HG]\d+)\]/g;
+    const elements: React.ReactNode[] = [];
+    let lastIndex = 0;
+    let match: RegExpExecArray | null;
+
+    const sourceText = v.strongsText;
+
+    while ((match = regex.exec(sourceText)) !== null) {
+      const matchIndex = match.index;
+      // Preceding regular text (like punctuation, spaces, or words without tags)
+      if (matchIndex > lastIndex) {
+        elements.push(sourceText.slice(lastIndex, matchIndex));
+      }
+
+      const word = (match[1] || '').replace(/\*/g, '');
+      const strongsId = match[2];
+
+      elements.push(
+        <button
+          key={`${matchIndex}-${strongsId}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            onWordClick?.(word, strongsId);
+          }}
+          className="inline-flex items-baseline mx-0.5 px-1 py-0.5 rounded-md hover:bg-amber-500/20 text-slate-100 hover:text-amber-300 font-serif border-b border-dashed border-amber-500/40 hover:border-amber-400 transition cursor-pointer group"
+          title={`Click to inspect Strong's ${strongsId} (${word})`}
+        >
+          <span>{word}</span>
+          <sup className="text-[10px] font-sans font-bold text-amber-400/80 group-hover:text-amber-300 ml-0.5">
+            {strongsId}
+          </sup>
+        </button>
+      );
+
+      lastIndex = regex.lastIndex;
+    }
+
+    if (lastIndex < sourceText.length) {
+      elements.push(sourceText.slice(lastIndex));
+    }
+
+    return elements;
+  };
+
   return (
-    <div className="max-w-3xl mx-auto py-6 px-4 sm:px-6">
+    <div className="max-w-4xl mx-auto py-6 px-4 sm:px-6">
       {/* Chapter Header & Controls */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-800 mb-8 gap-4">
         <div>
           <span className="text-xs font-semibold uppercase tracking-wider text-amber-500">
-            Holy Scripture
+            {isStudyMode ? 'Interlinear Study Mode' : 'Holy Scripture'}
           </span>
           <h1 className="text-3xl sm:text-4xl font-serif font-bold text-slate-100 tracking-tight mt-1">
             {bookName} <span className="text-amber-400 font-normal">{chapterNumber}</span>
@@ -114,7 +170,7 @@ export const ChapterReader: React.FC<ChapterReaderProps> = ({
 
       {/* Render: Paragraph Flow Mode */}
       {layoutMode === 'paragraph' ? (
-        <div className="space-y-6 font-serif text-[1.15rem] leading-[2.1] text-slate-200">
+        <div className="space-y-6 font-serif text-[1.15rem] leading-[2.2] text-slate-200">
           {paragraphs.map((para, pIdx) => (
             <p key={pIdx} className="indent-6 sm:indent-8 text-justify">
               {para.map((v) => {
@@ -138,7 +194,7 @@ export const ChapterReader: React.FC<ChapterReaderProps> = ({
                     <sup className="text-xs font-sans font-bold text-amber-400/80 mr-1 selection:bg-amber-400 selection:text-slate-950">
                       {v.verse}
                     </sup>
-                    <span>{renderFormattedText(v.text)} </span>
+                    <span>{renderVerseContent(v)} </span>
                   </span>
                 );
               })}
@@ -167,9 +223,9 @@ export const ChapterReader: React.FC<ChapterReaderProps> = ({
                 <span className="text-xs font-sans font-bold text-amber-400/80 w-6 text-right flex-shrink-0 selection:bg-amber-400 selection:text-slate-950">
                   {v.verse}
                 </span>
-                <p className="flex-1 text-slate-100 text-[1.12rem] leading-8 font-serif selection:bg-amber-400 selection:text-slate-950">
-                  {renderFormattedText(v.text)}
-                </p>
+                <div className="flex-1 text-slate-100 text-[1.12rem] leading-8 font-serif selection:bg-amber-400 selection:text-slate-950">
+                  {renderVerseContent(v)}
+                </div>
 
                 <button
                   onClick={() => copySingleVerse(v.verse, v.text)}
