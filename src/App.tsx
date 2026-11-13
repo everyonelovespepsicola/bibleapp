@@ -51,7 +51,10 @@ export function App() {
         let defaultKjv: BibleTranslation | null = null;
 
         const existingKjv = stored.find((t) => t.id === 'kjv');
-        if (!existingKjv) {
+        // Always refresh KJV if it lacks paragraph breaks
+        const hasParagraphData = existingKjv?.books?.[0]?.chapters?.[0]?.verses?.[0]?.isParagraphStart;
+
+        if (!existingKjv || !hasParagraphData) {
           const base = import.meta.env.BASE_URL.endsWith('/')
             ? import.meta.env.BASE_URL
             : `${import.meta.env.BASE_URL}/`;

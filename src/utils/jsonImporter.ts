@@ -42,16 +42,22 @@ export function absorbBibleJson(
 
         if (Array.isArray(rawChap)) {
           rawChap.forEach((vText: any, vIdx: number) => {
+            const cleanText = String(vText || '').trim();
+            const hasPilcrow = cleanText.startsWith('¶') || cleanText.startsWith('â¶');
             verses.push({
               verse: vIdx + 1,
-              text: String(vText || '').trim(),
+              text: cleanText.replace(/^[¶â¶\s]+/, ''),
+              isParagraphStart: vIdx === 0 || hasPilcrow,
             });
           });
         } else if (rawChap && Array.isArray(rawChap.verses)) {
           rawChap.verses.forEach((vObj: any, vIdx: number) => {
+            const cleanText = String(vObj.text || '').trim();
+            const hasPilcrow = cleanText.startsWith('¶') || cleanText.startsWith('â¶');
             verses.push({
               verse: vObj.verse || vIdx + 1,
-              text: String(vObj.text || '').trim(),
+              text: cleanText.replace(/^[¶â¶\s]+/, ''),
+              isParagraphStart: vObj.isParagraphStart ?? (vIdx === 0 || hasPilcrow),
             });
           });
         }
