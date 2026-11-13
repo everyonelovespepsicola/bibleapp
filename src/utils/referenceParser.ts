@@ -14,6 +14,11 @@ export function parseVerseReference(input: string): VerseReferenceQuery | null {
   const trimmed = input.trim();
   if (!trimmed) return null;
 
+  // Never treat Strong's concordance numbers (e.g. H6153, G3056, H7225) as verse references!
+  if (/^[HG]\d{1,5}$/i.test(trimmed)) {
+    return null;
+  }
+
   // 1. Standard pattern: Book name followed by chapter : or space verse (- verse)
   // e.g. "mat 13 12", "mat 13:12", "1 cor 13 4-8"
   const verseRangeRegex = /^\s*([0-9]?\s*[a-zA-Z\s]+?)\s*(\d+)[\s:]+(\d+)(?:\s*[-–—]\s*(\d+))?\s*$/i;
