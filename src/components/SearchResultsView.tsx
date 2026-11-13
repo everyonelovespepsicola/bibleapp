@@ -10,7 +10,7 @@ interface SearchResultsViewProps {
   rawQuery?: string;
 }
 
-const PAGE_SIZE = 25; // Verses per page, snappy and easy to read
+const PAGE_SIZE = 250; // Verses per page
 
 export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
   result,
