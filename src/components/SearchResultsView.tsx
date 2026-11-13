@@ -213,9 +213,47 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
             </div>
           ))}
 
-          {/* Google-Style Pagination Footer */}
+          {/* Google-Style Pagination Footer with Fast-Scrub Slider & Direct Jump */}
           {totalPages > 1 && (
             <div className="pt-8 pb-12 flex flex-col items-center justify-center space-y-4">
+              {/* Fast Scrub Slider (for 10+ pages) */}
+              <div className="w-full max-w-md bg-slate-900/90 border border-slate-800 p-3.5 rounded-2xl shadow-lg space-y-2">
+                <div className="flex items-center justify-between text-xs text-slate-400">
+                  <span className="font-medium flex items-center gap-1.5 text-slate-300">
+                    <span>⚡ Fast Page Scrub</span>
+                  </span>
+                  <div className="flex items-center space-x-1.5">
+                    <span className="text-[11px] text-slate-500">Jump to:</span>
+                    <input
+                      type="number"
+                      min={1}
+                      max={totalPages}
+                      value={currentPage}
+                      onChange={(e) => {
+                        const val = parseInt(e.target.value, 10);
+                        if (!isNaN(val)) {
+                          handlePageChange(Math.max(1, Math.min(totalPages, val)));
+                        }
+                      }}
+                      className="w-14 px-2 py-0.5 bg-slate-800 border border-slate-750 rounded-md text-xs font-bold text-amber-400 text-center focus:outline-none focus:ring-1 focus:ring-amber-500"
+                    />
+                    <span className="text-[11px] text-slate-500">/ {totalPages.toLocaleString()}</span>
+                  </div>
+                </div>
+
+                {/* Range Slider for ultra-smooth gliding across 100s of pages */}
+                <input
+                  type="range"
+                  min={1}
+                  max={totalPages}
+                  value={currentPage}
+                  onChange={(e) => handlePageChange(parseInt(e.target.value, 10))}
+                  className="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500 hover:accent-amber-400 transition"
+                  title={`Slide to jump anywhere across all ${totalPages} pages`}
+                />
+              </div>
+
+              {/* Step Buttons & Numeric Pills */}
               <div className="flex items-center space-x-1 sm:space-x-1.5 bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800 shadow-xl overflow-x-auto max-w-full">
                 {/* First Page Button */}
                 <button

@@ -136,37 +136,67 @@ export const VersesStreamDrawer: React.FC<VersesStreamDrawerProps> = ({
         )}
       </div>
 
-      {/* Pagination Controls */}
+      {/* Pagination Controls with Fast-Scrub Slider */}
       {totalPages > 1 && (
-        <div className="p-3 bg-slate-950/80 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
-          <button
-            onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-            disabled={currentPage === 1}
-            className={`p-1.5 rounded-lg border border-slate-800 transition ${
-              currentPage === 1
-                ? 'opacity-40 cursor-not-allowed'
-                : 'hover:bg-slate-800 hover:text-amber-400 cursor-pointer'
-            }`}
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
+        <div className="p-3.5 bg-slate-950/90 border-t border-slate-800 space-y-2">
+          {/* Quick Range Slider */}
+          <div className="flex items-center space-x-2">
+            <span className="text-[10px] text-slate-500 font-mono">p.1</span>
+            <input
+              type="range"
+              min={1}
+              max={totalPages}
+              value={currentPage}
+              onChange={(e) => setCurrentPage(parseInt(e.target.value, 10))}
+              className="flex-1 h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500"
+              title={`Slide to jump anywhere across all ${totalPages} pages`}
+            />
+            <span className="text-[10px] text-slate-500 font-mono">p.{totalPages}</span>
+          </div>
 
-          <span>
-            Page <strong className="text-slate-200">{currentPage}</strong> of{' '}
-            <strong className="text-slate-200">{totalPages}</strong>
-          </span>
+          <div className="flex items-center justify-between text-xs text-slate-400">
+            <button
+              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+              disabled={currentPage === 1}
+              className={`p-1.5 rounded-lg border border-slate-800 transition ${
+                currentPage === 1
+                  ? 'opacity-40 cursor-not-allowed'
+                  : 'hover:bg-slate-800 hover:text-amber-400 cursor-pointer'
+              }`}
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
 
-          <button
-            onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-            disabled={currentPage === totalPages}
-            className={`p-1.5 rounded-lg border border-slate-800 transition ${
-              currentPage === totalPages
-                ? 'opacity-40 cursor-not-allowed'
-                : 'hover:bg-slate-800 hover:text-amber-400 cursor-pointer'
-            }`}
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
+            <div className="flex items-center space-x-1">
+              <span>Page</span>
+              <input
+                type="number"
+                min={1}
+                max={totalPages}
+                value={currentPage}
+                onChange={(e) => {
+                  const val = parseInt(e.target.value, 10);
+                  if (!isNaN(val)) {
+                    setCurrentPage(Math.max(1, Math.min(totalPages, val)));
+                  }
+                }}
+                className="w-12 px-1 py-0.5 bg-slate-800 border border-slate-700 rounded text-center text-amber-400 font-bold text-xs"
+              />
+              <span>of <strong className="text-slate-200">{totalPages}</strong></span>
+            </div>
+
+            <button
+              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+              disabled={currentPage === totalPages}
+              className={`p-1.5 rounded-lg border border-slate-800 transition ${
+                currentPage === totalPages
+                  ? 'opacity-40 cursor-not-allowed'
+                  : 'hover:bg-slate-800 hover:text-amber-400 cursor-pointer'
+              }`}
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       )}
     </div>
