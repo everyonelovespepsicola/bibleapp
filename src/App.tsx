@@ -52,7 +52,10 @@ export function App() {
 
         const existingKjv = stored.find((t) => t.id === 'kjv');
         if (!existingKjv) {
-          const resp = await fetch('/kjv.json');
+          const base = import.meta.env.BASE_URL.endsWith('/')
+            ? import.meta.env.BASE_URL
+            : `${import.meta.env.BASE_URL}/`;
+          const resp = await fetch(`${base}kjv.json`);
           if (resp.ok) {
             defaultKjv = await resp.json();
             if (defaultKjv) {
