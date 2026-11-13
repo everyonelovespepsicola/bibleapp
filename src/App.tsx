@@ -65,12 +65,12 @@ export function App() {
         const stored = await getAllTranslations();
         let defaultKjv: BibleTranslation | null = null;
 
-        // Ensure KJV with Strongs & Italics is loaded (and free of raw <sup> tags)
+        // Ensure KJV with Strongs & Italics is loaded (and has enriched pronoun tags)
         const existingKjv = stored.find((t) => t.id === 'kjv');
-        const firstVerseStrongs = existingKjv?.books?.[0]?.chapters?.[0]?.verses?.[3]?.strongsText;
-        const hasCleanStrongsData = firstVerseStrongs && !firstVerseStrongs.includes('<sup>');
+        const exoVerse = existingKjv?.books?.[1]?.chapters?.[19]?.verses?.[12]?.strongsText;
+        const hasEnrichedPronouns = exoVerse && exoVerse.includes('Thou[H859]');
 
-        if (!existingKjv || !hasCleanStrongsData) {
+        if (!existingKjv || !hasEnrichedPronouns) {
           const resp = await fetch(`${base}kjv.json`);
           if (resp.ok) {
             defaultKjv = await resp.json();
