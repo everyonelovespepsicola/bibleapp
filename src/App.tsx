@@ -22,6 +22,7 @@ import { JsonImporterModal } from './components/JsonImporterModal';
 import { StudyDrawer } from './components/StudyDrawer';
 import { ConcordanceCardView } from './components/ConcordanceCardView';
 import { VersesStreamDrawer } from './components/VersesStreamDrawer';
+import { SwipeableBottomSheet } from './components/SwipeableBottomSheet';
 import {
   getAllTranslations,
   saveTranslation,
@@ -550,9 +551,9 @@ export function App() {
           )}
         </main>
 
-        {/* Right Pane: Study Drawer or Verses Stream Drawer */}
+        {/* Desktop Right Pane: Permanent Side-by-Side on Desktop/Tablets */}
         {isStudyMode && isStudyDrawerOpen && (
-          <aside className="w-[45vw] sm:w-[420px] lg:w-[480px] xl:w-[540px] flex-shrink-0 h-full border-l border-slate-800 flex overflow-hidden">
+          <aside className="hidden md:flex md:w-[380px] lg:w-[460px] xl:w-[520px] flex-shrink-0 h-full border-l border-slate-800 overflow-hidden">
             {studyLayoutOrientation === 'concordance-first' ? (
               <VersesStreamDrawer
                 strongsId={selectedStrongsEntry?.number || ''}
@@ -575,6 +576,38 @@ export function App() {
           </aside>
         )}
       </div>
+
+      {/* Mobile Swipeable Bottom Sheet: Scripture text stays full-width underneath; inspector slides over lower half */}
+      <SwipeableBottomSheet
+        isOpen={Boolean(isStudyMode && isStudyDrawerOpen && selectedStrongsEntry)}
+        onClose={() => setIsStudyDrawerOpen(false)}
+      >
+        {studyLayoutOrientation === 'concordance-first' ? (
+          <VersesStreamDrawer
+            strongsId={selectedStrongsEntry?.number || ''}
+            selectedWord={selectedWord}
+            verses={currentStrongsVerses}
+            onSelectVerse={(v) => {
+              handleSelectVerseFromSearch(v);
+              setIsStudyDrawerOpen(false);
+            }}
+            onFlipBackToScriptureFirst={() => setStudyLayoutOrientation('scripture-first')}
+            onClose={() => setIsStudyDrawerOpen(false)}
+          />
+        ) : (
+          <StudyDrawer
+            entry={selectedStrongsEntry}
+            selectedWord={selectedWord}
+            onClose={() => setIsStudyDrawerOpen(false)}
+            onSearchStrongs={(id) => {
+              handleSearchStrongs(id);
+              setIsStudyDrawerOpen(false);
+            }}
+            onSelectRelatedStrongs={handleSelectRelatedStrongs}
+            onFlipToConcordanceFirst={() => setStudyLayoutOrientation('concordance-first')}
+          />
+        )}
+      </SwipeableBottomSheet>
 
       {/* Book & Chapter Modal Navigator */}
       <BookNavigator
