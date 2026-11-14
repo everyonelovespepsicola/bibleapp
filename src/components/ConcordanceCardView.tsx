@@ -6,6 +6,8 @@ import {
   Link as LinkIcon,
   ArrowRightLeft,
   BookOpen,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import { LexiconBody } from './LexiconBody';
 
@@ -16,6 +18,10 @@ interface ConcordanceCardViewProps {
   onSelectRelatedStrongs: (strongsId: string) => void;
   onSelectVerse: (verse: FlatVerse) => void;
   onFlipBackToScriptureFirst: () => void;
+  canGoBack?: boolean;
+  canGoForward?: boolean;
+  onHistoryBack?: () => void;
+  onHistoryForward?: () => void;
 }
 
 export const ConcordanceCardView: React.FC<ConcordanceCardViewProps> = ({
@@ -24,6 +30,10 @@ export const ConcordanceCardView: React.FC<ConcordanceCardViewProps> = ({
   concordanceVerses,
   onSelectRelatedStrongs,
   onFlipBackToScriptureFirst,
+  canGoBack = false,
+  canGoForward = false,
+  onHistoryBack,
+  onHistoryForward,
 }) => {
   if (!entry) {
     return (
@@ -57,6 +67,37 @@ export const ConcordanceCardView: React.FC<ConcordanceCardViewProps> = ({
       {/* Top Banner & Switch Control */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800 gap-3">
         <div className="flex items-center space-x-2">
+          {/* Back & Forward History Buttons */}
+          <div className="flex items-center space-x-1 mr-1">
+            <button
+              onClick={onHistoryBack}
+              disabled={!canGoBack}
+              className={`p-1.5 rounded-lg border transition ${
+                canGoBack
+                  ? 'bg-slate-800 hover:bg-slate-700 text-amber-300 border-slate-700 cursor-pointer shadow-xs active:scale-95'
+                  : 'bg-slate-900/60 text-slate-600 border-slate-800/80 cursor-not-allowed'
+              }`}
+              title="Previous Word (Back)"
+              aria-label="Previous Word"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+
+            <button
+              onClick={onHistoryForward}
+              disabled={!canGoForward}
+              className={`p-1.5 rounded-lg border transition ${
+                canGoForward
+                  ? 'bg-slate-800 hover:bg-slate-700 text-amber-300 border-slate-700 cursor-pointer shadow-xs active:scale-95'
+                  : 'bg-slate-900/60 text-slate-600 border-slate-800/80 cursor-not-allowed'
+              }`}
+              title="Next Word (Forward)"
+              aria-label="Next Word"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+
           <span className="px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
             {entry.number}
           </span>

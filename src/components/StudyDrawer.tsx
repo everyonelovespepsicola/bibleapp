@@ -1,6 +1,6 @@
 import React from 'react';
 import type { StrongsEntry } from '../types/bible';
-import { X, Search, Link as LinkIcon, Compass, ArrowRightLeft } from 'lucide-react';
+import { X, Search, Link as LinkIcon, Compass, ArrowRightLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 import { LexiconBody } from './LexiconBody';
 
 interface StudyDrawerProps {
@@ -10,6 +10,10 @@ interface StudyDrawerProps {
   onSearchStrongs: (strongsId: string) => void;
   onSelectRelatedStrongs: (strongsId: string) => void;
   onFlipToConcordanceFirst?: () => void;
+  canGoBack?: boolean;
+  canGoForward?: boolean;
+  onHistoryBack?: () => void;
+  onHistoryForward?: () => void;
 }
 
 export const StudyDrawer: React.FC<StudyDrawerProps> = ({
@@ -19,6 +23,10 @@ export const StudyDrawer: React.FC<StudyDrawerProps> = ({
   onSearchStrongs,
   onSelectRelatedStrongs,
   onFlipToConcordanceFirst,
+  canGoBack = false,
+  canGoForward = false,
+  onHistoryBack,
+  onHistoryForward,
 }) => {
   if (!entry) {
     return (
@@ -47,6 +55,37 @@ export const StudyDrawer: React.FC<StudyDrawerProps> = ({
       {/* Header */}
       <div className="sticky top-0 z-10 bg-slate-900/95 backdrop-blur-md px-6 py-4 border-b border-slate-800 flex items-center justify-between">
         <div className="flex items-center space-x-2">
+          {/* Back & Forward History Buttons */}
+          <div className="flex items-center space-x-1 mr-1">
+            <button
+              onClick={onHistoryBack}
+              disabled={!canGoBack}
+              className={`p-1.5 rounded-lg border transition ${
+                canGoBack
+                  ? 'bg-slate-800 hover:bg-slate-700 text-amber-300 border-slate-700 cursor-pointer shadow-xs active:scale-95'
+                  : 'bg-slate-900/60 text-slate-600 border-slate-800/80 cursor-not-allowed'
+              }`}
+              title="Previous Word (Back)"
+              aria-label="Previous Word"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+
+            <button
+              onClick={onHistoryForward}
+              disabled={!canGoForward}
+              className={`p-1.5 rounded-lg border transition ${
+                canGoForward
+                  ? 'bg-slate-800 hover:bg-slate-700 text-amber-300 border-slate-700 cursor-pointer shadow-xs active:scale-95'
+                  : 'bg-slate-900/60 text-slate-600 border-slate-800/80 cursor-not-allowed'
+              }`}
+              title="Next Word (Forward)"
+              aria-label="Next Word"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+
           <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
             {entry.number}
           </span>

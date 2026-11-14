@@ -54,6 +54,10 @@ export function App() {
   const [selectedWord, setSelectedWord] = useState<string>('');
   const [isStudyDrawerOpen, setIsStudyDrawerOpen] = useState<boolean>(false);
 
+  // History stack for navigating backwards/forwards through viewed lexicon words
+  const [historyStack, setHistoryStack] = useState<Array<{ entry: StrongsEntry; word: string }>>([]);
+  const [historyIndex, setHistoryIndex] = useState<number>(-1);
+
   // Modals & Panels
   const [isImporterOpen, setIsImporterOpen] = useState(false);
   const [isNavigatorOpen, setIsNavigatorOpen] = useState(false);
@@ -162,22 +166,60 @@ export function App() {
     return searchRes.verses;
   }, [selectedStrongsEntry?.number, activeTranslation]);
 
-  // Strong's interaction
+  // Strong's interaction & history stack navigation
+  const navigateToLexiconEntry = (entry: StrongsEntry, word: string) => {
+    setSelectedStrongsEntry(entry);
+    setSelectedWord(word);
+    setIsStudyDrawerOpen(true);
+
+    setHistoryStack((prev) => {
+      // Truncate any forward history after current index, then push new entry
+      const nextStack = historyIndex >= 0 ? prev.slice(0, historyIndex + 1) : [];
+      // Avoid duplicate consecutive entries
+      const last = nextStack[nextStack.length - 1];
+      if (last && last.entry.number === entry.number && last.word === word) {
+        return prev;
+      }
+      return [...nextStack, { entry, word }];
+    });
+    setHistoryIndex((prev) => prev + 1);
+  };
+
   const handleWordClick = (word: string, strongsId: string) => {
     const entry = strongsLexicon[strongsId.toUpperCase()];
     if (entry) {
-      setSelectedStrongsEntry(entry);
-      setSelectedWord(word);
-      setIsStudyDrawerOpen(true);
+      navigateToLexiconEntry(entry, word);
     }
   };
 
   const handleSelectRelatedStrongs = (relatedId: string) => {
     const entry = strongsLexicon[relatedId.toUpperCase()];
     if (entry) {
-      setSelectedStrongsEntry(entry);
-      setSelectedWord(entry.lemma);
-      setIsStudyDrawerOpen(true);
+      navigateToLexiconEntry(entry, entry.lemma);
+    }
+  };
+
+  const handleLexiconHistoryBack = () => {
+    if (historyIndex > 0) {
+      const prevIdx = historyIndex - 1;
+      const item = historyStack[prevIdx];
+      if (item) {
+        setSelectedStrongsEntry(item.entry);
+        setSelectedWord(item.word);
+        setHistoryIndex(prevIdx);
+      }
+    }
+  };
+
+  const handleLexiconHistoryForward = () => {
+    if (historyIndex < historyStack.length - 1) {
+      const nextIdx = historyIndex + 1;
+      const item = historyStack[nextIdx];
+      if (item) {
+        setSelectedStrongsEntry(item.entry);
+        setSelectedWord(item.word);
+        setHistoryIndex(nextIdx);
+      }
     }
   };
 
@@ -529,6 +571,10 @@ export function App() {
               onSelectRelatedStrongs={handleSelectRelatedStrongs}
               onSelectVerse={handleSelectVerseFromSearch}
               onFlipBackToScriptureFirst={() => setStudyLayoutOrientation('scripture-first')}
+              canGoBack={historyIndex > 0}
+              canGoForward={historyIndex < historyStack.length - 1}
+              onHistoryBack={handleLexiconHistoryBack}
+              onHistoryForward={handleLexiconHistoryForward}
             />
           ) : (
             <ChapterReader
@@ -569,6 +615,10 @@ export function App() {
                 onSearchStrongs={handleSearchStrongs}
                 onSelectRelatedStrongs={handleSelectRelatedStrongs}
                 onFlipToConcordanceFirst={() => setStudyLayoutOrientation('concordance-first')}
+                canGoBack={historyIndex > 0}
+                canGoForward={historyIndex < historyStack.length - 1}
+                onHistoryBack={handleLexiconHistoryBack}
+                onHistoryForward={handleLexiconHistoryForward}
               />
             )}
           </aside>
@@ -603,6 +653,10 @@ export function App() {
             }}
             onSelectRelatedStrongs={handleSelectRelatedStrongs}
             onFlipToConcordanceFirst={() => setStudyLayoutOrientation('concordance-first')}
+            canGoBack={historyIndex > 0}
+            canGoForward={historyIndex < historyStack.length - 1}
+            onHistoryBack={handleLexiconHistoryBack}
+            onHistoryForward={handleLexiconHistoryForward}
           />
         )}
       </SwipeableBottomSheet>
