@@ -1,8 +1,8 @@
 /**
  * Parses and annotates Strong's lexicon entries with:
- * 1. Derivation / Etymology breakdown
- * 2. Numbered Outline of Biblical Usage / Definitions
- * 3. KJV Translation usages
+ * 1. Derivation / Etymology & Spelling Variants breakdown
+ * 2. Clean Numbered Outline of Biblical Meanings / Definitions
+ * 3. KJV Translation Context Occurrences (cleans [phrase], [idiom], (+ -out), etc.)
  * 4. Interactive tokenization linking both Greek/Hebrew words and Strong's IDs (e.g. G575, H7218)
  */
 
@@ -65,42 +65,84 @@ export function initLexiconWordMaps(lexicon: Record<string, { lemma: string }>) 
  */
 export function parseLexiconDescription(description: string): ParsedLexicon {
   const desc = description || '';
-  const parts = desc.split(/(?:\s*:--|:--|\s*--)\s*/);
-  const mainPart = parts[0].trim();
-  const kjvPart = parts.length > 1 ? parts.slice(1).join('; ').trim() : null;
 
-  let derivation: string | null = null;
-  let remainingDef = mainPart;
+  // 1. Separate definition part from translation usage list
+  let defPart = desc;
+  let usagePart: string | null = null;
 
-  const semi = mainPart.indexOf(';');
-  if (semi !== -1 && semi < 120) {
-    const candidate = mainPart.substring(0, semi).trim();
-    if (
-      /^(from|of|a primitive|a primary|prolonged from|apparently a primary|by contraction|active participle|feminine of|masculine of|plural of|perhaps from)/i.test(
-        candidate
-      )
-    ) {
-      derivation = candidate;
-      remainingDef = mainPart.substring(semi + 1).trim();
+  const explicitSplit = desc.split(/(?:\s*:--|:--|\s*--)\s*/);
+  if (explicitSplit.length > 1) {
+    defPart = explicitSplit[0].trim();
+    usagePart = explicitSplit.slice(1).join('; ').trim();
+  } else {
+    // In Hebrew entries without ':--', translation lists often begin after definition with [phrase] or [idiom]
+    const clauses = desc.split(';').map((c) => c.trim());
+    let splitIdx = -1;
+    for (let i = 0; i < clauses.length; i++) {
+      if (/\[phrase\]|\[idiom\]/i.test(clauses[i])) {
+        splitIdx = i;
+        break;
+      }
+    }
+    if (splitIdx !== -1) {
+      defPart = clauses.slice(0, splitIdx).join('; ').trim();
+      usagePart = clauses.slice(splitIdx).join('; ').trim();
     }
   }
 
-  // Generate numbered outline points
-  const rawPoints = remainingDef
-    .split(';')
-    .map((p) => p.trim())
-    .filter(Boolean);
-  const outlinePoints = rawPoints.length > 0 ? rawPoints : [remainingDef];
+  // 2. Identify etymology/origin/spelling-variant clauses vs actual definition
+  // Clauses at the start can be:
+  // - 'or (Isaiah 21:11) לֵיל'
+  // - 'also לַיְלָה'
+  // - 'from the same as לוּל'
+  // - 'from an unused root meaning to be hot'
+  // - 'a primitive word'
+  const rawClauses = defPart.split(';').map((c) => c.trim()).filter(Boolean);
+  const etymologyClauses: string[] = [];
+  const definitionClauses: string[] = [];
 
-  // Parse KJV translation chips
+  let stillInEtymology = true;
+  for (let i = 0; i < rawClauses.length; i++) {
+    const c = rawClauses[i];
+    const isEtym = /^(or\s*\(|also\s+|from\s+|of\s+|a\s+primitive|a\s+primary|prolonged\s+from|apparently\s+a\s+primary|by\s+contraction|active\s+participle|feminine\s+of|masculine\s+of|plural\s+of|perhaps\s+from)/i.test(
+      c
+    );
+
+    if (stillInEtymology && isEtym) {
+      etymologyClauses.push(c);
+    } else {
+      stillInEtymology = false;
+      definitionClauses.push(c);
+    }
+  }
+
+  const outlinePoints =
+    definitionClauses.length > 0 ? definitionClauses : rawClauses;
+  const derivation =
+    etymologyClauses.length > 0 ? etymologyClauses.join('; ') : null;
+  const fullDefinition = outlinePoints.join('; ');
+
+  // 3. Parse and clean KJV translation occurrences chips
   const kjvChips: string[] = [];
-  if (kjvPart) {
-    const cleanStr = kjvPart
+  if (usagePart) {
+    const cleanStr = usagePart
+      .replace(/\[phrase\]/gi, '')
+      .replace(/\[idiom\]/gi, '')
       .replace(/\bOften used in composition[\s\S]*/i, '')
       .replace(/Compare [^.]*\.?/gi, '');
+
     const tokens = cleanStr.split(/,\s*/);
     for (const t of tokens) {
-      const clean = t.replace(/[+X]/g, '').trim();
+      let clean = t
+        .replace(/[+X]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      // Clean dangling unclosed parentheses
+      if (clean.startsWith('(') && !clean.includes(')')) clean = clean.slice(1);
+      if (clean.endsWith(')') && !clean.includes('(')) clean = clean.slice(0, -1);
+      clean = clean.replace(/\(\s*\)/g, '').trim();
+
       if (clean && clean.length > 0 && !kjvChips.includes(clean)) {
         kjvChips.push(clean);
       }
@@ -110,8 +152,8 @@ export function parseLexiconDescription(description: string): ParsedLexicon {
   return {
     derivation,
     outlinePoints,
-    fullDefinition: remainingDef,
-    kjvUsage: kjvPart,
+    fullDefinition,
+    kjvUsage: usagePart,
     kjvChips,
   };
 }

@@ -123,3 +123,4 @@ export const LexiconBody: React.FC<LexiconBodyProps> = ({
     </div>
   );
 };
+
