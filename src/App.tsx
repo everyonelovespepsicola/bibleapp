@@ -369,12 +369,8 @@ export function App() {
               onClick={() => {
                 const nextMode = !isStudyMode;
                 setIsStudyMode(nextMode);
-                // On desktop, auto-open drawer only if an entry is selected or user clicks a word
-                if (nextMode && selectedStrongsEntry) {
-                  setIsStudyDrawerOpen(true);
-                } else if (!nextMode) {
-                  setIsStudyDrawerOpen(false);
-                }
+                // On desktop, keep drawer open whenever Study Mode is active
+                setIsStudyDrawerOpen(nextMode);
               }}
               className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition cursor-pointer border ${
                 isStudyMode
