@@ -107,20 +107,23 @@ export const LexiconBody: React.FC<LexiconBodyProps> = ({
       {/* 1. Structured Lexicon Table Grid (matching Touch Bible structure in dark amber/slate) */}
       <div className="bg-slate-900 border border-slate-700/80 rounded-2xl overflow-hidden shadow-xl">
         {/* Top Header Row: Clicked KJV English Word + 5-digit number */}
-        <div className="bg-slate-800/90 border-b border-slate-700/80 px-4 py-3 relative flex items-center justify-center">
-          {selectedWord && (
-            <div className="absolute left-4 top-1/2 -translate-y-1/2">
-              <span className="text-2xl sm:text-3xl font-serif font-bold tracking-normal uppercase text-amber-300">
-                {selectedWord}
-              </span>
-            </div>
-          )}
+        <div className="bg-slate-800/90 border-b border-slate-700/80 px-5 py-3 flex items-center justify-between gap-3">
+          {/* Left: Clicked KJV English Word in Context */}
+          <div className="flex flex-col min-w-0">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400">
+              KJV Word
+            </span>
+            <span className="text-base sm:text-lg font-serif font-bold tracking-wide uppercase text-amber-300 truncate">
+              {selectedWord || '—'}
+            </span>
+          </div>
 
-          <div className="text-center">
-            <div className="text-xl sm:text-2xl font-bold font-mono tracking-wider text-amber-300">
+          {/* Right: Strong's 5-Digit Number & Root Designation */}
+          <div className="text-right flex-shrink-0">
+            <div className="text-lg sm:text-xl font-bold font-mono tracking-wider text-amber-300">
               {numberPadded}
             </div>
-            <div className="text-xs text-slate-400 uppercase tracking-widest font-semibold mt-0.5">
+            <div className="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider font-medium">
               {isHebrew ? 'Ancient Hebrew Root' : 'Koine Greek Word'}
             </div>
           </div>
