@@ -110,7 +110,7 @@ export const LexiconBody: React.FC<LexiconBodyProps> = ({
         <div className="bg-slate-800/90 border-b border-slate-700/80 px-4 py-3 relative flex items-center justify-center">
           {selectedWord && (
             <div className="absolute left-4 top-1/2 -translate-y-1/2">
-              <span className="px-2.5 py-1 bg-slate-950/80 text-amber-300 border border-amber-500/40 rounded-lg text-xs sm:text-sm font-sans font-bold tracking-wider uppercase shadow-xs">
+              <span className="text-2xl sm:text-3xl font-serif font-bold tracking-normal uppercase text-amber-300">
                 {selectedWord}
               </span>
             </div>
