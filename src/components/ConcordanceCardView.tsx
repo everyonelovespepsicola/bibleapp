@@ -113,7 +113,7 @@ export const ConcordanceCardView: React.FC<ConcordanceCardViewProps> = ({
         </div>
       </div>
 
-      {/* Lexicon Definition Box (Outline + Exhaustive Strong's + KJV Occurrences) */}
+      {/* Lexicon Definition Box (Structured Table + Outline + Exhaustive Strong's + KJV Occurrences) */}
       <div className="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-md">
         <div className="flex items-center justify-between pb-2 border-b border-slate-800/80">
           <div className="text-xs font-bold uppercase tracking-wider text-amber-400">
@@ -131,8 +131,8 @@ export const ConcordanceCardView: React.FC<ConcordanceCardViewProps> = ({
         </div>
 
         <LexiconBody
-          description={entry.description}
-          currentStrongsId={entry.number}
+          entry={entry}
+          selectedWord={selectedWord}
           onSelectStrongsId={onSelectRelatedStrongs}
         />
       </div>

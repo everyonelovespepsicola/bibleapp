@@ -1,6 +1,6 @@
 import React from 'react';
 import type { StrongsEntry } from '../types/bible';
-import { X, Volume2, Search, Link as LinkIcon, Compass, ArrowRightLeft } from 'lucide-react';
+import { X, Search, Link as LinkIcon, Compass, ArrowRightLeft } from 'lucide-react';
 import { LexiconBody } from './LexiconBody';
 
 interface StudyDrawerProps {
@@ -78,40 +78,10 @@ export const StudyDrawer: React.FC<StudyDrawerProps> = ({
       </div>
 
       <div className="p-6 space-y-6">
-        {/* Main Lemma & Word Spotlight */}
-        <div className="bg-slate-950/60 border border-slate-800 rounded-2xl p-5 text-center space-y-3 relative overflow-hidden">
-          <div className="absolute top-2 right-3 text-[10px] text-amber-400/60 uppercase font-bold tracking-widest">
-            Original Lemma
-          </div>
-
-          <div
-            className={`text-4xl sm:text-5xl font-serif text-amber-400 tracking-wide ${
-              isHebrew ? 'font-serif text-right sm:text-center' : ''
-            }`}
-            dir={isHebrew ? 'rtl' : 'ltr'}
-          >
-            {entry.lemma}
-          </div>
-
-          <div className="flex items-center justify-center space-x-3 text-sm text-slate-300">
-            <span className="font-medium italic">"{entry.xlit}"</span>
-            <span className="text-slate-600">•</span>
-            <span className="text-slate-400 flex items-center gap-1 font-mono text-xs">
-              <Volume2 className="w-3.5 h-3.5 text-amber-400" />
-              /{entry.pronounce}/
-            </span>
-          </div>
-
-          <div className="pt-2 border-t border-slate-800/80 text-xs text-slate-400">
-            KJV English translation in context:{' '}
-            <strong className="text-amber-300 font-semibold uppercase">{selectedWord}</strong>
-          </div>
-        </div>
-
-        {/* 1-to-1 Literal Breakdown & Meaning */}
+        {/* Main Lexicon Card with Touch Bible Table Structure */}
         <LexiconBody
-          description={entry.description}
-          currentStrongsId={entry.number}
+          entry={entry}
+          selectedWord={selectedWord}
           onSelectStrongsId={onSelectRelatedStrongs}
         />
 
