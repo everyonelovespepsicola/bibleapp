@@ -366,8 +366,11 @@ export function App() {
               onClick={() => {
                 const nextMode = !isStudyMode;
                 setIsStudyMode(nextMode);
-                if (nextMode) {
+                // On desktop, auto-open drawer only if an entry is selected or user clicks a word
+                if (nextMode && selectedStrongsEntry) {
                   setIsStudyDrawerOpen(true);
+                } else if (!nextMode) {
+                  setIsStudyDrawerOpen(false);
                 }
               }}
               className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition cursor-pointer border ${
@@ -573,29 +576,52 @@ export function App() {
         )}
       </div>
 
-      {/* Mobile Drawer Overlay for Study Mode */}
-      {isStudyMode && isStudyDrawerOpen && (
-        <div className="md:hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex justify-end">
-          <div className="w-full max-w-md h-full">
-            {studyLayoutOrientation === 'concordance-first' ? (
-              <VersesStreamDrawer
-                strongsId={selectedStrongsEntry?.number || ''}
-                selectedWord={selectedWord}
-                verses={currentStrongsVerses}
-                onSelectVerse={handleSelectVerseFromSearch}
-                onFlipBackToScriptureFirst={() => setStudyLayoutOrientation('scripture-first')}
-                onClose={() => setIsStudyDrawerOpen(false)}
-              />
-            ) : (
-              <StudyDrawer
-                entry={selectedStrongsEntry}
-                selectedWord={selectedWord}
-                onClose={() => setIsStudyDrawerOpen(false)}
-                onSearchStrongs={handleSearchStrongs}
-                onSelectRelatedStrongs={handleSelectRelatedStrongs}
-                onFlipToConcordanceFirst={() => setStudyLayoutOrientation('concordance-first')}
-              />
-            )}
+      {/* Mobile Drawer (Bottom Sheet on Mobile Phones) for Study Mode */}
+      {isStudyMode && isStudyDrawerOpen && selectedStrongsEntry && (
+        <div className="md:hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex flex-col justify-end">
+          {/* Backdrop click to dismiss */}
+          <div
+            className="flex-1"
+            onClick={() => setIsStudyDrawerOpen(false)}
+          />
+
+          {/* Bottom Sheet Container */}
+          <div className="w-full max-h-[78vh] h-[78vh] bg-slate-900 rounded-t-3xl border-t border-slate-700 shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom duration-200">
+            {/* Grab Handle Bar */}
+            <div
+              className="w-full flex items-center justify-center pt-2.5 pb-1 cursor-pointer bg-slate-900"
+              onClick={() => setIsStudyDrawerOpen(false)}
+            >
+              <div className="w-12 h-1 bg-slate-600 rounded-full" />
+            </div>
+
+            <div className="flex-1 overflow-hidden">
+              {studyLayoutOrientation === 'concordance-first' ? (
+                <VersesStreamDrawer
+                  strongsId={selectedStrongsEntry?.number || ''}
+                  selectedWord={selectedWord}
+                  verses={currentStrongsVerses}
+                  onSelectVerse={(v) => {
+                    handleSelectVerseFromSearch(v);
+                    setIsStudyDrawerOpen(false);
+                  }}
+                  onFlipBackToScriptureFirst={() => setStudyLayoutOrientation('scripture-first')}
+                  onClose={() => setIsStudyDrawerOpen(false)}
+                />
+              ) : (
+                <StudyDrawer
+                  entry={selectedStrongsEntry}
+                  selectedWord={selectedWord}
+                  onClose={() => setIsStudyDrawerOpen(false)}
+                  onSearchStrongs={(id) => {
+                    handleSearchStrongs(id);
+                    setIsStudyDrawerOpen(false);
+                  }}
+                  onSelectRelatedStrongs={handleSelectRelatedStrongs}
+                  onFlipToConcordanceFirst={() => setStudyLayoutOrientation('concordance-first')}
+                />
+              )}
+            </div>
           </div>
         </div>
       )}
