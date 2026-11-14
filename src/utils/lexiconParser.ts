@@ -75,18 +75,18 @@ export function parseLexiconDescription(description: string): ParsedLexicon {
     defPart = explicitSplit[0].trim();
     usagePart = explicitSplit.slice(1).join('; ').trim();
   } else {
-    // In Hebrew entries without ':--', translation lists often begin after definition with [phrase] or [idiom]
-    const clauses = desc.split(';').map((c) => c.trim());
-    let splitIdx = -1;
-    for (let i = 0; i < clauses.length; i++) {
-      if (/\[phrase\]|\[idiom\]/i.test(clauses[i])) {
-        splitIdx = i;
-        break;
+    // In Hebrew entries without ':--', translation lists often appear as the final clause of comma-separated words
+    const clauses = desc.split(';').map((c) => c.trim()).filter(Boolean);
+    if (clauses.length > 1) {
+      const last = clauses[clauses.length - 1];
+      const commaCount = (last.match(/,/g) || []).length;
+      if (
+        commaCount >= 2 &&
+        !/^(from\s+|plural\s+|feminine\s+|properly\s+|by\s+|apparently\s+)/i.test(last)
+      ) {
+        defPart = clauses.slice(0, -1).join('; ').trim();
+        usagePart = last;
       }
-    }
-    if (splitIdx !== -1) {
-      defPart = clauses.slice(0, splitIdx).join('; ').trim();
-      usagePart = clauses.slice(splitIdx).join('; ').trim();
     }
   }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import type { StrongsEntry } from '../types/bible';
 import { parseLexiconDescription, tokenizeLexiconText } from '../utils/lexiconParser';
+import strongsKjvMap from '../utils/strongsKjvMap.json';
 import { Volume2, Layers, BookOpen, FileText } from 'lucide-react';
 
 interface LexiconBodyProps {
@@ -19,6 +20,14 @@ export const LexiconBody: React.FC<LexiconBodyProps> = ({
   const isHebrew = entry.number.startsWith('H');
   const numberPadded = entry.number.replace(/^[HG]/i, '').padStart(5, '0');
   const parsed = parseLexiconDescription(entry.description);
+
+  // Determine displayed English word:
+  // If selectedWord is non-Latin (e.g. Hebrew or Greek lemma from a cross-link click), resolve to canonical KJV translation
+  const isSelectedNonLatin = selectedWord && /[\u0590-\u05FF\u0370-\u03FF\u1F00-\u1FFF]/.test(selectedWord);
+  const kjvLookup = (strongsKjvMap as Record<string, string>)[entry.number.toUpperCase()];
+  const displayWord = !selectedWord || isSelectedNonLatin
+    ? kjvLookup || parsed.kjvChips[0] || entry.xlit || '—'
+    : selectedWord;
 
   // Infer part of speech if present in lexical description
   let partOfSpeech = isHebrew ? 'Noun / Root' : 'Preposition / Word';
@@ -114,7 +123,7 @@ export const LexiconBody: React.FC<LexiconBodyProps> = ({
               KJV Word
             </span>
             <span className="text-base sm:text-lg font-serif font-bold tracking-wide uppercase text-amber-300 truncate">
-              {selectedWord || '—'}
+              {displayWord}
             </span>
           </div>
 
