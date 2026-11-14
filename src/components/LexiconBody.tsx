@@ -106,13 +106,23 @@ export const LexiconBody: React.FC<LexiconBodyProps> = ({
     <div className={`space-y-6 ${className}`}>
       {/* 1. Structured Lexicon Table Grid (matching Touch Bible structure in dark amber/slate) */}
       <div className="bg-slate-900 border border-slate-700/80 rounded-2xl overflow-hidden shadow-xl">
-        {/* Top Header Row: 5-digit number */}
-        <div className="bg-slate-800/90 border-b border-slate-700/80 px-4 py-3 text-center">
-          <div className="text-xl sm:text-2xl font-bold font-mono tracking-wider text-amber-300">
-            {numberPadded}
-          </div>
-          <div className="text-xs text-slate-400 uppercase tracking-widest font-semibold mt-0.5">
-            {isHebrew ? 'Ancient Hebrew Root' : 'Koine Greek Word'}
+        {/* Top Header Row: Clicked KJV English Word + 5-digit number */}
+        <div className="bg-slate-800/90 border-b border-slate-700/80 px-4 py-3 relative flex items-center justify-center">
+          {selectedWord && (
+            <div className="absolute left-4 top-1/2 -translate-y-1/2">
+              <span className="px-2.5 py-1 bg-slate-950/80 text-amber-300 border border-amber-500/40 rounded-lg text-xs sm:text-sm font-sans font-bold tracking-wider uppercase shadow-xs">
+                {selectedWord}
+              </span>
+            </div>
+          )}
+
+          <div className="text-center">
+            <div className="text-xl sm:text-2xl font-bold font-mono tracking-wider text-amber-300">
+              {numberPadded}
+            </div>
+            <div className="text-xs text-slate-400 uppercase tracking-widest font-semibold mt-0.5">
+              {isHebrew ? 'Ancient Hebrew Root' : 'Koine Greek Word'}
+            </div>
           </div>
         </div>
 
@@ -171,13 +181,6 @@ export const LexiconBody: React.FC<LexiconBodyProps> = ({
         <p className="text-base sm:text-lg font-serif text-slate-200 leading-relaxed pt-1">
           {renderTokenized(entry.description)}
         </p>
-
-        {selectedWord && (
-          <div className="pt-2 border-t border-slate-800/80 text-xs text-slate-400 flex items-center justify-between">
-            <span>KJV translation in context:</span>
-            <strong className="text-amber-300 font-semibold uppercase">{selectedWord}</strong>
-          </div>
-        )}
       </div>
 
       {/* 3. Numbered & Lettered Outline of Biblical Meanings (1. -> a., b., c.) */}
