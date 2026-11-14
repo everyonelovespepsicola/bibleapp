@@ -509,7 +509,7 @@ export function App() {
       {/* Main Content Area (Dual Split Screen in Study Mode) */}
       <div className="flex-1 flex overflow-hidden relative">
         {/* Left / Center: Main Scripture Reader or Search View with Independent Scrolling */}
-        <main className={`flex-1 h-full overflow-y-auto pb-16 transition-all duration-300 mobile-scroll-container ${
+        <main className={`flex-1 h-full overflow-y-auto pb-16 transition-all duration-300 ${
           isStudyMode && isStudyDrawerOpen ? 'lg:pr-4' : ''
         }`}>
           {viewMode === 'search' && searchResult ? (
