@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Search,
   BookOpen,
@@ -56,6 +56,25 @@ export function App() {
   const [isImporterOpen, setIsImporterOpen] = useState(false);
   const [isNavigatorOpen, setIsNavigatorOpen] = useState(false);
   const [isTranslationMenuOpen, setIsTranslationMenuOpen] = useState(false);
+  const translationMenuRef = useRef<HTMLDivElement>(null);
+
+  // Close translation dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        isTranslationMenuOpen &&
+        translationMenuRef.current &&
+        !translationMenuRef.current.contains(event.target as Node)
+      ) {
+        setIsTranslationMenuOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isTranslationMenuOpen]);
 
   // 1. Initialize Bibles and Strong's Lexicon
   useEffect(() => {
@@ -285,7 +304,7 @@ export function App() {
             </button>
 
             {/* Translation Picker Dropdown */}
-            <div className="relative">
+            <div className="relative" ref={translationMenuRef}>
               <button
                 onClick={() => setIsTranslationMenuOpen(!isTranslationMenuOpen)}
                 className="flex items-center space-x-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700/80 border border-slate-700 rounded-xl text-xs font-semibold uppercase tracking-wider text-amber-400 transition cursor-pointer"
