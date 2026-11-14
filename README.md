@@ -1,8 +1,28 @@
 # ScriptureFlow Bible App
 
-A high-performance modern Bible web application built with **React**, **TypeScript**, **Tailwind CSS**, and **IndexedDB** for offline reading. Designed to handle versatile JSON formats, complex verse range queries (such as `john 3:4-10` or `john 3 4-10`), full-text keyword searches, and rich paragraph/narrative reading modes.
+A high-performance modern Bible web application built with **React**, **TypeScript**, **Tailwind CSS**, and **IndexedDB** for offline reading. Designed to handle versatile JSON formats, complex verse range queries (such as `john 3:4-10` or `john 3 4-10`), full-text keyword searches, rich paragraph/narrative reading modes, and an exhaustive original Greek/Hebrew Strong's concordance.
 
-- **Live Web App on GitHub Pages:** [https://everyonelovespepsicola.github.io/bibleapp/](https://everyonelovespepsicola.github.io/bibleapp/)
+<div align="center" style="margin: 24px 0;">
+  <table>
+    <tr>
+      <td align="center" style="padding: 16px; border: 1px solid #334155; border-radius: 12px; background: #0f172a;">
+        <a href="https://everyonelovespepsicola.github.io/bibleapp/">
+          <img src="https://img.shields.io/badge/%E2%96%B6%20TRY%20ME-Live%20Web%20App-amber?style=for-the-badge&logoColor=black&labelColor=0f172a&color=f59e0b" alt="Try Me - Live Web App" height="42" />
+        </a>
+        <br/><br/>
+        <a href="https://everyonelovespepsicola.github.io/bibleapp/"><strong>👉 Open ScriptureFlow in Browser</strong></a>
+      </td>
+      <td align="center" style="padding: 16px; border: 1px solid #334155; border-radius: 12px; background: #0f172a;">
+        <a href="https://everyonelovespepsicola.github.io/bibleapp/">
+          <img src="public/qr-code.png" alt="Scan QR Code to Open on Phone" width="130" height="130" style="border-radius: 8px; background: white; padding: 4px;" />
+        </a>
+        <br/>
+        <small style="color: #94a3b8;">📱 Scan with Phone Camera</small>
+      </td>
+    </tr>
+  </table>
+</div>
+
 - **GitHub Repository:** [https://github.com/everyonelovespepsicola/bibleapp](https://github.com/everyonelovespepsicola/bibleapp)
 
 ---
