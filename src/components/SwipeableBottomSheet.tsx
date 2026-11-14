@@ -54,11 +54,8 @@ export const SwipeableBottomSheet: React.FC<SwipeableBottomSheetProps> = ({
 
   return (
     <div className="md:hidden fixed inset-0 z-50 pointer-events-none flex flex-col justify-end">
-      {/* Top Half Backdrop (Transparent/Tap to dismiss) */}
-      <div
-        className="flex-1 pointer-events-auto"
-        onClick={onClose}
-      />
+      {/* Top Half Backdrop: pointer-events-none so touches pass directly through to scroll the Scripture! */}
+      <div className="flex-1 pointer-events-none" />
 
       {/* Lower Half Swipeable Sheet */}
       <div
@@ -91,3 +88,4 @@ export const SwipeableBottomSheet: React.FC<SwipeableBottomSheetProps> = ({
     </div>
   );
 };
+
