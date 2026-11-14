@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import type { SearchResult } from '../utils/searchEngine';
 import type { FlatVerse, StrongsEntry } from '../types/bible';
+import strongsKjvMap from '../utils/strongsKjvMap.json';
 import {
   Copy,
   BookOpen,
@@ -48,7 +49,7 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
   const [selectedRootFilter, setSelectedRootFilter] = useState<string | null>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
-  // Compute Strong's Roots Breakdown from all matching verses
+  // Compute Strong's Roots Breakdown from all matching verses (with direct map fallback)
   const rootsBreakdown = useMemo(() => {
     if (result.type !== 'keyword' || !rawQuery.trim()) return [];
 
@@ -82,6 +83,23 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
 
         if (isMatch) {
           rootCounts[sid] = (rootCounts[sid] || 0) + 1;
+        }
+      }
+    }
+
+    // Fallback: If verse text had no embedded [H/G] tags (e.g. from an un-reloaded translation cache),
+    // look up all Strong's roots mapped to this search query directly from strongsKjvMap!
+    if (Object.keys(rootCounts).length === 0 && strongsKjvMap) {
+      const kjvMapRecord = strongsKjvMap as Record<string, string>;
+      for (const [sid, englishWord] of Object.entries(kjvMapRecord)) {
+        const ewLower = englishWord.toLowerCase();
+        const isMatch = searchTerms.some(
+          (t) =>
+            ewLower === t ||
+            (t.length > 3 && (ewLower.startsWith(t) || t.startsWith(ewLower)))
+        );
+        if (isMatch) {
+          rootCounts[sid] = 1;
         }
       }
     }
