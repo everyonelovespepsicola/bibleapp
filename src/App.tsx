@@ -279,7 +279,7 @@ export function App() {
   }
 
   return (
-    <div className="h-full h-[100dvh] bg-slate-950 text-slate-100 flex flex-col selection:bg-amber-400 selection:text-slate-950 overflow-hidden">
+    <div className="h-screen max-h-screen w-screen overflow-hidden bg-slate-950 text-slate-100 flex flex-col selection:bg-amber-400 selection:text-slate-950">
       {/* Top Navigation Bar */}
       <header className="flex-shrink-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
@@ -505,9 +505,9 @@ export function App() {
       </header>
 
       {/* Main Content Area (Dual Split Screen in Study Mode) */}
-      <div className="flex-1 flex overflow-hidden relative">
+      <div className="flex-1 min-h-0 flex overflow-hidden relative">
         {/* Left / Center: Main Scripture Reader or Search View with Independent Scrolling */}
-        <main className={`flex-1 h-full overflow-y-auto pb-16 transition-all duration-300 ${
+        <main className={`flex-1 h-full min-h-0 overflow-y-auto pb-16 transition-all duration-300 ${
           isStudyMode && isStudyDrawerOpen ? 'lg:pr-4' : ''
         }`}>
           {viewMode === 'search' && searchResult ? (
@@ -551,7 +551,7 @@ export function App() {
 
         {/* Desktop Right Pane: Permanent Side-by-Side on Desktop/Tablets */}
         {isStudyMode && isStudyDrawerOpen && (
-          <aside className="hidden md:flex md:w-[380px] lg:w-[460px] xl:w-[520px] flex-shrink-0 h-full border-l border-slate-800 overflow-hidden">
+          <aside className="hidden md:flex md:w-[380px] lg:w-[460px] xl:w-[520px] flex-shrink-0 h-full min-h-0 border-l border-slate-800 overflow-hidden flex-col">
             {studyLayoutOrientation === 'concordance-first' ? (
               <VersesStreamDrawer
                 strongsId={selectedStrongsEntry?.number || ''}
