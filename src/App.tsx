@@ -562,6 +562,13 @@ export function App() {
                 bookName: currentBook?.name || 'Scripture',
                 chapter: currentChapter,
               }}
+              strongsLexicon={strongsLexicon}
+              onSelectStrongsRoot={(rootId) => {
+                handleSelectRelatedStrongs(rootId);
+                // Ensure study mode & drawer are active to show root details
+                setIsStudyMode(true);
+                setIsStudyDrawerOpen(true);
+              }}
             />
           ) : isStudyMode && studyLayoutOrientation === 'concordance-first' && selectedStrongsEntry ? (
             <ConcordanceCardView

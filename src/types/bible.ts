@@ -41,6 +41,7 @@ export interface FlatVerse {
   chapter: number;
   verse: number;
   text: string;
+  strongsText?: string;
   reference: string; // e.g. "John 3:16"
 }
 

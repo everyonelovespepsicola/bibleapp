@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import type { SearchResult } from '../utils/searchEngine';
-import type { FlatVerse } from '../types/bible';
+import type { FlatVerse, StrongsEntry } from '../types/bible';
 import {
   Copy,
   BookOpen,
@@ -10,8 +10,15 @@ import {
   ChevronsRight,
   ArrowLeft,
   Sparkles,
+  Layers,
 } from 'lucide-react';
 import { renderFormattedText, copyRichScripture } from '../utils/clipboard';
+
+interface RootBreakdownItem {
+  strongsId: string;
+  count: number;
+  entry?: StrongsEntry;
+}
 
 interface SearchResultsViewProps {
   result: SearchResult;
@@ -22,6 +29,8 @@ interface SearchResultsViewProps {
     bookName: string;
     chapter: number;
   };
+  strongsLexicon?: Record<string, StrongsEntry>;
+  onSelectStrongsRoot?: (strongsId: string) => void;
 }
 
 const PAGE_SIZE = 250; // Verses per page
@@ -30,23 +39,84 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
   result,
   onSelectVerse,
   onBackToReader,
+  rawQuery = '',
   previousLocation,
+  strongsLexicon,
+  onSelectStrongsRoot,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedRootFilter, setSelectedRootFilter] = useState<string | null>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
-  // Reset to page 1 whenever the query / search result changes
+  // Compute Strong's Roots Breakdown from all matching verses
+  const rootsBreakdown = useMemo(() => {
+    if (result.type !== 'keyword' || !rawQuery.trim()) return [];
+
+    // Clean search words e.g. "love", "God"
+    const searchTerms = rawQuery
+      .toLowerCase()
+      .split(/\s+/)
+      .map((t) => t.replace(/[^a-z0-9]/g, ''))
+      .filter(Boolean);
+
+    if (searchTerms.length === 0) return [];
+
+    const rootCounts: Record<string, number> = {};
+    const regex = /([a-zA-Z*]+)\[([HG]\d{1,5})\]/g;
+
+    for (const v of result.verses) {
+      if (!v.strongsText) continue;
+      let m: RegExpExecArray | null;
+      regex.lastIndex = 0;
+      while ((m = regex.exec(v.strongsText)) !== null) {
+        const rawWord = m[1].replace(/[*]/g, '').toLowerCase();
+        const sid = m[2].toUpperCase();
+
+        // Check if this tagged word matches any of our search query terms
+        const isMatch = searchTerms.some((term) => {
+          if (rawWord === term) return true;
+          // match common plurals / tenses e.g. "loved", "loves", "gods"
+          if (term.length > 3 && (rawWord.startsWith(term) || term.startsWith(rawWord))) return true;
+          return false;
+        });
+
+        if (isMatch) {
+          rootCounts[sid] = (rootCounts[sid] || 0) + 1;
+        }
+      }
+    }
+
+    return Object.entries(rootCounts)
+      .map(([sid, count]): RootBreakdownItem => ({
+        strongsId: sid,
+        count,
+        entry: strongsLexicon ? strongsLexicon[sid] : undefined,
+      }))
+      .sort((a, b) => b.count - a.count);
+  }, [result.verses, result.type, rawQuery, strongsLexicon]);
+
+  // Reset page and root filter whenever query changes
   useEffect(() => {
     setCurrentPage(1);
+    setSelectedRootFilter(null);
   }, [result.title, result.count]);
 
-  const totalVerses = result.verses.length;
+  // Filtered verses based on selected root filter
+  const displayedVerses = useMemo(() => {
+    if (!selectedRootFilter) return result.verses;
+    const filterTag = `[${selectedRootFilter.toLowerCase()}]`;
+    return result.verses.filter((v) =>
+      (v.strongsText || '').toLowerCase().includes(filterTag)
+    );
+  }, [result.verses, selectedRootFilter]);
+
+  const totalVerses = displayedVerses.length;
   const totalPages = Math.max(1, Math.ceil(totalVerses / PAGE_SIZE));
 
   const paginatedVerses = useMemo(() => {
     const start = (currentPage - 1) * PAGE_SIZE;
-    return result.verses.slice(start, start + PAGE_SIZE);
-  }, [result.verses, currentPage]);
+    return displayedVerses.slice(start, start + PAGE_SIZE);
+  }, [displayedVerses, currentPage]);
 
   const copyVerse = async (verse: FlatVerse) => {
     await copyRichScripture(verse.reference, [
@@ -165,6 +235,122 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
           </div>
         )}
       </div>
+
+      {/* Interactive Strong's Roots Breakdown Table */}
+      {rootsBreakdown.length > 0 && (
+        <div className="mb-8 bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+          <div className="bg-slate-800/80 px-5 py-3 border-b border-slate-800 flex items-center justify-between flex-wrap gap-2">
+            <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-amber-400">
+              <Layers className="w-4 h-4 text-amber-400" />
+              <span>Original Hebrew & Greek Roots Behind "{rawQuery.trim()}"</span>
+            </div>
+            <span className="text-[11px] text-slate-400">
+              {rootsBreakdown.length} distinct {rootsBreakdown.length === 1 ? 'root' : 'roots'} in this translation
+            </span>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr className="bg-slate-950/40 text-slate-400 border-b border-slate-800 uppercase font-mono text-[10px] tracking-wider">
+                  <th className="py-2.5 px-4">Strong's</th>
+                  <th className="py-2.5 px-4">Original Word</th>
+                  <th className="py-2.5 px-4">Transliteration</th>
+                  <th className="py-2.5 px-4">Language</th>
+                  <th className="py-2.5 px-4 text-center">Occurrences</th>
+                  <th className="py-2.5 px-4 text-right">Filter Verses</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-800/60 font-sans">
+                {rootsBreakdown.map((item) => {
+                  const isHebrew = item.strongsId.startsWith('H');
+                  const isSelected = selectedRootFilter === item.strongsId;
+                  return (
+                    <tr
+                      key={item.strongsId}
+                      className={`hover:bg-slate-800/50 transition cursor-pointer ${
+                        isSelected ? 'bg-amber-500/10' : ''
+                      }`}
+                      onClick={() => {
+                        if (onSelectStrongsRoot) onSelectStrongsRoot(item.strongsId);
+                      }}
+                    >
+                      <td className="py-3 px-4 font-mono font-bold text-amber-300">
+                        <span className="hover:underline">
+                          {item.strongsId}
+                        </span>
+                      </td>
+                      <td
+                        className={`py-3 px-4 text-base font-serif font-bold text-slate-100 ${
+                          isHebrew ? 'text-right' : ''
+                        }`}
+                        dir={isHebrew ? 'rtl' : 'ltr'}
+                      >
+                        {item.entry?.lemma || '—'}
+                      </td>
+                      <td className="py-3 px-4 text-slate-300 italic font-serif">
+                        {item.entry?.xlit ? `"${item.entry.xlit}"` : '—'}
+                      </td>
+                      <td className="py-3 px-4">
+                        <span
+                          className={`px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider ${
+                            isHebrew
+                              ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30'
+                              : 'bg-sky-500/15 text-sky-300 border border-sky-500/30'
+                          }`}
+                        >
+                          {isHebrew ? 'Ancient Hebrew' : 'Koine Greek'}
+                        </span>
+                      </td>
+                      <td className="py-3 px-4 text-center font-semibold text-slate-200">
+                        {item.count.toLocaleString()}
+                      </td>
+                      <td className="py-3 px-4 text-right">
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedRootFilter((prev) =>
+                              prev === item.strongsId ? null : item.strongsId
+                            );
+                            setCurrentPage(1);
+                          }}
+                          className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition border ${
+                            isSelected
+                              ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-xs'
+                              : 'bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border-slate-700'
+                          }`}
+                          title={isSelected ? 'Clear filter' : `Only show verses with ${item.strongsId}`}
+                        >
+                          {isSelected ? 'Filtered ✓' : 'Filter'}
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+
+          {selectedRootFilter && (
+            <div className="bg-amber-500/10 px-4 py-2 border-t border-amber-500/20 flex items-center justify-between text-xs text-amber-300">
+              <span>
+                Filtered by Strong's root <strong>{selectedRootFilter}</strong> ({totalVerses} verses)
+              </span>
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedRootFilter(null);
+                  setCurrentPage(1);
+                }}
+                className="underline hover:text-white font-semibold cursor-pointer"
+              >
+                Clear Filter (Show All {result.verses.length})
+              </button>
+            </div>
+          )}
+        </div>
+      )}
 
       {totalVerses === 0 ? (
         <div className="text-center py-16 bg-slate-900/50 rounded-2xl border border-slate-800/80">

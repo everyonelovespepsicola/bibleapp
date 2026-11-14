@@ -165,6 +165,7 @@ export function searchBible(
             chapter: chap.chapter,
             verse: v.verse,
             text: v.text,
+            strongsText: v.strongsText,
             reference: `${book.name} ${chap.chapter}:${v.verse}`,
           });
 
