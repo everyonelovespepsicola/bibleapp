@@ -56,3 +56,21 @@ test('Word / Keyword search for "light world"', () => {
   const hasMatt514 = result.verses.some((v) => v.reference === 'Matthew 5:14');
   expect(hasMatt514).toBe(true);
 });
+
+test('Lexicon parser splits outline and annotates linked Greek words and Strongs IDs', async () => {
+  const { initLexiconWordMaps, parseLexiconDescription, tokenizeLexiconText } = await import('../src/utils/lexiconParser');
+  const strongsData = (await import('../public/strongs_lexicon.json')).default;
+  initLexiconWordMaps(strongsData as any);
+
+  const g3326 = (strongsData as any)['G3326'];
+  const parsed = parseLexiconDescription(g3326.description);
+
+  expect(parsed.outlinePoints.length).toBeGreaterThanOrEqual(1);
+  expect(parsed.derivation).toContain('preposition');
+  expect(parsed.kjvChips.length).toBeGreaterThan(0);
+
+  const tokens = tokenizeLexiconText(parsed.fullDefinition, 'G3326');
+  const greekWords = tokens.filter((t) => t.type === 'greek_word');
+  expect(greekWords.some((t) => t.strongsId === 'G575')).toBe(true);
+  expect(greekWords.some((t) => t.strongsId === 'G1537')).toBe(true);
+});

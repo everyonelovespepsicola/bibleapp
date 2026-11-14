@@ -4,10 +4,10 @@ import {
   Volume2,
   Copy,
   Link as LinkIcon,
-  Sparkles,
   ArrowRightLeft,
   BookOpen,
 } from 'lucide-react';
+import { LexiconBody } from './LexiconBody';
 
 interface ConcordanceCardViewProps {
   entry: StrongsEntry | null;
@@ -113,17 +113,16 @@ export const ConcordanceCardView: React.FC<ConcordanceCardViewProps> = ({
         </div>
       </div>
 
-      {/* Exhaustive Strong's Definition Box */}
-      <div className="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 space-y-3 shadow-md">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-amber-400">
-            <Sparkles className="w-4 h-4" />
-            <span>Exhaustive Strong's Lexical Definition</span>
+      {/* Lexicon Definition Box (Outline + Exhaustive Strong's + KJV Occurrences) */}
+      <div className="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-md">
+        <div className="flex items-center justify-between pb-2 border-b border-slate-800/80">
+          <div className="text-xs font-bold uppercase tracking-wider text-amber-400">
+            Biblical Lexicon & Strong's Breakdown
           </div>
 
           <button
             onClick={copyConcordanceSummary}
-            className="flex items-center space-x-1.5 px-2.5 py-1 text-slate-400 hover:text-slate-200 text-xs bg-slate-800/80 hover:bg-slate-700 rounded-lg transition"
+            className="flex items-center space-x-1.5 px-2.5 py-1 text-slate-400 hover:text-slate-200 text-xs bg-slate-800/80 hover:bg-slate-700 rounded-lg transition cursor-pointer"
             title="Copy definition"
           >
             <Copy className="w-3.5 h-3.5 text-amber-400" />
@@ -131,9 +130,11 @@ export const ConcordanceCardView: React.FC<ConcordanceCardViewProps> = ({
           </button>
         </div>
 
-        <p className="font-serif text-slate-200 text-base leading-relaxed p-2">
-          {entry.description}
-        </p>
+        <LexiconBody
+          description={entry.description}
+          currentStrongsId={entry.number}
+          onSelectStrongsId={onSelectRelatedStrongs}
+        />
       </div>
 
       {/* Related Roots Family Tree */}

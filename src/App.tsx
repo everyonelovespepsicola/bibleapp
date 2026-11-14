@@ -15,6 +15,7 @@ import {
 import type { BibleTranslation, FlatVerse, StrongsEntry } from './types/bible';
 import { parseVerseReference } from './utils/referenceParser';
 import { searchBible, type SearchResult } from './utils/searchEngine';
+import { initLexiconWordMaps } from './utils/lexiconParser';
 import { ChapterReader } from './components/ChapterReader';
 import { SearchResultsView } from './components/SearchResultsView';
 import { BookNavigator } from './components/BookNavigator';
@@ -134,6 +135,7 @@ export function App() {
           if (respLex.ok) {
             const lexData = await respLex.json();
             setStrongsLexicon(lexData);
+            initLexiconWordMaps(lexData);
           }
         } catch (eLex) {
           console.warn('Failed to load Strongs Lexicon:', eLex);

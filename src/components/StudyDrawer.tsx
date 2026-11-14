@@ -1,6 +1,7 @@
 import React from 'react';
 import type { StrongsEntry } from '../types/bible';
-import { X, Volume2, Search, Link as LinkIcon, Compass, Sparkles, ArrowRightLeft } from 'lucide-react';
+import { X, Volume2, Search, Link as LinkIcon, Compass, ArrowRightLeft } from 'lucide-react';
+import { LexiconBody } from './LexiconBody';
 
 interface StudyDrawerProps {
   entry: StrongsEntry | null;
@@ -108,15 +109,11 @@ export const StudyDrawer: React.FC<StudyDrawerProps> = ({
         </div>
 
         {/* 1-to-1 Literal Breakdown & Meaning */}
-        <div className="space-y-2">
-          <div className="flex items-center space-x-1.5 text-xs font-bold uppercase tracking-wider text-slate-400">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Exhaustive Strong's Lexical Definition</span>
-          </div>
-          <div className="bg-slate-800/40 border border-slate-800 rounded-xl p-4 text-sm leading-relaxed text-slate-200 font-serif">
-            {entry.description}
-          </div>
-        </div>
+        <LexiconBody
+          description={entry.description}
+          currentStrongsId={entry.number}
+          onSelectStrongsId={onSelectRelatedStrongs}
+        />
 
         {/* Related Root Words / Rabbit Hole */}
         {rootMatches.length > 0 && (
