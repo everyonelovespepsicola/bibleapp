@@ -16,19 +16,40 @@ interface BookItem {
   rank: number;
 }
 
-// Chronological release order (1847 -> 1923), with Testimonies 1-9 and Special Testimonies placed at the end
+// Chronological release order (1847 -> 1923), with multi-volume series grouped together and Testimonies 1-9 at the end
 function getBookReleaseOrderRank(abbrev: string, year: number): number {
   const up = abbrev.toUpperCase();
 
-  // Testimonies for the Church 1 through 9 placed together at the end in volume order
+  // 1. Testimonies for the Church 1 through 9 placed together at the end in volume order
   if (/^[1-9]T$/.test(up)) {
     return 3000 + parseInt(up[0], 10);
   }
 
-  // Followed by Special Testimonies (Ministers, Education, Sabbath-School)
+  // 2. Followed by Special Testimonies (Ministers, Education, Sabbath-School)
   if (up === 'TM') return 4001; // Testimonies to Ministers and Gospel Workers
   if (up === 'SPTED') return 4002; // Special Testimonies on Education
   if (up === 'TSSW') return 4003; // Testimonies on Sabbath-School Work
+
+  // 3. Spiritual Gifts Vol 1, 2, 3, 4a, 4b (Grouped together at 1858)
+  if (up === '1SG') return 1858.1;
+  if (up === '2SG') return 1858.2;
+  if (up === '3SG') return 1858.3;
+  if (up === '4ASG') return 1858.4;
+  if (up === '4BSG') return 1858.5;
+
+  // 4. The Spirit of Prophecy Vol 1, 2, 3, 4 (Grouped together at 1870)
+  if (up === '1SP') return 1870.1;
+  if (up === '2SP') return 1870.2;
+  if (up === '3SP') return 1870.3;
+  if (up === '4SP') return 1870.4;
+
+  // 5. Christian Experience and Views + 1854 Supplement (Grouped together at 1851)
+  if (up === 'EXV') return 1851.1;
+  if (up === 'EXV54') return 1851.2;
+
+  // 6. Life Sketches of James and Ellen White (1880 & 1888 grouped together)
+  if (up === 'LS80') return 1880.1;
+  if (up === 'LS88') return 1880.2;
 
   // All other books in chronological release order by publication year
   return year;
