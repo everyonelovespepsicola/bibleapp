@@ -39,3 +39,4 @@ async function runBigBatch() {
 }
 
 runBigBatch().catch(console.error);
+

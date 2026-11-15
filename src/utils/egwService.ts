@@ -224,6 +224,11 @@ const ABBREV_TO_FILE: Record<string, string> = {
   col: 'col',
   mb: 'mb',
   ed: 'ed',
+  mh: 'mh',
+  ew: 'ew',
+  gw: 'gw',
+  tm: 'tm',
+  ls: 'ls',
 };
 
 /**
