@@ -21,7 +21,6 @@ import { initLexiconWordMaps } from './utils/lexiconParser';
 import { ChapterReader } from './components/ChapterReader';
 import { SearchResultsView } from './components/SearchResultsView';
 import { EgwBookReaderView } from './components/EgwBookReaderView';
-import { StrongsBookReaderView } from './components/StrongsBookReaderView';
 import { BookNavigator } from './components/BookNavigator';
 import { LibraryModal } from './components/LibraryModal';
 import { JsonImporterModal } from './components/JsonImporterModal';
@@ -49,13 +48,12 @@ export function App() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [submittedQuery, setSubmittedQuery] = useState<string>('');
   const [searchResult, setSearchResult] = useState<SearchResult | null>(null);
-  const [viewMode, setViewMode] = useState<'reader' | 'search' | 'egw-book' | 'strongs-book'>('reader');
+  const [viewMode, setViewMode] = useState<'reader' | 'search' | 'egw-book'>('reader');
   const [activeEgwBook, setActiveEgwBook] = useState<{
     bookAbbrev: string;
     chapterNumber: number;
     pageRef?: string;
   } | null>(null);
-  const [activeStrongsBookId, setActiveStrongsBookId] = useState<string>('H1');
 
   // Study Mode & Lexicon State
   const [isStudyMode, setIsStudyMode] = useState<boolean>(false);
@@ -612,18 +610,7 @@ export function App() {
         <main className={`flex-1 h-full min-h-0 overflow-y-auto pb-16 transition-all duration-300 ${
           isStudyMode && isStudyDrawerOpen ? 'lg:pr-4' : ''
         }`}>
-          {viewMode === 'strongs-book' ? (
-            <StrongsBookReaderView
-              strongsLexicon={strongsLexicon}
-              initialStrongsId={activeStrongsBookId}
-              onBackToBible={() => setViewMode('reader')}
-              onOpenLibrary={() => setIsLibraryOpen(true)}
-              onSearchOccurrences={(id) => {
-                handleSearchStrongs(id);
-                setViewMode('search');
-              }}
-            />
-          ) : viewMode === 'egw-book' && activeEgwBook ? (
+          {viewMode === 'egw-book' && activeEgwBook ? (
             <EgwBookReaderView
               bookAbbrev={activeEgwBook.bookAbbrev}
               initialChapterNumber={activeEgwBook.chapterNumber}
@@ -788,8 +775,15 @@ export function App() {
         isOpen={isLibraryOpen}
         onClose={() => setIsLibraryOpen(false)}
         onOpenStrongsConcordance={() => {
-          setActiveStrongsBookId(selectedStrongsEntry ? selectedStrongsEntry.number : 'H1');
-          setViewMode('strongs-book');
+          setIsStudyMode(true);
+          setStudyDrawerTab('strongs');
+          setIsStudyDrawerOpen(true);
+          setViewMode('reader');
+          // If no entry selected yet, open with the first word of current chapter
+          if (!selectedStrongsEntry && strongsLexicon['H7225']) {
+            setSelectedStrongsEntry(strongsLexicon['H7225']);
+            setSelectedWord('beginning');
+          }
         }}
         onSelectEgwBook={(abbrev, chapterNumber = 1) => {
           setActiveEgwBook({
