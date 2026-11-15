@@ -16,63 +16,22 @@ interface BookItem {
   rank: number;
 }
 
-// Canonical grouping rank for intuitive library organization
-function getBookCanonicalRank(abbrev: string): number {
+// Chronological release order (1847 -> 1923), with Testimonies 1-9 and Special Testimonies placed at the end
+function getBookReleaseOrderRank(abbrev: string, year: number): number {
   const up = abbrev.toUpperCase();
 
-  // 1. Conflict of the Ages Series (Chronological Redemption History)
-  if (up === 'PP') return 10;
-  if (up === 'PK') return 11;
-  if (up === 'DA') return 12;
-  if (up === 'MB') return 13;
-  if (up === 'COL') return 14;
-  if (up === 'AA') return 15;
-  if (up === 'GC') return 16;
-
-  // 2. Core Devotional Masterwork
-  if (up === 'SC') return 20;
-
-  // 3. Testimonies for the Church (Cleanly 1 through 9 in strict sequence)
+  // Testimonies for the Church 1 through 9 placed together at the end in volume order
   if (/^[1-9]T$/.test(up)) {
-    return 30 + parseInt(up[0], 10);
+    return 3000 + parseInt(up[0], 10);
   }
 
-  // 4. Testimonies to Ministers
-  if (up === 'TM') return 40;
+  // Followed by Special Testimonies (Ministers, Education, Sabbath-School)
+  if (up === 'TM') return 4001; // Testimonies to Ministers and Gospel Workers
+  if (up === 'SPTED') return 4002; // Special Testimonies on Education
+  if (up === 'TSSW') return 4003; // Testimonies on Sabbath-School Work
 
-  // 5. Ministry, Health, and Christian Living
-  if (up === 'MH') return 50;
-  if (up === 'ED') return 51;
-  if (up === 'CT') return 52;
-  if (up === 'FE') return 53;
-  if (up === 'CH') return 54;
-  if (up === 'GW') return 55;
-  if (up === 'GW92') return 56;
-  if (up === 'HL') return 57;
-  if (up === 'CTBH') return 58;
-  if (up === 'SL') return 59;
-  if (up === 'SJ') return 60;
-
-  // 6. Early Writings & Early Historical Works
-  if (up === 'EW') return 70;
-  if (up === 'WLF') return 71;
-  if (up === 'EXV') return 72;
-  if (up === 'EXV54') return 73;
-
-  // 7. Spiritual Gifts Series (1, 2, 3, 4a, 4b in sequence)
-  if (up === '1SG') return 81;
-  if (up === '2SG') return 82;
-  if (up === '3SG') return 83;
-  if (up === '4ASG') return 84;
-  if (up === '4BSG') return 85;
-
-  // 8. The Spirit of Prophecy Series (1, 2, 3, 4 in sequence)
-  if (up === '1SP') return 91;
-  if (up === '2SP') return 92;
-  if (up === '3SP') return 93;
-  if (up === '4SP') return 94;
-
-  return 100;
+  // All other books in chronological release order by publication year
+  return year;
 }
 
 const ALL_BOOKS: BookItem[] = Object.entries(egwBookMetaRaw)
@@ -81,7 +40,7 @@ const ALL_BOOKS: BookItem[] = Object.entries(egwBookMetaRaw)
     title: meta.title,
     abbrev: meta.abbrev,
     year: meta.year,
-    rank: getBookCanonicalRank(meta.abbrev),
+    rank: getBookReleaseOrderRank(meta.abbrev, meta.year),
   }))
   .sort((a, b) => {
     if (a.rank !== b.rank) return a.rank - b.rank;
