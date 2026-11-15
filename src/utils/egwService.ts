@@ -294,6 +294,11 @@ const ABBREV_TO_FILE: Record<string, string> = {
   dg: 'dg',
   ay: 'ay',
   am: 'am',
+  sa: 'sa',
+  cet: 'cet',
+  ce: 'ce',
+  spted: 'spted',
+  hfm: 'hfm',
 };
 
 /**
