@@ -238,7 +238,7 @@ export const LibraryModal: React.FC<LibraryModalProps> = ({
                 No books found matching "{filterQuery}".
               </div>
             ) : (
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
                 {filteredBooks.map((b) => (
                   <div
                     key={b.key}
@@ -246,22 +246,15 @@ export const LibraryModal: React.FC<LibraryModalProps> = ({
                       onSelectEgwBook(b.abbrev, 1);
                       onClose();
                     }}
-                    className="group cursor-pointer flex flex-col"
+                    className="group cursor-pointer flex flex-col items-center"
+                    title={`${b.title} (${b.year})`}
                   >
                     <EgwBookCover
                       title={b.title}
                       abbrev={b.abbrev}
                       year={b.year}
-                      className="w-full mb-2"
+                      className="w-full"
                     />
-                    <div className="px-1 text-center">
-                      <div className="font-serif font-semibold text-xs text-slate-200 line-clamp-1 group-hover:text-amber-400 transition">
-                        {b.title}
-                      </div>
-                      <div className="text-[10px] font-mono text-slate-500">
-                        {b.year}
-                      </div>
-                    </div>
                   </div>
                 ))}
               </div>

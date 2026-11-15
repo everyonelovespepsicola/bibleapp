@@ -201,14 +201,20 @@ export const EgwBookCover: React.FC<EgwBookCoverProps> = ({
       </div>
 
       {/* Bottom Author & Abbrev Strip */}
-      <div className="relative z-10 pl-5 pr-3 pb-3 flex flex-col items-center text-center">
-        <div className="w-12 h-px bg-amber-400/30 mb-2" />
+      <div className="relative z-10 pl-5 pr-3 pb-3.5 flex flex-col items-center text-center">
+        <div className="w-14 h-px bg-amber-400/30 mb-2" />
         <div className="text-[10px] font-serif tracking-wider uppercase text-amber-200/90 font-medium">
           Ellen G. White
         </div>
-        <div className="flex items-center space-x-1.5 mt-1 text-[9px] font-mono text-slate-400">
-          <span className="font-bold text-amber-400/90 bg-black/40 px-1 rounded">{abbrev}</span>
-          {year && <span>• {year}</span>}
+        <div className="flex items-center space-x-1.5 mt-1.5 text-xs sm:text-[13px] font-mono text-slate-300 font-semibold">
+          <span className="font-bold text-amber-300 bg-black/60 px-1.5 py-0.5 rounded border border-amber-500/30 shadow-xs">
+            {abbrev}
+          </span>
+          {year && (
+            <span className="text-amber-200/90 tracking-wide font-sans font-bold">
+              • {year}
+            </span>
+          )}
         </div>
       </div>
     </div>
