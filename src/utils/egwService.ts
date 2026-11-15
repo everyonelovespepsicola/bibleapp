@@ -221,7 +221,7 @@ export function getEgwCommentsForVerse(reference: string): EgwComment[] {
             sourceAbbrev: meta.abbrev,
             year: meta.year,
             pageRef: item.refcode || '',
-            paragraphText: item.excerpt || '',
+            paragraphText: item.text || item.excerpt || '',
             targetVerses: [reference],
             chapterNumber: 1, // Fallback, resolved accurately by pageRef
           };
