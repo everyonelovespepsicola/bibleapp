@@ -304,6 +304,12 @@ const ABBREV_TO_FILE: Record<string, string> = {
   gw92: 'gw92',
   exv: 'exv',
   exv54: 'exv54',
+  hvn: 'hvn',
+  hdl: 'hdl',
+  dbd: 'dbd',
+  nl: 'nl',
+  tr: 'tr',
+  pcl: 'pcl',
 };
 
 /**
