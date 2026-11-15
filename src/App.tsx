@@ -20,6 +20,7 @@ import { searchBible, type SearchResult } from './utils/searchEngine';
 import { initLexiconWordMaps } from './utils/lexiconParser';
 import { ChapterReader } from './components/ChapterReader';
 import { SearchResultsView } from './components/SearchResultsView';
+import { EgwBookReaderView } from './components/EgwBookReaderView';
 import { BookNavigator } from './components/BookNavigator';
 import { LibraryModal } from './components/LibraryModal';
 import { JsonImporterModal } from './components/JsonImporterModal';
@@ -43,11 +44,16 @@ export function App() {
   const [currentChapter, setCurrentChapter] = useState<number>(1); // Chapter 1
   const [highlightRange, setHighlightRange] = useState<{ start?: number; end?: number } | undefined>(undefined);
 
-  // Search State
+  // Search & Reader Mode State
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [submittedQuery, setSubmittedQuery] = useState<string>('');
   const [searchResult, setSearchResult] = useState<SearchResult | null>(null);
-  const [viewMode, setViewMode] = useState<'reader' | 'search'>('reader');
+  const [viewMode, setViewMode] = useState<'reader' | 'search' | 'egw-book'>('reader');
+  const [activeEgwBook, setActiveEgwBook] = useState<{
+    bookAbbrev: string;
+    chapterNumber: number;
+    pageRef?: string;
+  } | null>(null);
 
   // Study Mode & Lexicon State
   const [isStudyMode, setIsStudyMode] = useState<boolean>(false);
@@ -604,7 +610,15 @@ export function App() {
         <main className={`flex-1 h-full min-h-0 overflow-y-auto pb-16 transition-all duration-300 ${
           isStudyMode && isStudyDrawerOpen ? 'lg:pr-4' : ''
         }`}>
-          {viewMode === 'search' && searchResult ? (
+          {viewMode === 'egw-book' && activeEgwBook ? (
+            <EgwBookReaderView
+              bookAbbrev={activeEgwBook.bookAbbrev}
+              initialChapterNumber={activeEgwBook.chapterNumber}
+              initialPageRef={activeEgwBook.pageRef}
+              onBackToBible={() => setViewMode('reader')}
+              onOpenLibrary={() => setIsLibraryOpen(true)}
+            />
+          ) : viewMode === 'search' && searchResult ? (
             <SearchResultsView
               result={searchResult}
               rawQuery={submittedQuery}
@@ -771,13 +785,11 @@ export function App() {
           }
         }}
         onSelectEgwBook={(abbrev, chapterNumber = 1) => {
-          setIsStudyMode(true);
-          setStudyDrawerTab('egw');
-          setIsStudyDrawerOpen(true);
-          setDirectEgwTarget({
+          setActiveEgwBook({
             bookAbbrev: abbrev,
             chapterNumber: chapterNumber,
           });
+          setViewMode('egw-book');
         }}
       />
 
