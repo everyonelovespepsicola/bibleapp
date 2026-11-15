@@ -282,6 +282,12 @@ const ABBREV_TO_FILE: Record<string, string> = {
   taa: 'taa',
   csw: 'csw',
   chl: 'chl',
+  hs: 'hs',
+  hl: 'hl',
+  sw: 'sw',
+  ctbh: 'ctbh',
+  wlf: 'wlf',
+  vss: 'vss',
 };
 
 /**
