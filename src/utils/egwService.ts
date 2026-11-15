@@ -310,6 +310,13 @@ const ABBREV_TO_FILE: Record<string, string> = {
   nl: 'nl',
   tr: 'tr',
   pcl: 'pcl',
+  cme: 'cme',
+  cev: 'cev',
+  con: 'conf',
+  conf: 'conf',
+  rc: 'rc',
+  ic: 'ic',
+  mc: 'mc',
 };
 
 /**
