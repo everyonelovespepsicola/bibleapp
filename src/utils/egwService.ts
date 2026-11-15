@@ -248,6 +248,11 @@ const ABBREV_TO_FILE: Record<string, string> = {
   fe: 'fe',
   te: 'te',
   wm: 'wm',
+  lp: 'lp',
+  sl: 'sl',
+  '1sm': '1sm',
+  '2sm': '2sm',
+  '3sm': '3sm',
 };
 
 /**
