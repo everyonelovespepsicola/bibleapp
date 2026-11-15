@@ -317,6 +317,12 @@ const ABBREV_TO_FILE: Record<string, string> = {
   rc: 'rc',
   ic: 'ic',
   mc: 'mc',
+  mciti: 'mciti',
+  pcp: 'pcp',
+  ry: 'ry',
+  tssw: 'tssw',
+  tsa: 'tsa',
+  tsdf: 'tsdf',
 };
 
 /**
