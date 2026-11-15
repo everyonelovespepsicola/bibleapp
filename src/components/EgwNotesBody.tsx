@@ -23,6 +23,35 @@ export const EgwNotesBody: React.FC<EgwNotesBodyProps> = ({
     setTimeout(() => setCopiedId(null), 2000);
   };
 
+  /**
+   * Highlights occurrences of the target scripture reference (e.g. "Genesis 1:1" or "In the beginning")
+   * directly within Ellen White's paragraph text.
+   */
+  const renderParagraphContent = (text: string, ref: string) => {
+    if (!ref) return text;
+
+    // Build regex for the reference itself (e.g. "Genesis 1:1", "Gen 1:1")
+    const escapedRef = ref.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
+    const regex = new RegExp(`(${escapedRef}|'[^']*${escapedRef}[^']*'|"[^"]*${escapedRef}[^"]*")`, 'gi');
+
+    const parts = text.split(regex);
+    if (parts.length === 1) return text;
+
+    return parts.map((part, idx) => {
+      if (regex.test(part)) {
+        return (
+          <mark
+            key={idx}
+            className="bg-amber-400/25 text-amber-200 font-semibold px-1 py-0.5 rounded border-b border-amber-400/60"
+          >
+            {part}
+          </mark>
+        );
+      }
+      return part;
+    });
+  };
+
   return (
     <div className="space-y-6">
       {/* Passage Header Context */}
@@ -92,8 +121,8 @@ export const EgwNotesBody: React.FC<EgwNotesBodyProps> = ({
 
                 {/* Full Paragraph Text with Quote and Ending Reference Code */}
                 <div className="font-serif text-[1.05rem] leading-[1.8] text-slate-200 border-l-2 border-amber-500/50 pl-3.5 py-0.5">
-                  <span>{c.paragraphText}</span>
-                  {/* Inline Ending Reference Code: Book, Page, Paragraph (e.g. COL 35.2) */}
+                  <span>{renderParagraphContent(c.paragraphText, reference)}</span>
+                  {/* Inline Ending Reference Code: Book, Page, Paragraph (e.g. Ed 134.2, COL 35.2) */}
                   <span className="ml-2 inline-block font-sans font-bold text-amber-400/90 text-xs tracking-wide bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/30 selection:bg-amber-400 selection:text-slate-950">
                     — {citationCode}
                   </span>

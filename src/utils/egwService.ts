@@ -2,10 +2,31 @@ import type { EgwComment } from '../types/egw';
 
 /**
  * Standard public-domain EGW commentary paragraphs for prominent passages.
- * Contains FULL paragraphs with standard standard reference citation codes:
- * [Book Abbr] [Page].[Paragraph] (e.g. COL 35.2, DA 388.1, GC 678.1).
+ * Contains FULL original paragraphs where the scripture is explicitly quoted or cited,
+ * followed by standard citation reference codes:
+ * [Book Abbr] [Page].[Paragraph] (e.g. Ed 134.2, COL 35.2, DA 388.1, GC 678.1).
  */
 export const SAMPLE_EGW_COMMENTS: EgwComment[] = [
+  {
+    id: 'ed-134-2',
+    sourceBook: 'Education',
+    sourceAbbrev: 'Ed',
+    year: 1903,
+    pageRef: '134.2',
+    chapterTitle: 'Science and the Bible',
+    paragraphText: "'In the beginning God.' Genesis 1:1. Here alone can the mind in its eager questioning, fleeing as the dove to the ark, find rest. Above, beneath, beyond, abides Infinite Love, working out all things to accomplish 'the good pleasure of His goodness.' 2 Thessalonians 1:11.",
+    targetVerses: ['Genesis 1:1', '2 Thessalonians 1:11']
+  },
+  {
+    id: '8t-258-4',
+    sourceBook: 'Testimonies for the Church, Vol. 8',
+    sourceAbbrev: '8T',
+    year: 1904,
+    pageRef: '258.4',
+    chapterTitle: 'God in Nature',
+    paragraphText: "The theory that God did not create matter when He brought the world into existence is without foundation. In the formation of our world, God was not indebted to pre-existing matter. On the contrary, all things, material or spiritual, stood up before the Lord Jehovah at His voice and were created for His own purpose. The heavens and all the host of them, the earth and all things therein, are not only the work of His hand; they came into existence by the breath of His mouth.",
+    targetVerses: ['Genesis 1:1', 'Psalm 33:6', 'Psalm 33:9', 'Hebrews 11:3']
+  },
   {
     id: 'col-35-2',
     sourceBook: "Christ's Object Lessons",
@@ -83,8 +104,8 @@ export const SAMPLE_EGW_COMMENTS: EgwComment[] = [
     year: 1890,
     pageRef: '44.1',
     chapterTitle: 'The Creation',
-    paragraphText: "In the creation of the earth, God was not dependent upon pre-existing matter. 'He spake, and it was done; He commanded, and it stood fast.' All things, material or spiritual, stood up before the Lord Jehovah at His voice and were created for His own purpose. The heavens and all the host of them, the earth and all things that are therein, came into existence by the breath of His mouth.",
-    targetVerses: ['Genesis 1:1', 'Genesis 1:2', 'Genesis 1:3', 'Psalm 33:6', 'Psalm 33:9', 'Hebrews 11:3']
+    paragraphText: "“By the word of the Lord were the heavens made; and all the host of them by the breath of His mouth.” “For He spake, and it was;” “He commanded, and it stood fast.” Psalm 33:6, 9. He “laid the foundations of the earth, that it should not be removed forever.” Psalm 104:5.",
+    targetVerses: ['Psalm 33:6', 'Psalm 33:9', 'Psalm 104:5']
   },
   {
     id: 'gc-17-1',
