@@ -116,7 +116,7 @@ export const ChapterReader: React.FC<ChapterReaderProps> = ({
   };
 
   return (
-    <div className="max-w-4xl mx-auto py-6 px-4 sm:px-6">
+    <div className="max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto py-6 px-4 sm:px-6">
       {/* Chapter Header & Controls */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-800 mb-8 gap-4">
         <div>
@@ -170,9 +170,9 @@ export const ChapterReader: React.FC<ChapterReaderProps> = ({
 
       {/* Render: Paragraph Flow Mode */}
       {layoutMode === 'paragraph' ? (
-        <div className="space-y-6 font-serif text-[1.15rem] leading-[2.2] text-slate-200">
+        <div className="space-y-7 font-serif text-[1.28rem] sm:text-[1.38rem] leading-[2.3] text-slate-100">
           {paragraphs.map((para, pIdx) => (
-            <p key={pIdx} className="indent-6 sm:indent-8 text-justify">
+            <p key={pIdx} className="indent-6 sm:indent-10 text-justify">
               {para.map((v) => {
                 const isHighlighted =
                   highlightRange?.start !== undefined &&
@@ -191,7 +191,7 @@ export const ChapterReader: React.FC<ChapterReaderProps> = ({
                     }`}
                     title={`Click to copy ${bookName} ${chapterNumber}:${v.verse} for PowerPoint/Word`}
                   >
-                    <sup className="text-xs font-sans font-bold text-amber-400/80 mr-1 selection:bg-amber-400 selection:text-slate-950">
+                    <sup className="text-xs sm:text-sm font-sans font-bold text-amber-400/80 mr-1 selection:bg-amber-400 selection:text-slate-950">
                       {v.verse}
                     </sup>
                     <span>{renderVerseContent(v)} </span>
@@ -203,7 +203,7 @@ export const ChapterReader: React.FC<ChapterReaderProps> = ({
         </div>
       ) : (
         /* Render: Verse-by-Verse Mode */
-        <div className="space-y-3 font-serif text-lg leading-relaxed text-slate-200">
+        <div className="space-y-4 font-serif text-[1.25rem] sm:text-[1.35rem] leading-relaxed text-slate-100">
           {verses.map((v) => {
             const isHighlighted =
               highlightRange?.start !== undefined &&
@@ -214,16 +214,16 @@ export const ChapterReader: React.FC<ChapterReaderProps> = ({
               <div
                 key={v.verse}
                 id={`verse-${v.verse}`}
-                className={`group flex items-baseline gap-3 p-2.5 rounded-xl transition duration-150 relative ${
+                className={`group flex items-baseline gap-3 p-3 rounded-xl transition duration-150 relative ${
                   isHighlighted
                     ? 'bg-amber-500/15 border-l-4 border-amber-400 shadow-sm'
                     : 'hover:bg-slate-800/40'
                 }`}
               >
-                <span className="text-xs font-sans font-bold text-amber-400/80 w-6 text-right flex-shrink-0 selection:bg-amber-400 selection:text-slate-950">
+                <span className="text-xs sm:text-sm font-sans font-bold text-amber-400/80 w-7 text-right flex-shrink-0 selection:bg-amber-400 selection:text-slate-950">
                   {v.verse}
                 </span>
-                <div className="flex-1 text-slate-100 text-[1.12rem] leading-8 font-serif selection:bg-amber-400 selection:text-slate-950">
+                <div className="flex-1 text-slate-100 text-[1.25rem] sm:text-[1.35rem] leading-9 font-serif selection:bg-amber-400 selection:text-slate-950">
                   {renderVerseContent(v)}
                 </div>
 

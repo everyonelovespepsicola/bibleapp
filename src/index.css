@@ -10,6 +10,18 @@ body,
   overflow: hidden;
 }
 
+@media (min-width: 1024px) {
+  :root {
+    zoom: 1.25;
+  }
+}
+
+@media (min-width: 1536px) {
+  :root {
+    zoom: 1.35;
+  }
+}
+
 body {
   background-color: #020617;
   color: #f8fafc;
