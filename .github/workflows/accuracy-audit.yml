@@ -37,3 +37,4 @@ jobs:
       - name: Run Live Site Word-for-Word Accuracy Comparator
         run: |
           npx tsx scripts/compareWithLiveAction.ts "${{ github.event.inputs.book || 'GC' }}" "${{ github.event.inputs.chapter || '4' }}"
+

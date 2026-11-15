@@ -44,6 +44,10 @@ function fetchHtml(urlPath: string): Promise<string> {
   });
 }
 
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 export async function compareChapterWithLive(
   bookAbbrev: string,
   chapterNumber: number
@@ -102,7 +106,7 @@ export async function compareChapterWithLive(
       result.discrepancies.push({
         paragraphIndex: i + 1,
         pageRef: chapter.paragraphs[i]?.pageRef,
-        diffSnippet: `Character count: Live (${liveP.length}) vs Local (${localP.length})`,
+        diffSnippet: `Length: Live (${liveP.length}) vs Local (${localP.length})`,
         liveSnippet: liveP.slice(0, 100),
         localSnippet: localP.slice(0, 100),
       });
@@ -112,35 +116,120 @@ export async function compareChapterWithLive(
   return result;
 }
 
+export async function compareBookWithLive(bookAbbrev: string): Promise<void> {
+  const filePath = path.resolve(process.cwd(), `public/egw/books/${bookAbbrev.toLowerCase()}.json`);
+  if (!fs.existsSync(filePath)) {
+    console.error(`Book file ${bookAbbrev} not found on disk.`);
+    return;
+  }
+
+  const localBook = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  const chapters = localBook.chapters || [];
+  console.log(`Auditing book ${bookAbbrev.toUpperCase()}: ${chapters.length} chapters...`);
+
+  let totalExact = 0;
+  let totalParas = 0;
+  let totalDiscrepancies = 0;
+
+  for (let c = 1; c <= chapters.length; c++) {
+    try {
+      const res = await compareChapterWithLive(bookAbbrev, c);
+      if (res) {
+        totalParas += res.totalParagraphs;
+        totalExact += res.exactMatches;
+        totalDiscrepancies += res.discrepancies.length;
+        if (res.discrepancies.length === 0) {
+          console.log(`  ✓ Ch ${c} (${res.chapterTitle}): ${res.exactMatches}/${res.totalParagraphs} paragraphs 100% match`);
+        } else {
+          console.log(`  ⚠️ Ch ${c} (${res.chapterTitle}): ${res.discrepancies.length} discrepancies`);
+        }
+      }
+      await sleep(250); // Safe rate limit between chapter requests
+    } catch (err: any) {
+      console.error(`  ❌ Error comparing Ch ${c}: ${err.message}`);
+    }
+  }
+
+  console.log('-----------------------------------------------------------');
+  console.log(`Summary for ${bookAbbrev.toUpperCase()}:`);
+  console.log(`Total Chapters:      ${chapters.length}`);
+  console.log(`Total Paragraphs:    ${totalParas}`);
+  console.log(`100% Matches:        ${totalExact} / ${totalParas}`);
+  console.log(`Total Discrepancies: ${totalDiscrepancies}`);
+  console.log('-----------------------------------------------------------');
+}
+
+export async function compareAllBooksSample(): Promise<void> {
+  const booksDir = path.resolve(process.cwd(), 'public/egw/books');
+  const files = fs.readdirSync(booksDir).filter((f) => f.endsWith('.json'));
+  console.log(`Sample-auditing all ${files.length} books (comparing Chapter 1 of every book with live site)...`);
+
+  let passed = 0;
+  let failed = 0;
+
+  for (let i = 0; i < files.length; i++) {
+    const abbrev = files[i].replace('.json', '');
+    try {
+      console.log(`[${i + 1}/${files.length}] Checking ${abbrev.toUpperCase()}...`);
+      const res = await compareChapterWithLive(abbrev, 1);
+      if (res && res.discrepancies.length === 0) {
+        passed++;
+        console.log(`  ✓ ${abbrev.toUpperCase()} Ch 1 matches live site 100%`);
+      } else {
+        failed++;
+        console.log(`  ⚠️ ${abbrev.toUpperCase()} had ${res?.discrepancies.length || 'error'} differences`);
+      }
+      await sleep(250);
+    } catch (err: any) {
+      console.error(`  ❌ Error on ${abbrev}: ${err.message}`);
+      failed++;
+    }
+  }
+
+  console.log('===========================================================');
+  console.log(`ALL 59 BOOKS LIVE SAMPLE AUDIT COMPLETE:`);
+  console.log(`Passed: ${passed} / ${files.length}`);
+  console.log(`Failed: ${failed} / ${files.length}`);
+  console.log('===========================================================');
+}
+
 // CLI Execution: npx tsx scripts/compareWithLiveAction.ts [bookAbbrev] [chapterNum]
 if (process.argv[1]?.endsWith('compareWithLiveAction.ts') || process.argv[1]?.endsWith('compareWithLiveAction.js')) {
   const args = process.argv.slice(2);
-  const book = args[0] || 'GC';
-  const ch = parseInt(args[1] || '4', 10);
+  const book = args[0]?.trim() || 'GC';
+  const chArg = args[1]?.trim();
 
   (async () => {
     console.log('===========================================================');
-    console.log(`  LIVE SITE ACCURACY COMPARATOR: ${book.toUpperCase()} Chapter ${ch}  `);
+    console.log(`  LIVE SITE ACCURACY COMPARATOR: TARGET [${book.toUpperCase()}]`);
     console.log('===========================================================');
-    const res = await compareChapterWithLive(book, ch);
-    if (!res) return;
 
-    console.log(`Chapter Title:     ${res.chapterTitle}`);
-    console.log(`Total Paragraphs:  ${res.totalParagraphs}`);
-    console.log(`100% Exact Match:  ${res.exactMatches} / ${res.totalParagraphs} paragraphs`);
-    console.log(`Discrepancies:     ${res.discrepancies.length}`);
-
-    if (res.discrepancies.length === 0) {
-      console.log('-----------------------------------------------------------');
-      console.log('✅ VERIFIED: Every word and paragraph matches the official site 100% identically!');
+    if (book.toUpperCase() === 'ALL') {
+      await compareAllBooksSample();
+    } else if (!chArg || chArg.toLowerCase() === 'all') {
+      await compareBookWithLive(book);
     } else {
-      console.log('-----------------------------------------------------------');
-      res.discrepancies.forEach((d) => {
-        console.log(`❌ Paragraph #${d.paragraphIndex} [${d.pageRef || ''}]:`);
-        console.log(`   Live : ${d.liveSnippet}...`);
-        console.log(`   Local: ${d.localSnippet}...`);
-      });
+      const ch = parseInt(chArg, 10);
+      const res = await compareChapterWithLive(book, ch);
+      if (!res) return;
+
+      console.log(`Chapter Title:     ${res.chapterTitle}`);
+      console.log(`Total Paragraphs:  ${res.totalParagraphs}`);
+      console.log(`100% Exact Match:  ${res.exactMatches} / ${res.totalParagraphs} paragraphs`);
+      console.log(`Discrepancies:     ${res.discrepancies.length}`);
+
+      if (res.discrepancies.length === 0) {
+        console.log('-----------------------------------------------------------');
+        console.log('✅ VERIFIED: Every word and paragraph matches the official site 100% identically!');
+      } else {
+        console.log('-----------------------------------------------------------');
+        res.discrepancies.forEach((d) => {
+          console.log(`❌ Paragraph #${d.paragraphIndex} [${d.pageRef || ''}]:`);
+          console.log(`   Live : ${d.liveSnippet}...`);
+          console.log(`   Local: ${d.localSnippet}...`);
+        });
+      }
+      console.log('===========================================================');
     }
-    console.log('===========================================================');
   })();
 }
