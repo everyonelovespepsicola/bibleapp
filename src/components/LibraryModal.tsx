@@ -4,8 +4,6 @@ import {
   Search,
   BookOpen,
   Library,
-  GraduationCap,
-  ChevronRight,
 } from 'lucide-react';
 import egwBookMetaRaw from '../utils/egwBookMeta.json';
 import { EgwBookCover } from './EgwBookCover';
@@ -27,14 +25,12 @@ const ALL_BOOKS: BookItem[] = Object.entries(egwBookMetaRaw).map(([key, meta]: [
 interface LibraryModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onOpenStrongsConcordance: () => void;
   onSelectEgwBook: (abbrev: string, chapterNumber?: number) => void;
 }
 
 export const LibraryModal: React.FC<LibraryModalProps> = ({
   isOpen,
   onClose,
-  onOpenStrongsConcordance,
   onSelectEgwBook,
 }) => {
   const [filterQuery, setFilterQuery] = useState('');
@@ -93,7 +89,7 @@ export const LibraryModal: React.FC<LibraryModalProps> = ({
                 </span>
               </h2>
               <p className="text-xs text-slate-400">
-                Strongs Concordance and 59 Public Domain Ellen G. White historical works
+                59 Public Domain Ellen G. White historical works (≤ 1923)
               </p>
             </div>
           </div>
@@ -108,49 +104,7 @@ export const LibraryModal: React.FC<LibraryModalProps> = ({
 
         {/* Scrollable Modal Content */}
         <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6">
-          {/* SECTION 1: STRONG'S CONCORDANCE (On its own dedicated row at the top) */}
-          <div className="bg-gradient-to-r from-amber-950/40 via-slate-900 to-amber-900/30 border border-amber-500/40 rounded-2xl p-5 shadow-lg relative overflow-hidden group">
-            {/* Ambient Background Glow */}
-            <div className="absolute top-0 right-0 w-96 h-full bg-amber-500/5 blur-3xl pointer-events-none" />
-
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 relative z-10">
-              <div className="flex items-start sm:items-center space-x-4">
-                <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-2xl text-amber-400 shadow-inner flex-shrink-0">
-                  <GraduationCap className="w-8 h-8" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-[10px] font-mono tracking-wider uppercase font-bold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
-                      Primary Reference & Lexicon
-                    </span>
-                    <span className="text-xs text-slate-400 font-mono">14,300+ Hebrew & Greek Roots</span>
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-serif font-bold text-amber-100">
-                    Strong's Exhaustive Concordance of the Bible
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-300 max-w-2xl mt-1">
-                    Complete Hebrew/Aramaic Old Testament (H1–H8674) and Koine Greek New Testament (G1–G5624) root lexicons, phonetic pronunciations, lemmas, and exhaustive Bible verse occurrences.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 flex-shrink-0 self-end lg:self-center">
-                <button
-                  onClick={() => {
-                    onOpenStrongsConcordance();
-                    onClose();
-                  }}
-                  className="px-4 py-2.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold rounded-xl text-xs sm:text-sm flex items-center space-x-2 transition shadow-md shadow-amber-500/20 cursor-pointer"
-                >
-                  <GraduationCap className="w-4 h-4" />
-                  <span>Open Study Mode Concordance</span>
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* SECTION 2: ELLEN G. WHITE BOOKS (Underneath in Grid View) */}
+          {/* ELLEN G. WHITE BOOKS (Grid View) */}
           <div className="space-y-4">
             {/* Filter & Search Header */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-2 border-b border-slate-800">

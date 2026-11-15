@@ -774,17 +774,6 @@ export function App() {
       <LibraryModal
         isOpen={isLibraryOpen}
         onClose={() => setIsLibraryOpen(false)}
-        onOpenStrongsConcordance={() => {
-          setIsStudyMode(true);
-          setStudyDrawerTab('strongs');
-          setIsStudyDrawerOpen(true);
-          setViewMode('reader');
-          // If no entry selected yet, open with the first word of current chapter
-          if (!selectedStrongsEntry && strongsLexicon['H7225']) {
-            setSelectedStrongsEntry(strongsLexicon['H7225']);
-            setSelectedWord('beginning');
-          }
-        }}
         onSelectEgwBook={(abbrev, chapterNumber = 1) => {
           setActiveEgwBook({
             bookAbbrev: abbrev,
