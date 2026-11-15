@@ -66,6 +66,18 @@ function getCoverTheme(abbrev: string, title: string) {
   };
 }
 
+// Helper to cleanly separate main title and volume designation
+function formatBookTitle(title: string): { mainTitle: string; volumeNumber: string | null } {
+  const match = title.match(/^(.*?)(?:,\s*|\s+)(Vol(?:ume|\.)?\s*[0-9a-zA-Z]+)(.*)$/i);
+  if (match) {
+    return {
+      mainTitle: match[1] + (match[3] || ''),
+      volumeNumber: match[2].trim(),
+    };
+  }
+  return { mainTitle: title, volumeNumber: null };
+}
+
 export const EgwBookCover: React.FC<EgwBookCoverProps> = ({
   title,
   abbrev,
@@ -73,6 +85,7 @@ export const EgwBookCover: React.FC<EgwBookCoverProps> = ({
   className = '',
 }) => {
   const theme = getCoverTheme(abbrev, title);
+  const { mainTitle, volumeNumber } = formatBookTitle(title);
 
   return (
     <div
@@ -175,9 +188,16 @@ export const EgwBookCover: React.FC<EgwBookCoverProps> = ({
         </div>
 
         {/* Book Title with Classical Typography */}
-        <h3 className="font-serif font-bold text-amber-100 text-xs sm:text-sm leading-tight drop-shadow-md px-1 mt-1 line-clamp-3">
-          {title}
-        </h3>
+        <div className="mt-1 px-1 flex flex-col items-center">
+          <h3 className="font-serif font-bold text-amber-100 text-xs sm:text-sm leading-tight drop-shadow-md line-clamp-3">
+            {mainTitle}
+          </h3>
+          {volumeNumber && (
+            <div className="font-serif font-bold text-amber-300 text-[11px] sm:text-xs tracking-wider uppercase mt-1 drop-shadow-sm">
+              {volumeNumber}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Bottom Author & Abbrev Strip */}
