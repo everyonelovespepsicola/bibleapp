@@ -143,7 +143,7 @@ export const LibraryModal: React.FC<LibraryModalProps> = ({
                   className="px-4 py-2.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold rounded-xl text-xs sm:text-sm flex items-center space-x-2 transition shadow-md shadow-amber-500/20 cursor-pointer"
                 >
                   <BookOpen className="w-4 h-4" />
-                  <span>Open Concordance & Lexicon</span>
+                  <span>Read Strong's Book</span>
                   <ChevronRight className="w-4 h-4" />
                 </button>
               </div>

@@ -194,3 +194,4 @@ export const EgwBookCover: React.FC<EgwBookCoverProps> = ({
     </div>
   );
 };
+
