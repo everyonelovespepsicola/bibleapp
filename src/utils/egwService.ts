@@ -299,6 +299,11 @@ const ABBREV_TO_FILE: Record<string, string> = {
   ce: 'ce',
   spted: 'spted',
   hfm: 'hfm',
+  ls80: 'ls80',
+  ls88: 'ls88',
+  gw92: 'gw92',
+  exv: 'exv',
+  exv54: 'exv54',
 };
 
 /**
