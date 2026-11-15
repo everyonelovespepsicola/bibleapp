@@ -229,6 +229,10 @@ const ABBREV_TO_FILE: Record<string, string> = {
   gw: 'gw',
   tm: 'tm',
   ls: 'ls',
+  '1t': '1t',
+  '2t': '2t',
+  '3t': '3t',
+  '4t': '4t',
 };
 
 /**
