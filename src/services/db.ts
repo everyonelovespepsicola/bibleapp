@@ -3,7 +3,7 @@ import type { BibleTranslation } from '../types/bible';
 import type { EgwChapterData } from '../types/egw';
 
 const DB_NAME = 'BibleAppDB';
-const DB_VERSION = 2; // Incremented for EGW offline storage
+const DB_VERSION = 3; // Incremented to v3 for consolidated public domain books and index
 const STORE_TRANSLATIONS = 'translations';
 const STORE_METADATA = 'metadata';
 const STORE_EGW_BOOKS = 'egw_books';
@@ -24,6 +24,17 @@ async function getDB(): Promise<IDBPDatabase> {
         }
         if (!db.objectStoreNames.contains(STORE_EGW_INDEX)) {
           db.createObjectStore(STORE_EGW_INDEX);
+        }
+      }
+      if (oldVersion < 3) {
+        // Clear cached books from v2 to refresh with consolidated true chapters
+        if (db.objectStoreNames.contains(STORE_EGW_BOOKS)) {
+          const tx = (db as any).transaction(STORE_EGW_BOOKS, 'readwrite');
+          tx.objectStore(STORE_EGW_BOOKS).clear();
+        }
+        if (db.objectStoreNames.contains(STORE_EGW_INDEX)) {
+          const tx = (db as any).transaction(STORE_EGW_INDEX, 'readwrite');
+          tx.objectStore(STORE_EGW_INDEX).clear();
         }
       }
     },
