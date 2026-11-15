@@ -323,23 +323,36 @@ export async function loadEgwBook(bookAbbrev: string): Promise<any | null> {
 
 /**
  * Retrieves full chapter text data for any EGW book chapter.
+ * Can find by chapterNumber, or if pageRef is provided, locates the exact containing chapter!
  */
 export async function getEgwChapterAsync(
   bookAbbrev: string,
-  chapterNumber: number
+  chapterNumber: number,
+  pageRef?: string
 ): Promise<EgwChapterData | null> {
   const bookData = await loadEgwBook(bookAbbrev);
   if (!bookData || !Array.isArray(bookData.chapters)) {
     // Fallback to synchronous mock chapter lookup
-    return getEgwChapter(bookAbbrev, chapterNumber);
+    return getEgwChapter(bookAbbrev, chapterNumber, pageRef);
   }
 
-  const chapter = bookData.chapters.find(
-    (c: any) => c.chapterNumber === chapterNumber
-  );
+  // 1. If pageRef is provided, locate chapter that actually contains this page!
+  let chapter = null;
+  if (pageRef) {
+    chapter = bookData.chapters.find((c: any) =>
+      c.paragraphs.some((p: any) => p.pageRef === pageRef)
+    );
+  }
+
+  // 2. If not found by pageRef, find by chapterNumber
+  if (!chapter) {
+    chapter = bookData.chapters.find(
+      (c: any) => c.chapterNumber === chapterNumber
+    );
+  }
 
   if (!chapter) {
-    return getEgwChapter(bookAbbrev, chapterNumber);
+    return getEgwChapter(bookAbbrev, chapterNumber, pageRef);
   }
 
   return {
@@ -361,14 +374,23 @@ export async function getEgwChapterAsync(
  */
 export function getEgwChapter(
   bookAbbrev: string,
-  chapterNumber: number
+  chapterNumber: number,
+  pageRef?: string
 ): EgwChapterData | null {
   const code = ABBREV_TO_FILE[bookAbbrev.toLowerCase()];
   if (code && memoryBookCache.has(code)) {
     const bookData = memoryBookCache.get(code);
-    const chapter = bookData.chapters?.find(
-      (c: any) => c.chapterNumber === chapterNumber
-    );
+    let chapter = null;
+    if (pageRef) {
+      chapter = bookData.chapters?.find((c: any) =>
+        c.paragraphs.some((p: any) => p.pageRef === pageRef)
+      );
+    }
+    if (!chapter) {
+      chapter = bookData.chapters?.find(
+        (c: any) => c.chapterNumber === chapterNumber
+      );
+    }
     if (chapter) {
       return {
         bookTitle: bookData.title || bookAbbrev,

@@ -2032,6 +2032,11 @@
           "pageRef": "165.1",
           "text": "We have an interest for you, and want to help you. I pray you to receive these lines with a right spirit, and let them suitably affect your heart and life.",
           "targetVerses": []
+        },
+        {
+          "pageRef": "165.2",
+          "text": "The testimony I received yesterday I look upon as a well-merited rebuke for which I feel truly thankful to you. I earnestly hope to be an overcomer. I am fully sensible of the magnitude of the work I have to do, yet I trust that by God’s assisting grace I shall be able to conquer.",
+          "targetVerses": []
         }
       ],
       "prevChapter": {
@@ -2040,30 +2045,11 @@
       },
       "nextChapter": {
         "number": 28,
-        "title": "Section 28"
-      }
-    },
-    {
-      "chapterNumber": 28,
-      "chapterTitle": "Section 28",
-      "paragraphs": [
-        {
-          "pageRef": "165.2",
-          "text": "The testimony I received yesterday I look upon as a well-merited rebuke for which I feel truly thankful to you. I earnestly hope to be an overcomer. I am fully sensible of the magnitude of the work I have to do, yet I trust that by God’s assisting grace I shall be able to conquer.",
-          "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 27,
-        "title": "Chapter 25—Combativeness Reproved"
-      },
-      "nextChapter": {
-        "number": 29,
         "title": "Chapter 26—Burden Bearers in the Church"
       }
     },
     {
-      "chapterNumber": 29,
+      "chapterNumber": 28,
       "chapterTitle": "Chapter 26—Burden Bearers in the Church",
       "paragraphs": [
         {
@@ -2158,16 +2144,16 @@
         }
       ],
       "prevChapter": {
-        "number": 28,
-        "title": "Section 28"
+        "number": 27,
+        "title": "Chapter 25—Combativeness Reproved"
       },
       "nextChapter": {
-        "number": 30,
+        "number": 29,
         "title": "Chapter 27—Pride in the Young"
       }
     },
     {
-      "chapterNumber": 30,
+      "chapterNumber": 29,
       "chapterTitle": "Chapter 27—Pride in the Young",
       "paragraphs": [
         {
@@ -2272,16 +2258,16 @@
         }
       ],
       "prevChapter": {
-        "number": 29,
+        "number": 28,
         "title": "Chapter 26—Burden Bearers in the Church"
       },
       "nextChapter": {
-        "number": 31,
+        "number": 30,
         "title": "Chapter 28—Worldliness in the Church"
       }
     },
     {
-      "chapterNumber": 31,
+      "chapterNumber": 30,
       "chapterTitle": "Chapter 28—Worldliness in the Church",
       "paragraphs": [
         {
@@ -2431,16 +2417,16 @@
         }
       ],
       "prevChapter": {
-        "number": 30,
+        "number": 29,
         "title": "Chapter 27—Pride in the Young"
       },
       "nextChapter": {
-        "number": 32,
+        "number": 31,
         "title": "Number Seventeen—Testimony for the Church"
       }
     },
     {
-      "chapterNumber": 32,
+      "chapterNumber": 31,
       "chapterTitle": "Number Seventeen—Testimony for the Church",
       "paragraphs": [
         {
@@ -2635,16 +2621,16 @@
         }
       ],
       "prevChapter": {
-        "number": 31,
+        "number": 30,
         "title": "Chapter 28—Worldliness in the Church"
       },
       "nextChapter": {
-        "number": 33,
+        "number": 32,
         "title": "Chapter 30—Warnings to the Church"
       }
     },
     {
-      "chapterNumber": 33,
+      "chapterNumber": 32,
       "chapterTitle": "Chapter 30—Warnings to the Church",
       "paragraphs": [
         {
@@ -2779,16 +2765,16 @@
         }
       ],
       "prevChapter": {
-        "number": 32,
+        "number": 31,
         "title": "Number Seventeen—Testimony for the Church"
       },
       "nextChapter": {
-        "number": 34,
+        "number": 33,
         "title": "Chapter 31—Contemplating Marriage"
       }
     },
     {
-      "chapterNumber": 34,
+      "chapterNumber": 33,
       "chapterTitle": "Chapter 31—Contemplating Marriage",
       "paragraphs": [
         {
@@ -2838,16 +2824,16 @@
         }
       ],
       "prevChapter": {
-        "number": 33,
+        "number": 32,
         "title": "Chapter 30—Warnings to the Church"
       },
       "nextChapter": {
-        "number": 35,
+        "number": 34,
         "title": "Chapter 32—Danger of Riches"
       }
     },
     {
-      "chapterNumber": 35,
+      "chapterNumber": 34,
       "chapterTitle": "Chapter 32—Danger of Riches",
       "paragraphs": [
         {
@@ -2882,16 +2868,16 @@
         }
       ],
       "prevChapter": {
-        "number": 34,
+        "number": 33,
         "title": "Chapter 31—Contemplating Marriage"
       },
       "nextChapter": {
-        "number": 36,
+        "number": 35,
         "title": "Chapter 33—Christian Zeal"
       }
     },
     {
-      "chapterNumber": 36,
+      "chapterNumber": 35,
       "chapterTitle": "Chapter 33—Christian Zeal",
       "paragraphs": [
         {
@@ -2931,16 +2917,16 @@
         }
       ],
       "prevChapter": {
-        "number": 35,
+        "number": 34,
         "title": "Chapter 32—Danger of Riches"
       },
       "nextChapter": {
-        "number": 37,
+        "number": 36,
         "title": "Chapter 34—Responsibilities of the Young"
       }
     },
     {
-      "chapterNumber": 37,
+      "chapterNumber": 36,
       "chapterTitle": "Chapter 34—Responsibilities of the Young",
       "paragraphs": [
         {
@@ -2965,16 +2951,16 @@
         }
       ],
       "prevChapter": {
-        "number": 36,
+        "number": 35,
         "title": "Chapter 33—Christian Zeal"
       },
       "nextChapter": {
-        "number": 38,
+        "number": 37,
         "title": "Chapter 35—Servants of Mammon"
       }
     },
     {
-      "chapterNumber": 38,
+      "chapterNumber": 37,
       "chapterTitle": "Chapter 35—Servants of Mammon",
       "paragraphs": [
         {
@@ -3101,16 +3087,16 @@
         }
       ],
       "prevChapter": {
-        "number": 37,
+        "number": 36,
         "title": "Chapter 34—Responsibilities of the Young"
       },
       "nextChapter": {
-        "number": 39,
+        "number": 38,
         "title": "Chapter 36—Sentimentalism and Matchmaking"
       }
     },
     {
-      "chapterNumber": 39,
+      "chapterNumber": 38,
       "chapterTitle": "Chapter 36—Sentimentalism and Matchmaking",
       "paragraphs": [
         {
@@ -3180,16 +3166,16 @@
         }
       ],
       "prevChapter": {
-        "number": 38,
+        "number": 37,
         "title": "Chapter 35—Servants of Mammon"
       },
       "nextChapter": {
-        "number": 40,
+        "number": 39,
         "title": "Chapter 37—Severity in Family Government"
       }
     },
     {
-      "chapterNumber": 40,
+      "chapterNumber": 39,
       "chapterTitle": "Chapter 37—Severity in Family Government",
       "paragraphs": [
         {
@@ -3309,16 +3295,16 @@
         }
       ],
       "prevChapter": {
-        "number": 39,
+        "number": 38,
         "title": "Chapter 36—Sentimentalism and Matchmaking"
       },
       "nextChapter": {
-        "number": 41,
+        "number": 40,
         "title": "Chapter 38—A Birthday Letter"
       }
     },
     {
-      "chapterNumber": 41,
+      "chapterNumber": 40,
       "chapterTitle": "Chapter 38—A Birthday Letter",
       "paragraphs": [
         {
@@ -3423,16 +3409,16 @@
         }
       ],
       "prevChapter": {
-        "number": 40,
+        "number": 39,
         "title": "Chapter 37—Severity in Family Government"
       },
       "nextChapter": {
-        "number": 42,
+        "number": 41,
         "title": "Chapter 39—Deceitfulness of Riches"
       }
     },
     {
-      "chapterNumber": 42,
+      "chapterNumber": 41,
       "chapterTitle": "Chapter 39—Deceitfulness of Riches",
       "paragraphs": [
         {
@@ -3702,16 +3688,16 @@
         }
       ],
       "prevChapter": {
-        "number": 41,
+        "number": 40,
         "title": "Chapter 38—A Birthday Letter"
       },
       "nextChapter": {
-        "number": 43,
+        "number": 42,
         "title": "Chapter 40—Self-Deceived Youth"
       }
     },
     {
-      "chapterNumber": 43,
+      "chapterNumber": 42,
       "chapterTitle": "Chapter 40—Self-Deceived Youth",
       "paragraphs": [
         {
@@ -3741,16 +3727,16 @@
         }
       ],
       "prevChapter": {
-        "number": 42,
+        "number": 41,
         "title": "Chapter 39—Deceitfulness of Riches"
       },
       "nextChapter": {
-        "number": 44,
+        "number": 43,
         "title": "Chapter 41—True Conversion"
       }
     },
     {
-      "chapterNumber": 44,
+      "chapterNumber": 43,
       "chapterTitle": "Chapter 41—True Conversion",
       "paragraphs": [
         {
@@ -3830,16 +3816,16 @@
         }
       ],
       "prevChapter": {
-        "number": 43,
+        "number": 42,
         "title": "Chapter 40—Self-Deceived Youth"
       },
       "nextChapter": {
-        "number": 45,
+        "number": 44,
         "title": "Chapter 42—Duties of the Husband and the Wife"
       }
     },
     {
-      "chapterNumber": 45,
+      "chapterNumber": 44,
       "chapterTitle": "Chapter 42—Duties of the Husband and the Wife",
       "paragraphs": [
         {
@@ -3881,21 +3867,7 @@
           "pageRef": "299.2",
           "text": "I was shown that you had not possessed that love for your wife that you should. Satan has taken advantage of her defects and your errors, to work for the destruction of your family. You have suffered shame of your wife to come into your heart, and your respect has grown less and less for her whom you vowed to love and cherish until death should part you.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 44,
-        "title": "Chapter 41—True Conversion"
-      },
-      "nextChapter": {
-        "number": 46,
-        "title": "Section 46"
-      }
-    },
-    {
-      "chapterNumber": 46,
-      "chapterTitle": "Section 46",
-      "paragraphs": [
+        },
         {
           "pageRef": "300.1",
           "text": "October 25, 1868, your case was again presented before me. I was shown that evil thoughts and unlawful desires have led to improper acts and to a violation of the commandments of God. You have dishonored yourself, your wife, and the cause of God. You could have exerted an influence for good in the cause of God. But the pursuance of a wrong course in matters that you thought were of little consequence has led to greater evils.",
@@ -3993,16 +3965,16 @@
         }
       ],
       "prevChapter": {
-        "number": 45,
-        "title": "Chapter 42—Duties of the Husband and the Wife"
+        "number": 43,
+        "title": "Chapter 41—True Conversion"
       },
       "nextChapter": {
-        "number": 47,
+        "number": 45,
         "title": "Chapter 43—Letter to an Orphan Boy"
       }
     },
     {
-      "chapterNumber": 47,
+      "chapterNumber": 45,
       "chapterTitle": "Chapter 43—Letter to an Orphan Boy",
       "paragraphs": [
         {
@@ -4092,16 +4064,16 @@
         }
       ],
       "prevChapter": {
-        "number": 46,
-        "title": "Section 46"
+        "number": 44,
+        "title": "Chapter 42—Duties of the Husband and the Wife"
       },
       "nextChapter": {
-        "number": 48,
+        "number": 46,
         "title": "Chapter 44—The Unruly Member"
       }
     },
     {
-      "chapterNumber": 48,
+      "chapterNumber": 46,
       "chapterTitle": "Chapter 44—The Unruly Member",
       "paragraphs": [
         {
@@ -4151,16 +4123,16 @@
         }
       ],
       "prevChapter": {
-        "number": 47,
+        "number": 45,
         "title": "Chapter 43—Letter to an Orphan Boy"
       },
       "nextChapter": {
-        "number": 49,
+        "number": 47,
         "title": "Chapter 45—Comfort in Affliction"
       }
     },
     {
-      "chapterNumber": 49,
+      "chapterNumber": 47,
       "chapterTitle": "Chapter 45—Comfort in Affliction",
       "paragraphs": [
         {
@@ -4190,16 +4162,16 @@
         }
       ],
       "prevChapter": {
-        "number": 48,
+        "number": 46,
         "title": "Chapter 44—The Unruly Member"
       },
       "nextChapter": {
-        "number": 50,
+        "number": 48,
         "title": "Chapter 46—A Self-Caring, Dictatorial Spirit"
       }
     },
     {
-      "chapterNumber": 50,
+      "chapterNumber": 48,
       "chapterTitle": "Chapter 46—A Self-Caring, Dictatorial Spirit",
       "paragraphs": [
         {
@@ -4224,16 +4196,16 @@
         }
       ],
       "prevChapter": {
-        "number": 49,
+        "number": 47,
         "title": "Chapter 45—Comfort in Affliction"
       },
       "nextChapter": {
-        "number": 51,
+        "number": 49,
         "title": "Chapter 47—A Forgetful Hearer"
       }
     },
     {
-      "chapterNumber": 51,
+      "chapterNumber": 49,
       "chapterTitle": "Chapter 47—A Forgetful Hearer",
       "paragraphs": [
         {
@@ -4258,16 +4230,16 @@
         }
       ],
       "prevChapter": {
-        "number": 50,
+        "number": 48,
         "title": "Chapter 46—A Self-Caring, Dictatorial Spirit"
       },
       "nextChapter": {
-        "number": 52,
+        "number": 50,
         "title": "Chapter 48—Remedy for Sentimentalism"
       }
     },
     {
-      "chapterNumber": 52,
+      "chapterNumber": 50,
       "chapterTitle": "Chapter 48—Remedy for Sentimentalism",
       "paragraphs": [
         {
@@ -4322,16 +4294,16 @@
         }
       ],
       "prevChapter": {
-        "number": 51,
+        "number": 49,
         "title": "Chapter 47—A Forgetful Hearer"
       },
       "nextChapter": {
-        "number": 53,
+        "number": 51,
         "title": "Chapter 49—Duty to Orphans"
       }
     },
     {
-      "chapterNumber": 53,
+      "chapterNumber": 51,
       "chapterTitle": "Chapter 49—Duty to Orphans",
       "paragraphs": [
         {
@@ -4406,16 +4378,16 @@
         }
       ],
       "prevChapter": {
-        "number": 52,
+        "number": 50,
         "title": "Chapter 48—Remedy for Sentimentalism"
       },
       "nextChapter": {
-        "number": 54,
+        "number": 52,
         "title": "Chapter 50—Appeal to Ministers"
       }
     },
     {
-      "chapterNumber": 54,
+      "chapterNumber": 52,
       "chapterTitle": "Chapter 50—Appeal to Ministers",
       "paragraphs": [
         {
@@ -4570,16 +4542,16 @@
         }
       ],
       "prevChapter": {
-        "number": 53,
+        "number": 51,
         "title": "Chapter 49—Duty to Orphans"
       },
       "nextChapter": {
-        "number": 55,
+        "number": 53,
         "title": "Chapter 51—Moral Pollution"
       }
     },
     {
-      "chapterNumber": 55,
+      "chapterNumber": 53,
       "chapterTitle": "Chapter 51—Moral Pollution",
       "paragraphs": [
         {
@@ -4664,16 +4636,16 @@
         }
       ],
       "prevChapter": {
-        "number": 54,
+        "number": 52,
         "title": "Chapter 50—Appeal to Ministers"
       },
       "nextChapter": {
-        "number": 56,
+        "number": 54,
         "title": "Number Eighteen—Testimony for the Church"
       }
     },
     {
-      "chapterNumber": 56,
+      "chapterNumber": 54,
       "chapterTitle": "Number Eighteen—Testimony for the Church",
       "paragraphs": [
         {
@@ -4930,16 +4902,16 @@
         }
       ],
       "prevChapter": {
-        "number": 55,
+        "number": 53,
         "title": "Chapter 51—Moral Pollution"
       },
       "nextChapter": {
-        "number": 57,
+        "number": 55,
         "title": "Chapter 53—Extremes in Health Reform"
       }
     },
     {
-      "chapterNumber": 57,
+      "chapterNumber": 55,
       "chapterTitle": "Chapter 53—Extremes in Health Reform",
       "paragraphs": [
         {
@@ -5114,16 +5086,16 @@
         }
       ],
       "prevChapter": {
-        "number": 56,
+        "number": 54,
         "title": "Number Eighteen—Testimony for the Church"
       },
       "nextChapter": {
-        "number": 58,
+        "number": 56,
         "title": "Chapter 54—Sensuality in the Young"
       }
     },
     {
-      "chapterNumber": 58,
+      "chapterNumber": 56,
       "chapterTitle": "Chapter 54—Sensuality in the Young",
       "paragraphs": [
         {
@@ -5343,16 +5315,16 @@
         }
       ],
       "prevChapter": {
-        "number": 57,
+        "number": 55,
         "title": "Chapter 53—Extremes in Health Reform"
       },
       "nextChapter": {
-        "number": 59,
+        "number": 57,
         "title": "Chapter 55—True Love at Home"
       }
     },
     {
-      "chapterNumber": 59,
+      "chapterNumber": 57,
       "chapterTitle": "Chapter 55—True Love at Home",
       "paragraphs": [
         {
@@ -5459,21 +5431,7 @@
           "pageRef": "418.4",
           "text": "Your wife has just as much right to her opinion as you have to yours. Her marriage relation does not destroy her identity. She has an individual responsibility. You will not feel clear till you take things out of her way and manifest toward her a more charitable, Christlike spirit of forbearance, and regard others in the light in which you wish to be regarded. You have yet to learn to “let nothing be done through strife or vainglory; but in lowliness of mind let each esteem other better than themselves.” “Be kindly affectioned one to another with brotherly love; in honor preferring one another; not slothful in business; fervent in spirit; serving the Lord.”",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 58,
-        "title": "Chapter 54—Sensuality in the Young"
-      },
-      "nextChapter": {
-        "number": 60,
-        "title": "Section 60"
-      }
-    },
-    {
-      "chapterNumber": 60,
-      "chapterTitle": "Section 60",
-      "paragraphs": [
+        },
         {
           "pageRef": "419.1",
           "text": "I was shown, Brother M, that you need a great work done for you before you can exert an influence in the church to correct their errors or bring them up. You do not possess that humbleness of mind that can reach the hearts of God’s people. You are exalted. You need to examine your motives and your actions to see if your eye is single to the glory of God. Neither Brother O nor you is exactly fitted to meet the wants of the youth and the church generally. You do not come right down in simplicity to understand the best manner to help them. It does not have the best influence for you and Brother O to leave your seats and take your position upon the platform in front of the people. When you occupy that position, you feel that you must say or do something in accordance with the position you have taken. Instead of getting up and speaking a few words to the point, you frequently make lengthy remarks, which really hurt the spirit of the meeting. Many feel relieved when you sit down. Were you in a country place where there were but few to improve the time, such lengthy remarks would be more appropriate.",
@@ -5491,16 +5449,16 @@
         }
       ],
       "prevChapter": {
-        "number": 59,
-        "title": "Chapter 55—True Love at Home"
+        "number": 56,
+        "title": "Chapter 54—Sensuality in the Young"
       },
       "nextChapter": {
-        "number": 61,
+        "number": 58,
         "title": "Chapter 56—Importance of Self-Government"
       }
     },
     {
-      "chapterNumber": 61,
+      "chapterNumber": 58,
       "chapterTitle": "Chapter 56—Importance of Self-Government",
       "paragraphs": [
         {
@@ -5640,16 +5598,16 @@
         }
       ],
       "prevChapter": {
-        "number": 60,
-        "title": "Section 60"
+        "number": 57,
+        "title": "Chapter 55—True Love at Home"
       },
       "nextChapter": {
-        "number": 62,
+        "number": 59,
         "title": "Chapter 57—Industry and Economy"
       }
     },
     {
-      "chapterNumber": 62,
+      "chapterNumber": 59,
       "chapterTitle": "Chapter 57—Industry and Economy",
       "paragraphs": [
         {
@@ -5734,16 +5692,16 @@
         }
       ],
       "prevChapter": {
-        "number": 61,
+        "number": 58,
         "title": "Chapter 56—Importance of Self-Government"
       },
       "nextChapter": {
-        "number": 63,
+        "number": 60,
         "title": "Chapter 58—Stirring Up Opposition"
       }
     },
     {
-      "chapterNumber": 63,
+      "chapterNumber": 60,
       "chapterTitle": "Chapter 58—Stirring Up Opposition",
       "paragraphs": [
         {
@@ -5778,16 +5736,16 @@
         }
       ],
       "prevChapter": {
-        "number": 62,
+        "number": 59,
         "title": "Chapter 57—Industry and Economy"
       },
       "nextChapter": {
-        "number": 64,
+        "number": 61,
         "title": "Chapter 59—An Appeal to the Church"
       }
     },
     {
-      "chapterNumber": 64,
+      "chapterNumber": 61,
       "chapterTitle": "Chapter 59—An Appeal to the Church",
       "paragraphs": [
         {
@@ -6332,16 +6290,16 @@
         }
       ],
       "prevChapter": {
-        "number": 63,
+        "number": 60,
         "title": "Chapter 58—Stirring Up Opposition"
       },
       "nextChapter": {
-        "number": 65,
+        "number": 62,
         "title": "Chapter 60—A Cross in Accepting the Truth"
       }
     },
     {
-      "chapterNumber": 65,
+      "chapterNumber": 62,
       "chapterTitle": "Chapter 60—A Cross in Accepting the Truth",
       "paragraphs": [
         {
@@ -6424,16 +6382,16 @@
         }
       ],
       "prevChapter": {
-        "number": 64,
+        "number": 61,
         "title": "Chapter 59—An Appeal to the Church"
       },
       "nextChapter": {
-        "number": 66,
+        "number": 63,
         "title": "Number Nineteen—Testimony for the Church"
       }
     },
     {
-      "chapterNumber": 66,
+      "chapterNumber": 63,
       "chapterTitle": "Number Nineteen—Testimony for the Church",
       "paragraphs": [
         {
@@ -6685,16 +6643,16 @@
         }
       ],
       "prevChapter": {
-        "number": 65,
+        "number": 62,
         "title": "Chapter 60—A Cross in Accepting the Truth"
       },
       "nextChapter": {
-        "number": 67,
+        "number": 64,
         "title": "Chapter 62—Exercise and Air"
       }
     },
     {
-      "chapterNumber": 67,
+      "chapterNumber": 64,
       "chapterTitle": "Chapter 62—Exercise and Air",
       "paragraphs": [
         {
@@ -6864,16 +6822,16 @@
         }
       ],
       "prevChapter": {
-        "number": 66,
+        "number": 63,
         "title": "Number Nineteen—Testimony for the Church"
       },
       "nextChapter": {
-        "number": 68,
+        "number": 65,
         "title": "Chapter 63—Selfishness Rebuked"
       }
     },
     {
-      "chapterNumber": 68,
+      "chapterNumber": 65,
       "chapterTitle": "Chapter 63—Selfishness Rebuked",
       "paragraphs": [
         {
@@ -6993,16 +6951,16 @@
         }
       ],
       "prevChapter": {
-        "number": 67,
+        "number": 64,
         "title": "Chapter 62—Exercise and Air"
       },
       "nextChapter": {
-        "number": 69,
+        "number": 66,
         "title": "Chapter 64—Fanaticism and Ignorance"
       }
     },
     {
-      "chapterNumber": 69,
+      "chapterNumber": 66,
       "chapterTitle": "Chapter 64—Fanaticism and Ignorance",
       "paragraphs": [
         {
@@ -7057,16 +7015,16 @@
         }
       ],
       "prevChapter": {
-        "number": 68,
+        "number": 65,
         "title": "Chapter 63—Selfishness Rebuked"
       },
       "nextChapter": {
-        "number": 70,
+        "number": 67,
         "title": "Chapter 65—An Indulged Daughter"
       }
     },
     {
-      "chapterNumber": 70,
+      "chapterNumber": 67,
       "chapterTitle": "Chapter 65—An Indulged Daughter",
       "paragraphs": [
         {
@@ -7156,16 +7114,16 @@
         }
       ],
       "prevChapter": {
-        "number": 69,
+        "number": 66,
         "title": "Chapter 64—Fanaticism and Ignorance"
       },
       "nextChapter": {
-        "number": 71,
+        "number": 68,
         "title": "Chapter 66—To a Minister’s Wife"
       }
     },
     {
-      "chapterNumber": 71,
+      "chapterNumber": 68,
       "chapterTitle": "Chapter 66—To a Minister’s Wife",
       "paragraphs": [
         {
@@ -7215,16 +7173,16 @@
         }
       ],
       "prevChapter": {
-        "number": 70,
+        "number": 67,
         "title": "Chapter 65—An Indulged Daughter"
       },
       "nextChapter": {
-        "number": 72,
+        "number": 69,
         "title": "Chapter 67—Unfaithfulness in Stewardship"
       }
     },
     {
-      "chapterNumber": 72,
+      "chapterNumber": 69,
       "chapterTitle": "Chapter 67—Unfaithfulness in Stewardship",
       "paragraphs": [
         {
@@ -7254,16 +7212,16 @@
         }
       ],
       "prevChapter": {
-        "number": 71,
+        "number": 68,
         "title": "Chapter 66—To a Minister’s Wife"
       },
       "nextChapter": {
-        "number": 73,
+        "number": 70,
         "title": "Chapter 68—Mistaken Sensitiveness"
       }
     },
     {
-      "chapterNumber": 73,
+      "chapterNumber": 70,
       "chapterTitle": "Chapter 68—Mistaken Sensitiveness",
       "paragraphs": [
         {
@@ -7293,16 +7251,16 @@
         }
       ],
       "prevChapter": {
-        "number": 72,
+        "number": 69,
         "title": "Chapter 67—Unfaithfulness in Stewardship"
       },
       "nextChapter": {
-        "number": 74,
+        "number": 71,
         "title": "Chapter 69—Convocations"
       }
     },
     {
-      "chapterNumber": 74,
+      "chapterNumber": 71,
       "chapterTitle": "Chapter 69—Convocations",
       "paragraphs": [
         {
@@ -7342,16 +7300,16 @@
         }
       ],
       "prevChapter": {
-        "number": 73,
+        "number": 70,
         "title": "Chapter 68—Mistaken Sensitiveness"
       },
       "nextChapter": {
-        "number": 75,
+        "number": 72,
         "title": "Number Twenty—Testimony for the Church"
       }
     },
     {
-      "chapterNumber": 75,
+      "chapterNumber": 72,
       "chapterTitle": "Number Twenty—Testimony for the Church",
       "paragraphs": [
         {
@@ -7431,16 +7389,16 @@
         }
       ],
       "prevChapter": {
-        "number": 74,
+        "number": 71,
         "title": "Chapter 69—Convocations"
       },
       "nextChapter": {
-        "number": 76,
+        "number": 73,
         "title": "Chapter 71—How Shall We keep the Sabbath?"
       }
     },
     {
-      "chapterNumber": 76,
+      "chapterNumber": 73,
       "chapterTitle": "Chapter 71—How Shall We keep the Sabbath?",
       "paragraphs": [
         {
@@ -7475,16 +7433,16 @@
         }
       ],
       "prevChapter": {
-        "number": 75,
+        "number": 72,
         "title": "Number Twenty—Testimony for the Church"
       },
       "nextChapter": {
-        "number": 77,
+        "number": 74,
         "title": "Chapter 72—Christian Recreation"
       }
     },
     {
-      "chapterNumber": 77,
+      "chapterNumber": 74,
       "chapterTitle": "Chapter 72—Christian Recreation",
       "paragraphs": [
         {
@@ -7589,16 +7547,16 @@
         }
       ],
       "prevChapter": {
-        "number": 76,
+        "number": 73,
         "title": "Chapter 71—How Shall We keep the Sabbath?"
       },
       "nextChapter": {
-        "number": 78,
+        "number": 75,
         "title": "Chapter 73—An Impressive Dream"
       }
     },
     {
-      "chapterNumber": 78,
+      "chapterNumber": 75,
       "chapterTitle": "Chapter 73—An Impressive Dream",
       "paragraphs": [
         {
@@ -7658,16 +7616,16 @@
         }
       ],
       "prevChapter": {
-        "number": 77,
+        "number": 74,
         "title": "Chapter 72—Christian Recreation"
       },
       "nextChapter": {
-        "number": 79,
+        "number": 76,
         "title": "Chapter 74—Our Camp Meetings"
       }
     },
     {
-      "chapterNumber": 79,
+      "chapterNumber": 76,
       "chapterTitle": "Chapter 74—Our Camp Meetings",
       "paragraphs": [
         {
@@ -7742,16 +7700,16 @@
         }
       ],
       "prevChapter": {
-        "number": 78,
+        "number": 75,
         "title": "Chapter 73—An Impressive Dream"
       },
       "nextChapter": {
-        "number": 80,
+        "number": 77,
         "title": "Chapter 75—A Solemn Dream"
       }
     },
     {
-      "chapterNumber": 80,
+      "chapterNumber": 77,
       "chapterTitle": "Chapter 75—A Solemn Dream",
       "paragraphs": [
         {
@@ -7826,16 +7784,16 @@
         }
       ],
       "prevChapter": {
-        "number": 79,
+        "number": 76,
         "title": "Chapter 74—Our Camp Meetings"
       },
       "nextChapter": {
-        "number": 81,
+        "number": 78,
         "title": "Chapter 76—Manners and Dress of Ministers"
       }
     },
     {
-      "chapterNumber": 81,
+      "chapterNumber": 78,
       "chapterTitle": "Chapter 76—Manners and Dress of Ministers",
       "paragraphs": [
         {
@@ -7984,16 +7942,16 @@
         }
       ],
       "prevChapter": {
-        "number": 80,
+        "number": 77,
         "title": "Chapter 75—A Solemn Dream"
       },
       "nextChapter": {
-        "number": 82,
+        "number": 79,
         "title": "Chapter 77—Love of Gain"
       }
     },
     {
-      "chapterNumber": 82,
+      "chapterNumber": 79,
       "chapterTitle": "Chapter 77—Love of Gain",
       "paragraphs": [
         {
@@ -8118,16 +8076,16 @@
         }
       ],
       "prevChapter": {
-        "number": 81,
+        "number": 78,
         "title": "Chapter 76—Manners and Dress of Ministers"
       },
       "nextChapter": {
-        "number": 83,
+        "number": 80,
         "title": "Chapter 78—The Cause in Vermont"
       }
     },
     {
-      "chapterNumber": 83,
+      "chapterNumber": 80,
       "chapterTitle": "Chapter 78—The Cause in Vermont",
       "paragraphs": [
         {
@@ -8696,16 +8654,16 @@
         }
       ],
       "prevChapter": {
-        "number": 82,
+        "number": 79,
         "title": "Chapter 77—Love of Gain"
       },
       "nextChapter": {
-        "number": 84,
+        "number": 81,
         "title": "Chapter 79—Transferring Earthly Treasure"
       }
     },
     {
-      "chapterNumber": 84,
+      "chapterNumber": 81,
       "chapterTitle": "Chapter 79—Transferring Earthly Treasure",
       "paragraphs": [
         {
@@ -8835,16 +8793,16 @@
         }
       ],
       "prevChapter": {
-        "number": 83,
+        "number": 80,
         "title": "Chapter 78—The Cause in Vermont"
       },
       "nextChapter": {
-        "number": 85,
+        "number": 82,
         "title": "Chapter 80—No Probation After Christ Comes"
       }
     },
     {
-      "chapterNumber": 85,
+      "chapterNumber": 82,
       "chapterTitle": "Chapter 80—No Probation After Christ Comes",
       "paragraphs": [
         {
@@ -8974,16 +8932,16 @@
         }
       ],
       "prevChapter": {
-        "number": 84,
+        "number": 81,
         "title": "Chapter 79—Transferring Earthly Treasure"
       },
       "nextChapter": {
-        "number": 86,
+        "number": 83,
         "title": "Chapter 81—Accountability for Light Received"
       }
     },
     {
-      "chapterNumber": 86,
+      "chapterNumber": 83,
       "chapterTitle": "Chapter 81—Accountability for Light Received",
       "paragraphs": [
         {
@@ -9168,16 +9126,16 @@
         }
       ],
       "prevChapter": {
-        "number": 85,
+        "number": 82,
         "title": "Chapter 80—No Probation After Christ Comes"
       },
       "nextChapter": {
-        "number": 87,
+        "number": 84,
         "title": "Appendix"
       }
     },
     {
-      "chapterNumber": 87,
+      "chapterNumber": 84,
       "chapterTitle": "Appendix",
       "paragraphs": [
         {
@@ -9197,7 +9155,7 @@
         }
       ],
       "prevChapter": {
-        "number": 86,
+        "number": 83,
         "title": "Chapter 81—Accountability for Light Received"
       }
     }

@@ -59,12 +59,20 @@ export const StudyDrawer: React.FC<StudyDrawerProps> = ({
       return;
     }
     // First try synchronous lookup from memory cache
-    const cached = getEgwChapter(readingChapterTarget.bookAbbrev, readingChapterTarget.chapterNumber);
+    const cached = getEgwChapter(
+      readingChapterTarget.bookAbbrev,
+      readingChapterTarget.chapterNumber,
+      readingChapterTarget.activePageRef
+    );
     if (cached) {
       setActiveEgwChapterData(cached);
     }
     // Then ensure async fetch from IndexedDB / JSON if not found or to ensure full book
-    getEgwChapterAsync(readingChapterTarget.bookAbbrev, readingChapterTarget.chapterNumber).then((data) => {
+    getEgwChapterAsync(
+      readingChapterTarget.bookAbbrev,
+      readingChapterTarget.chapterNumber,
+      readingChapterTarget.activePageRef
+    ).then((data) => {
       if (data) {
         setActiveEgwChapterData(data);
       }

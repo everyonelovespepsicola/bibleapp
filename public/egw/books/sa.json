@@ -380,21 +380,7 @@
           "pageRef": "111.2",
           "text": "We see this holy injunction almost wholly disregarded, even by professed Christians. Everywhere you may look, you will see pale, sickly, careworn, broken-down, dispirited, discouraged women. They are generally overworked, and their vital energies exhausted by frequent child-bearing. The world is filled with images of human beings who are of no worth to society. Many are deficient in intellect, and many who possess natural talents do not use them for any beneficial purposes. They are not cultivated, and the one great reason is, children have been multiplied faster than they could be well trained, and have been left to come up much like the brutes.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 1,
-        "title": "A Solemn Appeal"
-      },
-      "nextChapter": {
-        "number": 3,
-        "title": "Section 3"
-      }
-    },
-    {
-      "chapterNumber": 3,
-      "chapterTitle": "Section 3",
-      "paragraphs": [
+        },
         {
           "pageRef": "112.1",
           "text": "Children in this age are suffering with their parents, more or less, the penalty of the violation of the laws of health. The course generally pursued with them, from their infancy, is in continual opposition to the laws of their being. They were compelled to receive a miserable inheritance of disease and debility, before their birth, occasioned by the wrong habits of their parents, which will affect them in a greater or less degree through life. This bad state of things is made every way worse by parents’ continuing to follow a wrong course in the physical training of their children during their childhood.",
@@ -544,21 +530,7 @@
           "pageRef": "129.2",
           "text": "Many parents do not give their children lessons in self-control. They indulge their appetite, and suffer them to form, in their childhood, habits of eating and drinking according to their own desires. So will they be in their general habits in their youth. Their desires have not been restrained, and as they grow older, they will not only indulge in the common habits of intemperance, but they will go still further in indulgences. They will choose their own associates, although corrupt. They cannot endure restraint from their parents. They will give loose rein to their corrupt passions, and have but little regard for purity or virtue. This is the reason why there is so little purity and moral worth among the youth of the present day, and is the great cause why men and women feel under so little obligation to render obedience to the law of God. Some parents have not control over themselves. They do not control their own morbid appetites, or their passionate tempers; therefore they cannot educate their children in regard to the denial of their appetite, and teach them self-control.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 2,
-        "title": "Chapter 2—The Marriage Relation"
-      },
-      "nextChapter": {
-        "number": 4,
-        "title": "Section 4"
-      }
-    },
-    {
-      "chapterNumber": 4,
-      "chapterTitle": "Section 4",
-      "paragraphs": [
+        },
         {
           "pageRef": "130.1",
           "text": "Many mothers feel that they have not time to instruct their children, and in order to get them out of the way, and get rid of their noise and trouble, they send them to school. The school-room is a hard place for children who have inherited enfeebled constitutions. School-rooms generally have not been constructed in reference to health, but in regard to cheapness. The rooms have not been arranged so that they could be ventilated as they should have been, without exposing the children to severe colds. And the seats have seldom been made so that the children could sit with ease, and keep their little, growing frames in a proper posture to insure healthy action of the lungs and heart. Young children can grow into almost any shape, and can, by habits of proper exercise and positions of the body, obtain healthy forms. It is destructive to the health and life of young children for them to sit in the school-room, upon hard, ill-formed benches, from three to five hours a day, inhaling the impure air caused by many breaths. The weak lungs become affected, the brain, from which the nervous energy of the whole system is derived, becomes enfeebled by being called into active exercise before the strength of the mental organs is sufficiently matured to endure fatigue.",
@@ -631,16 +603,16 @@
         }
       ],
       "prevChapter": {
-        "number": 3,
-        "title": "Section 3"
+        "number": 1,
+        "title": "A Solemn Appeal"
       },
       "nextChapter": {
-        "number": 5,
+        "number": 3,
         "title": "Chapter 3—Obedience to the Law of God"
       }
     },
     {
-      "chapterNumber": 5,
+      "chapterNumber": 3,
       "chapterTitle": "Chapter 3—Obedience to the Law of God",
       "paragraphs": [
         {
@@ -709,16 +681,16 @@
         }
       ],
       "prevChapter": {
-        "number": 4,
-        "title": "Section 4"
+        "number": 2,
+        "title": "Chapter 2—The Marriage Relation"
       },
       "nextChapter": {
-        "number": 6,
+        "number": 4,
         "title": "Chapter 4—Female Modesty"
       }
     },
     {
-      "chapterNumber": 6,
+      "chapterNumber": 4,
       "chapterTitle": "Chapter 4—Female Modesty",
       "paragraphs": [
         {
@@ -805,16 +777,16 @@
         }
       ],
       "prevChapter": {
-        "number": 5,
+        "number": 3,
         "title": "Chapter 3—Obedience to the Law of God"
       },
       "nextChapter": {
-        "number": 7,
+        "number": 5,
         "title": "Chapter 5—Sentimentalism"
       }
     },
     {
-      "chapterNumber": 7,
+      "chapterNumber": 5,
       "chapterTitle": "Chapter 5—Sentimentalism",
       "paragraphs": [
         {
@@ -996,7 +968,7 @@
         }
       ],
       "prevChapter": {
-        "number": 6,
+        "number": 4,
         "title": "Chapter 4—Female Modesty"
       }
     }

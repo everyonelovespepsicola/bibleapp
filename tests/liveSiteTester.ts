@@ -51,3 +51,4 @@ export async function testLiveBookAvailability(bookCode: string): Promise<{
     chaptersCount: data.chapters ? data.chapters.length : 0,
   };
 }
+

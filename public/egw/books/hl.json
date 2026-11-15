@@ -27,34 +27,20 @@
           "pageRef": "3.4",
           "text": "It is believed that those whose knowledge of the writings from which these excerpts have been drawn has inspired confidence in them as a source of important truths, will appreciate this volume as a ready reference book in which can be easily found, by the aid of the table of contents and the index, a larger number of seed thoughts and clear expressions of fundamental principles upon the subjects treated than in any other volume of similar size which has ever appeared in print. To save space, abbreviations have been employed in the place of the titles of well-known works. These are explained on page 8.",
           "targetVerses": []
-        }
-      ],
-      "nextChapter": {
-        "number": 2,
-        "title": "Section 2"
-      }
-    },
-    {
-      "chapterNumber": 2,
-      "chapterTitle": "Section 2",
-      "paragraphs": [
+        },
         {
           "pageRef": "4.1",
           "text": "Although but a few months have elapsed since the first edition of this work was issued, a third edition is already demanded. The interest in the unique subject-matter presented is most gratifying to both compiler and publishers. Wherever it has been received, the work has been recognized as a veritable storehouse of seed thoughts relating to the great practical themes with which it deals. This edition contains two additional chapters, “God in Nature” and “The Spirit Filled Life,” and also an appendix of parallel scripture references, which will be found exceedingly helpful in making clear to the mind of the reader the fact that the principles presented in this work are not mere human inventions, but are a part of the divine order appointed for the human family at the beginning, and which is to be restored when all things shall be made new. It may be added that the compiler has carefully revised the entire work, making slight emendations and additions here and there in nearly every chapter, but, as before, without change in the original text from which the compilation has been made.",
           "targetVerses": []
         }
       ],
-      "prevChapter": {
-        "number": 1,
-        "title": "Healthful Living"
-      },
       "nextChapter": {
-        "number": 3,
+        "number": 2,
         "title": "Chapter 1—Our Bodies, Temples of the Holy Ghost"
       }
     },
     {
-      "chapterNumber": 3,
+      "chapterNumber": 2,
       "chapterTitle": "Chapter 1—Our Bodies, Temples of the Holy Ghost",
       "paragraphs": [
         {
@@ -149,16 +135,16 @@
         }
       ],
       "prevChapter": {
-        "number": 2,
-        "title": "Section 2"
+        "number": 1,
+        "title": "Healthful Living"
       },
       "nextChapter": {
-        "number": 4,
+        "number": 3,
         "title": "Chapter 2—Duty to Study the Laws of Life"
       }
     },
     {
-      "chapterNumber": 4,
+      "chapterNumber": 3,
       "chapterTitle": "Chapter 2—Duty to Study the Laws of Life",
       "paragraphs": [
         {
@@ -238,16 +224,16 @@
         }
       ],
       "prevChapter": {
-        "number": 3,
+        "number": 2,
         "title": "Chapter 1—Our Bodies, Temples of the Holy Ghost"
       },
       "nextChapter": {
-        "number": 5,
+        "number": 4,
         "title": "Chapter 3—The Great Decalogue"
       }
     },
     {
-      "chapterNumber": 5,
+      "chapterNumber": 4,
       "chapterTitle": "Chapter 3—The Great Decalogue",
       "paragraphs": [
         {
@@ -337,16 +323,16 @@
         }
       ],
       "prevChapter": {
-        "number": 4,
+        "number": 3,
         "title": "Chapter 2—Duty to Study the Laws of Life"
       },
       "nextChapter": {
-        "number": 6,
+        "number": 5,
         "title": "Chapter 4—Natural Law Part of the Law of God"
       }
     },
     {
-      "chapterNumber": 6,
+      "chapterNumber": 5,
       "chapterTitle": "Chapter 4—Natural Law Part of the Law of God",
       "paragraphs": [
         {
@@ -401,16 +387,16 @@
         }
       ],
       "prevChapter": {
-        "number": 5,
+        "number": 4,
         "title": "Chapter 3—The Great Decalogue"
       },
       "nextChapter": {
-        "number": 7,
+        "number": 6,
         "title": "Chapter 5—Blessings from Obeying Natural Law"
       }
     },
     {
-      "chapterNumber": 7,
+      "chapterNumber": 6,
       "chapterTitle": "Chapter 5—Blessings from Obeying Natural Law",
       "paragraphs": [
         {
@@ -470,16 +456,16 @@
         }
       ],
       "prevChapter": {
-        "number": 6,
+        "number": 5,
         "title": "Chapter 4—Natural Law Part of the Law of God"
       },
       "nextChapter": {
-        "number": 8,
+        "number": 7,
         "title": "Chapter 6—The Consequence of Violating Natural Law"
       }
     },
     {
-      "chapterNumber": 8,
+      "chapterNumber": 7,
       "chapterTitle": "Chapter 6—The Consequence of Violating Natural Law",
       "paragraphs": [
         {
@@ -534,16 +520,16 @@
         }
       ],
       "prevChapter": {
-        "number": 7,
+        "number": 6,
         "title": "Chapter 5—Blessings from Obeying Natural Law"
       },
       "nextChapter": {
-        "number": 9,
+        "number": 8,
         "title": "Chapter 7—Natural Law; How Violated"
       }
     },
     {
-      "chapterNumber": 9,
+      "chapterNumber": 8,
       "chapterTitle": "Chapter 7—Natural Law; How Violated",
       "paragraphs": [
         {
@@ -598,16 +584,16 @@
         }
       ],
       "prevChapter": {
-        "number": 8,
+        "number": 7,
         "title": "Chapter 6—The Consequence of Violating Natural Law"
       },
       "nextChapter": {
-        "number": 10,
+        "number": 9,
         "title": "Chapter 8—Health"
       }
     },
     {
-      "chapterNumber": 10,
+      "chapterNumber": 9,
       "chapterTitle": "Chapter 8—Health",
       "paragraphs": [
         {
@@ -697,16 +683,16 @@
         }
       ],
       "prevChapter": {
-        "number": 9,
+        "number": 8,
         "title": "Chapter 7—Natural Law; How Violated"
       },
       "nextChapter": {
-        "number": 11,
+        "number": 10,
         "title": "Chapter 9—Health Reform"
       }
     },
     {
-      "chapterNumber": 11,
+      "chapterNumber": 10,
       "chapterTitle": "Chapter 9—Health Reform",
       "paragraphs": [
         {
@@ -808,21 +794,7 @@
           "pageRef": "35.3",
           "text": "127. Guilt rests upon us who as a people have had much light, because we have not appreciated or improved the light given upon health reform.... This is not a matter to be trifled with, to be passed off with a jest.—The Medical Missionary, 216.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 10,
-        "title": "Chapter 8—Health"
-      },
-      "nextChapter": {
-        "number": 12,
-        "title": "Section 12"
-      }
-    },
-    {
-      "chapterNumber": 12,
-      "chapterTitle": "Section 12",
-      "paragraphs": [
+        },
         {
           "pageRef": "36.1",
           "text": "128. This work we begin to comprehend better,—the light given years ago,—that health reform principles would be as an entering wedge to be followed by a religious influence. To voice the words of John, “Behold the Lamb of God, which taketh away the sin of the world,”—Unpublished Testimonies, November 19, 1895.",
@@ -897,21 +869,7 @@
           "pageRef": "38.3",
           "text": "142. God requires all who believe the truth to make special persevering efforts to place themselves in the best possible condition of bodily health, for a solemn and important work is before us. Health of body and mind is required for this work; it is as essential to a healthy religious experience, to advancement in the Christian life, and progress in holiness, as is the hand or foot to the human body.—Testimonies for the Church 1:619.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 11,
-        "title": "Chapter 9—Health Reform"
-      },
-      "nextChapter": {
-        "number": 13,
-        "title": "Section 13"
-      }
-    },
-    {
-      "chapterNumber": 13,
-      "chapterTitle": "Section 13",
-      "paragraphs": [
+        },
         {
           "pageRef": "38.4",
           "text": "143. Satan knows that he cannot overcome man unless he can control his will. He can do this by deceiving man so that he will co-operate with him in transgressing the laws of nature.—Unpublished Testimonies, January 11, 1897.",
@@ -1076,16 +1034,16 @@
         }
       ],
       "prevChapter": {
-        "number": 12,
-        "title": "Section 12"
+        "number": 9,
+        "title": "Chapter 8—Health"
       },
       "nextChapter": {
-        "number": 14,
+        "number": 11,
         "title": "Chapter 10—Vital Vigor and Energy"
       }
     },
     {
-      "chapterNumber": 14,
+      "chapterNumber": 11,
       "chapterTitle": "Chapter 10—Vital Vigor and Energy",
       "paragraphs": [
         {
@@ -1107,21 +1065,7 @@
           "pageRef": "45.4",
           "text": "177. The tree of life possessed the power to perpetuate life, and as long as they [Adam and Eve] ate of it, they could not die. The lives of the antediluvians were protracted because of the life-giving power of this tree, which was transmitted to them from Adam and Eve.—The Review and Herald, January 26, 1897.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 13,
-        "title": "Section 13"
-      },
-      "nextChapter": {
-        "number": 15,
-        "title": "Section 15"
-      }
-    },
-    {
-      "chapterNumber": 15,
-      "chapterTitle": "Section 15",
-      "paragraphs": [
+        },
         {
           "pageRef": "45.5",
           "text": "178. The Bible is a leaf from the tree of life, and by eating it, by receiving it into our minds, we shall grow strong to do the will of God.—The Review and Herald, May 4, 1897.",
@@ -1176,21 +1120,7 @@
           "pageRef": "47.2",
           "text": "188. Bring to your aid the power of the will, which will resist cold, and will give energy to the nervous system.—Testimonies for the Church 2:533.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 14,
-        "title": "Chapter 10—Vital Vigor and Energy"
-      },
-      "nextChapter": {
-        "number": 16,
-        "title": "Section 16"
-      }
-    },
-    {
-      "chapterNumber": 16,
-      "chapterTitle": "Section 16",
-      "paragraphs": [
+        },
         {
           "pageRef": "47.3",
           "text": "189. Misuse of the body shortens that period of time which God designs shall be used in his service. By allowing ourselves to form wrong habits, by keeping late hours, by gratifying appetite at the expense of health, we lay the foundation for feebleness. By neglecting to take physical exercise, by overworking mind or body, we unbalance the nervous system. Those who thus shorten their lives by disregarding nature’s laws, are guilty of robbery before God.—The Review and Herald, December 1, 1896.",
@@ -1293,16 +1223,16 @@
         }
       ],
       "prevChapter": {
-        "number": 15,
-        "title": "Section 15"
+        "number": 10,
+        "title": "Chapter 9—Health Reform"
       },
       "nextChapter": {
-        "number": 17,
+        "number": 12,
         "title": "Chapter 11—Disease and Providence"
       }
     },
     {
-      "chapterNumber": 17,
+      "chapterNumber": 12,
       "chapterTitle": "Chapter 11—Disease and Providence",
       "paragraphs": [
         {
@@ -1362,16 +1292,16 @@
         }
       ],
       "prevChapter": {
-        "number": 16,
-        "title": "Section 16"
+        "number": 11,
+        "title": "Chapter 10—Vital Vigor and Energy"
       },
       "nextChapter": {
-        "number": 18,
+        "number": 13,
         "title": "Chapter 12—The Influence of Disease Upon the Mind and Morals"
       }
     },
     {
-      "chapterNumber": 18,
+      "chapterNumber": 13,
       "chapterTitle": "Chapter 12—The Influence of Disease Upon the Mind and Morals",
       "paragraphs": [
         {
@@ -1431,16 +1361,16 @@
         }
       ],
       "prevChapter": {
-        "number": 17,
+        "number": 12,
         "title": "Chapter 11—Disease and Providence"
       },
       "nextChapter": {
-        "number": 19,
+        "number": 14,
         "title": "Chapter 13—Heredity"
       }
     },
     {
-      "chapterNumber": 19,
+      "chapterNumber": 14,
       "chapterTitle": "Chapter 13—Heredity",
       "paragraphs": [
         {
@@ -1530,16 +1460,16 @@
         }
       ],
       "prevChapter": {
-        "number": 18,
+        "number": 13,
         "title": "Chapter 12—The Influence of Disease Upon the Mind and Morals"
       },
       "nextChapter": {
-        "number": 20,
+        "number": 15,
         "title": "Chapter 14—Causes of Disease"
       }
     },
     {
-      "chapterNumber": 20,
+      "chapterNumber": 15,
       "chapterTitle": "Chapter 14—Causes of Disease",
       "paragraphs": [
         {
@@ -1741,21 +1671,7 @@
           "pageRef": "66.3",
           "text": "287. Some of nature’s fine machinery gives way, leaving a heavier task for the remainder to perform, which disorders nature’s fine arrangement, and there is often a sudden breaking down of the constitution; and death is the result.—A Solemn Appeal, 64.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 19,
-        "title": "Chapter 13—Heredity"
-      },
-      "nextChapter": {
-        "number": 21,
-        "title": "Section 21"
-      }
-    },
-    {
-      "chapterNumber": 21,
-      "chapterTitle": "Section 21",
-      "paragraphs": [
+        },
         {
           "pageRef": "66.4",
           "text": "288. Filth is a breeder of disease.—The Review and Herald, February 4, 1896.",
@@ -1803,16 +1719,16 @@
         }
       ],
       "prevChapter": {
-        "number": 20,
-        "title": "Chapter 14—Causes of Disease"
+        "number": 14,
+        "title": "Chapter 13—Heredity"
       },
       "nextChapter": {
-        "number": 22,
+        "number": 16,
         "title": "Chapter 15—Resistance Against Disease"
       }
     },
     {
-      "chapterNumber": 22,
+      "chapterNumber": 16,
       "chapterTitle": "Chapter 15—Resistance Against Disease",
       "paragraphs": [
         {
@@ -1882,16 +1798,16 @@
         }
       ],
       "prevChapter": {
-        "number": 21,
-        "title": "Section 21"
+        "number": 15,
+        "title": "Chapter 14—Causes of Disease"
       },
       "nextChapter": {
-        "number": 23,
+        "number": 17,
         "title": "Chapter 16—Ventilation"
       }
     },
     {
-      "chapterNumber": 23,
+      "chapterNumber": 17,
       "chapterTitle": "Chapter 16—Ventilation",
       "paragraphs": [
         {
@@ -1946,16 +1862,16 @@
         }
       ],
       "prevChapter": {
-        "number": 22,
+        "number": 16,
         "title": "Chapter 15—Resistance Against Disease"
       },
       "nextChapter": {
-        "number": 24,
+        "number": 18,
         "title": "Chapter 17—Appetite"
       }
     },
     {
-      "chapterNumber": 24,
+      "chapterNumber": 18,
       "chapterTitle": "Chapter 17—Appetite",
       "paragraphs": [
         {
@@ -2010,16 +1926,16 @@
         }
       ],
       "prevChapter": {
-        "number": 23,
+        "number": 17,
         "title": "Chapter 16—Ventilation"
       },
       "nextChapter": {
-        "number": 25,
+        "number": 19,
         "title": "Chapter 18—Diet"
       }
     },
     {
-      "chapterNumber": 25,
+      "chapterNumber": 19,
       "chapterTitle": "Chapter 18—Diet",
       "paragraphs": [
         {
@@ -2141,21 +2057,7 @@
           "pageRef": "79.5",
           "text": "353. Good brown bread and rolls, prepared in a simple manner, yet with painstaking effort, are healthful.—Unpublished Testimonies, January 11, 1897.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 24,
-        "title": "Chapter 17—Appetite"
-      },
-      "nextChapter": {
-        "number": 26,
-        "title": "Section 26"
-      }
-    },
-    {
-      "chapterNumber": 26,
-      "chapterTitle": "Section 26",
-      "paragraphs": [
+        },
         {
           "pageRef": "79.6",
           "text": "354. In the preparation of food, the golden rays of light are to be kept shining, teaching those who sit at the table how to live.—Unpublished Testimonies, August 12, 1896.",
@@ -2330,21 +2232,7 @@
           "pageRef": "85.2",
           "text": "388. The stomach may be educated to desire food eight times a day, and feel faint if it is not supplied. But this is no argument in favor of so frequent eating.—The Review and Herald, May 8, 1883.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 25,
-        "title": "Chapter 18—Diet"
-      },
-      "nextChapter": {
-        "number": 27,
-        "title": "Section 27"
-      }
-    },
-    {
-      "chapterNumber": 27,
-      "chapterTitle": "Section 27",
-      "paragraphs": [
+        },
         {
           "pageRef": "85.3",
           "text": "389. At meal-time cast off care and taxing thought. Do not be hurried, but eat slowly and with cheerfulness, your heart filled with gratitude to God for all his blessings.—Gospel Workers, 174.",
@@ -2577,16 +2465,16 @@
         }
       ],
       "prevChapter": {
-        "number": 26,
-        "title": "Section 26"
+        "number": 18,
+        "title": "Chapter 17—Appetite"
       },
       "nextChapter": {
-        "number": 28,
+        "number": 20,
         "title": "Chapter 19—Flesh Foods"
       }
     },
     {
-      "chapterNumber": 28,
+      "chapterNumber": 20,
       "chapterTitle": "Chapter 19—Flesh Foods",
       "paragraphs": [
         {
@@ -2628,21 +2516,7 @@
           "pageRef": "98.1",
           "text": "442. Meat is the most expensive diet that can be had.—Unpublished Testimonies, February 17, 1884.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 27,
-        "title": "Section 27"
-      },
-      "nextChapter": {
-        "number": 29,
-        "title": "Section 29"
-      }
-    },
-    {
-      "chapterNumber": 29,
-      "chapterTitle": "Section 29",
-      "paragraphs": [
+        },
         {
           "pageRef": "98.2",
           "text": "443. We do not hesitate to say that flesh meat is not necessary for health or strength.—Testimonies for the Church 2:63.",
@@ -2840,16 +2714,16 @@
         }
       ],
       "prevChapter": {
-        "number": 28,
-        "title": "Chapter 19—Flesh Foods"
+        "number": 19,
+        "title": "Chapter 18—Diet"
       },
       "nextChapter": {
-        "number": 30,
+        "number": 21,
         "title": "Chapter 20—Stimulants"
       }
     },
     {
-      "chapterNumber": 30,
+      "chapterNumber": 21,
       "chapterTitle": "Chapter 20—Stimulants",
       "paragraphs": [
         {
@@ -3054,16 +2928,16 @@
         }
       ],
       "prevChapter": {
-        "number": 29,
-        "title": "Section 29"
+        "number": 20,
+        "title": "Chapter 19—Flesh Foods"
       },
       "nextChapter": {
-        "number": 31,
+        "number": 22,
         "title": "Chapter 21—Dress"
       }
     },
     {
-      "chapterNumber": 31,
+      "chapterNumber": 22,
       "chapterTitle": "Chapter 21—Dress",
       "paragraphs": [
         {
@@ -3090,21 +2964,7 @@
           "pageRef": "119.1",
           "text": "525. A plain, direct testimony is now needed, as given in the word of God, in regard to plainness of dress. This should be our burden. But it is too late now to become enthusiastic in making a test of this matter. There were some things which made the reform dress, which was once advocated, a decided blessing. With it the ridiculous hoops, which were then the fashion, could not be worn. The long dress skirts trailing on the ground and sweeping up the filth of the streets could not be patronized. But a more sensible style of dress has been adopted, which does not embrace these objectionable features. The fashionable part may be discarded, and should be by all who read the word of God. The dress of our people should be made most simple. The skirt and sack I have mentioned may be used, not that just that pattern and nothing else should be established, but a simple style as was represented in that dress. Some have supposed that the very pattern given was the pattern that all should adopt; this is not so, but something as simple as this would be the best we could adopt under the circumstances.... Simple dress should be the word; try your talent, my sisters, in this essential reform.... Let our sisters dress plainly, as many do, in having the dress of good material, durable, modest, appropriate for the age; and let not the dress question fill the mind.—Unpublished Testimonies, July 4, 1897.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 30,
-        "title": "Chapter 20—Stimulants"
-      },
-      "nextChapter": {
-        "number": 32,
-        "title": "Section 32"
-      }
-    },
-    {
-      "chapterNumber": 32,
-      "chapterTitle": "Section 32",
-      "paragraphs": [
+        },
         {
           "pageRef": "119.2",
           "text": "526. The sum and substance of true religion is to own and continually acknowledge by words, by dress, by deportment, our relationship to God.—Testimonies for the Church 4:582.",
@@ -3159,21 +3019,7 @@
           "pageRef": "121.5",
           "text": "536. Those who have had the light upon the subjects of eating and dressing with simplicity, in obedience to physical and moral laws, and who turn from the light which points out their duty, will shun duty in other things. If they blunt their consciences to avoid the cross which they will have to take up to be in harmony with natural law, they will, in order to shun reproach, violate the ten commandments.—Testimonies for the Church 3:51.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 31,
-        "title": "Chapter 21—Dress"
-      },
-      "nextChapter": {
-        "number": 33,
-        "title": "Section 33"
-      }
-    },
-    {
-      "chapterNumber": 33,
-      "chapterTitle": "Section 33",
-      "paragraphs": [
+        },
         {
           "pageRef": "121.6",
           "text": "537. Physical loveliness consists in symmetry—the harmonious proportion of parts.—Christian Temperance and Bible Hygiene, 94.",
@@ -3306,16 +3152,16 @@
         }
       ],
       "prevChapter": {
-        "number": 32,
-        "title": "Section 32"
+        "number": 21,
+        "title": "Chapter 20—Stimulants"
       },
       "nextChapter": {
-        "number": 34,
+        "number": 23,
         "title": "Chapter 22—Exercise"
       }
     },
     {
-      "chapterNumber": 34,
+      "chapterNumber": 23,
       "chapterTitle": "Chapter 22—Exercise",
       "paragraphs": [
         {
@@ -3342,21 +3188,7 @@
           "pageRef": "127.5",
           "text": "561. They should go out and exercise every day, ... make it their object to do some good, working to the end of benefiting others.—Testimonies for the Church 2:531.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 33,
-        "title": "Section 33"
-      },
-      "nextChapter": {
-        "number": 35,
-        "title": "Section 35"
-      }
-    },
-    {
-      "chapterNumber": 35,
-      "chapterTitle": "Section 35",
-      "paragraphs": [
+        },
         {
           "pageRef": "127.6",
           "text": "562. The exercise of one muscle, while others are left with nothing to do, will not strengthen the inactive ones, any more than the continual exercise of one of the organs of the mind will develop and strengthen the organs not brought into use. Each faculty of the mind and each muscle has its distinctive office, and all require to be exercised in order to become properly developed and retain healthful vigor. Each organ and muscle has its work to do in the living organism. Every wheel in the machinery must be a living, active, working wheel. Nature’s fine and wonderful works need to be kept in active motion in order to accomplish the object for which they were designed. Each faculty has a bearing upon the others, and all need to be exercised in order to be properly developed. If one muscle of the body is exercised more than another, the one used will become much the larger, and will destroy the harmony and beauty of the development of the system. A variety of exercise will call into use all the muscles of the body.—Testimonies for the Church 3:77, 78.",
@@ -3574,16 +3406,16 @@
         }
       ],
       "prevChapter": {
-        "number": 34,
-        "title": "Chapter 22—Exercise"
+        "number": 22,
+        "title": "Chapter 21—Dress"
       },
       "nextChapter": {
-        "number": 36,
+        "number": 24,
         "title": "Chapter 23—Manual Training"
       }
     },
     {
-      "chapterNumber": 36,
+      "chapterNumber": 24,
       "chapterTitle": "Chapter 23—Manual Training",
       "paragraphs": [
         {
@@ -3643,16 +3475,16 @@
         }
       ],
       "prevChapter": {
-        "number": 35,
-        "title": "Section 35"
+        "number": 23,
+        "title": "Chapter 22—Exercise"
       },
       "nextChapter": {
-        "number": 37,
+        "number": 25,
         "title": "Chapter 24—Hygiene"
       }
     },
     {
-      "chapterNumber": 37,
+      "chapterNumber": 25,
       "chapterTitle": "Chapter 24—Hygiene",
       "paragraphs": [
         {
@@ -3689,21 +3521,7 @@
           "pageRef": "142.2",
           "text": "618. Rooms that are not freely ventilated daily, and bedding that has not been thoroughly dried and aired, are not fit for use. We feel confident that disease and great suffering are brought on by sleeping in rooms with closed and curtained windows, not admitting pure air and the rays of the sun.... The room may not have had an airing for months, nor the advantages of a fire for weeks, if at all. It is dangerous to health and life to sleep in these rooms until the outside air shall have circulated through them for several hours and the bedding shall have been dried by the fire. Unless this precaution is taken, the rooms and bedding will be damp. Every room in the house should be thoroughly ventilated every day, and in damp weather should be warmed by fires.... Every room in your dwelling should be daily thrown open to the healthful rays of the sun, and the purifying air should be invited in. This will be a preventive of disease.... If all would appreciate the sunshine, and expose every article of clothing to its drying, purifying rays, mildew and mold would be prevented. The confined air of unventilated rooms meets us with sickening odors of mildew and mold, and the impurities exhaled by its inmates.... The emanations from damp, moldy rooms and clothing are poisonous to the system.—The Health Reformer, February 1, 1874.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 36,
-        "title": "Chapter 23—Manual Training"
-      },
-      "nextChapter": {
-        "number": 38,
-        "title": "Section 38"
-      }
-    },
-    {
-      "chapterNumber": 38,
-      "chapterTitle": "Section 38",
-      "paragraphs": [
+        },
         {
           "pageRef": "143.1",
           "text": "619. Strict habits of cleanliness should be observed. Many, while well, will not take the trouble to keep in a healthy condition. They neglect personal cleanliness, and are not careful to keep their clothing pure. Impurities are constantly and imperceptibly passing from the body, through the pores, and if the surface of the skin is not kept in a healthy condition, the system is burdened with impure matter. If the clothing worn is not often washed, and frequently aired, it becomes filthy with impurities which are thrown off from the body by sensible and insensible perspiration. And if the garments worn are not frequently cleansed from these impurities, the pores of the skin absorb again the waste matter thrown off. The impurities of the body, if not allowed to escape, are taken back into the blood, and forced upon the internal organs.—How to Live 4:60.",
@@ -3718,21 +3536,7 @@
           "pageRef": "143.3",
           "text": "621. The ten commandments spoken by Jehovah from Sinai cannot live in the hearts of persons of disorderly, filthy habits. If ancient Israel could not so much as listen to the proclamation of that holy law, unless they had obeyed the injunction of Jehovah, and had cleansed their clothing, how can that sacred law be written upon the hearts of persons who are not cleanly in person, in clothing, or in their houses? It is impossible. Their profession may be as high as heaven, yet it is not worth a straw.... All who meet upon the Sabbath to worship God should, if possible, have a neat, well-fitting, comely suit to wear in the house of worship. It is a dishonor to the Sabbath, and to God and his house, for those who profess that the Sabbath is the holy of the Lord, and honorable, to wear the same clothing upon the Sabbath that they have worn through the week while laboring upon their farms, when they can obtain other.—How to Live 6:59.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 37,
-        "title": "Chapter 24—Hygiene"
-      },
-      "nextChapter": {
-        "number": 39,
-        "title": "Section 39"
-      }
-    },
-    {
-      "chapterNumber": 39,
-      "chapterTitle": "Section 39",
-      "paragraphs": [
+        },
         {
           "pageRef": "144.1",
           "text": "622. Several instances have come under my notice where children are being murdered by inches by the mistaken kindness of parents.—The Health Reformer, September 1, 1866.",
@@ -3812,21 +3616,7 @@
           "pageRef": "151.1",
           "text": "During the first six or seven years of a child’s life, special attention should be given to its physical training, rather than to the intellect. After this period, if the physical constitution is good, the education of both should receive attention.... Parents, especially mothers, should be the only teachers of such infant minds. They should not educate from books. The children generally will be inquisitive to learn the things of nature. They will ask questions in regard to the things they see and hear, and parents should improve the opportunity to instruct and patiently answer these little inquiries.—How to Live 2:42, 44.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 38,
-        "title": "Section 38"
-      },
-      "nextChapter": {
-        "number": 40,
-        "title": "Section 40"
-      }
-    },
-    {
-      "chapterNumber": 40,
-      "chapterTitle": "Section 40",
-      "paragraphs": [
+        },
         {
           "pageRef": "151.2",
           "text": "636. It is an error generally committed to make no difference in the life of a woman previous to the birth of her children.—Testimonies for the Church 2:381.",
@@ -3886,21 +3676,7 @@
           "pageRef": "155.3",
           "text": "645. Very many children are born with their blood tainted with scrofula, through the wrong habits of the mother in her eating and dressing. The very many miscarriages that now occur may generally be traced to fashionable dress.—The Health Reformer, November 1, 1871.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 39,
-        "title": "Section 39"
-      },
-      "nextChapter": {
-        "number": 41,
-        "title": "Section 41"
-      }
-    },
-    {
-      "chapterNumber": 41,
-      "chapterTitle": "Section 41",
-      "paragraphs": [
+        },
         {
           "pageRef": "155.4",
           "text": "646. When we do all we can on our part to have health, then may we expect that blessed results will follow, and we can ask God in faith to bless our efforts for the preservation of health.—How to Live 4:64.",
@@ -3978,16 +3754,16 @@
         }
       ],
       "prevChapter": {
-        "number": 40,
-        "title": "Section 40"
+        "number": 24,
+        "title": "Chapter 23—Manual Training"
       },
       "nextChapter": {
-        "number": 42,
+        "number": 26,
         "title": "Chapter 25—The Organs of Digestion"
       }
     },
     {
-      "chapterNumber": 42,
+      "chapterNumber": 26,
       "chapterTitle": "Chapter 25—The Organs of Digestion",
       "paragraphs": [
         {
@@ -4029,21 +3805,7 @@
           "pageRef": "162.3",
           "text": "668. The stomach, when we lie down to rest, should have its work all done, that it may enjoy rest, as well as other portions of the body. The work of digestion should not be carried on through any period of the sleeping hours. After the stomach, which has been overtaxed, has performed its task, it becomes exhausted, which causes faintness.... The stomach becomes weary by being kept constantly at work.... Having no time for rest, the digestive organs become enfeebled, hence the sense of “goneness,” and desire for frequent eating.... The stomach must have its regular periods for labor and rest.—How to Live 1:56.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 41,
-        "title": "Section 41"
-      },
-      "nextChapter": {
-        "number": 43,
-        "title": "Section 43"
-      }
-    },
-    {
-      "chapterNumber": 43,
-      "chapterTitle": "Section 43",
-      "paragraphs": [
+        },
         {
           "pageRef": "162.4",
           "text": "669. The stomach has a controlling power upon the health of the entire body.... The brain nerves are in strong sympathy with the stomach.—The Health Reformer, October 1, 1871.",
@@ -4168,21 +3930,7 @@
           "pageRef": "168.5",
           "text": "692. Intemperance in eating, even of food of the right quality, will have a prostrating influence upon the system.... Strict temperance in eating and drinking is highly essential for the healthy preservation and vigorous exercise of all the functions of the body.... Intemperance commences at our tables, in the use of unhealthful food. After a time, through continued indulgence, the digestive organs become weakened, and the food taken does not satisfy the appetite. Unhealthy conditions are established, and there is a craving for more stimulating food.—Testimonies for the Church 3:487.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 42,
-        "title": "Chapter 25—The Organs of Digestion"
-      },
-      "nextChapter": {
-        "number": 44,
-        "title": "Section 44"
-      }
-    },
-    {
-      "chapterNumber": 44,
-      "chapterTitle": "Section 44",
-      "paragraphs": [
+        },
         {
           "pageRef": "169.1",
           "text": "693. The stomach must have its regular periods for labor and rest.... With regular habits and proper food, the stomach will gradually recover.... Efforts should be made to preserve carefully the remaining strength of the vital forces, by lifting off every overtasking burden. The stomach may never fully recover health, but a proper course of diet will save further debility, and many will recover more or less, unless they have gone too far in gluttonous self-murder.—How to Live 1:57.",
@@ -4240,16 +3988,16 @@
         }
       ],
       "prevChapter": {
-        "number": 43,
-        "title": "Section 43"
+        "number": 25,
+        "title": "Chapter 24—Hygiene"
       },
       "nextChapter": {
-        "number": 45,
+        "number": 27,
         "title": "Chapter 26—The Lungs and Respiration"
       }
     },
     {
-      "chapterNumber": 45,
+      "chapterNumber": 27,
       "chapterTitle": "Chapter 26—The Lungs and Respiration",
       "paragraphs": [
         {
@@ -4286,21 +4034,7 @@
           "pageRef": "171.7",
           "text": "710. The compression of the waist by tight lacing prevents the waste matter from being thrown off through its natural channels. The most important of these is the lungs. In order for the lungs to do the work designed, they must be left free, without the slightest compression. If the lungs are cramped, they cannot develop; but their capacity will be diminished, making it impossible to take a sufficient inspiration of air. The abdominal muscles were designed to aid the lungs in their action. Where there is no compression of the lungs, the motion in full breathing will be observed to be mostly of the abdomen.... When tight lacing is practiced, the lower part of the chest has not sufficient room for action. The breathing, therefore, is confined to the upper portion of the lungs, where there is not sufficient room to carry on the work. But the lower part of the lungs should have the greatest freedom possible. The compression of the waist will not allow free action of the muscles of the respiratory organs.—The Health Reformer, November 1, 1871.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 44,
-        "title": "Section 44"
-      },
-      "nextChapter": {
-        "number": 46,
-        "title": "Section 46"
-      }
-    },
-    {
-      "chapterNumber": 46,
-      "chapterTitle": "Section 46",
-      "paragraphs": [
+        },
         {
           "pageRef": "172.1",
           "text": "711. Many suffer decayed vegetable matter to remain about their premises.... There is constantly arising from these decaying substances an effluvium that is poisoning the air. By inhaling the impure air, the blood is poisoned, the lungs become affected, and the whole system is diseased.—How to Live 4:61.",
@@ -4405,21 +4139,7 @@
           "pageRef": "176.5",
           "text": "730. Every poisonous preparation in the vegetable and mineral kingdoms, taken into the system, will leave its wretched influence, affecting the liver and lungs.—Spiritual Gifts Volume 4a, 140.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 45,
-        "title": "Chapter 26—The Lungs and Respiration"
-      },
-      "nextChapter": {
-        "number": 47,
-        "title": "Section 47"
-      }
-    },
-    {
-      "chapterNumber": 47,
-      "chapterTitle": "Section 47",
-      "paragraphs": [
+        },
         {
           "pageRef": "176.6",
           "text": "731. Morning exercise, walking in the free, invigorating air of heaven, or cultivating flowers, small fruits, and vegetables, is necessary to a healthful circulation of the blood. It is the surest safeguard against colds, coughs, congestion of the brain, inflammation of the liver, the kidneys, and the lungs, and a hundred other diseases.—The Health Reformer, September 1, 1868.",
@@ -4452,16 +4172,16 @@
         }
       ],
       "prevChapter": {
-        "number": 46,
-        "title": "Section 46"
+        "number": 26,
+        "title": "Chapter 25—The Organs of Digestion"
       },
       "nextChapter": {
-        "number": 48,
+        "number": 28,
         "title": "Chapter 27—The Heart and Blood"
       }
     },
     {
-      "chapterNumber": 48,
+      "chapterNumber": 28,
       "chapterTitle": "Chapter 27—The Heart and Blood",
       "paragraphs": [
         {
@@ -4508,21 +4228,7 @@
           "pageRef": "180.1",
           "text": "745. The exercise of the brain in study without corresponding physical exercise has a tendency to attract the blood to the brain, and the circulation of the blood through the system becomes unbalanced. The brain has too much blood and the extremities too little.—Testimonies for the Church 3:138.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 47,
-        "title": "Section 47"
-      },
-      "nextChapter": {
-        "number": 49,
-        "title": "Section 49"
-      }
-    },
-    {
-      "chapterNumber": 49,
-      "chapterTitle": "Section 49",
-      "paragraphs": [
+        },
         {
           "pageRef": "180.2",
           "text": "746. Those who are not in health have impurities of the blood.—Testimonies for the Church 3:70.",
@@ -4687,21 +4393,7 @@
           "pageRef": "185.4",
           "text": "778. The disease which the drug was given to cure may disappear, but only to reappear in a new form, such as skin diseases, ulcers, painful, diseased joints, and sometimes in a more dangerous and deadly form. The liver, heart, and brain are frequently affected by drugs, and often all these organs are burdened with disease.... These organs, which should be in healthy condition, are enfeebled, and the blood becomes impure.—How to Live 3:61.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 48,
-        "title": "Chapter 27—The Heart and Blood"
-      },
-      "nextChapter": {
-        "number": 50,
-        "title": "Section 50"
-      }
-    },
-    {
-      "chapterNumber": 50,
-      "chapterTitle": "Section 50",
-      "paragraphs": [
+        },
         {
           "pageRef": "186.1",
           "text": "779. The more we exercise, the better will be the circulation of the blood....Those who accustom themselves to proper exercise in the open air will generally have a good and vigorous circulation.—Testimonies for the Church 2:525.",
@@ -4764,16 +4456,16 @@
         }
       ],
       "prevChapter": {
-        "number": 49,
-        "title": "Section 49"
+        "number": 27,
+        "title": "Chapter 26—The Lungs and Respiration"
       },
       "nextChapter": {
-        "number": 51,
+        "number": 29,
         "title": "Chapter 28—The Skin and its Functions"
       }
     },
     {
-      "chapterNumber": 51,
+      "chapterNumber": 29,
       "chapterTitle": "Chapter 28—The Skin and its Functions",
       "paragraphs": [
         {
@@ -4815,21 +4507,7 @@
           "pageRef": "189.2",
           "text": "798. Many are ignorantly injuring their health and endangering their lives by using cosmetics... When they become heated, ... the poison is absorbed by the pores of the skin, and is thrown into the blood. Many lives have been sacrificed by this means alone.—The Health Reformer, October 1, 1871.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 50,
-        "title": "Section 50"
-      },
-      "nextChapter": {
-        "number": 52,
-        "title": "Section 52"
-      }
-    },
-    {
-      "chapterNumber": 52,
-      "chapterTitle": "Section 52",
-      "paragraphs": [
+        },
         {
           "pageRef": "189.3",
           "text": "799. The surface of the skin is nearly dead because it has no air to breathe. Its million little mouths are closed, because they are clogged by the impurities of the system, or for want of air.—Testimonies for the Church 1:701.",
@@ -4879,21 +4557,7 @@
           "pageRef": "191.1",
           "text": "808. Ladies may resort to cosmetics to restore the tint of the complexion, but they cannot thus bring back the glow of healthful feelings to the heart. That which darkens and makes dingy the skin also clouds the spirits and destroys cheerfulness and peace of mind.—The Health Reformer, February 1, 1877.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 51,
-        "title": "Chapter 28—The Skin and its Functions"
-      },
-      "nextChapter": {
-        "number": 53,
-        "title": "Section 53"
-      }
-    },
-    {
-      "chapterNumber": 53,
-      "chapterTitle": "Section 53",
-      "paragraphs": [
+        },
         {
           "pageRef": "191.2",
           "text": "809. Those who are not in health have impurities in the blood, and the skin is not in a healthy condition.—Testimonies for the Church 3:70.",
@@ -4908,21 +4572,7 @@
           "pageRef": "191.4",
           "text": "811. These pores have become clogged and cannot perform the task allotted to them, and so the internal organs have a double task thrown upon them, and the whole system is deranged.—The Health Reformer, September 1, 1866.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 52,
-        "title": "Section 52"
-      },
-      "nextChapter": {
-        "number": 54,
-        "title": "Section 54"
-      }
-    },
-    {
-      "chapterNumber": 54,
-      "chapterTitle": "Section 54",
-      "paragraphs": [
+        },
         {
           "pageRef": "191.5",
           "text": "812. If you add clothing, let it be but little, and exercise, if possible, to regain the heat you need. If you positively cannot engage in active exercise, warm yourselves by the fire; but as soon as you are warm, lay off your extra clothing, and remove from the fire.—Testimonies for the Church 2:526.",
@@ -4960,16 +4610,16 @@
         }
       ],
       "prevChapter": {
-        "number": 53,
-        "title": "Section 53"
+        "number": 28,
+        "title": "Chapter 27—The Heart and Blood"
       },
       "nextChapter": {
-        "number": 55,
+        "number": 30,
         "title": "Chapter 29—The Brain and the Nervous System"
       }
     },
     {
-      "chapterNumber": 55,
+      "chapterNumber": 30,
       "chapterTitle": "Chapter 29—The Brain and the Nervous System",
       "paragraphs": [
         {
@@ -5036,21 +4686,7 @@
           "pageRef": "195.1",
           "text": "831. This drug poison, opium, gives temporary relief from pain, but does not remove the cause of pain. It only stupefies the brain, rendering it incapable of receiving impressions from the nerves. While the brain is thus insensible, the hearing, the taste, and the sight are affected. When the influence of opium wears off, and the mind arouses from its state of paralysis, the nerves, which have been cut off from communication with the brain, shriek out louder than ever ... because of the additional outrage the system has sustained in receiving this poison.—How to Live 3:56.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 54,
-        "title": "Section 54"
-      },
-      "nextChapter": {
-        "number": 56,
-        "title": "Section 56"
-      }
-    },
-    {
-      "chapterNumber": 56,
-      "chapterTitle": "Section 56",
-      "paragraphs": [
+        },
         {
           "pageRef": "195.2",
           "text": "832. God himself has formed us with distinctive organs and faculties. These he designs should act together in harmony. If we injure one, all are affected.—The Health Reformer, January 1, 1873.",
@@ -5085,21 +4721,7 @@
           "pageRef": "196.3",
           "text": "838. Those who are changing from three meals a day to two, will at first be troubled more or less with faintness, especially about the time they have been in the habit of eating the third meal. But if they persevere for a short time, this faintness will disappear.—How to Live 1:56.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 55,
-        "title": "Chapter 29—The Brain and the Nervous System"
-      },
-      "nextChapter": {
-        "number": 57,
-        "title": "Section 57"
-      }
-    },
-    {
-      "chapterNumber": 57,
-      "chapterTitle": "Section 57",
-      "paragraphs": [
+        },
         {
           "pageRef": "196.4",
           "text": "839. Anything that hinders the active motion of the living machinery affects the brain very directly.—Testimonies for the Church 2:370.",
@@ -5259,21 +4881,7 @@
           "pageRef": "203.2",
           "text": "870. Many sink into an early grave, while others have a sufficient force of constitution to pass this ordeal.... Nature will make them pay the penalty for the transgression of her laws ... by numerous pains in the system, ... neuralgia, ... affection of the spine.—A Solemn Appeal, 63, 64.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 56,
-        "title": "Section 56"
-      },
-      "nextChapter": {
-        "number": 58,
-        "title": "Section 58"
-      }
-    },
-    {
-      "chapterNumber": 58,
-      "chapterTitle": "Section 58",
-      "paragraphs": [
+        },
         {
           "pageRef": "203.3",
           "text": "871. The mind and body are intimately connected. If the former is to be firm and well balanced, the latter should be in the best possible condition. Conscience and right principles of life should be sustained by firm, quiet nerves, a healthy circulation, and the activity and strength of general health.—The Health Reformer, November 1, 1877.",
@@ -5351,16 +4959,16 @@
         }
       ],
       "prevChapter": {
-        "number": 57,
-        "title": "Section 57"
+        "number": 29,
+        "title": "Chapter 28—The Skin and its Functions"
       },
       "nextChapter": {
-        "number": 59,
+        "number": 31,
         "title": "Chapter 30—Auto-Intoxication, or Self-Poisoning"
       }
     },
     {
-      "chapterNumber": 59,
+      "chapterNumber": 31,
       "chapterTitle": "Chapter 30—Auto-Intoxication, or Self-Poisoning",
       "paragraphs": [
         {
@@ -5395,16 +5003,16 @@
         }
       ],
       "prevChapter": {
-        "number": 58,
-        "title": "Section 58"
+        "number": 30,
+        "title": "Chapter 29—The Brain and the Nervous System"
       },
       "nextChapter": {
-        "number": 60,
+        "number": 32,
         "title": "Chapter 31—Colds"
       }
     },
     {
-      "chapterNumber": 60,
+      "chapterNumber": 32,
       "chapterTitle": "Chapter 31—Colds",
       "paragraphs": [
         {
@@ -5474,16 +5082,16 @@
         }
       ],
       "prevChapter": {
-        "number": 59,
+        "number": 31,
         "title": "Chapter 30—Auto-Intoxication, or Self-Poisoning"
       },
       "nextChapter": {
-        "number": 61,
+        "number": 33,
         "title": "Chapter 32—Fevers and Acute Diseases"
       }
     },
     {
-      "chapterNumber": 61,
+      "chapterNumber": 33,
       "chapterTitle": "Chapter 32—Fevers and Acute Diseases",
       "paragraphs": [
         {
@@ -5578,16 +5186,16 @@
         }
       ],
       "prevChapter": {
-        "number": 60,
+        "number": 32,
         "title": "Chapter 31—Colds"
       },
       "nextChapter": {
-        "number": 62,
+        "number": 34,
         "title": "Chapter 33—Moral Maladies"
       }
     },
     {
-      "chapterNumber": 62,
+      "chapterNumber": 34,
       "chapterTitle": "Chapter 33—Moral Maladies",
       "paragraphs": [
         {
@@ -5609,21 +5217,7 @@
           "pageRef": "217.1",
           "text": "926. Many might have been saved if they had been carefully instructed in regard to the influence of this practise upon their health. They were ignorant of the fact that they were bringing much suffering upon themselves.—A Solemn Appeal, 55.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 61,
-        "title": "Chapter 32—Fevers and Acute Diseases"
-      },
-      "nextChapter": {
-        "number": 63,
-        "title": "Section 63"
-      }
-    },
-    {
-      "chapterNumber": 63,
-      "chapterTitle": "Section 63",
-      "paragraphs": [
+        },
         {
           "pageRef": "217.2",
           "text": "927. If ever there was a time that the diet should be of the most simple kind, it is now. Meat should not be placed before our children. Its influence is to excite and strengthen the lower passions, and has a tendency to deaden the moral powers.... The less feverish the diet, the more easily can the passions be controlled.—Testimonies for the Church 2:352.",
@@ -5663,21 +5257,7 @@
           "pageRef": "218.4",
           "text": "934. If you are situated so that their intercourse with young associates cannot always be overruled as you would wish to have it, then let them visit your children in your presence, and in no case allow these associates to lodge in the same bed, or even in the same room. It will be far easier to prevent an evil than to cure it afterward.—A Solemn Appeal, 58.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 62,
-        "title": "Chapter 33—Moral Maladies"
-      },
-      "nextChapter": {
-        "number": 64,
-        "title": "Section 64"
-      }
-    },
-    {
-      "chapterNumber": 64,
-      "chapterTitle": "Section 64",
-      "paragraphs": [
+        },
         {
           "pageRef": "219.1",
           "text": "935. Mothers, it is a crime for you to allow yourselves to remain in ignorance in regard to the habits of your children. If they are pure, keep them so. Fortify their young minds, and prepare them to detest this health-and-soul-destroying vice. Shield them from becoming contaminated by associating with every young companion.—A Solemn Appeal, 58.",
@@ -5697,21 +5277,7 @@
           "pageRef": "219.4",
           "text": "938. Active employment will give but little time to invite Satan’s temptations. They may be often weary, but this will not injure them. Nature will restore their vigor and strength in their sleeping hours, if her laws are not violated. And the thoroughly tired person has less inclination for secret indulgence.—A Solemn Appeal, 62.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 63,
-        "title": "Section 63"
-      },
-      "nextChapter": {
-        "number": 65,
-        "title": "Section 65"
-      }
-    },
-    {
-      "chapterNumber": 65,
-      "chapterTitle": "Section 65",
-      "paragraphs": [
+        },
         {
           "pageRef": "219.5",
           "text": "939. Moral pollution has done more than any other evil to cause the race to degenerate.... It brings on disease of almost every description.—Testimonies for the Church 2:391.",
@@ -5774,16 +5340,16 @@
         }
       ],
       "prevChapter": {
-        "number": 64,
-        "title": "Section 64"
+        "number": 33,
+        "title": "Chapter 32—Fevers and Acute Diseases"
       },
       "nextChapter": {
-        "number": 66,
+        "number": 35,
         "title": "Chapter 34—Rational Remedies for Disease"
       }
     },
     {
-      "chapterNumber": 66,
+      "chapterNumber": 35,
       "chapterTitle": "Chapter 34—Rational Remedies for Disease",
       "paragraphs": [
         {
@@ -5840,21 +5406,7 @@
           "pageRef": "225.4",
           "text": "961. Keep the patient free from excitement, and every influence calculated to depress. Her attendants should be cheerful and hopeful. She should have a simple diet, and should be allowed plenty of pure, soft water to drink. Bathe frequently in pure, soft water, followed by gentle rubbing. Let the light and air be freely admitted into the room. She must have quiet and undisturbed rest.—How to Live 3:54, 55.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 65,
-        "title": "Section 65"
-      },
-      "nextChapter": {
-        "number": 67,
-        "title": "Section 67"
-      }
-    },
-    {
-      "chapterNumber": 67,
-      "chapterTitle": "Section 67",
-      "paragraphs": [
+        },
         {
           "pageRef": "226.1",
           "text": "962. Water is the best liquid possible to cleanse the tissues.... Drink some little time before or after the meal.—The Review and Herald, July 29, 1884.",
@@ -5874,21 +5426,7 @@
           "pageRef": "226.4",
           "text": "965. If they would become enlightened, ... and accustom themselves to outdoor exercise, and to air in their houses, summer and winter, and use soft water for drinking and bathing purposes, they would be comparatively well and happy, instead of dragging out a miserable existence.—How to Live 4:56.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 66,
-        "title": "Chapter 34—Rational Remedies for Disease"
-      },
-      "nextChapter": {
-        "number": 68,
-        "title": "Section 68"
-      }
-    },
-    {
-      "chapterNumber": 68,
-      "chapterTitle": "Section 68",
-      "paragraphs": [
+        },
         {
           "pageRef": "226.5",
           "text": "966. Many have never experienced the beneficial effects of water, and are afraid to use one of heaven’s greatest blessings.—How to Live 3:62.",
@@ -5948,21 +5486,7 @@
           "pageRef": "228.4",
           "text": "977. Nature, to relieve herself of poisonous impurities, makes an effort to free the system, which effort produces fevers and what is termed disease. But even then, if those who are afflicted would assist nature in her efforts by the use of pure, soft water, much suffering would be prevented.—How to Live 4:60.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 67,
-        "title": "Section 67"
-      },
-      "nextChapter": {
-        "number": 69,
-        "title": "Section 69"
-      }
-    },
-    {
-      "chapterNumber": 69,
-      "chapterTitle": "Section 69",
-      "paragraphs": [
+        },
         {
           "pageRef": "229.1",
           "text": "978. This is one of nature’s most healing agents.—Testimonies for the Church 2:527.",
@@ -5992,21 +5516,7 @@
           "pageRef": "230.2",
           "text": "983. The feeble one should press out into the sunshine as earnestly and naturally as do the shaded plants and vines. The pale and sickly grain blade that has struggled up out of the cold of early spring, puts out the natural and healthy deep green after enjoying for a few days the health-and-life-giving rays of the sun. Go out into the light and warmth of the glorious sun, you pale and sickly ones, and share with vegetation its life-giving, health-dealing power.—The Health Reformer, May 1, 1871.",
           "targetVerses": []
-        }
-      ],
-      "prevChapter": {
-        "number": 68,
-        "title": "Section 68"
-      },
-      "nextChapter": {
-        "number": 70,
-        "title": "Section 70"
-      }
-    },
-    {
-      "chapterNumber": 70,
-      "chapterTitle": "Section 70",
-      "paragraphs": [
+        },
         {
           "pageRef": "230.3",
           "text": "984. But few realize the power the mind has over the body.—Testimonies for the Church 3:184.",
@@ -6164,16 +5674,16 @@
         }
       ],
       "prevChapter": {
-        "number": 69,
-        "title": "Section 69"
+        "number": 34,
+        "title": "Chapter 33—Moral Maladies"
       },
       "nextChapter": {
-        "number": 71,
+        "number": 36,
         "title": "Chapter 35—Prayer for the Sick"
       }
     },
     {
-      "chapterNumber": 71,
+      "chapterNumber": 36,
       "chapterTitle": "Chapter 35—Prayer for the Sick",
       "paragraphs": [
         {
@@ -6293,16 +5803,16 @@
         }
       ],
       "prevChapter": {
-        "number": 70,
-        "title": "Section 70"
+        "number": 35,
+        "title": "Chapter 34—Rational Remedies for Disease"
       },
       "nextChapter": {
-        "number": 72,
+        "number": 37,
         "title": "Chapter 36—Drugs"
       }
     },
     {
-      "chapterNumber": 72,
+      "chapterNumber": 37,
       "chapterTitle": "Chapter 36—Drugs",
       "paragraphs": [
         {
@@ -6422,16 +5932,16 @@
         }
       ],
       "prevChapter": {
-        "number": 71,
+        "number": 36,
         "title": "Chapter 35—Prayer for the Sick"
       },
       "nextChapter": {
-        "number": 73,
+        "number": 38,
         "title": "Chapter 37—The Missionary Nurse"
       }
     },
     {
-      "chapterNumber": 73,
+      "chapterNumber": 38,
       "chapterTitle": "Chapter 37—The Missionary Nurse",
       "paragraphs": [
         {
@@ -6486,16 +5996,16 @@
         }
       ],
       "prevChapter": {
-        "number": 72,
+        "number": 37,
         "title": "Chapter 36—Drugs"
       },
       "nextChapter": {
-        "number": 74,
+        "number": 39,
         "title": "Chapter 38—Medical Students"
       }
     },
     {
-      "chapterNumber": 74,
+      "chapterNumber": 39,
       "chapterTitle": "Chapter 38—Medical Students",
       "paragraphs": [
         {
@@ -6620,16 +6130,16 @@
         }
       ],
       "prevChapter": {
-        "number": 73,
+        "number": 38,
         "title": "Chapter 37—The Missionary Nurse"
       },
       "nextChapter": {
-        "number": 75,
+        "number": 40,
         "title": "Chapter 39—The Missionary Physician"
       }
     },
     {
-      "chapterNumber": 75,
+      "chapterNumber": 40,
       "chapterTitle": "Chapter 39—The Missionary Physician",
       "paragraphs": [
         {
@@ -6844,16 +6354,16 @@
         }
       ],
       "prevChapter": {
-        "number": 74,
+        "number": 39,
         "title": "Chapter 38—Medical Students"
       },
       "nextChapter": {
-        "number": 76,
+        "number": 41,
         "title": "Chapter 40—Medical Missionary Work"
       }
     },
     {
-      "chapterNumber": 76,
+      "chapterNumber": 41,
       "chapterTitle": "Chapter 40—Medical Missionary Work",
       "paragraphs": [
         {
@@ -6918,16 +6428,16 @@
         }
       ],
       "prevChapter": {
-        "number": 75,
+        "number": 40,
         "title": "Chapter 39—The Missionary Physician"
       },
       "nextChapter": {
-        "number": 77,
+        "number": 42,
         "title": "Chapter 41—Christian Help Work"
       }
     },
     {
-      "chapterNumber": 77,
+      "chapterNumber": 42,
       "chapterTitle": "Chapter 41—Christian Help Work",
       "paragraphs": [
         {
@@ -7042,16 +6552,16 @@
         }
       ],
       "prevChapter": {
-        "number": 76,
+        "number": 41,
         "title": "Chapter 40—Medical Missionary Work"
       },
       "nextChapter": {
-        "number": 78,
+        "number": 43,
         "title": "Chapter 42—Lessons from the Experience of the Children of Israel"
       }
     },
     {
-      "chapterNumber": 78,
+      "chapterNumber": 43,
       "chapterTitle": "Chapter 42—Lessons from the Experience of the Children of Israel",
       "paragraphs": [
         {
@@ -7121,16 +6631,16 @@
         }
       ],
       "prevChapter": {
-        "number": 77,
+        "number": 42,
         "title": "Chapter 41—Christian Help Work"
       },
       "nextChapter": {
-        "number": 79,
+        "number": 44,
         "title": "Chapter 43—God in Nature"
       }
     },
     {
-      "chapterNumber": 79,
+      "chapterNumber": 44,
       "chapterTitle": "Chapter 43—God in Nature",
       "paragraphs": [
         {
@@ -7295,16 +6805,16 @@
         }
       ],
       "prevChapter": {
-        "number": 78,
+        "number": 43,
         "title": "Chapter 42—Lessons from the Experience of the Children of Israel"
       },
       "nextChapter": {
-        "number": 80,
+        "number": 45,
         "title": "Chapter 44—The Spirit-Filled Life"
       }
     },
     {
-      "chapterNumber": 80,
+      "chapterNumber": 45,
       "chapterTitle": "Chapter 44—The Spirit-Filled Life",
       "paragraphs": [
         {
@@ -7504,7 +7014,7 @@
         }
       ],
       "prevChapter": {
-        "number": 79,
+        "number": 44,
         "title": "Chapter 43—God in Nature"
       }
     }
