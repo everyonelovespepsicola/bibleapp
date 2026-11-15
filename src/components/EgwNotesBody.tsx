@@ -1,21 +1,24 @@
 import React from 'react';
 import type { EgwComment } from '../types/egw';
-import { BookOpen, Bookmark, Sparkles, Copy, Check } from 'lucide-react';
+import { BookOpen, Bookmark, Sparkles, Copy, Check, ChevronRight } from 'lucide-react';
 
 interface EgwNotesBodyProps {
   reference: string;
   comments: EgwComment[];
   verseText?: string;
+  onOpenChapter?: (comment: EgwComment) => void;
 }
 
 export const EgwNotesBody: React.FC<EgwNotesBodyProps> = ({
   reference,
   comments,
   verseText,
+  onOpenChapter,
 }) => {
   const [copiedId, setCopiedId] = React.useState<string | null>(null);
 
-  const copyParagraph = async (c: EgwComment) => {
+  const copyParagraph = async (e: React.MouseEvent, c: EgwComment) => {
+    e.stopPropagation();
     const citation = `${c.sourceAbbrev} ${c.pageRef} (${c.sourceBook}, p. ${c.pageRef})`;
     const fullText = `"${c.paragraphText}" — ${citation}`;
     await navigator.clipboard.writeText(fullText);
@@ -88,7 +91,7 @@ export const EgwNotesBody: React.FC<EgwNotesBodyProps> = ({
               <Sparkles className="w-3.5 h-3.5" />
               <span>Ellen G. White Paragraphs ({comments.length})</span>
             </div>
-            <span className="text-[11px] text-slate-500">Full Context Flow</span>
+            <span className="text-[11px] text-slate-500">Click quote card to read full chapter</span>
           </div>
 
           {comments.map((c) => {
@@ -97,12 +100,14 @@ export const EgwNotesBody: React.FC<EgwNotesBodyProps> = ({
             return (
               <div
                 key={c.id}
-                className="bg-slate-800/40 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition space-y-3 relative group"
+                onClick={() => onOpenChapter?.(c)}
+                className="bg-slate-800/40 border border-slate-800 hover:border-amber-500/50 hover:bg-slate-800/60 rounded-xl p-5 transition space-y-3 relative group cursor-pointer shadow-sm hover:shadow-lg hover:shadow-amber-500/5"
+                title={`Click to read full Chapter in ${c.sourceBook}`}
               >
-                {/* Book & Chapter Header */}
+                {/* Book & Chapter Header with Read Full Chapter Pill */}
                 <div className="flex items-baseline justify-between gap-2 border-b border-slate-800/80 pb-2">
                   <div>
-                    <span className="text-sm font-bold text-amber-300 font-serif">
+                    <span className="text-sm font-bold text-amber-300 font-serif group-hover:text-amber-200 transition">
                       {c.sourceBook}
                     </span>
                     {c.chapterTitle && (
@@ -112,15 +117,15 @@ export const EgwNotesBody: React.FC<EgwNotesBodyProps> = ({
                     )}
                   </div>
 
-                  {c.year && (
-                    <span className="text-[10px] text-slate-500 font-mono">
-                      ({c.year})
+                  <div className="flex items-center space-x-2 flex-shrink-0">
+                    <span className="text-[11px] text-amber-400 font-medium group-hover:underline flex items-center">
+                      Read Chapter <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
                     </span>
-                  )}
+                  </div>
                 </div>
 
                 {/* Full Paragraph Text with Quote and Ending Reference Code */}
-                <div className="font-serif text-[1.05rem] leading-[1.8] text-slate-200 border-l-2 border-amber-500/50 pl-3.5 py-0.5">
+                <div className="font-serif text-[1.05rem] leading-[1.8] text-slate-200 border-l-2 border-amber-500/50 group-hover:border-amber-400 pl-3.5 py-0.5 transition">
                   <span>{renderParagraphContent(c.paragraphText, reference)}</span>
                   {/* Inline Ending Reference Code: Book, Page, Paragraph (e.g. Ed 134.2, COL 35.2) */}
                   <span className="ml-2 inline-block font-sans font-bold text-amber-400/90 text-xs tracking-wide bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/30 selection:bg-amber-400 selection:text-slate-950">
@@ -138,7 +143,7 @@ export const EgwNotesBody: React.FC<EgwNotesBodyProps> = ({
                   </div>
 
                   <button
-                    onClick={() => copyParagraph(c)}
+                    onClick={(e) => copyParagraph(e, c)}
                     className="flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-amber-300 text-xs transition border border-slate-700 cursor-pointer"
                     title="Copy paragraph and citation to clipboard"
                   >

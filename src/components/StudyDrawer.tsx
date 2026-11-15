@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { StrongsEntry } from '../types/bible';
 import type { EgwComment, StudyDrawerTab } from '../types/egw';
+import { getEgwChapter } from '../utils/egwService';
 import { X, Search, Link as LinkIcon, Compass, ArrowRightLeft, ChevronLeft, ChevronRight, BookOpen, Feather } from 'lucide-react';
 import { LexiconBody } from './LexiconBody';
 import { EgwNotesBody } from './EgwNotesBody';
+import { EgwChapterReader } from './EgwChapterReader';
 
 interface StudyDrawerProps {
   entry: StrongsEntry | null;
@@ -42,6 +44,13 @@ export const StudyDrawer: React.FC<StudyDrawerProps> = ({
   currentVerseText = '',
   egwComments = [],
 }) => {
+  // Reading chapter state for EGW books
+  const [readingChapterTarget, setReadingChapterTarget] = useState<{
+    bookAbbrev: string;
+    chapterNumber: number;
+    activePageRef?: string;
+  } | null>(null);
+
   const isHebrew = entry ? entry.number.startsWith('H') : false;
   const langLabel = isHebrew ? 'Ancient Hebrew' : 'Koine Greek';
 
@@ -51,6 +60,30 @@ export const StudyDrawer: React.FC<StudyDrawerProps> = ({
         (m) => m.toUpperCase() !== entry.number.toUpperCase()
       )
     : [];
+
+  const activeEgwChapterData = readingChapterTarget
+    ? getEgwChapter(readingChapterTarget.bookAbbrev, readingChapterTarget.chapterNumber)
+    : null;
+
+  const handleOpenChapter = (comment: EgwComment) => {
+    if (comment.chapterNumber) {
+      setReadingChapterTarget({
+        bookAbbrev: comment.sourceAbbrev,
+        chapterNumber: comment.chapterNumber,
+        activePageRef: comment.pageRef,
+      });
+    }
+  };
+
+  const handleNavigateChapter = (chapNum: number) => {
+    if (readingChapterTarget) {
+      setReadingChapterTarget({
+        ...readingChapterTarget,
+        chapterNumber: chapNum,
+        activePageRef: undefined,
+      });
+    }
+  };
 
   return (
     <div className="h-full flex flex-col bg-slate-900 border-l border-slate-800 shadow-2xl overflow-y-auto">
@@ -101,7 +134,11 @@ export const StudyDrawer: React.FC<StudyDrawerProps> = ({
           ) : (
             <div className="flex items-center gap-1.5 text-xs font-bold text-amber-400 uppercase tracking-wider">
               <Feather className="w-3.5 h-3.5" />
-              <span>{currentVerseReference || 'Verse Notes'}</span>
+              <span>
+                {readingChapterTarget && activeEgwChapterData
+                  ? `${activeEgwChapterData.bookAbbrev} Ch. ${activeEgwChapterData.chapterNumber}`
+                  : currentVerseReference || 'Verse Notes'}
+              </span>
             </div>
           )}
         </div>
@@ -132,7 +169,10 @@ export const StudyDrawer: React.FC<StudyDrawerProps> = ({
       <div className="px-4 sm:px-6 pt-3 pb-2 border-b border-slate-800/80 bg-slate-900/90">
         <div className="grid grid-cols-2 p-1 bg-slate-950/80 rounded-xl border border-slate-800">
           <button
-            onClick={() => onTabChange?.('strongs')}
+            onClick={() => {
+              setReadingChapterTarget(null);
+              onTabChange?.('strongs');
+            }}
             className={`flex items-center justify-center space-x-2 py-2 px-3 rounded-lg text-xs font-bold transition ${
               activeTab === 'strongs'
                 ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
@@ -219,12 +259,21 @@ export const StudyDrawer: React.FC<StudyDrawerProps> = ({
               </div>
             </>
           )
+        ) : readingChapterTarget && activeEgwChapterData ? (
+          /* Ellen G. White Full Chapter View */
+          <EgwChapterReader
+            chapterData={activeEgwChapterData}
+            activePageRef={readingChapterTarget.activePageRef}
+            onBackToNotes={() => setReadingChapterTarget(null)}
+            onNavigateChapter={handleNavigateChapter}
+          />
         ) : (
-          /* Ellen G. White Notes Tab */
+          /* Ellen G. White Notes List */
           <EgwNotesBody
             reference={currentVerseReference}
             comments={egwComments}
             verseText={currentVerseText}
+            onOpenChapter={handleOpenChapter}
           />
         )}
       </div>
