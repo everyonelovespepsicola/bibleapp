@@ -233,6 +233,11 @@ const ABBREV_TO_FILE: Record<string, string> = {
   '2t': '2t',
   '3t': '3t',
   '4t': '4t',
+  '5t': '5t',
+  '6t': '6t',
+  '7t': '7t',
+  '8t': '8t',
+  '9t': '9t',
 };
 
 /**
