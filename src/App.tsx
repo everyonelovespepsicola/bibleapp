@@ -321,7 +321,7 @@ export function App() {
   }
 
   return (
-    <div className="h-screen max-h-screen w-screen overflow-hidden bg-slate-950 text-slate-100 flex flex-col selection:bg-amber-400 selection:text-slate-950">
+    <div className="h-screen max-h-screen w-full overflow-hidden bg-slate-950 text-slate-100 flex flex-col selection:bg-amber-400 selection:text-slate-950">
       {/* Top Navigation Bar */}
       <header className="flex-shrink-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
