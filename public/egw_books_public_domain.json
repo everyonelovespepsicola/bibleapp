@@ -1,0 +1,355 @@
+[
+  {
+    "id": "da",
+    "title": "The Desire of Ages",
+    "year": 1898,
+    "series": "Conflict of the Ages, Vol. 3",
+    "category": "Life of Christ",
+    "publicDomain": true,
+    "description": "Ellen G. White's masterwork on the life, ministry, sacrifice, and resurrection of Jesus Christ."
+  },
+  {
+    "id": "gc",
+    "title": "The Great Controversy",
+    "year": 1888,
+    "edition": "1888 / 1911",
+    "series": "Conflict of the Ages, Vol. 5",
+    "category": "Prophecy & History",
+    "publicDomain": true,
+    "description": "Traces the conflict between Christ and Satan from the destruction of Jerusalem, through the Reformation, down to the close of earth's history and the New Earth."
+  },
+  {
+    "id": "pp",
+    "title": "Patriarchs and Prophets",
+    "year": 1890,
+    "series": "Conflict of the Ages, Vol. 1",
+    "category": "Old Testament History",
+    "publicDomain": true,
+    "description": "Covers the history of the world from the rebellion in heaven and Creation through the reign of King David."
+  },
+  {
+    "id": "pk",
+    "title": "Prophets and Kings",
+    "year": 1917,
+    "series": "Conflict of the Ages, Vol. 2",
+    "category": "Old Testament History",
+    "publicDomain": true,
+    "description": "Begins with the glorious reign of King Solomon, through the divided monarchy and captivity, down to the restoration and the first advent of the Messiah."
+  },
+  {
+    "id": "aa",
+    "title": "The Acts of the Apostles",
+    "year": 1911,
+    "series": "Conflict of the Ages, Vol. 4",
+    "category": "Early Church History",
+    "publicDomain": true,
+    "description": "Chronicles the labors, trials, and triumphs of the early Christian apostles and the spread of the Gospel throughout the Roman Empire."
+  },
+  {
+    "id": "sc",
+    "title": "Steps to Christ",
+    "year": 1892,
+    "series": "Christian Living",
+    "category": "Salvation & Christian Growth",
+    "publicDomain": true,
+    "description": "Her classic handbook on finding peace with God, true repentance, faith, prayer, and walking with Jesus."
+  },
+  {
+    "id": "col",
+    "title": "Christ's Object Lessons",
+    "year": 1900,
+    "series": "Parables of Jesus",
+    "category": "Gospel Teaching",
+    "publicDomain": true,
+    "description": "An exhaustive spiritual and practical commentary on the parables of Jesus."
+  },
+  {
+    "id": "mb",
+    "title": "Thoughts from the Mount of Blessing",
+    "year": 1896,
+    "series": "Sermon on the Mount",
+    "category": "Gospel Teaching",
+    "publicDomain": true,
+    "description": "Spiritual study on the Beatitudes, the Lord's Prayer, and Christ's Sermon on the Mount."
+  },
+  {
+    "id": "mh",
+    "title": "The Ministry of Healing",
+    "year": 1905,
+    "series": "Health & Practical Living",
+    "category": "Medical Missionary Work",
+    "publicDomain": true,
+    "description": "Practical counsel on holistic health, true remedies, sympathetic ministry, and the healing ministry of Christ."
+  },
+  {
+    "id": "ed",
+    "title": "Education",
+    "year": 1903,
+    "series": "Christian Education",
+    "category": "Philosophy of Education",
+    "publicDomain": true,
+    "description": "Sets forth the true objective of education: the harmonious development of the physical, mental, and spiritual powers."
+  },
+  {
+    "id": "ew",
+    "title": "Early Writings",
+    "year": 1882,
+    "series": "Early Prophetic Ministry",
+    "category": "Autobiography & Visions",
+    "publicDomain": true,
+    "description": "A compilation of her earliest published works including Christian Experience and Views (1851) and Spiritual Gifts."
+  },
+  {
+    "id": "gw",
+    "title": "Gospel Workers",
+    "year": 1892,
+    "edition": "1892 / 1915",
+    "series": "Pastoral & Evangelistic Ministry",
+    "category": "Ministry Instruction",
+    "publicDomain": true,
+    "description": "Exhaustive manual and counsel for ministers, evangelists, Bible workers, and all who preach the Word."
+  },
+  {
+    "id": "ct",
+    "title": "Counsels to Parents, Teachers, and Students",
+    "year": 1913,
+    "series": "Christian Education",
+    "category": "Education & Parenting",
+    "publicDomain": true,
+    "description": "Guidance on Christian education in the home, church school, academies, and higher colleges."
+  },
+  {
+    "id": "ch",
+    "title": "Counsels on Health",
+    "year": 1923,
+    "series": "Health Principles",
+    "category": "Health Reform",
+    "publicDomain": true,
+    "description": "Instruction regarding health reform, sanitariums, diet, hygiene, and the right arm of the message."
+  },
+  {
+    "id": "tm",
+    "title": "Testimonies to Ministers and Gospel Workers",
+    "year": 1923,
+    "series": "Leadership & Church Counsel",
+    "category": "Ministry Counsel",
+    "publicDomain": true,
+    "description": "Crucial messages sent to leadership and ministers from 1890 through 1914 regarding righteousness by faith and church administration."
+  },
+  {
+    "id": "fce",
+    "title": "Fundamentals of Christian Education",
+    "year": 1923,
+    "series": "Christian Education",
+    "category": "Articles & Letters on Education",
+    "publicDomain": true,
+    "description": "Chronological collection of 80 articles and messages on Christian education spanning from 1872 to 1915."
+  },
+  {
+    "id": "cs",
+    "title": "Christian Service",
+    "year": 1925,
+    "series": "Lay Evangelism",
+    "category": "Personal Ministry",
+    "publicDomain": true,
+    "description": "Handbook of instruction for lay members and church officers on organizing personal and public soul-winning."
+  },
+  {
+    "id": "ls",
+    "title": "Life Sketches of Ellen G. White",
+    "year": 1915,
+    "series": "Biography",
+    "category": "Historical & Biographical",
+    "publicDomain": true,
+    "description": "Autobiographical and biographical account of her life, travels, and ministry from childhood to her death in 1915."
+  },
+  {
+    "id": "t01",
+    "title": "Testimonies for the Church, Volume 1",
+    "year": 1868,
+    "series": "Testimonies for the Church",
+    "category": "Counsel to the Church (1855-1868)",
+    "publicDomain": true,
+    "description": "Letters and general testimonies given during the founding years of the Seventh-day Adventist movement."
+  },
+  {
+    "id": "t02",
+    "title": "Testimonies for the Church, Volume 2",
+    "year": 1871,
+    "series": "Testimonies for the Church",
+    "category": "Counsel to the Church (1868-1871)",
+    "publicDomain": true,
+    "description": "Counsel on personal piety, marriage, family order, health reform, and publishing work."
+  },
+  {
+    "id": "t03",
+    "title": "Testimonies for the Church, Volume 3",
+    "year": 1875,
+    "series": "Testimonies for the Church",
+    "category": "Counsel to the Church (1872-1875)",
+    "publicDomain": true,
+    "description": "Guidance on camp meetings, church discipline, and establishing institutions."
+  },
+  {
+    "id": "t04",
+    "title": "Testimonies for the Church, Volume 4",
+    "year": 1881,
+    "series": "Testimonies for the Church",
+    "category": "Counsel to the Church (1876-1881)",
+    "publicDomain": true,
+    "description": "Messages on spiritual decline, devotion, consecration, and worldwide expansion."
+  },
+  {
+    "id": "t05",
+    "title": "Testimonies for the Church, Volume 5",
+    "year": 1889,
+    "series": "Testimonies for the Church",
+    "category": "Counsel to the Church (1882-1889)",
+    "publicDomain": true,
+    "description": "Covers the critical era surrounding the 1888 Minneapolis conference and warnings against worldly conformity."
+  },
+  {
+    "id": "t06",
+    "title": "Testimonies for the Church, Volume 6",
+    "year": 1900,
+    "series": "Testimonies for the Church",
+    "category": "Counsel to the Church (1890-1900)",
+    "publicDomain": true,
+    "description": "Instructions on city evangelism, camp meetings, church schools, and publishing houses."
+  },
+  {
+    "id": "t07",
+    "title": "Testimonies for the Church, Volume 7",
+    "year": 1902,
+    "series": "Testimonies for the Church",
+    "category": "Counsel to the Church (1900-1902)",
+    "publicDomain": true,
+    "description": "Counsel regarding publishing work and sanitariums following the Battle Creek fires."
+  },
+  {
+    "id": "t08",
+    "title": "Testimonies for the Church, Volume 8",
+    "year": 1904,
+    "series": "Testimonies for the Church",
+    "category": "Counsel to the Church (1903-1904)",
+    "publicDomain": true,
+    "description": "Addressed to meeting the pantheistic crisis (the Kellogg crisis) and standing firm on foundational truths."
+  },
+  {
+    "id": "t09",
+    "title": "Testimonies for the Church, Volume 9",
+    "year": 1909,
+    "series": "Testimonies for the Church",
+    "category": "Counsel to the Church (1905-1909)",
+    "publicDomain": true,
+    "description": "Final testimonies volume prepared by Ellen White, focusing on closing events, literature work, and the final crisis."
+  },
+  {
+    "id": "sp1",
+    "title": "The Spirit of Prophecy, Volume 1",
+    "year": 1870,
+    "series": "The Spirit of Prophecy",
+    "category": "Early Conflict History",
+    "publicDomain": true,
+    "description": "The great controversy from the fall of Satan and Creation down to Solomon."
+  },
+  {
+    "id": "sp2",
+    "title": "The Spirit of Prophecy, Volume 2",
+    "year": 1877,
+    "series": "The Spirit of Prophecy",
+    "category": "Life of Christ",
+    "publicDomain": true,
+    "description": "The life, miracles, teachings, and ministry of Jesus Christ."
+  },
+  {
+    "id": "sp3",
+    "title": "The Spirit of Prophecy, Volume 3",
+    "year": 1878,
+    "series": "The Spirit of Prophecy",
+    "category": "Life of Christ & Early Church",
+    "publicDomain": true,
+    "description": "From Christ's transfiguration, trials, and death to the resurrection and labors of the apostles."
+  },
+  {
+    "id": "sp4",
+    "title": "The Spirit of Prophecy, Volume 4",
+    "year": 1884,
+    "series": "The Spirit of Prophecy",
+    "category": "Great Controversy History",
+    "publicDomain": true,
+    "description": "The 1884 classic presentation of the Great Controversy from Jerusalem's destruction to the New Earth."
+  },
+  {
+    "id": "sg1",
+    "title": "Spiritual Gifts, Volume 1",
+    "year": 1858,
+    "series": "Spiritual Gifts",
+    "category": "The Great Controversy (First Account)",
+    "publicDomain": true,
+    "description": "The original 1858 vision of the great controversy between Christ and His angels and Satan and his angels."
+  },
+  {
+    "id": "sg2",
+    "title": "Spiritual Gifts, Volume 2",
+    "year": 1860,
+    "series": "Spiritual Gifts",
+    "category": "Early Experience",
+    "publicDomain": true,
+    "description": "My Christian Experience, Views and Labors in Connection With the Rise and Progress of the Third Angel's Message."
+  },
+  {
+    "id": "sg3",
+    "title": "Spiritual Gifts, Volume 3",
+    "year": 1864,
+    "series": "Spiritual Gifts",
+    "category": "Creation to the Flood",
+    "publicDomain": true,
+    "description": "Important facts of faith in connection with the history of holy men of old."
+  },
+  {
+    "id": "sg4",
+    "title": "Spiritual Gifts, Volume 4",
+    "year": 1864,
+    "series": "Spiritual Gifts",
+    "category": "Laws of Health & Old Testament History",
+    "publicDomain": true,
+    "description": "Continuation of Old Testament narrative with teachings on health laws."
+  },
+  {
+    "id": "ce",
+    "title": "Christian Education",
+    "year": 1893,
+    "series": "Christian Education",
+    "category": "Educational Principles",
+    "publicDomain": true,
+    "description": "Early compilation on developing mind and character in Christian schools."
+  },
+  {
+    "id": "ctbh",
+    "title": "Christian Temperance and Bible Hygiene",
+    "year": 1890,
+    "series": "Health & Temperance",
+    "category": "Health Reform",
+    "publicDomain": true,
+    "description": "Original compilation of articles on physical and spiritual health prepared with James White."
+  },
+  {
+    "id": "mc",
+    "title": "Manual for Canvassers",
+    "year": 1902,
+    "series": "Literature Evangelism",
+    "category": "Publishing Ministry",
+    "publicDomain": true,
+    "description": "Instructions and spiritual encouragement for colporteurs and literature evangelists."
+  },
+  {
+    "id": "wlf",
+    "title": "A Word to the Little Flock",
+    "year": 1847,
+    "series": "Early Pioneer Tracts",
+    "category": "Foundational Visions",
+    "publicDomain": true,
+    "description": "Her first published visions and writings, co-published with James White and Joseph Bates."
+  }
+]
