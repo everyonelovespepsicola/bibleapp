@@ -351,5 +351,45 @@
     "category": "Foundational Visions",
     "publicDomain": true,
     "description": "Her first published visions and writings, co-published with James White and Joseph Bates."
+  },
+  {
+    "id": "sta",
+    "title": "Special Testimonies, Series A (Nos. 1-12)",
+    "year": 1892,
+    "dateRange": "1892-1901",
+    "series": "Special Testimonies",
+    "category": "Urgent Counsel to Leadership & Ministers",
+    "publicDomain": true,
+    "description": "The complete 12 tracts containing urgent letters and appeals sent to ministers, conference committees, and physicians following the 1888 Minneapolis General Conference."
+  },
+  {
+    "id": "stb",
+    "title": "Special Testimonies, Series B (Nos. 1-19)",
+    "year": 1903,
+    "dateRange": "1903-1913",
+    "series": "Special Testimonies",
+    "category": "Crisis & Institutional Guidance",
+    "publicDomain": true,
+    "description": "The complete 19 tracts addressing the Battle Creek fire, the Kellogg pantheism crisis (the Alpha of apostasy), unity, and establishing Loma Linda, Madison, and Nashville institutions."
+  },
+  {
+    "id": "mr_vault",
+    "title": "Raw Letters and Manuscripts Archives (1845-1915)",
+    "year": 1845,
+    "dateRange": "1845-1915",
+    "series": "Vault Manuscripts & Correspondence",
+    "category": "Original Historical Manuscripts",
+    "publicDomain": true,
+    "description": "Her complete vault collection of over 50,000 pages of personal letters, diaries, sermons, and vision transcripts written during her lifetime from 1845 to 1915."
+  },
+  {
+    "id": "pco",
+    "title": "Pamphlets & Special Periodical Articles (Pre-1929)",
+    "year": 1850,
+    "dateRange": "1850-1928",
+    "series": "Articles & Pamphlets",
+    "category": "Review and Herald, Signs of the Times & Early Tracts",
+    "publicDomain": true,
+    "description": "Over 4,500 historical articles published in the Advent Review and Sabbath Herald, The Signs of the Times, and standalone pioneer tracts."
   }
 ]
