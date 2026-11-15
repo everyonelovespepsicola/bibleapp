@@ -53,6 +53,11 @@ export const StudyDrawer: React.FC<StudyDrawerProps> = ({
 
   const [activeEgwChapterData, setActiveEgwChapterData] = useState<EgwChapterData | null>(null);
 
+  // When user clicks a new verse in the scripture reader, automatically reset full-chapter reader back to Notes view
+  useEffect(() => {
+    setReadingChapterTarget(null);
+  }, [currentVerseReference]);
+
   useEffect(() => {
     if (!readingChapterTarget) {
       setActiveEgwChapterData(null);
