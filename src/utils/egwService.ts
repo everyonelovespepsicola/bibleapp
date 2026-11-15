@@ -194,6 +194,53 @@ import egwBookMetaRaw from './egwBookMeta.json';
 const EGW_BOOK_META = egwBookMetaRaw as Record<string, { title: string; abbrev: string; year: number }>;
 
 /**
+ * Search across all Spirit of Prophecy commentary paragraphs for keywords/phrases
+ */
+export function searchEgwComments(query: string, limit = 100): EgwComment[] {
+  const q = query.trim().toLowerCase();
+  if (!q || !memoryVerseIndex) return [];
+
+  const terms = q.split(/\s+/).filter(Boolean);
+  if (terms.length === 0) return [];
+
+  const results: EgwComment[] = [];
+  const seen = new Set<string>();
+
+  for (const [verse, entries] of Object.entries(memoryVerseIndex)) {
+    for (const item of entries as any[]) {
+      const text = item.text || item.excerpt || item.paragraphText || '';
+      const textLower = text.toLowerCase();
+      
+      const matchesAll = terms.every((t) => textLower.includes(t));
+      if (matchesAll) {
+        const uniqueKey = `${item.book}-${item.refcode || item.pageRef}`;
+        if (!seen.has(uniqueKey)) {
+          seen.add(uniqueKey);
+          const meta = EGW_BOOK_META[item.book?.toLowerCase()] || {
+            title: item.book?.toUpperCase() || 'Ellen G. White',
+            abbrev: item.book?.toUpperCase() || 'EGW',
+            year: 1890,
+          };
+          results.push({
+            id: uniqueKey,
+            sourceBook: meta.title,
+            sourceAbbrev: meta.abbrev,
+            year: meta.year,
+            pageRef: item.refcode || item.pageRef || '',
+            paragraphText: text,
+            targetVerses: [verse],
+            chapterNumber: 1,
+          });
+          if (results.length >= limit) return results;
+        }
+      }
+    }
+  }
+
+  return results;
+}
+
+/**
  * Returns EGW commentary paragraphs for a scripture reference.
  * Synchronous version checks in-memory cache then falls back to SAMPLE_EGW_COMMENTS.
  */

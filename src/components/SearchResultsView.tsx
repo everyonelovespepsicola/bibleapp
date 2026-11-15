@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import type { SearchResult } from '../utils/searchEngine';
 import type { FlatVerse, StrongsEntry } from '../types/bible';
+import type { EgwComment } from '../types/egw';
+import { searchEgwComments } from '../utils/egwService';
 import strongsKjvMap from '../utils/strongsKjvMap.json';
 import {
   Copy,
@@ -12,6 +14,9 @@ import {
   ArrowLeft,
   Sparkles,
   Layers,
+  Feather,
+  ChevronDown,
+  ChevronUp,
 } from 'lucide-react';
 import { renderFormattedText, copyRichScripture } from '../utils/clipboard';
 
@@ -32,6 +37,7 @@ interface SearchResultsViewProps {
   };
   strongsLexicon?: Record<string, StrongsEntry>;
   onSelectStrongsRoot?: (strongsId: string) => void;
+  onOpenEgwComment?: (comment: EgwComment) => void;
 }
 
 const PAGE_SIZE = 250; // Verses per page
@@ -44,10 +50,19 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
   previousLocation,
   strongsLexicon,
   onSelectStrongsRoot,
+  onOpenEgwComment,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedRootFilter, setSelectedRootFilter] = useState<string | null>(null);
+  const [isRootsExpanded, setIsRootsExpanded] = useState(false);
+  const [isEgwExpanded, setIsEgwExpanded] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
+
+  // Compute EGW matching comments for keyword searches
+  const egwMatches = useMemo(() => {
+    if (result.type !== 'keyword' || !rawQuery.trim()) return [];
+    return searchEgwComments(rawQuery.trim(), 50);
+  }, [result.type, rawQuery]);
 
   // Compute Strong's Roots Breakdown from all matching verses (with direct map fallback)
   const rootsBreakdown = useMemo(() => {
@@ -254,9 +269,9 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
         )}
       </div>
 
-      {/* Interactive Strong's Roots Breakdown Table */}
+      {/* Interactive Strong's Roots Breakdown Table (Collapsed to 7 by default) */}
       {rootsBreakdown.length > 0 && (
-        <div className="mb-8 bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+        <div className="mb-6 bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
           <div className="bg-slate-800/80 px-5 py-3 border-b border-slate-800 flex items-center justify-between flex-wrap gap-2">
             <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-amber-400">
               <Layers className="w-4 h-4 text-amber-400" />
@@ -280,7 +295,7 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800/60 font-sans">
-                {rootsBreakdown.map((item) => {
+                {(isRootsExpanded ? rootsBreakdown : rootsBreakdown.slice(0, 7)).map((item) => {
                   const isHebrew = item.strongsId.startsWith('H');
                   const isSelected = selectedRootFilter === item.strongsId;
                   return (
@@ -350,6 +365,23 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
             </table>
           </div>
 
+          {rootsBreakdown.length > 7 && (
+            <div className="bg-slate-950/60 px-4 py-2.5 border-t border-slate-800 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setIsRootsExpanded(!isRootsExpanded)}
+                className="flex items-center space-x-1.5 text-xs font-semibold text-amber-400 hover:text-amber-300 transition py-1 px-3 rounded-lg hover:bg-slate-800 border border-slate-700 cursor-pointer"
+              >
+                <span>
+                  {isRootsExpanded
+                    ? 'Collapse to Top 7 Roots'
+                    : `View All ${rootsBreakdown.length} Lexicon Roots (+${rootsBreakdown.length - 7} more)`}
+                </span>
+                {isRootsExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+              </button>
+            </div>
+          )}
+
           {selectedRootFilter && (
             <div className="bg-amber-500/10 px-4 py-2 border-t border-amber-500/20 flex items-center justify-between text-xs text-amber-300">
               <span>
@@ -364,6 +396,73 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
                 className="underline hover:text-white font-semibold cursor-pointer"
               >
                 Clear Filter (Show All {result.verses.length})
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Spirit of Prophecy / Ellen G. White Commentary Search Box (Collapsed to 7 by default) */}
+      {egwMatches.length > 0 && (
+        <div className="mb-8 bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+          <div className="bg-slate-800/80 px-5 py-3 border-b border-slate-800 flex items-center justify-between flex-wrap gap-2">
+            <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-amber-400">
+              <Feather className="w-4 h-4 text-amber-400" />
+              <span>Ellen G. White Commentary on "{rawQuery.trim()}"</span>
+            </div>
+            <span className="text-[11px] text-slate-400">
+              {egwMatches.length} matching {egwMatches.length === 1 ? 'paragraph' : 'paragraphs'} found
+            </span>
+          </div>
+
+          <div className="divide-y divide-slate-800/60 p-4 space-y-4">
+            {(isEgwExpanded ? egwMatches : egwMatches.slice(0, 7)).map((c) => (
+              <div
+                key={c.id}
+                className="pt-3 first:pt-0 space-y-2 group hover:bg-slate-800/30 p-2.5 rounded-xl transition"
+              >
+                <div className="flex items-center justify-between text-xs flex-wrap gap-2">
+                  <div className="flex items-center space-x-2">
+                    <span className="font-serif font-bold text-amber-300">
+                      {c.sourceBook}
+                    </span>
+                    <span className="font-mono text-amber-400/90 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/30 font-bold">
+                      {c.sourceAbbrev} {c.pageRef}
+                    </span>
+                  </div>
+                  {onOpenEgwComment && (
+                    <button
+                      type="button"
+                      onClick={() => onOpenEgwComment(c)}
+                      className="flex items-center space-x-1 px-2.5 py-1 text-xs font-semibold bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 rounded-lg transition cursor-pointer shadow-xs"
+                      title="Read full context chapter"
+                    >
+                      <BookOpen className="w-3.5 h-3.5" />
+                      <span>Read Chapter</span>
+                    </button>
+                  )}
+                </div>
+
+                <p className="font-serif text-sm text-slate-200 leading-relaxed border-l-2 border-amber-500/40 pl-3">
+                  {c.paragraphText}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {egwMatches.length > 7 && (
+            <div className="bg-slate-950/60 px-4 py-2.5 border-t border-slate-800 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setIsEgwExpanded(!isEgwExpanded)}
+                className="flex items-center space-x-1.5 text-xs font-semibold text-amber-400 hover:text-amber-300 transition py-1 px-3 rounded-lg hover:bg-slate-800 border border-slate-700 cursor-pointer"
+              >
+                <span>
+                  {isEgwExpanded
+                    ? 'Collapse to Top 7 Paragraphs'
+                    : `View All ${egwMatches.length} Spirit of Prophecy Paragraphs (+${egwMatches.length - 7} more)`}
+                </span>
+                {isEgwExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
               </button>
             </div>
           )}

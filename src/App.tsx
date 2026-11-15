@@ -604,6 +604,14 @@ export function App() {
                 setIsStudyMode(true);
                 setIsStudyDrawerOpen(true);
               }}
+              onOpenEgwComment={(comment) => {
+                setIsStudyMode(true);
+                setIsStudyDrawerOpen(true);
+                setStudyDrawerTab('egw');
+                if (comment.targetVerses && comment.targetVerses.length > 0) {
+                  setSelectedVerseRef(comment.targetVerses[0]);
+                }
+              }}
             />
           ) : isStudyMode && studyLayoutOrientation === 'concordance-first' && selectedStrongsEntry ? (
             <ConcordanceCardView
