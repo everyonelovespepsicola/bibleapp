@@ -238,6 +238,11 @@ const ABBREV_TO_FILE: Record<string, string> = {
   '7t': '7t',
   '8t': '8t',
   '9t': '9t',
+  myp: 'myp',
+  ah: 'ah',
+  cg: 'cg',
+  cd: 'cd',
+  cs: 'cs',
 };
 
 /**
