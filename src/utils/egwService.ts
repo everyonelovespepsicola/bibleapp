@@ -271,6 +271,11 @@ const ABBREV_TO_FILE: Record<string, string> = {
   '4asg': '4asg',
   '4bsg': '4bsg',
   csa: 'csa',
+  '1sp': '1sp',
+  '2sp': '2sp',
+  '3sp': '3sp',
+  '4sp': '4sp',
+  sj: 'sj',
 };
 
 /**
