@@ -24,7 +24,7 @@ export const SAMPLE_EGW_COMMENTS: EgwComment[] = [
     sourceAbbrev: '8T',
     year: 1904,
     pageRef: '258.4',
-    chapterNumber: 38,
+    chapterNumber: 42,
     chapterTitle: 'God in Nature',
     paragraphText: "The theory that God did not create matter when He brought the world into existence is without foundation. In the formation of our world, God was not indebted to pre-existing matter. On the contrary, all things, material or spiritual, stood up before the Lord Jehovah at His voice and were created for His own purpose. The heavens and all the host of them, the earth and all things therein, are not only the work of His hand; they came into existence by the breath of His mouth.",
     targetVerses: ['Genesis 1:1', 'Psalm 33:6', 'Psalm 33:9', 'Hebrews 11:3']
@@ -198,7 +198,7 @@ export const SAMPLE_EGW_CHAPTERS: Record<string, EgwChapterData> = {
       }
     ]
   },
-  'Ed-14': {
+  'ED-14': {
     bookTitle: 'Education',
     bookAbbrev: 'Ed',
     chapterNumber: 14,
@@ -224,7 +224,7 @@ export const SAMPLE_EGW_CHAPTERS: Record<string, EgwChapterData> = {
       }
     ]
   },
-  'Ed-13': {
+  'ED-13': {
     bookTitle: 'Education',
     bookAbbrev: 'Ed',
     chapterNumber: 13,
@@ -238,7 +238,7 @@ export const SAMPLE_EGW_CHAPTERS: Record<string, EgwChapterData> = {
       }
     ]
   },
-  'Ed-15': {
+  'ED-15': {
     bookTitle: 'Education',
     bookAbbrev: 'Ed',
     chapterNumber: 15,
@@ -249,6 +249,24 @@ export const SAMPLE_EGW_CHAPTERS: Record<string, EgwChapterData> = {
       {
         pageRef: '135.1',
         text: "There is no branch of legitimate business for which the Bible does not afford an essential preparation. Its principles of diligence, honesty, thrift, temperance, and purity are the secret of true success."
+      }
+    ]
+  },
+  '8T-42': {
+    bookTitle: 'Testimonies for the Church, Vol. 8',
+    bookAbbrev: '8T',
+    chapterNumber: 42,
+    chapterTitle: 'God in Nature',
+    prevChapter: { number: 41, title: 'The True Higher Education' },
+    nextChapter: { number: 43, title: 'A Personal God' },
+    paragraphs: [
+      {
+        pageRef: '255.1',
+        text: "Nature is a power, but the God of nature is unlimited in power. His works interpret His character. Those who judge of Him from His handiworks, and not from the suppositions of great men, will see His presence in everything."
+      },
+      {
+        pageRef: '258.4',
+        text: "The theory that God did not create matter when He brought the world into existence is without foundation. In the formation of our world, God was not indebted to pre-existing matter. On the contrary, all things, material or spiritual, stood up before the Lord Jehovah at His voice and were created for His own purpose. The heavens and all the host of them, the earth and all things therein, are not only the work of His hand; they came into existence by the breath of His mouth."
       }
     ]
   },

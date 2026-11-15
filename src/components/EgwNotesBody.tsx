@@ -91,7 +91,7 @@ export const EgwNotesBody: React.FC<EgwNotesBodyProps> = ({
               <Sparkles className="w-3.5 h-3.5" />
               <span>Ellen G. White Paragraphs ({comments.length})</span>
             </div>
-            <span className="text-[11px] text-slate-500">Click quote card to read full chapter</span>
+            <span className="text-[11px] text-slate-500">Exhaustive Verse Notes</span>
           </div>
 
           {comments.map((c) => {
@@ -100,14 +100,12 @@ export const EgwNotesBody: React.FC<EgwNotesBodyProps> = ({
             return (
               <div
                 key={c.id}
-                onClick={() => onOpenChapter?.(c)}
-                className="bg-slate-800/40 border border-slate-800 hover:border-amber-500/50 hover:bg-slate-800/60 rounded-xl p-5 transition space-y-3 relative group cursor-pointer shadow-sm hover:shadow-lg hover:shadow-amber-500/5"
-                title={`Click to read full Chapter in ${c.sourceBook}`}
+                className="bg-slate-800/40 border border-slate-800 rounded-xl p-5 transition space-y-3 relative group shadow-sm"
               >
-                {/* Book & Chapter Header with Read Full Chapter Pill */}
-                <div className="flex items-baseline justify-between gap-2 border-b border-slate-800/80 pb-2">
+                {/* Book & Chapter Header with standalone 'Read Chapter' Button */}
+                <div className="flex items-center justify-between gap-2 border-b border-slate-800/80 pb-2">
                   <div>
-                    <span className="text-sm font-bold text-amber-300 font-serif group-hover:text-amber-200 transition">
+                    <span className="text-sm font-bold text-amber-300 font-serif">
                       {c.sourceBook}
                     </span>
                     {c.chapterTitle && (
@@ -117,15 +115,25 @@ export const EgwNotesBody: React.FC<EgwNotesBodyProps> = ({
                     )}
                   </div>
 
-                  <div className="flex items-center space-x-2 flex-shrink-0">
-                    <span className="text-[11px] text-amber-400 font-medium group-hover:underline flex items-center">
-                      Read Chapter <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
-                    </span>
-                  </div>
+                  {c.chapterNumber && onOpenChapter && (
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onOpenChapter(c);
+                      }}
+                      className="flex items-center space-x-1 px-2.5 py-1 text-xs font-semibold bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 hover:text-amber-200 border border-amber-500/40 rounded-lg transition cursor-pointer shadow-xs active:scale-95 flex-shrink-0"
+                      title={`Read full chapter (${c.chapterTitle || `Ch. ${c.chapterNumber}`})`}
+                    >
+                      <BookOpen className="w-3.5 h-3.5" />
+                      <span>Read Chapter</span>
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </button>
+                  )}
                 </div>
 
                 {/* Full Paragraph Text with Quote and Ending Reference Code */}
-                <div className="font-serif text-[1.05rem] leading-[1.8] text-slate-200 border-l-2 border-amber-500/50 group-hover:border-amber-400 pl-3.5 py-0.5 transition">
+                <div className="font-serif text-[1.05rem] leading-[1.8] text-slate-200 border-l-2 border-amber-500/50 pl-3.5 py-0.5">
                   <span>{renderParagraphContent(c.paragraphText, reference)}</span>
                   {/* Inline Ending Reference Code: Book, Page, Paragraph (e.g. Ed 134.2, COL 35.2) */}
                   <span className="ml-2 inline-block font-sans font-bold text-amber-400/90 text-xs tracking-wide bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/30 selection:bg-amber-400 selection:text-slate-950">

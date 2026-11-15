@@ -127,3 +127,4 @@ export const EgwChapterReader: React.FC<EgwChapterReaderProps> = ({
     </div>
   );
 };
+
