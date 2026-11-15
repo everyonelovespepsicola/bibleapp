@@ -6,49 +6,11 @@
   "chapters": [
     {
       "chapterNumber": 1,
-      "chapterTitle": "Read",
+      "chapterTitle": "Teaching in Parables",
+      "prevChapter": null,
       "nextChapter": {
         "number": 2,
-        "title": "Details"
-      },
-      "paragraphs": []
-    },
-    {
-      "chapterNumber": 2,
-      "chapterTitle": "Details",
-      "prevChapter": {
-        "number": 1,
-        "title": "Read"
-      },
-      "nextChapter": {
-        "number": 3,
-        "title": "Preface"
-      },
-      "paragraphs": []
-    },
-    {
-      "chapterNumber": 3,
-      "chapterTitle": "Preface",
-      "prevChapter": {
-        "number": 2,
-        "title": "Details"
-      },
-      "nextChapter": {
-        "number": 4,
-        "title": "Chapter 1—Teaching in Parables"
-      },
-      "paragraphs": []
-    },
-    {
-      "chapterNumber": 4,
-      "chapterTitle": "Chapter 1— Teaching in Parables",
-      "prevChapter": {
-        "number": 3,
-        "title": "Preface"
-      },
-      "nextChapter": {
-        "number": 5,
-        "title": "Chapter 3—“First the Blade, Then the Ear”"
+        "title": "Chapter 3— “First the Blade, Then the Ear”"
       },
       "paragraphs": [
         {
@@ -174,15 +136,15 @@
       ]
     },
     {
-      "chapterNumber": 5,
-      "chapterTitle": "Chapter 3— “First the Blade, Then the Ear”",
+      "chapterNumber": 2,
+      "chapterTitle": "“First the Blade, Then the Ear”",
       "prevChapter": {
-        "number": 4,
-        "title": "Chapter 1—Teaching in Parables"
+        "number": 1,
+        "title": "Chapter 1— Teaching in Parables"
       },
       "nextChapter": {
-        "number": 6,
-        "title": "Chapter 4—Tares"
+        "number": 3,
+        "title": "Chapter 4— Tares"
       },
       "paragraphs": [
         {
@@ -286,15 +248,15 @@
       ]
     },
     {
-      "chapterNumber": 6,
-      "chapterTitle": "Chapter 4— Tares",
+      "chapterNumber": 3,
+      "chapterTitle": "Tares",
       "prevChapter": {
-        "number": 5,
-        "title": "Chapter 3—“First the Blade, Then the Ear”"
+        "number": 2,
+        "title": "Chapter 3— “First the Blade, Then the Ear”"
       },
       "nextChapter": {
-        "number": 7,
-        "title": "Chapter 5—“Like a Grain of Mustard Seed”"
+        "number": 4,
+        "title": "Chapter 5— “Like a Grain of Mustard Seed”"
       },
       "paragraphs": [
         {
@@ -372,15 +334,15 @@
       ]
     },
     {
-      "chapterNumber": 7,
-      "chapterTitle": "Chapter 5— “Like a Grain of Mustard Seed”",
+      "chapterNumber": 4,
+      "chapterTitle": "“Like a Grain of Mustard Seed”",
       "prevChapter": {
-        "number": 6,
-        "title": "Chapter 4—Tares"
+        "number": 3,
+        "title": "Chapter 4— Tares"
       },
       "nextChapter": {
-        "number": 8,
-        "title": "Chapter 6—Other Lessons from Seed-Sowing"
+        "number": 5,
+        "title": "Chapter 6— Other Lessons from Seed-Sowing"
       },
       "paragraphs": [
         {
@@ -442,15 +404,15 @@
       ]
     },
     {
-      "chapterNumber": 8,
-      "chapterTitle": "Chapter 6— Other Lessons from Seed-Sowing",
+      "chapterNumber": 5,
+      "chapterTitle": "Other Lessons from Seed-Sowing",
       "prevChapter": {
-        "number": 7,
-        "title": "Chapter 5—“Like a Grain of Mustard Seed”"
+        "number": 4,
+        "title": "Chapter 5— “Like a Grain of Mustard Seed”"
       },
       "nextChapter": {
-        "number": 9,
-        "title": "Chapter 7—Like Unto Leaven"
+        "number": 6,
+        "title": "Chapter 7— Like Unto Leaven"
       },
       "paragraphs": [
         {
@@ -616,15 +578,15 @@
       ]
     },
     {
-      "chapterNumber": 9,
-      "chapterTitle": "Chapter 7— Like Unto Leaven",
+      "chapterNumber": 6,
+      "chapterTitle": "Like Unto Leaven",
       "prevChapter": {
-        "number": 8,
-        "title": "Chapter 6—Other Lessons from Seed-Sowing"
+        "number": 5,
+        "title": "Chapter 6— Other Lessons from Seed-Sowing"
       },
       "nextChapter": {
-        "number": 10,
-        "title": "Chapter 9—The Pearl"
+        "number": 7,
+        "title": "Chapter 9— The Pearl"
       },
       "paragraphs": [
         {
@@ -742,15 +704,15 @@
       ]
     },
     {
-      "chapterNumber": 10,
-      "chapterTitle": "Chapter 9— The Pearl",
+      "chapterNumber": 7,
+      "chapterTitle": "The Pearl",
       "prevChapter": {
-        "number": 9,
-        "title": "Chapter 7—Like Unto Leaven"
+        "number": 6,
+        "title": "Chapter 7— Like Unto Leaven"
       },
       "nextChapter": {
-        "number": 11,
-        "title": "Chapter 10—The Net"
+        "number": 8,
+        "title": "Chapter 10— The Net"
       },
       "paragraphs": [
         {
@@ -840,15 +802,15 @@
       ]
     },
     {
-      "chapterNumber": 11,
-      "chapterTitle": "Chapter 10— The Net",
+      "chapterNumber": 8,
+      "chapterTitle": "The Net",
       "prevChapter": {
-        "number": 10,
-        "title": "Chapter 9—The Pearl"
+        "number": 7,
+        "title": "Chapter 9— The Pearl"
       },
       "nextChapter": {
-        "number": 12,
-        "title": "Chapter 11—Things New and Old"
+        "number": 9,
+        "title": "Chapter 11— Things New and Old"
       },
       "paragraphs": [
         {
@@ -881,15 +843,15 @@
       ]
     },
     {
-      "chapterNumber": 12,
-      "chapterTitle": "Chapter 11— Things New and Old",
+      "chapterNumber": 9,
+      "chapterTitle": "Things New and Old",
       "prevChapter": {
-        "number": 11,
-        "title": "Chapter 10—The Net"
+        "number": 8,
+        "title": "Chapter 10— The Net"
       },
       "nextChapter": {
-        "number": 13,
-        "title": "Chapter 12—Asking to Give"
+        "number": 10,
+        "title": "Chapter 12— Asking to Give"
       },
       "paragraphs": [
         {
@@ -1077,15 +1039,15 @@
       ]
     },
     {
-      "chapterNumber": 13,
-      "chapterTitle": "Chapter 12— Asking to Give",
+      "chapterNumber": 10,
+      "chapterTitle": "Asking to Give",
       "prevChapter": {
-        "number": 12,
-        "title": "Chapter 11—Things New and Old"
+        "number": 9,
+        "title": "Chapter 11— Things New and Old"
       },
       "nextChapter": {
-        "number": 14,
-        "title": "Chapter 13—Two Worshipers"
+        "number": 11,
+        "title": "Chapter 13— Two Worshipers"
       },
       "paragraphs": [
         {
@@ -1331,15 +1293,15 @@
       ]
     },
     {
-      "chapterNumber": 14,
-      "chapterTitle": "Chapter 13— Two Worshipers",
+      "chapterNumber": 11,
+      "chapterTitle": "Two Worshipers",
       "prevChapter": {
-        "number": 13,
-        "title": "Chapter 12—Asking to Give"
+        "number": 10,
+        "title": "Chapter 12— Asking to Give"
       },
       "nextChapter": {
-        "number": 15,
-        "title": "Chapter 14—“Shall Not God Avenge His Own?”"
+        "number": 12,
+        "title": "Chapter 14— “Shall Not God Avenge His Own?”"
       },
       "paragraphs": [
         {
@@ -1597,15 +1559,15 @@
       ]
     },
     {
-      "chapterNumber": 15,
-      "chapterTitle": "Chapter 14— “Shall Not God Avenge His Own?”",
+      "chapterNumber": 12,
+      "chapterTitle": "“Shall Not God Avenge His Own?”",
       "prevChapter": {
-        "number": 14,
-        "title": "Chapter 13—Two Worshipers"
+        "number": 11,
+        "title": "Chapter 13— Two Worshipers"
       },
       "nextChapter": {
-        "number": 16,
-        "title": "Chapter 16—“Lost, and Is Found”"
+        "number": 13,
+        "title": "Chapter 16— “Lost, and Is Found”"
       },
       "paragraphs": [
         {
@@ -1908,15 +1870,15 @@
       ]
     },
     {
-      "chapterNumber": 16,
-      "chapterTitle": "Chapter 16— “Lost, and Is Found”",
+      "chapterNumber": 13,
+      "chapterTitle": "“Lost, and Is Found”",
       "prevChapter": {
-        "number": 15,
-        "title": "Chapter 14—“Shall Not God Avenge His Own?”"
+        "number": 12,
+        "title": "Chapter 14— “Shall Not God Avenge His Own?”"
       },
       "nextChapter": {
-        "number": 17,
-        "title": "Chapter 17—“Spare it this Year Also”"
+        "number": 14,
+        "title": "Chapter 17— “Spare it this Year Also”"
       },
       "paragraphs": [
         {
@@ -2154,15 +2116,15 @@
       ]
     },
     {
-      "chapterNumber": 17,
-      "chapterTitle": "Chapter 17— “Spare it this Year Also”",
+      "chapterNumber": 14,
+      "chapterTitle": "“Spare it this Year Also”",
       "prevChapter": {
-        "number": 16,
-        "title": "Chapter 16—“Lost, and Is Found”"
+        "number": 13,
+        "title": "Chapter 16— “Lost, and Is Found”"
       },
       "nextChapter": {
-        "number": 18,
-        "title": "Chapter 18—“Go Into the Highways and Hedges”"
+        "number": 15,
+        "title": "Chapter 18— “Go Into the Highways and Hedges”"
       },
       "paragraphs": [
         {
@@ -2298,15 +2260,15 @@
       ]
     },
     {
-      "chapterNumber": 18,
-      "chapterTitle": "Chapter 18— “Go Into the Highways and Hedges”",
+      "chapterNumber": 15,
+      "chapterTitle": "“Go Into the Highways and Hedges”",
       "prevChapter": {
-        "number": 17,
-        "title": "Chapter 17—“Spare it this Year Also”"
+        "number": 14,
+        "title": "Chapter 17— “Spare it this Year Also”"
       },
       "nextChapter": {
-        "number": 19,
-        "title": "Chapter 19—The Measure of Forgiveness"
+        "number": 16,
+        "title": "Chapter 19— The Measure of Forgiveness"
       },
       "paragraphs": [
         {
@@ -2611,15 +2573,15 @@
       ]
     },
     {
-      "chapterNumber": 19,
-      "chapterTitle": "Chapter 19— The Measure of Forgiveness",
+      "chapterNumber": 16,
+      "chapterTitle": "The Measure of Forgiveness",
       "prevChapter": {
-        "number": 18,
-        "title": "Chapter 18—“Go Into the Highways and Hedges”"
+        "number": 15,
+        "title": "Chapter 18— “Go Into the Highways and Hedges”"
       },
       "nextChapter": {
-        "number": 20,
-        "title": "Chapter 20—Gain that is Loss"
+        "number": 17,
+        "title": "Chapter 20— Gain that is Loss"
       },
       "paragraphs": [
         {
@@ -2775,15 +2737,15 @@
       ]
     },
     {
-      "chapterNumber": 20,
-      "chapterTitle": "Chapter 20— Gain that is Loss",
+      "chapterNumber": 17,
+      "chapterTitle": "Gain that is Loss",
       "prevChapter": {
-        "number": 19,
-        "title": "Chapter 19—The Measure of Forgiveness"
+        "number": 16,
+        "title": "Chapter 19— The Measure of Forgiveness"
       },
       "nextChapter": {
-        "number": 21,
-        "title": "Chapter 22—Saying and Doing"
+        "number": 18,
+        "title": "Chapter 22— Saying and Doing"
       },
       "paragraphs": [
         {
@@ -2900,15 +2862,15 @@
       ]
     },
     {
-      "chapterNumber": 21,
-      "chapterTitle": "Chapter 22— Saying and Doing",
+      "chapterNumber": 18,
+      "chapterTitle": "Saying and Doing",
       "prevChapter": {
-        "number": 20,
-        "title": "Chapter 20—Gain that is Loss"
+        "number": 17,
+        "title": "Chapter 20— Gain that is Loss"
       },
       "nextChapter": {
-        "number": 22,
-        "title": "Chapter 24—Without a Wedding Garment"
+        "number": 19,
+        "title": "Chapter 24— Without a Wedding Garment"
       },
       "paragraphs": [
         {
@@ -3126,15 +3088,15 @@
       ]
     },
     {
-      "chapterNumber": 22,
-      "chapterTitle": "Chapter 24— Without a Wedding Garment",
+      "chapterNumber": 19,
+      "chapterTitle": "Without a Wedding Garment",
       "prevChapter": {
-        "number": 21,
-        "title": "Chapter 22—Saying and Doing"
+        "number": 18,
+        "title": "Chapter 22— Saying and Doing"
       },
       "nextChapter": {
-        "number": 23,
-        "title": "Chapter 26—“Friends by the Mammon of Unrighteousness”"
+        "number": 20,
+        "title": "Chapter 26— “Friends by the Mammon of Unrighteousness”"
       },
       "paragraphs": [
         {
@@ -3370,15 +3332,15 @@
       ]
     },
     {
-      "chapterNumber": 23,
-      "chapterTitle": "Chapter 26— “Friends by the Mammon of Unrighteousness”",
+      "chapterNumber": 20,
+      "chapterTitle": "“Friends by the Mammon of Unrighteousness”",
       "prevChapter": {
-        "number": 22,
-        "title": "Chapter 24—Without a Wedding Garment"
+        "number": 19,
+        "title": "Chapter 24— Without a Wedding Garment"
       },
       "nextChapter": {
-        "number": 24,
-        "title": "Chapter 27—“Who is My Neighbour?”"
+        "number": 21,
+        "title": "Chapter 27— “Who is My Neighbour?”"
       },
       "paragraphs": [
         {
@@ -3544,15 +3506,15 @@
       ]
     },
     {
-      "chapterNumber": 24,
-      "chapterTitle": "Chapter 27— “Who is My Neighbour?”",
+      "chapterNumber": 21,
+      "chapterTitle": "“Who is My Neighbour?”",
       "prevChapter": {
-        "number": 23,
-        "title": "Chapter 26—“Friends by the Mammon of Unrighteousness”"
+        "number": 20,
+        "title": "Chapter 26— “Friends by the Mammon of Unrighteousness”"
       },
       "nextChapter": {
-        "number": 25,
-        "title": "Chapter 28—The Reward of Grace"
+        "number": 22,
+        "title": "Chapter 28— The Reward of Grace"
       },
       "paragraphs": [
         {
@@ -3761,15 +3723,15 @@
       ]
     },
     {
-      "chapterNumber": 25,
-      "chapterTitle": "Chapter 28— The Reward of Grace",
+      "chapterNumber": 22,
+      "chapterTitle": "The Reward of Grace",
       "prevChapter": {
-        "number": 24,
-        "title": "Chapter 27—“Who is My Neighbour?”"
+        "number": 21,
+        "title": "Chapter 27— “Who is My Neighbour?”"
       },
       "nextChapter": {
-        "number": 26,
-        "title": "Chapter 29—“To Meet the Bridegroom”"
+        "number": 23,
+        "title": "Chapter 29— “To Meet the Bridegroom”"
       },
       "paragraphs": [
         {
@@ -4033,11 +3995,11 @@
       ]
     },
     {
-      "chapterNumber": 26,
-      "chapterTitle": "Chapter 29— “To Meet the Bridegroom”",
+      "chapterNumber": 23,
+      "chapterTitle": "“To Meet the Bridegroom”",
       "prevChapter": {
-        "number": 25,
-        "title": "Chapter 28—The Reward of Grace"
+        "number": 22,
+        "title": "Chapter 28— The Reward of Grace"
       },
       "paragraphs": [
         {
@@ -4306,7 +4268,8 @@
             "Revelation 19:6"
           ]
         }
-      ]
+      ],
+      "nextChapter": null
     }
   ]
 }

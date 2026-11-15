@@ -54,12 +54,7 @@ export const EgwChapterReader: React.FC<EgwChapterReaderProps> = ({
           <span>{chapterData.bookTitle}</span>
         </div>
         <h2 className="text-xl sm:text-2xl font-serif font-bold text-slate-100 tracking-tight">
-          {chapterData.chapterTitle.toLowerCase().startsWith('chapter ') ||
-          chapterData.chapterTitle.toLowerCase().startsWith('section ') ||
-          chapterData.chapterTitle.toLowerCase().startsWith('foreword') ||
-          chapterData.chapterTitle.toLowerCase().startsWith('preface')
-            ? chapterData.chapterTitle
-            : `Chapter ${chapterData.chapterNumber}: ${chapterData.chapterTitle}`}
+          {chapterData.chapterTitle}
         </h2>
       </div>
 

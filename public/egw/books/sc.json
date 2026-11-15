@@ -6,49 +6,11 @@
   "chapters": [
     {
       "chapterNumber": 1,
-      "chapterTitle": "Read",
+      "chapterTitle": "God’s Love for Man",
+      "prevChapter": null,
       "nextChapter": {
         "number": 2,
-        "title": "Details"
-      },
-      "paragraphs": []
-    },
-    {
-      "chapterNumber": 2,
-      "chapterTitle": "Details",
-      "prevChapter": {
-        "number": 1,
-        "title": "Read"
-      },
-      "nextChapter": {
-        "number": 3,
-        "title": "Foreword"
-      },
-      "paragraphs": []
-    },
-    {
-      "chapterNumber": 3,
-      "chapterTitle": "Foreword",
-      "prevChapter": {
-        "number": 2,
-        "title": "Details"
-      },
-      "nextChapter": {
-        "number": 4,
-        "title": "Chapter 1—God’s Love for Man"
-      },
-      "paragraphs": []
-    },
-    {
-      "chapterNumber": 4,
-      "chapterTitle": "Chapter 1— God’s Love for Man",
-      "prevChapter": {
-        "number": 3,
-        "title": "Foreword"
-      },
-      "nextChapter": {
-        "number": 5,
-        "title": "Chapter 2—The Sinner’s Need of Christ"
+        "title": "Chapter 2— The Sinner’s Need of Christ"
       },
       "paragraphs": [
         {
@@ -168,15 +130,15 @@
       ]
     },
     {
-      "chapterNumber": 5,
-      "chapterTitle": "Chapter 2— The Sinner’s Need of Christ",
+      "chapterNumber": 2,
+      "chapterTitle": "The Sinner’s Need of Christ",
       "prevChapter": {
-        "number": 4,
-        "title": "Chapter 1—God’s Love for Man"
+        "number": 1,
+        "title": "Chapter 1— God’s Love for Man"
       },
       "nextChapter": {
-        "number": 6,
-        "title": "Chapter 3—Repentance"
+        "number": 3,
+        "title": "Chapter 3— Repentance"
       },
       "paragraphs": [
         {
@@ -262,15 +224,15 @@
       ]
     },
     {
-      "chapterNumber": 6,
-      "chapterTitle": "Chapter 3— Repentance",
+      "chapterNumber": 3,
+      "chapterTitle": "Repentance",
       "prevChapter": {
-        "number": 5,
-        "title": "Chapter 2—The Sinner’s Need of Christ"
+        "number": 2,
+        "title": "Chapter 2— The Sinner’s Need of Christ"
       },
       "nextChapter": {
-        "number": 7,
-        "title": "Chapter 4—Confession"
+        "number": 4,
+        "title": "Chapter 4— Confession"
       },
       "paragraphs": [
         {
@@ -505,15 +467,15 @@
       ]
     },
     {
-      "chapterNumber": 7,
-      "chapterTitle": "Chapter 4— Confession",
+      "chapterNumber": 4,
+      "chapterTitle": "Confession",
       "prevChapter": {
-        "number": 6,
-        "title": "Chapter 3—Repentance"
+        "number": 3,
+        "title": "Chapter 3— Repentance"
       },
       "nextChapter": {
-        "number": 8,
-        "title": "Chapter 5—Consecration"
+        "number": 5,
+        "title": "Chapter 5— Consecration"
       },
       "paragraphs": [
         {
@@ -594,15 +556,15 @@
       ]
     },
     {
-      "chapterNumber": 8,
-      "chapterTitle": "Chapter 5— Consecration",
+      "chapterNumber": 5,
+      "chapterTitle": "Consecration",
       "prevChapter": {
-        "number": 7,
-        "title": "Chapter 4—Confession"
+        "number": 4,
+        "title": "Chapter 4— Confession"
       },
       "nextChapter": {
-        "number": 9,
-        "title": "Chapter 6—Faith and Acceptance"
+        "number": 6,
+        "title": "Chapter 6— Faith and Acceptance"
       },
       "paragraphs": [
         {
@@ -690,15 +652,15 @@
       ]
     },
     {
-      "chapterNumber": 9,
-      "chapterTitle": "Chapter 6— Faith and Acceptance",
+      "chapterNumber": 6,
+      "chapterTitle": "Faith and Acceptance",
       "prevChapter": {
-        "number": 8,
-        "title": "Chapter 5—Consecration"
+        "number": 5,
+        "title": "Chapter 5— Consecration"
       },
       "nextChapter": {
-        "number": 10,
-        "title": "Chapter 7—The Test of Discipleship"
+        "number": 7,
+        "title": "Chapter 7— The Test of Discipleship"
       },
       "paragraphs": [
         {
@@ -814,15 +776,15 @@
       ]
     },
     {
-      "chapterNumber": 10,
-      "chapterTitle": "Chapter 7— The Test of Discipleship",
+      "chapterNumber": 7,
+      "chapterTitle": "The Test of Discipleship",
       "prevChapter": {
-        "number": 9,
-        "title": "Chapter 6—Faith and Acceptance"
+        "number": 6,
+        "title": "Chapter 6— Faith and Acceptance"
       },
       "nextChapter": {
-        "number": 11,
-        "title": "Chapter 8—Growing Up Into Christ"
+        "number": 8,
+        "title": "Chapter 8— Growing Up Into Christ"
       },
       "paragraphs": [
         {
@@ -970,15 +932,15 @@
       ]
     },
     {
-      "chapterNumber": 11,
-      "chapterTitle": "Chapter 8— Growing Up Into Christ",
+      "chapterNumber": 8,
+      "chapterTitle": "Growing Up Into Christ",
       "prevChapter": {
-        "number": 10,
-        "title": "Chapter 7—The Test of Discipleship"
+        "number": 7,
+        "title": "Chapter 7— The Test of Discipleship"
       },
       "nextChapter": {
-        "number": 12,
-        "title": "Chapter 9—The Work and the Life"
+        "number": 9,
+        "title": "Chapter 9— The Work and the Life"
       },
       "paragraphs": [
         {
@@ -1124,15 +1086,15 @@
       ]
     },
     {
-      "chapterNumber": 12,
-      "chapterTitle": "Chapter 9— The Work and the Life",
+      "chapterNumber": 9,
+      "chapterTitle": "The Work and the Life",
       "prevChapter": {
-        "number": 11,
-        "title": "Chapter 8—Growing Up Into Christ"
+        "number": 8,
+        "title": "Chapter 8— Growing Up Into Christ"
       },
       "nextChapter": {
-        "number": 13,
-        "title": "Chapter 10—A Knowledge of God"
+        "number": 10,
+        "title": "Chapter 10— A Knowledge of God"
       },
       "paragraphs": [
         {
@@ -1253,15 +1215,15 @@
       ]
     },
     {
-      "chapterNumber": 13,
-      "chapterTitle": "Chapter 10— A Knowledge of God",
+      "chapterNumber": 10,
+      "chapterTitle": "A Knowledge of God",
       "prevChapter": {
-        "number": 12,
-        "title": "Chapter 9—The Work and the Life"
+        "number": 9,
+        "title": "Chapter 9— The Work and the Life"
       },
       "nextChapter": {
-        "number": 14,
-        "title": "Chapter 11—The Privilege of Prayer"
+        "number": 11,
+        "title": "Chapter 11— The Privilege of Prayer"
       },
       "paragraphs": [
         {
@@ -1383,15 +1345,15 @@
       ]
     },
     {
-      "chapterNumber": 14,
-      "chapterTitle": "Chapter 11— The Privilege of Prayer",
+      "chapterNumber": 11,
+      "chapterTitle": "The Privilege of Prayer",
       "prevChapter": {
-        "number": 13,
-        "title": "Chapter 10—A Knowledge of God"
+        "number": 10,
+        "title": "Chapter 10— A Knowledge of God"
       },
       "nextChapter": {
-        "number": 15,
-        "title": "Chapter 12—What to Do with Doubt"
+        "number": 12,
+        "title": "Chapter 12— What to Do with Doubt"
       },
       "paragraphs": [
         {
@@ -1586,15 +1548,15 @@
       ]
     },
     {
-      "chapterNumber": 15,
-      "chapterTitle": "Chapter 12— What to Do with Doubt",
+      "chapterNumber": 12,
+      "chapterTitle": "What to Do with Doubt",
       "prevChapter": {
-        "number": 14,
-        "title": "Chapter 11—The Privilege of Prayer"
+        "number": 11,
+        "title": "Chapter 11— The Privilege of Prayer"
       },
       "nextChapter": {
-        "number": 16,
-        "title": "Chapter 13—Rejoicing in the Lord"
+        "number": 13,
+        "title": "Chapter 13— Rejoicing in the Lord"
       },
       "paragraphs": [
         {
@@ -1724,11 +1686,11 @@
       ]
     },
     {
-      "chapterNumber": 16,
-      "chapterTitle": "Chapter 13— Rejoicing in the Lord",
+      "chapterNumber": 13,
+      "chapterTitle": "Rejoicing in the Lord",
       "prevChapter": {
-        "number": 15,
-        "title": "Chapter 12—What to Do with Doubt"
+        "number": 12,
+        "title": "Chapter 12— What to Do with Doubt"
       },
       "paragraphs": [
         {
@@ -1916,7 +1878,8 @@
             "Matthew 16:26"
           ]
         }
-      ]
+      ],
+      "nextChapter": null
     }
   ]
 }

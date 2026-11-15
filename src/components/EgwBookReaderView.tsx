@@ -120,12 +120,7 @@ export const EgwBookReaderView: React.FC<EgwBookReaderViewProps> = ({
               {meta?.year && <span className="text-slate-400">• {meta.year}</span>}
             </div>
             <h1 className="text-2xl sm:text-3xl font-serif font-bold text-slate-100 tracking-tight leading-tight">
-              {chapterData.chapterTitle.toLowerCase().startsWith('chapter ') ||
-              chapterData.chapterTitle.toLowerCase().startsWith('section ') ||
-              chapterData.chapterTitle.toLowerCase().startsWith('foreword') ||
-              chapterData.chapterTitle.toLowerCase().startsWith('preface')
-                ? chapterData.chapterTitle
-                : `Chapter ${chapterData.chapterNumber}: ${chapterData.chapterTitle}`}
+              {chapterData.chapterTitle}
             </h1>
           </div>
 
