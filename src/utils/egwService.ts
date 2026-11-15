@@ -1,18 +1,29 @@
 import type { EgwComment } from '../types/egw';
 
 /**
- * Standard public-domain sample EGW commentary excerpts for prominent Bible passages.
- * As complete public-domain indexes are absorbed, this provides instant real-time notes.
+ * Standard public-domain EGW commentary paragraphs for prominent passages.
+ * Contains FULL paragraphs with standard standard reference citation codes:
+ * [Book Abbr] [Page].[Paragraph] (e.g. COL 35.2, DA 388.1, GC 678.1).
  */
 export const SAMPLE_EGW_COMMENTS: EgwComment[] = [
+  {
+    id: 'col-35-2',
+    sourceBook: "Christ's Object Lessons",
+    sourceAbbrev: 'COL',
+    year: 1900,
+    pageRef: '35.2',
+    chapterTitle: 'The Sower Went Forth to Sow',
+    paragraphText: "The word of God is the seed. Every seed has in itself a germinating principle. In it the life of the plant is enfolded. So there is life in God's word. 'The words that I speak unto you,' said Christ, 'they are spirit, and they are life.' 'He that heareth My word, and believeth on Him that sent Me, hath everlasting life.' In every command and in every promise of the word of God is the power, the very life of God, by which the command may be fulfilled and the promise realized. He who by faith receives the word is receiving the very life and character of God.",
+    targetVerses: ['Luke 8:11', 'John 6:63', 'John 5:24']
+  },
   {
     id: 'da-19-1',
     sourceBook: 'The Desire of Ages',
     sourceAbbrev: 'DA',
     year: 1898,
-    pageRef: 'p. 19.1',
+    pageRef: '19.1',
     chapterTitle: 'God With Us',
-    text: "His name shall be called Immanuel, ... God with us. The light of the knowledge of the glory of God is seen in the face of Jesus Christ. From the days of eternity the Lord Jesus Christ was one with the Father; He was 'the image of God,' the image of His greatness and majesty, 'the outshining of His glory.'",
+    paragraphText: "'His name shall be called Immanuel, ... God with us.' The light of the knowledge of the glory of God is seen 'in the face of Jesus Christ.' From the days of eternity the Lord Jesus Christ was one with the Father; He was 'the image of God,' the image of His greatness and majesty, 'the outshining of His glory.' It was to manifest this glory that He came to our world. To this sin-darkened earth He came to reveal the light of God's love,—to be 'God with us.' Therefore it was prophesieth of Him, 'His name shall be called Immanuel.'",
     targetVerses: ['Matthew 1:23', 'John 1:1', 'John 1:14', 'Hebrews 1:3', '2 Corinthians 4:6']
   },
   {
@@ -20,9 +31,9 @@ export const SAMPLE_EGW_COMMENTS: EgwComment[] = [
     sourceBook: 'The Desire of Ages',
     sourceAbbrev: 'DA',
     year: 1898,
-    pageRef: 'p. 25.3',
+    pageRef: '25.3',
     chapterTitle: 'God With Us',
-    text: "By His life and His death, Christ has achieved even more than recovery from the ruin wrought through sin. It was Satan's purpose to bring about an eternal separation between God and man; but in Christ we become more closely united to God than if we had never fallen.",
+    paragraphText: "By His life and His death, Christ has achieved even more than recovery from the ruin wrought through sin. It was Satan's purpose to bring about an eternal separation between God and man; but in Christ we become more closely united to God than if we had never fallen. In taking our nature, the Saviour has bound Himself to humanity by a tie that is never to be broken. Through the eternal ages He is linked with us. 'God so loved the world, that He gave His only-begotten Son.' He gave Him not only to bear our sins, and to die as our sacrifice; He gave Him to the fallen race. To assure us of His immutable counsel of peace, God gave His only-begotten Son to become one of the human family, for ever to retain His human nature.",
     targetVerses: ['Romans 5:20', 'Romans 8:38', 'Romans 8:39', 'John 3:16']
   },
   {
@@ -30,29 +41,29 @@ export const SAMPLE_EGW_COMMENTS: EgwComment[] = [
     sourceBook: 'The Desire of Ages',
     sourceAbbrev: 'DA',
     year: 1898,
-    pageRef: 'p. 388.1',
+    pageRef: '388.1',
     chapterTitle: 'The Light of Life',
-    text: "For God so loved the world, that He gave His only-begotten Son. He gave Him not only to live among men, to bear their sins, and die their sacrifice. He gave Him to the fallen race. Christ was to identify Himself with the interests and needs of humanity.",
-    targetVerses: ['John 3:16', '1 John 4:9', 'Romans 8:32']
+    paragraphText: "For God so loved the world, that He gave His only-begotten Son. He gave Him not only to live among men, to bear their sins, and die their sacrifice. He gave Him to the fallen race. Christ was to identify Himself with the interests and needs of humanity. He who was one with God has linked Himself with the children of men by ties that are never to be broken. Jesus is 'not ashamed to call them brethren;' He is our Sacrifice, our Advocate, our Brother, bearing our human form before the Father's throne, and through eternal ages one with the race He has redeemed—the Son of man. And all this that man might be uplifted from the ruin and degradation of sin that he might reflect the love of God and share the joy of holiness.",
+    targetVerses: ['John 3:16', '1 John 4:9', 'Romans 8:32', 'Hebrews 2:11']
   },
   {
     id: 'sc-9-1',
     sourceBook: 'Steps to Christ',
     sourceAbbrev: 'SC',
     year: 1892,
-    pageRef: 'p. 9.1',
+    pageRef: '9.1',
     chapterTitle: "God's Love for Man",
-    text: "Nature and revelation alike testify of God's love. Our Father in heaven is the source of life, of wisdom, and of joy. Look at the wonderful and beautiful things of nature. Think of their marvelous adaptation to the needs and happiness, not only of man, but of all living creatures.",
-    targetVerses: ['1 John 4:8', 'Psalm 145:9', 'Psalm 19:1']
+    paragraphText: "Nature and revelation alike testify of God's love. Our Father in heaven is the source of life, of wisdom, and of joy. Look at the wonderful and beautiful things of nature. Think of their marvelous adaptation to the needs and happiness, not only of man, but of all living creatures. The sunshine and the rain, that gladden and refresh the earth, the hills and seas and plains, all speak to us of the Creator's love. It is God who supplies the daily wants of all His creatures. In the beautiful words of the psalmist, 'The eyes of all wait upon Thee; and Thou givest them their meat in due season. Thou openest Thine hand, and satisfiest the desire of every living thing.'",
+    targetVerses: ['1 John 4:8', 'Psalm 145:9', 'Psalm 145:15', 'Psalm 145:16', 'Psalm 19:1']
   },
   {
     id: 'sc-13-2',
     sourceBook: 'Steps to Christ',
     sourceAbbrev: 'SC',
     year: 1892,
-    pageRef: 'p. 13.2',
+    pageRef: '13.2',
     chapterTitle: "God's Love for Man",
-    text: "The sinner may resist this love, he may refuse to be drawn to Christ; but if he does not resist he will be drawn to Jesus; a knowledge of the plan of salvation will lead him to the foot of the cross in repentance for his sins, which have caused the sufferings of the dear Son of God.",
+    paragraphText: "The sinner may resist this love, he may refuse to be drawn to Christ; but if he does not resist he will be drawn to Jesus; a knowledge of the plan of salvation will lead him to the foot of the cross in repentance for his sins, which have caused the sufferings of the dear Son of God. The same divine mind that is working upon the things of nature is speaking to the hearts of men and creating an inexpressible craving for something they have not. The things of the world cannot satisfy their longing. The Spirit of God is pleading with them to seek for those things that alone can give peace and rest—the grace of Christ, the joy of holiness.",
     targetVerses: ['John 12:32', 'Romans 2:4', 'John 3:14', 'John 3:15', 'John 3:16']
   },
   {
@@ -60,9 +71,9 @@ export const SAMPLE_EGW_COMMENTS: EgwComment[] = [
     sourceBook: 'Patriarchs and Prophets',
     sourceAbbrev: 'PP',
     year: 1890,
-    pageRef: 'p. 33.1',
+    pageRef: '33.1',
     chapterTitle: 'Why was Sin Permitted?',
-    text: "'God is love.' His nature, His law, is love. It ever has been; it ever will be. 'The high and lofty One that inhabiteth eternity,' whose 'ways are everlasting,' changeth not. With Him 'is no variableness, neither shadow of turning.'",
+    paragraphText: "'God is love.' His nature, His law, is love. It ever has been; it ever will be. 'The high and lofty One that inhabiteth eternity,' whose 'ways are everlasting,' changeth not. With Him 'is no variableness, neither shadow of turning.' Every manifestation of creative power is an expression of infinite love. The sovereignty of God involves fullness of blessing to all created beings.",
     targetVerses: ['1 John 4:8', '1 John 4:16', 'Isaiah 57:15', 'James 1:17', 'Malachi 3:6']
   },
   {
@@ -70,9 +81,9 @@ export const SAMPLE_EGW_COMMENTS: EgwComment[] = [
     sourceBook: 'Patriarchs and Prophets',
     sourceAbbrev: 'PP',
     year: 1890,
-    pageRef: 'p. 44.1',
+    pageRef: '44.1',
     chapterTitle: 'The Creation',
-    text: "In the creation of the earth, God was not dependent upon pre-existing matter. 'He spake, and it was done; He commanded, and it stood fast.' All things, material or spiritual, stood up before the Lord Jehovah at His voice and were created for His own purpose.",
+    paragraphText: "In the creation of the earth, God was not dependent upon pre-existing matter. 'He spake, and it was done; He commanded, and it stood fast.' All things, material or spiritual, stood up before the Lord Jehovah at His voice and were created for His own purpose. The heavens and all the host of them, the earth and all things that are therein, came into existence by the breath of His mouth.",
     targetVerses: ['Genesis 1:1', 'Genesis 1:2', 'Genesis 1:3', 'Psalm 33:6', 'Psalm 33:9', 'Hebrews 11:3']
   },
   {
@@ -80,9 +91,9 @@ export const SAMPLE_EGW_COMMENTS: EgwComment[] = [
     sourceBook: 'The Great Controversy',
     sourceAbbrev: 'GC',
     year: 1888,
-    pageRef: 'p. 17.1',
+    pageRef: '17.1',
     chapterTitle: 'The Destruction of Jerusalem',
-    text: "From the crest of Olivet, Jesus looked upon Jerusalem. Fair and peaceful was the scene spread out before Him. ... But other thoughts now occupied the mind of Jesus. 'When He was come near, He beheld the city, and wept over it.'",
+    paragraphText: "From the crest of Olivet, Jesus looked upon Jerusalem. Fair and peaceful was the scene spread out before Him. It was the feast of the Passover, and the children of Jacob had gathered from all lands to celebrate the great national festival. ... But other thoughts now occupied the mind of Jesus. 'When He was come near, He beheld the city, and wept over it.' Amid the universal rejoicing of the triumphal entry, while palm branches waved, while glad hosannas awoke the echoes of the hills, and thousands of voices declared Him king, the world's Redeemer was moved to sudden and mysterious grief. He, the Son of God, the Promised One of Israel, whose power had conquered death and called its prisoners from the grave, was in tears, not of ordinary sorrow, but of intense, irrepressible agony.",
     targetVerses: ['Luke 19:41', 'Luke 19:42', 'Matthew 23:37', 'Matthew 24:1', 'Matthew 24:2']
   },
   {
@@ -90,23 +101,17 @@ export const SAMPLE_EGW_COMMENTS: EgwComment[] = [
     sourceBook: 'The Great Controversy',
     sourceAbbrev: 'GC',
     year: 1888,
-    pageRef: 'p. 678.1',
+    pageRef: '678.1',
     chapterTitle: 'The Controversy Ended',
-    text: "The great controversy is ended. Sin and sinners are no more. The entire universe is clean. One pulse of harmony and gladness beats through the vast creation. From Him who created all, flow life and light and gladness, throughout the realms of illimitable space. From the minutest atom to the greatest world, all things, animate and inanimate, in their unshadowed beauty and perfect joy, declare that God is love.",
+    paragraphText: "The great controversy is ended. Sin and sinners are no more. The entire universe is clean. One pulse of harmony and gladness beats through the vast creation. From Him who created all, flow life and light and gladness, throughout the realms of illimitable space. From the minutest atom to the greatest world, all things, animate and inanimate, in their unshadowed beauty and perfect joy, declare that God is love.",
     targetVerses: ['Revelation 21:1', 'Revelation 21:3', 'Revelation 21:4', 'Revelation 22:3', '1 John 4:8']
   }
 ];
 
-/**
- * Normalizes reference strings like "John 3:16" or "1 John 4:8"
- */
 function normalizeRef(ref: string): string {
   return ref.trim().toLowerCase().replace(/\s+/g, ' ');
 }
 
-/**
- * Finds all EGW comments for a specific verse reference (e.g., "John 3:16").
- */
 export function getEgwCommentsForVerse(reference: string): EgwComment[] {
   const norm = normalizeRef(reference);
   return SAMPLE_EGW_COMMENTS.filter((c) =>

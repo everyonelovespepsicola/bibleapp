@@ -1,6 +1,6 @@
 import React from 'react';
 import type { EgwComment } from '../types/egw';
-import { BookOpen, ExternalLink, Bookmark, Sparkles } from 'lucide-react';
+import { BookOpen, Bookmark, Sparkles, Copy, Check } from 'lucide-react';
 
 interface EgwNotesBodyProps {
   reference: string;
@@ -13,6 +13,16 @@ export const EgwNotesBody: React.FC<EgwNotesBodyProps> = ({
   comments,
   verseText,
 }) => {
+  const [copiedId, setCopiedId] = React.useState<string | null>(null);
+
+  const copyParagraph = async (c: EgwComment) => {
+    const citation = `${c.sourceAbbrev} ${c.pageRef} (${c.sourceBook}, p. ${c.pageRef})`;
+    const fullText = `"${c.paragraphText}" — ${citation}`;
+    await navigator.clipboard.writeText(fullText);
+    setCopiedId(c.id);
+    setTimeout(() => setCopiedId(null), 2000);
+  };
+
   return (
     <div className="space-y-6">
       {/* Passage Header Context */}
@@ -39,59 +49,86 @@ export const EgwNotesBody: React.FC<EgwNotesBodyProps> = ({
           </div>
           <h4 className="text-sm font-semibold text-slate-300">No Direct Excerpts Indexed Yet</h4>
           <p className="text-xs text-slate-400 mt-1.5 max-w-xs mx-auto leading-relaxed">
-            As additional pre-1929 Ellen G. White public domain volumes are indexed into the local offline library, matching references for <span className="text-amber-400">{reference}</span> will automatically appear here.
+            As additional pre-1929 Ellen G. White public domain volumes are indexed into the local offline library, matching paragraphs referencing <span className="text-amber-400">{reference}</span> will automatically appear here.
           </p>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-5">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-1.5 text-xs font-bold uppercase tracking-wider text-amber-400">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Ellen G. White Excerpts ({comments.length})</span>
+              <span>Ellen G. White Paragraphs ({comments.length})</span>
             </div>
-            <span className="text-[11px] text-slate-500">Public Domain Collection</span>
+            <span className="text-[11px] text-slate-500">Full Context Flow</span>
           </div>
 
-          {comments.map((c) => (
-            <div
-              key={c.id}
-              className="bg-slate-800/40 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition space-y-3"
-            >
-              <div className="flex items-baseline justify-between gap-2 border-b border-slate-800/80 pb-2">
-                <div>
-                  <span className="text-sm font-bold text-amber-300 font-serif">
-                    {c.sourceBook}
-                  </span>
-                  {c.chapterTitle && (
-                    <span className="text-xs text-slate-400 block sm:inline sm:ml-2">
-                      • {c.chapterTitle}
+          {comments.map((c) => {
+            const citationCode = `${c.sourceAbbrev} ${c.pageRef}`;
+
+            return (
+              <div
+                key={c.id}
+                className="bg-slate-800/40 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition space-y-3 relative group"
+              >
+                {/* Book & Chapter Header */}
+                <div className="flex items-baseline justify-between gap-2 border-b border-slate-800/80 pb-2">
+                  <div>
+                    <span className="text-sm font-bold text-amber-300 font-serif">
+                      {c.sourceBook}
                     </span>
-                  )}
-                </div>
-                <div className="text-right flex-shrink-0">
-                  <span className="inline-block text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-slate-700/60 text-slate-300">
-                    {c.sourceAbbrev} {c.pageRef}
-                  </span>
+                    {c.chapterTitle && (
+                      <span className="text-xs text-slate-400 block sm:inline sm:ml-2">
+                        • {c.chapterTitle}
+                      </span>
+                    )}
+                  </div>
+
                   {c.year && (
-                    <span className="text-[10px] text-slate-500 block">
+                    <span className="text-[10px] text-slate-500 font-mono">
                       ({c.year})
                     </span>
                   )}
                 </div>
-              </div>
 
-              <blockquote className="font-serif text-[1.05rem] leading-relaxed text-slate-200 border-l-2 border-amber-500/40 pl-3 italic">
-                "{c.text}"
-              </blockquote>
+                {/* Full Paragraph Text with Quote and Ending Reference Code */}
+                <div className="font-serif text-[1.05rem] leading-[1.8] text-slate-200 border-l-2 border-amber-500/50 pl-3.5 py-0.5">
+                  <span>{c.paragraphText}</span>
+                  {/* Inline Ending Reference Code: Book, Page, Paragraph (e.g. COL 35.2) */}
+                  <span className="ml-2 inline-block font-sans font-bold text-amber-400/90 text-xs tracking-wide bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/30 selection:bg-amber-400 selection:text-slate-950">
+                    — {citationCode}
+                  </span>
+                </div>
 
-              <div className="flex items-center justify-between pt-1 text-[11px] text-slate-400">
-                <span className="flex items-center gap-1 text-slate-500">
-                  <ExternalLink className="w-3 h-3" />
-                  Cross-linked to: {c.targetVerses.join(', ')}
-                </span>
+                {/* Footer Metadata & One-click Copy */}
+                <div className="flex items-center justify-between pt-2 border-t border-slate-800/60 text-xs text-slate-400">
+                  <div className="text-[11px] text-slate-400 font-sans">
+                    <span className="text-slate-500">Citation:</span>{' '}
+                    <strong className="text-slate-300">{c.sourceBook}</strong>, p.{' '}
+                    <span className="font-mono text-amber-400">{c.pageRef}</span>{' '}
+                    <span className="text-slate-500">({citationCode})</span>
+                  </div>
+
+                  <button
+                    onClick={() => copyParagraph(c)}
+                    className="flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-amber-300 text-xs transition border border-slate-700 cursor-pointer"
+                    title="Copy paragraph and citation to clipboard"
+                  >
+                    {copiedId === c.id ? (
+                      <>
+                        <Check className="w-3.5 h-3.5 text-emerald-400" />
+                        <span className="text-emerald-400 font-semibold">Copied!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-3.5 h-3.5" />
+                        <span>Copy</span>
+                      </>
+                    )}
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>
