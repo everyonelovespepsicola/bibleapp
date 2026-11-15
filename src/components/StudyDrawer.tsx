@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import type { StrongsEntry } from '../types/bible';
 import type { EgwComment, EgwChapterData, StudyDrawerTab } from '../types/egw';
 import { getEgwChapter, getEgwChapterAsync } from '../utils/egwService';
-import { X, Search, Link as LinkIcon, Compass, ArrowRightLeft, ChevronLeft, ChevronRight, BookOpen, Feather } from 'lucide-react';
+import { X, Search, Link as LinkIcon, Compass, ArrowRightLeft, ChevronLeft, ChevronRight, BookOpen, Feather, ArrowLeft } from 'lucide-react';
 import { LexiconBody } from './LexiconBody';
 import { EgwNotesBody } from './EgwNotesBody';
 import { EgwChapterReader } from './EgwChapterReader';
@@ -161,13 +161,25 @@ export const StudyDrawer: React.FC<StudyDrawerProps> = ({
               </span>
             </>
           ) : (
-            <div className="flex items-center gap-1.5 text-xs font-bold text-amber-400 uppercase tracking-wider">
-              <Feather className="w-3.5 h-3.5" />
-              <span>
-                {readingChapterTarget && activeEgwChapterData
-                  ? `${activeEgwChapterData.bookAbbrev} Ch. ${activeEgwChapterData.chapterNumber}`
-                  : currentVerseReference || 'Verse Notes'}
-              </span>
+            <div className="flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-wider">
+              {readingChapterTarget && (
+                <button
+                  onClick={() => setReadingChapterTarget(null)}
+                  className="flex items-center space-x-1.5 px-2.5 py-1 text-xs font-semibold text-amber-300 hover:text-amber-200 bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 rounded-lg transition cursor-pointer shadow-xs active:scale-95 normal-case"
+                  title="Return to verse notes list"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Back to Notes</span>
+                </button>
+              )}
+              <div className="flex items-center gap-1.5">
+                <Feather className="w-3.5 h-3.5" />
+                <span>
+                  {readingChapterTarget && activeEgwChapterData
+                    ? `${activeEgwChapterData.bookAbbrev} Ch. ${activeEgwChapterData.chapterNumber}`
+                    : currentVerseReference || 'Verse Notes'}
+                </span>
+              </div>
             </div>
           )}
         </div>
