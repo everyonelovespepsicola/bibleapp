@@ -28,13 +28,18 @@ async function getDB(): Promise<IDBPDatabase> {
       }
       if (oldVersion < 3) {
         // Clear cached books from v2 to refresh with consolidated true chapters
-        if (db.objectStoreNames.contains(STORE_EGW_BOOKS)) {
-          const tx = (db as any).transaction(STORE_EGW_BOOKS, 'readwrite');
-          tx.objectStore(STORE_EGW_BOOKS).clear();
-        }
-        if (db.objectStoreNames.contains(STORE_EGW_INDEX)) {
-          const tx = (db as any).transaction(STORE_EGW_INDEX, 'readwrite');
-          tx.objectStore(STORE_EGW_INDEX).clear();
+        // In onupgradeneeded, object stores can be cleared directly on the transaction
+        try {
+          if (db.objectStoreNames.contains(STORE_EGW_BOOKS)) {
+            const store = (db as any).transaction ? (db as any).transaction.objectStore(STORE_EGW_BOOKS) : null;
+            if (store && store.clear) store.clear();
+          }
+          if (db.objectStoreNames.contains(STORE_EGW_INDEX)) {
+            const store = (db as any).transaction ? (db as any).transaction.objectStore(STORE_EGW_INDEX) : null;
+            if (store && store.clear) store.clear();
+          }
+        } catch (e) {
+          console.warn('[DB Upgrade] Could not clear old stores, continuing:', e);
         }
       }
     },
