@@ -13,7 +13,8 @@ interface ChapterReaderProps {
   hasPrev?: boolean;
   hasNext?: boolean;
   isStudyMode?: boolean;
-  onWordClick?: (word: string, strongsId: string) => void;
+  onWordClick?: (word: string, strongsId: string, verseContext?: { bookName: string; chapter: number; verse: number; text: string }) => void;
+  onVerseSelect?: (verse: { bookName: string; chapter: number; verse: number; text: string }) => void;
 }
 
 export const ChapterReader: React.FC<ChapterReaderProps> = ({
@@ -27,6 +28,7 @@ export const ChapterReader: React.FC<ChapterReaderProps> = ({
   hasNext,
   isStudyMode,
   onWordClick,
+  onVerseSelect,
 }) => {
   const [copiedVerse, setCopiedVerse] = React.useState<number | null>(null);
   const [layoutMode, setLayoutMode] = React.useState<'paragraph' | 'verse'>('paragraph');
@@ -93,7 +95,12 @@ export const ChapterReader: React.FC<ChapterReaderProps> = ({
           key={`${matchIndex}-${strongsId}`}
           onClick={(e) => {
             e.stopPropagation();
-            onWordClick?.(word, strongsId);
+            onWordClick?.(word, strongsId, {
+              bookName,
+              chapter: chapterNumber,
+              verse: v.verse,
+              text: v.text,
+            });
           }}
           className="inline-flex items-baseline mx-0.5 px-1 py-0.5 rounded-md hover:bg-amber-500/20 text-slate-100 hover:text-amber-300 font-serif border-b border-dashed border-amber-500/40 hover:border-amber-400 transition cursor-pointer group"
           title={`Click to inspect Strong's ${strongsId} (${word})`}
@@ -191,7 +198,21 @@ export const ChapterReader: React.FC<ChapterReaderProps> = ({
                     }`}
                     title={`Click to copy ${bookName} ${chapterNumber}:${v.verse} for PowerPoint/Word`}
                   >
-                    <sup className="text-xs sm:text-sm font-sans font-bold text-amber-400/80 mr-1 selection:bg-amber-400 selection:text-slate-950">
+                    <sup
+                      onClick={(e) => {
+                        if (onVerseSelect) {
+                          e.stopPropagation();
+                          onVerseSelect({
+                            bookName,
+                            chapter: chapterNumber,
+                            verse: v.verse,
+                            text: v.text,
+                          });
+                        }
+                      }}
+                      className="text-xs sm:text-sm font-sans font-bold text-amber-400/80 hover:text-amber-300 mr-1 selection:bg-amber-400 selection:text-slate-950 cursor-pointer"
+                      title={`View Ellen G. White Notes & Comments for ${bookName} ${chapterNumber}:${v.verse}`}
+                    >
                       {v.verse}
                     </sup>
                     <span>{renderVerseContent(v)} </span>
@@ -220,7 +241,21 @@ export const ChapterReader: React.FC<ChapterReaderProps> = ({
                     : 'hover:bg-slate-800/40'
                 }`}
               >
-                <span className="text-xs sm:text-sm font-sans font-bold text-amber-400/80 w-7 text-right flex-shrink-0 selection:bg-amber-400 selection:text-slate-950">
+                <span
+                  onClick={(e) => {
+                    if (onVerseSelect) {
+                      e.stopPropagation();
+                      onVerseSelect({
+                        bookName,
+                        chapter: chapterNumber,
+                        verse: v.verse,
+                        text: v.text,
+                      });
+                    }
+                  }}
+                  className="text-xs sm:text-sm font-sans font-bold text-amber-400/80 hover:text-amber-300 w-7 text-right flex-shrink-0 selection:bg-amber-400 selection:text-slate-950 cursor-pointer"
+                  title={`View Ellen G. White Notes & Comments for ${bookName} ${chapterNumber}:${v.verse}`}
+                >
                   {v.verse}
                 </span>
                 <div className="flex-1 text-slate-100 text-[1.25rem] sm:text-[1.35rem] leading-9 font-serif selection:bg-amber-400 selection:text-slate-950">

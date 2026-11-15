@@ -13,6 +13,8 @@ import {
   ArrowRightLeft,
 } from 'lucide-react';
 import type { BibleTranslation, FlatVerse, StrongsEntry } from './types/bible';
+import type { StudyDrawerTab } from './types/egw';
+import { getEgwCommentsForVerse } from './utils/egwService';
 import { parseVerseReference } from './utils/referenceParser';
 import { searchBible, type SearchResult } from './utils/searchEngine';
 import { initLexiconWordMaps } from './utils/lexiconParser';
@@ -53,6 +55,11 @@ export function App() {
   const [selectedStrongsEntry, setSelectedStrongsEntry] = useState<StrongsEntry | null>(null);
   const [selectedWord, setSelectedWord] = useState<string>('');
   const [isStudyDrawerOpen, setIsStudyDrawerOpen] = useState<boolean>(false);
+
+  // EGW Study Drawer Tab State
+  const [studyDrawerTab, setStudyDrawerTab] = useState<StudyDrawerTab>('strongs');
+  const [selectedVerseRef, setSelectedVerseRef] = useState<string>('');
+  const [selectedVerseText, setSelectedVerseText] = useState<string>('');
 
   // History stack for navigating backwards/forwards through viewed lexicon words
   const [historyStack, setHistoryStack] = useState<Array<{ entry: StrongsEntry; word: string }>>([]);
@@ -166,11 +173,17 @@ export function App() {
     return searchRes.verses;
   }, [selectedStrongsEntry?.number, activeTranslation]);
 
+  const currentEgwComments = React.useMemo(() => {
+    if (!selectedVerseRef) return [];
+    return getEgwCommentsForVerse(selectedVerseRef);
+  }, [selectedVerseRef]);
+
   // Strong's interaction & history stack navigation
   const navigateToLexiconEntry = (entry: StrongsEntry, word: string) => {
     setSelectedStrongsEntry(entry);
     setSelectedWord(word);
     setIsStudyDrawerOpen(true);
+    setStudyDrawerTab('strongs');
 
     setHistoryStack((prev) => {
       // Truncate any forward history after current index, then push new entry
@@ -185,11 +198,26 @@ export function App() {
     setHistoryIndex((prev) => prev + 1);
   };
 
-  const handleWordClick = (word: string, strongsId: string) => {
+  const handleWordClick = (
+    word: string,
+    strongsId: string,
+    verseContext?: { bookName: string; chapter: number; verse: number; text: string }
+  ) => {
+    if (verseContext) {
+      setSelectedVerseRef(`${verseContext.bookName} ${verseContext.chapter}:${verseContext.verse}`);
+      setSelectedVerseText(verseContext.text);
+    }
     const entry = strongsLexicon[strongsId.toUpperCase()];
     if (entry) {
       navigateToLexiconEntry(entry, word);
     }
+  };
+
+  const handleVerseSelect = (verse: { bookName: string; chapter: number; verse: number; text: string }) => {
+    setSelectedVerseRef(`${verse.bookName} ${verse.chapter}:${verse.verse}`);
+    setSelectedVerseText(verse.text);
+    setStudyDrawerTab('egw');
+    setIsStudyDrawerOpen(true);
   };
 
   const handleSelectRelatedStrongs = (relatedId: string) => {
@@ -598,6 +626,7 @@ export function App() {
               }
               isStudyMode={isStudyMode}
               onWordClick={handleWordClick}
+              onVerseSelect={handleVerseSelect}
             />
           )}
         </main>
@@ -626,6 +655,11 @@ export function App() {
                 canGoForward={historyIndex < historyStack.length - 1}
                 onHistoryBack={handleLexiconHistoryBack}
                 onHistoryForward={handleLexiconHistoryForward}
+                activeTab={studyDrawerTab}
+                onTabChange={setStudyDrawerTab}
+                currentVerseReference={selectedVerseRef}
+                currentVerseText={selectedVerseText}
+                egwComments={currentEgwComments}
               />
             )}
           </aside>
@@ -634,7 +668,7 @@ export function App() {
 
       {/* Mobile Swipeable Bottom Sheet: Scripture text stays full-width underneath; inspector slides over lower half */}
       <SwipeableBottomSheet
-        isOpen={Boolean(isStudyMode && isStudyDrawerOpen && selectedStrongsEntry)}
+        isOpen={Boolean(isStudyMode && isStudyDrawerOpen && (selectedStrongsEntry || studyDrawerTab === 'egw'))}
         onClose={() => setIsStudyDrawerOpen(false)}
       >
         {studyLayoutOrientation === 'concordance-first' ? (
@@ -664,6 +698,11 @@ export function App() {
             canGoForward={historyIndex < historyStack.length - 1}
             onHistoryBack={handleLexiconHistoryBack}
             onHistoryForward={handleLexiconHistoryForward}
+            activeTab={studyDrawerTab}
+            onTabChange={setStudyDrawerTab}
+            currentVerseReference={selectedVerseRef}
+            currentVerseText={selectedVerseText}
+            egwComments={currentEgwComments}
           />
         )}
       </SwipeableBottomSheet>
