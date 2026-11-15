@@ -189,6 +189,10 @@ export async function loadMasterVerseIndex(): Promise<Record<string, EgwComment[
   return fallback;
 }
 
+import egwBookMetaRaw from './egwBookMeta.json';
+
+const EGW_BOOK_META = egwBookMetaRaw as Record<string, { title: string; abbrev: string; year: number }>;
+
 /**
  * Returns EGW commentary paragraphs for a scripture reference.
  * Synchronous version checks in-memory cache then falls back to SAMPLE_EGW_COMMENTS.
@@ -198,9 +202,30 @@ export function getEgwCommentsForVerse(reference: string): EgwComment[] {
 
   if (memoryVerseIndex) {
     // Find matching key case-insensitively
-    for (const [key, comments] of Object.entries(memoryVerseIndex)) {
+    for (const [key, entries] of Object.entries(memoryVerseIndex)) {
       if (normalizeRef(key) === norm) {
-        return comments;
+        return (entries || []).map((item: any, idx: number) => {
+          // If already in full EgwComment format
+          if (item.paragraphText) return item as EgwComment;
+
+          // Hydrate from index format: { book, refcode, excerpt }
+          const meta = EGW_BOOK_META[item.book?.toLowerCase()] || {
+            title: item.book?.toUpperCase() || 'Ellen G. White',
+            abbrev: item.book?.toUpperCase() || 'EGW',
+            year: 1890,
+          };
+
+          return {
+            id: `${item.book}-${item.refcode || idx}`,
+            sourceBook: meta.title,
+            sourceAbbrev: meta.abbrev,
+            year: meta.year,
+            pageRef: item.refcode || '',
+            paragraphText: item.excerpt || '',
+            targetVerses: [reference],
+            chapterNumber: 1, // Fallback, resolved accurately by pageRef
+          };
+        });
       }
     }
   }

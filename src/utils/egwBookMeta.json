@@ -1,0 +1,297 @@
+{
+  "1sg": {
+    "title": "Spiritual Gifts, Vol. 1",
+    "abbrev": "1SG",
+    "year": 1858
+  },
+  "1sp": {
+    "title": "The Spirit of Prophecy, Vol. 1",
+    "abbrev": "1SP",
+    "year": 1870
+  },
+  "1t": {
+    "title": "Testimonies for the Church, Vol. 1",
+    "abbrev": "1T",
+    "year": 1868
+  },
+  "2sg": {
+    "title": "Spiritual Gifts, Vol. 2",
+    "abbrev": "2SG",
+    "year": 1860
+  },
+  "2sp": {
+    "title": "The Spirit of Prophecy, Vol. 2",
+    "abbrev": "2SP",
+    "year": 1877
+  },
+  "2t": {
+    "title": "Testimonies for the Church, Vol. 2",
+    "abbrev": "2T",
+    "year": 1871
+  },
+  "3sg": {
+    "title": "Spiritual Gifts, Vol. 3",
+    "abbrev": "3SG",
+    "year": 1864
+  },
+  "3sp": {
+    "title": "The Spirit of Prophecy, Vol. 3",
+    "abbrev": "3SP",
+    "year": 1878
+  },
+  "3t": {
+    "title": "Testimonies for the Church, Vol. 3",
+    "abbrev": "3T",
+    "year": 1875
+  },
+  "4asg": {
+    "title": "Spiritual Gifts, Vol. 4a",
+    "abbrev": "4aSG",
+    "year": 1864
+  },
+  "4bsg": {
+    "title": "Spiritual Gifts, Vol. 4b",
+    "abbrev": "4bSG",
+    "year": 1864
+  },
+  "4sp": {
+    "title": "The Spirit of Prophecy, Vol. 4",
+    "abbrev": "4SP",
+    "year": 1884
+  },
+  "4t": {
+    "title": "Testimonies for the Church, Vol. 4",
+    "abbrev": "4T",
+    "year": 1881
+  },
+  "5t": {
+    "title": "Testimonies for the Church, Vol. 5",
+    "abbrev": "5T",
+    "year": 1889
+  },
+  "6t": {
+    "title": "Testimonies for the Church, Vol. 6",
+    "abbrev": "6T",
+    "year": 1901
+  },
+  "7t": {
+    "title": "Testimonies for the Church, Vol. 7",
+    "abbrev": "7T",
+    "year": 1902
+  },
+  "8t": {
+    "title": "Testimonies for the Church, Vol. 8",
+    "abbrev": "8T",
+    "year": 1904
+  },
+  "9t": {
+    "title": "Testimonies for the Church, Vol. 9",
+    "abbrev": "9T",
+    "year": 1909
+  },
+  "aa": {
+    "title": "The Acts of the Apostles",
+    "abbrev": "AA",
+    "year": 1911
+  },
+  "am": {
+    "title": "An Appeal to Mothers",
+    "abbrev": "AM",
+    "year": 1864
+  },
+  "ay": {
+    "title": "An Appeal to the Youth",
+    "abbrev": "AY",
+    "year": 1864
+  },
+  "ce": {
+    "title": "Christian Education",
+    "abbrev": "CE",
+    "year": 1893
+  },
+  "cet": {
+    "title": "Christian Experience and Teachings of Ellen G. White",
+    "abbrev": "CET",
+    "year": 1922
+  },
+  "cev": {
+    "title": "The Colporteur Evangelist",
+    "abbrev": "CEv",
+    "year": 1920
+  },
+  "ch": {
+    "title": "Counsels on Health",
+    "abbrev": "CH",
+    "year": 1923
+  },
+  "cme": {
+    "title": "A Call to Medical Evangelism",
+    "abbrev": "CME",
+    "year": 1910
+  },
+  "col": {
+    "title": "Christ's Object Lessons",
+    "abbrev": "COL",
+    "year": 1900
+  },
+  "ct": {
+    "title": "Counsels to Parents, Teachers, and Students",
+    "abbrev": "CT",
+    "year": 1913
+  },
+  "ctbh": {
+    "title": "Christian Temperance and Bible Hygiene",
+    "abbrev": "CTBH",
+    "year": 1890
+  },
+  "da": {
+    "title": "The Desire of Ages",
+    "abbrev": "DA",
+    "year": 1898
+  },
+  "ed": {
+    "title": "Education",
+    "abbrev": "Ed",
+    "year": 1903
+  },
+  "ew": {
+    "title": "Early Writings",
+    "abbrev": "EW",
+    "year": 1882
+  },
+  "exv": {
+    "title": "Christian Experience and Views (1851)",
+    "abbrev": "ExV",
+    "year": 1851
+  },
+  "exv54": {
+    "title": "Supplement to Experience and Views (1854)",
+    "abbrev": "ExV54",
+    "year": 1854
+  },
+  "fe": {
+    "title": "Fundamentals of Christian Education",
+    "abbrev": "FE",
+    "year": 1923
+  },
+  "gc": {
+    "title": "The Great Controversy",
+    "abbrev": "GC",
+    "year": 1911
+  },
+  "gw": {
+    "title": "Gospel Workers",
+    "abbrev": "GW",
+    "year": 1915
+  },
+  "gw92": {
+    "title": "Gospel Workers (1892 ed.)",
+    "abbrev": "GW92",
+    "year": 1892
+  },
+  "hl": {
+    "title": "Healthful Living",
+    "abbrev": "HL",
+    "year": 1897
+  },
+  "hs": {
+    "title": "Historical Sketches of Foreign Missions",
+    "abbrev": "HS",
+    "year": 1886
+  },
+  "ic": {
+    "title": "The Impending Conflict",
+    "abbrev": "IC",
+    "year": 1888
+  },
+  "lp": {
+    "title": "Sketches from the Life of Paul",
+    "abbrev": "LP",
+    "year": 1883
+  },
+  "ls": {
+    "title": "Life Sketches of Ellen G. White",
+    "abbrev": "LS",
+    "year": 1915
+  },
+  "ls80": {
+    "title": "Life Sketches of James and Ellen White (1880)",
+    "abbrev": "LS80",
+    "year": 1880
+  },
+  "ls88": {
+    "title": "Life Sketches of James and Ellen White (1888)",
+    "abbrev": "LS88",
+    "year": 1888
+  },
+  "mb": {
+    "title": "Thoughts From the Mount of Blessing",
+    "abbrev": "MB",
+    "year": 1896
+  },
+  "mc": {
+    "title": "Manual for Canvassers",
+    "abbrev": "MC",
+    "year": 1902
+  },
+  "mh": {
+    "title": "The Ministry of Healing",
+    "abbrev": "MH",
+    "year": 1905
+  },
+  "pk": {
+    "title": "Prophets and Kings",
+    "abbrev": "PK",
+    "year": 1917
+  },
+  "pp": {
+    "title": "Patriarchs and Prophets",
+    "abbrev": "PP",
+    "year": 1890
+  },
+  "sa": {
+    "title": "A Solemn Appeal",
+    "abbrev": "SA",
+    "year": 1870
+  },
+  "sc": {
+    "title": "Steps to Christ",
+    "abbrev": "SC",
+    "year": 1892
+  },
+  "sj": {
+    "title": "The Story of Jesus",
+    "abbrev": "SJ",
+    "year": 1896
+  },
+  "sl": {
+    "title": "The Sanctified Life",
+    "abbrev": "SL",
+    "year": 1889
+  },
+  "spted": {
+    "title": "Special Testimonies on Education",
+    "abbrev": "SpTEd",
+    "year": 1897
+  },
+  "sw": {
+    "title": "The Southern Work",
+    "abbrev": "SW",
+    "year": 1898
+  },
+  "tm": {
+    "title": "Testimonies to Ministers and Gospel Workers",
+    "abbrev": "TM",
+    "year": 1923
+  },
+  "tssw": {
+    "title": "Testimonies on Sabbath-School Work",
+    "abbrev": "TSSW",
+    "year": 1900
+  },
+  "wlf": {
+    "title": "A Word to the Little Flock",
+    "abbrev": "WLF",
+    "year": 1847
+  }
+}
