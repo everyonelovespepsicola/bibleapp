@@ -15,6 +15,21 @@ export const EgwChapterReader: React.FC<EgwChapterReaderProps> = ({
   onBackToNotes,
   onNavigateChapter,
 }) => {
+  // Smoothly scroll the highlighted target paragraph into view
+  React.useEffect(() => {
+    if (!activePageRef) return;
+
+    // Small delay to allow DOM to finish rendering
+    const timer = setTimeout(() => {
+      const el = document.getElementById(`egw-p-${activePageRef}`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 150);
+
+    return () => clearTimeout(timer);
+  }, [activePageRef, chapterData.chapterNumber]);
+
   return (
     <div className="space-y-6">
       {/* Top Breadcrumb & Return to Notes */}
