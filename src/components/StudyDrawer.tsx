@@ -25,6 +25,10 @@ interface StudyDrawerProps {
   currentVerseReference?: string;
   currentVerseText?: string;
   egwComments?: EgwComment[];
+
+  // External chapter reader direct trigger
+  directEgwChapterTarget?: { bookAbbrev: string; chapterNumber: number; activePageRef?: string } | null;
+  onClearDirectEgwChapterTarget?: () => void;
 }
 
 export const StudyDrawer: React.FC<StudyDrawerProps> = ({
@@ -43,6 +47,8 @@ export const StudyDrawer: React.FC<StudyDrawerProps> = ({
   currentVerseReference = '',
   currentVerseText = '',
   egwComments = [],
+  directEgwChapterTarget = null,
+  onClearDirectEgwChapterTarget,
 }) => {
   // Reading chapter state for EGW books
   const [readingChapterTarget, setReadingChapterTarget] = useState<{
@@ -57,6 +63,13 @@ export const StudyDrawer: React.FC<StudyDrawerProps> = ({
   useEffect(() => {
     setReadingChapterTarget(null);
   }, [currentVerseReference]);
+
+  // Handle external direct open from Library modal
+  useEffect(() => {
+    if (directEgwChapterTarget) {
+      setReadingChapterTarget(directEgwChapterTarget);
+    }
+  }, [directEgwChapterTarget]);
 
   useEffect(() => {
     if (!readingChapterTarget) {
@@ -305,7 +318,10 @@ export const StudyDrawer: React.FC<StudyDrawerProps> = ({
           <EgwChapterReader
             chapterData={activeEgwChapterData}
             activePageRef={readingChapterTarget.activePageRef}
-            onBackToNotes={() => setReadingChapterTarget(null)}
+            onBackToNotes={() => {
+              setReadingChapterTarget(null);
+              if (onClearDirectEgwChapterTarget) onClearDirectEgwChapterTarget();
+            }}
             onNavigateChapter={handleNavigateChapter}
           />
         ) : (

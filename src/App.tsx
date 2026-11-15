@@ -21,6 +21,7 @@ import { initLexiconWordMaps } from './utils/lexiconParser';
 import { ChapterReader } from './components/ChapterReader';
 import { SearchResultsView } from './components/SearchResultsView';
 import { BookNavigator } from './components/BookNavigator';
+import { LibraryModal } from './components/LibraryModal';
 import { JsonImporterModal } from './components/JsonImporterModal';
 import { StudyDrawer } from './components/StudyDrawer';
 import { ConcordanceCardView } from './components/ConcordanceCardView';
@@ -68,6 +69,12 @@ export function App() {
   // Modals & Panels
   const [isImporterOpen, setIsImporterOpen] = useState(false);
   const [isNavigatorOpen, setIsNavigatorOpen] = useState(false);
+  const [isLibraryOpen, setIsLibraryOpen] = useState(false);
+  const [directEgwTarget, setDirectEgwTarget] = useState<{
+    bookAbbrev: string;
+    chapterNumber: number;
+    activePageRef?: string;
+  } | null>(null);
   const [isTranslationMenuOpen, setIsTranslationMenuOpen] = useState(false);
   const translationMenuRef = useRef<HTMLDivElement>(null);
 
@@ -441,6 +448,16 @@ export function App() {
               )}
             </div>
 
+            {/* Library / Reader Mode Selector Button */}
+            <button
+              onClick={() => setIsLibraryOpen(true)}
+              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition cursor-pointer border bg-slate-800 hover:bg-slate-700/80 text-amber-300 border-slate-700 hover:border-amber-500/50"
+              title="Open ScriptureFlow Library & Reader Mode (Strong's Concordance and Ellen G. White Collection)"
+            >
+              <Library className="w-4 h-4 text-amber-400" />
+              <span>Library</span>
+            </button>
+
             {/* Study Mode Toggle Button */}
             <button
               onClick={() => {
@@ -718,6 +735,8 @@ export function App() {
             currentVerseReference={selectedVerseRef}
             currentVerseText={selectedVerseText}
             egwComments={currentEgwComments}
+            directEgwChapterTarget={directEgwTarget}
+            onClearDirectEgwChapterTarget={() => setDirectEgwTarget(null)}
           />
         )}
       </SwipeableBottomSheet>
@@ -734,6 +753,31 @@ export function App() {
           setCurrentChapter(chap);
           setHighlightRange(undefined);
           setViewMode('reader');
+        }}
+      />
+
+      {/* Library / Reader Mode Modal */}
+      <LibraryModal
+        isOpen={isLibraryOpen}
+        onClose={() => setIsLibraryOpen(false)}
+        onOpenStrongsConcordance={() => {
+          setIsStudyMode(true);
+          setStudyDrawerTab('strongs');
+          setIsStudyDrawerOpen(true);
+          // Default to H1 if no entry currently selected
+          if (!selectedStrongsEntry && strongsLexicon['H1']) {
+            setSelectedStrongsEntry(strongsLexicon['H1']);
+            setSelectedWord(strongsLexicon['H1'].lemma);
+          }
+        }}
+        onSelectEgwBook={(abbrev, chapterNumber = 1) => {
+          setIsStudyMode(true);
+          setStudyDrawerTab('egw');
+          setIsStudyDrawerOpen(true);
+          setDirectEgwTarget({
+            bookAbbrev: abbrev,
+            chapterNumber: chapterNumber,
+          });
         }}
       />
 
