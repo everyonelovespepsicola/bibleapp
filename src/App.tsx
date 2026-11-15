@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import type { BibleTranslation, FlatVerse, StrongsEntry } from './types/bible';
 import type { StudyDrawerTab } from './types/egw';
-import { getEgwCommentsForVerse } from './utils/egwService';
+import { getEgwCommentsForVerse, loadMasterVerseIndex } from './utils/egwService';
 import { parseVerseReference } from './utils/referenceParser';
 import { searchBible, type SearchResult } from './utils/searchEngine';
 import { initLexiconWordMaps } from './utils/lexiconParser';
@@ -150,6 +150,13 @@ export function App() {
           }
         } catch (eLex) {
           console.warn('Failed to load Strongs Lexicon:', eLex);
+        }
+
+        // Preload EGW Master Verse Index
+        try {
+          await loadMasterVerseIndex();
+        } catch (eEgw) {
+          console.warn('Failed to load EGW verse index:', eEgw);
         }
       } catch (e) {
         console.error('Failed to load translations:', e);

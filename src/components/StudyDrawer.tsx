@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { StrongsEntry } from '../types/bible';
-import type { EgwComment, StudyDrawerTab } from '../types/egw';
-import { getEgwChapter } from '../utils/egwService';
+import type { EgwComment, EgwChapterData, StudyDrawerTab } from '../types/egw';
+import { getEgwChapter, getEgwChapterAsync } from '../utils/egwService';
 import { X, Search, Link as LinkIcon, Compass, ArrowRightLeft, ChevronLeft, ChevronRight, BookOpen, Feather } from 'lucide-react';
 import { LexiconBody } from './LexiconBody';
 import { EgwNotesBody } from './EgwNotesBody';
@@ -51,6 +51,26 @@ export const StudyDrawer: React.FC<StudyDrawerProps> = ({
     activePageRef?: string;
   } | null>(null);
 
+  const [activeEgwChapterData, setActiveEgwChapterData] = useState<EgwChapterData | null>(null);
+
+  useEffect(() => {
+    if (!readingChapterTarget) {
+      setActiveEgwChapterData(null);
+      return;
+    }
+    // First try synchronous lookup from memory cache
+    const cached = getEgwChapter(readingChapterTarget.bookAbbrev, readingChapterTarget.chapterNumber);
+    if (cached) {
+      setActiveEgwChapterData(cached);
+    }
+    // Then ensure async fetch from IndexedDB / JSON if not found or to ensure full book
+    getEgwChapterAsync(readingChapterTarget.bookAbbrev, readingChapterTarget.chapterNumber).then((data) => {
+      if (data) {
+        setActiveEgwChapterData(data);
+      }
+    });
+  }, [readingChapterTarget]);
+
   const isHebrew = entry ? entry.number.startsWith('H') : false;
   const langLabel = isHebrew ? 'Ancient Hebrew' : 'Koine Greek';
 
@@ -60,10 +80,6 @@ export const StudyDrawer: React.FC<StudyDrawerProps> = ({
         (m) => m.toUpperCase() !== entry.number.toUpperCase()
       )
     : [];
-
-  const activeEgwChapterData = readingChapterTarget
-    ? getEgwChapter(readingChapterTarget.bookAbbrev, readingChapterTarget.chapterNumber)
-    : null;
 
   const handleOpenChapter = (comment: EgwComment) => {
     if (comment.chapterNumber) {
