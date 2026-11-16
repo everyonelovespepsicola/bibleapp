@@ -637,12 +637,12 @@ export function App() {
                 setIsStudyDrawerOpen(true);
               }}
               onOpenEgwComment={(comment) => {
-                setIsStudyMode(true);
-                setIsStudyDrawerOpen(true);
-                setStudyDrawerTab('egw');
-                if (comment.targetVerses && comment.targetVerses.length > 0) {
-                  setSelectedVerseRef(comment.targetVerses[0]);
-                }
+                setActiveEgwBook({
+                  bookAbbrev: comment.sourceAbbrev,
+                  chapterNumber: comment.chapterNumber || 1,
+                  pageRef: comment.pageRef,
+                });
+                setViewMode('egw-book');
               }}
             />
           ) : isStudyMode && studyLayoutOrientation === 'concordance-first' && selectedStrongsEntry ? (
@@ -752,6 +752,15 @@ export function App() {
             egwComments={currentEgwComments}
             directEgwChapterTarget={directEgwTarget}
             onClearDirectEgwChapterTarget={() => setDirectEgwTarget(null)}
+            onOpenFullBookReader={(bookAbbrev, chapterNumber, pageRef) => {
+              setActiveEgwBook({
+                bookAbbrev,
+                chapterNumber,
+                pageRef,
+              });
+              setViewMode('egw-book');
+              setIsStudyDrawerOpen(false);
+            }}
           />
         )}
       </SwipeableBottomSheet>

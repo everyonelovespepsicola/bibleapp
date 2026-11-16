@@ -29,6 +29,7 @@ interface StudyDrawerProps {
   // External chapter reader direct trigger
   directEgwChapterTarget?: { bookAbbrev: string; chapterNumber: number; activePageRef?: string } | null;
   onClearDirectEgwChapterTarget?: () => void;
+  onOpenFullBookReader?: (bookAbbrev: string, chapterNumber: number, pageRef?: string) => void;
 }
 
 export const StudyDrawer: React.FC<StudyDrawerProps> = ({
@@ -49,6 +50,7 @@ export const StudyDrawer: React.FC<StudyDrawerProps> = ({
   egwComments = [],
   directEgwChapterTarget = null,
   onClearDirectEgwChapterTarget,
+  onOpenFullBookReader,
 }) => {
   // Reading chapter state for EGW books
   const [readingChapterTarget, setReadingChapterTarget] = useState<{
@@ -108,6 +110,14 @@ export const StudyDrawer: React.FC<StudyDrawerProps> = ({
     : [];
 
   const handleOpenChapter = (comment: EgwComment) => {
+    if (onOpenFullBookReader) {
+      onOpenFullBookReader(
+        comment.sourceAbbrev,
+        comment.chapterNumber || 1,
+        comment.pageRef
+      );
+      return;
+    }
     if (comment.chapterNumber) {
       setReadingChapterTarget({
         bookAbbrev: comment.sourceAbbrev,
