@@ -426,9 +426,6 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
                     <span className="font-serif font-bold text-amber-300">
                       {c.sourceBook}
                     </span>
-                    <span className="font-mono text-yellow-400 bg-amber-950/40 px-2 py-0.5 rounded border border-yellow-600/50 font-bold">
-                      {c.sourceAbbrev} {c.pageRef}
-                    </span>
                   </div>
                   {onOpenEgwComment && (
                     <button
@@ -445,6 +442,9 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
 
                 <p className="font-serif text-sm text-slate-200 leading-relaxed border-l-2 border-amber-500/40 pl-3">
                   {renderFormattedText(c.paragraphText, rawQuery)}
+                  <span className="ml-2 inline-block font-sans font-bold text-xs tracking-wide bg-amber-950/40 text-yellow-400 px-2 py-0.5 rounded border border-yellow-600/50">
+                    — {c.sourceAbbrev} {c.pageRef}
+                  </span>
                 </p>
               </div>
             ))}
