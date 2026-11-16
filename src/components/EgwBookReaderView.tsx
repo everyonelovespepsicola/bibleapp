@@ -31,6 +31,8 @@ export const EgwBookReaderView: React.FC<EgwBookReaderViewProps> = ({
   const [chapterData, setChapterData] = useState<EgwChapterData | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
+  const [scrollTarget, setScrollTarget] = useState<'top' | 'bottom' | null>(null);
+
   const meta = (egwBookMetaRaw as any)[bookAbbrev.toLowerCase()];
   const displayTitle = meta?.title || bookAbbrev.toUpperCase();
 
@@ -60,30 +62,44 @@ export const EgwBookReaderView: React.FC<EgwBookReaderViewProps> = ({
     };
   }, [bookAbbrev, currentChapterNum]);
 
-  // Reset scroll to top on chapter change (unless jumping to a specific activePageRef)
+  // Handle scroll position after content renders
   useEffect(() => {
-    if (!activePageRef) {
-      // Find the parent scrollable container (<main>) or window
-      const scrollParent = document.querySelector('main');
-      if (scrollParent) {
-        scrollParent.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    }
-  }, [currentChapterNum]);
+    if (isLoading || !chapterData) return;
 
-  // Smooth scroll to quoted paragraph if present
-  useEffect(() => {
-    if (!activePageRef) return;
-    const timer = setTimeout(() => {
-      const el = document.getElementById(`egw-reader-p-${activePageRef}`);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }, 150);
-    return () => clearTimeout(timer);
-  }, [activePageRef, currentChapterNum]);
+    if (activePageRef) {
+      // Smooth scroll to quoted paragraph if specifically referenced
+      const timer = setTimeout(() => {
+        const el = document.getElementById(`egw-reader-p-${activePageRef}`);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+
+    const scrollParent = document.querySelector('main');
+    if (scrollTarget === 'bottom') {
+      const timer = setTimeout(() => {
+        if (scrollParent) {
+          scrollParent.scrollTo({ top: scrollParent.scrollHeight, behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+        setScrollTarget(null);
+      }, 50);
+      return () => clearTimeout(timer);
+    } else if (scrollTarget === 'top') {
+      const timer = setTimeout(() => {
+        if (scrollParent) {
+          scrollParent.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        setScrollTarget(null);
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [currentChapterNum, isLoading, scrollTarget, activePageRef]);
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-8 py-6 space-y-6">
@@ -176,14 +192,9 @@ export const EgwBookReaderView: React.FC<EgwBookReaderViewProps> = ({
               disabled={!chapterData.prevChapter}
               onClick={() => {
                 if (chapterData.prevChapter) {
+                  setScrollTarget('bottom');
                   setCurrentChapterNum(chapterData.prevChapter.number);
                   setActivePageRef(undefined);
-                  const scrollParent = document.querySelector('main');
-                  if (scrollParent) {
-                    scrollParent.scrollTo({ top: 0, behavior: 'smooth' });
-                  } else {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }
                 }
               }}
               className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl border border-slate-800 text-xs sm:text-sm font-medium transition ${
@@ -207,14 +218,9 @@ export const EgwBookReaderView: React.FC<EgwBookReaderViewProps> = ({
               disabled={!chapterData.nextChapter}
               onClick={() => {
                 if (chapterData.nextChapter) {
+                  setScrollTarget('top');
                   setCurrentChapterNum(chapterData.nextChapter.number);
                   setActivePageRef(undefined);
-                  const scrollParent = document.querySelector('main');
-                  if (scrollParent) {
-                    scrollParent.scrollTo({ top: 0, behavior: 'smooth' });
-                  } else {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }
                 }
               }}
               className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl border border-slate-800 text-xs sm:text-sm font-medium transition ${
