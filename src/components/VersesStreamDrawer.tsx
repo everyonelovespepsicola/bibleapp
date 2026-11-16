@@ -129,7 +129,7 @@ export const VersesStreamDrawer: React.FC<VersesStreamDrawerProps> = ({
               </div>
 
               <p className="font-serif text-slate-300 text-xs sm:text-sm leading-relaxed">
-                {renderFormattedText(v.text)}
+                {renderFormattedText(v.text, selectedWord)}
               </p>
             </div>
           ))

@@ -444,7 +444,7 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
                 </div>
 
                 <p className="font-serif text-sm text-slate-200 leading-relaxed border-l-2 border-amber-500/40 pl-3">
-                  {c.paragraphText}
+                  {renderFormattedText(c.paragraphText, rawQuery)}
                 </p>
               </div>
             ))}
@@ -494,7 +494,7 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
                   </button>
                 </div>
                 <p className="font-serif text-slate-200 text-base leading-relaxed">
-                  {renderFormattedText(v.text)}
+                  {renderFormattedText(v.text, rawQuery)}
                 </p>
               </div>
 

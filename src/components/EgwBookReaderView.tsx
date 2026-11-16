@@ -11,10 +11,13 @@ import {
 } from 'lucide-react';
 import egwBookMetaRaw from '../utils/egwBookMeta.json';
 
+import { renderFormattedText } from '../utils/clipboard';
+
 interface EgwBookReaderViewProps {
   bookAbbrev: string;
   initialChapterNumber?: number;
   initialPageRef?: string;
+  highlightQuery?: string;
   onBackToBible: () => void;
   onOpenLibrary: () => void;
 }
@@ -23,6 +26,7 @@ export const EgwBookReaderView: React.FC<EgwBookReaderViewProps> = ({
   bookAbbrev,
   initialChapterNumber = 1,
   initialPageRef,
+  highlightQuery,
   onBackToBible,
   onOpenLibrary,
 }) => {
@@ -169,7 +173,7 @@ export const EgwBookReaderView: React.FC<EgwBookReaderViewProps> = ({
                   }`}
                 >
                   <p className="indent-6 sm:indent-10 text-justify">
-                    {p.text}
+                    {renderFormattedText(p.text, highlightQuery)}
                     <span className="ml-2.5 inline-block font-sans font-bold text-xs tracking-wide bg-slate-800/90 text-amber-400/90 px-2 py-0.5 rounded border border-slate-700/80 select-none">
                       {chapterData.bookAbbrev} {p.pageRef}
                     </span>

@@ -615,6 +615,7 @@ export function App() {
               bookAbbrev={activeEgwBook.bookAbbrev}
               initialChapterNumber={activeEgwBook.chapterNumber}
               initialPageRef={activeEgwBook.pageRef}
+              highlightQuery={submittedQuery}
               onBackToBible={() => setViewMode('reader')}
               onOpenLibrary={() => setIsLibraryOpen(true)}
             />
