@@ -194,9 +194,10 @@ import egwBookMetaRaw from './egwBookMeta.json';
 const EGW_BOOK_META = egwBookMetaRaw as Record<string, { title: string; abbrev: string; year: number }>;
 
 /**
- * Search across all Spirit of Prophecy commentary paragraphs for keywords/phrases
+ * Search across all Spirit of Prophecy commentary paragraphs for keywords/phrases.
+ * Setting limit = 0 returns all matching paragraphs without cap.
  */
-export function searchEgwComments(query: string, limit = 100): EgwComment[] {
+export function searchEgwComments(query: string, limit = 0): EgwComment[] {
   const q = query.trim().toLowerCase();
   if (!q || !memoryVerseIndex) return [];
 
@@ -231,7 +232,7 @@ export function searchEgwComments(query: string, limit = 100): EgwComment[] {
             targetVerses: [verse],
             chapterNumber: 1,
           });
-          if (results.length >= limit) return results;
+          if (limit > 0 && results.length >= limit) return results;
         }
       }
     }

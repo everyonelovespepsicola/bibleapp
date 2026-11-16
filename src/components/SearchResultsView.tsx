@@ -58,10 +58,10 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
   const [isEgwExpanded, setIsEgwExpanded] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
 
-  // Compute EGW matching comments for keyword searches
+  // Compute EGW matching comments for keyword searches (no cap: returns all matching comments)
   const egwMatches = useMemo(() => {
     if (result.type !== 'keyword' || !rawQuery.trim()) return [];
-    return searchEgwComments(rawQuery.trim(), 50);
+    return searchEgwComments(rawQuery.trim(), 0);
   }, [result.type, rawQuery]);
 
   // Compute Strong's Roots Breakdown from all matching verses (with direct map fallback)
