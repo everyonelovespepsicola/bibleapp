@@ -60,6 +60,19 @@ export const EgwBookReaderView: React.FC<EgwBookReaderViewProps> = ({
     };
   }, [bookAbbrev, currentChapterNum]);
 
+  // Reset scroll to top on chapter change (unless jumping to a specific activePageRef)
+  useEffect(() => {
+    if (!activePageRef) {
+      // Find the parent scrollable container (<main>) or window
+      const scrollParent = document.querySelector('main');
+      if (scrollParent) {
+        scrollParent.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  }, [currentChapterNum]);
+
   // Smooth scroll to quoted paragraph if present
   useEffect(() => {
     if (!activePageRef) return;
@@ -165,7 +178,12 @@ export const EgwBookReaderView: React.FC<EgwBookReaderViewProps> = ({
                 if (chapterData.prevChapter) {
                   setCurrentChapterNum(chapterData.prevChapter.number);
                   setActivePageRef(undefined);
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  const scrollParent = document.querySelector('main');
+                  if (scrollParent) {
+                    scrollParent.scrollTo({ top: 0, behavior: 'smooth' });
+                  } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
                 }
               }}
               className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl border border-slate-800 text-xs sm:text-sm font-medium transition ${
@@ -191,7 +209,12 @@ export const EgwBookReaderView: React.FC<EgwBookReaderViewProps> = ({
                 if (chapterData.nextChapter) {
                   setCurrentChapterNum(chapterData.nextChapter.number);
                   setActivePageRef(undefined);
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  const scrollParent = document.querySelector('main');
+                  if (scrollParent) {
+                    scrollParent.scrollTo({ top: 0, behavior: 'smooth' });
+                  } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
                 }
               }}
               className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl border border-slate-800 text-xs sm:text-sm font-medium transition ${
