@@ -122,7 +122,7 @@ export const EgwNotesBody: React.FC<EgwNotesBodyProps> = ({
                         e.stopPropagation();
                         onOpenChapter(c);
                       }}
-                      className="flex items-center space-x-1 px-2.5 py-1 text-xs font-semibold bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 hover:text-amber-200 border border-amber-500/40 rounded-lg transition cursor-pointer shadow-xs active:scale-95 flex-shrink-0"
+                      className="flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-950/40 hover:bg-amber-900/50 text-yellow-400 hover:text-yellow-300 border border-yellow-600/50 hover:border-yellow-500/70 transition cursor-pointer shadow-xs active:scale-95 flex-shrink-0"
                       title={`Read full chapter (${c.chapterTitle || `Ch. ${c.chapterNumber}`})`}
                     >
                       <BookOpen className="w-3.5 h-3.5" />
@@ -136,7 +136,7 @@ export const EgwNotesBody: React.FC<EgwNotesBodyProps> = ({
                 <div className="font-serif text-[1.05rem] leading-[1.8] text-slate-200 border-l-2 border-amber-500/50 pl-3.5 py-0.5">
                   <span>{renderParagraphContent(c.paragraphText, reference)}</span>
                   {/* Inline Ending Reference Code: Book, Page, Paragraph (e.g. Ed 134.2, COL 35.2) */}
-                  <span className="ml-2 inline-block font-sans font-bold text-amber-400/90 text-xs tracking-wide bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/30 selection:bg-amber-400 selection:text-slate-950">
+                  <span className="ml-2 inline-block font-sans font-bold text-yellow-400 text-xs tracking-wide bg-amber-950/40 px-2 py-0.5 rounded border border-yellow-600/50 selection:bg-yellow-400 selection:text-slate-950">
                     — {citationCode}
                   </span>
                 </div>

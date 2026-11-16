@@ -58,7 +58,11 @@ export const VersesStreamDrawer: React.FC<VersesStreamDrawerProps> = ({
       <div className="sticky top-0 z-10 bg-slate-900/95 backdrop-blur-md px-5 py-4 border-b border-slate-800 flex items-center justify-between">
         <div>
           <div className="flex items-center space-x-2">
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+            <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold border ${
+              strongsId.startsWith('H')
+                ? 'bg-amber-950/40 text-yellow-400 border-yellow-600/50'
+                : 'bg-sky-950/40 text-sky-400 border-sky-600/50'
+            }`}>
               {strongsId}
             </span>
             <span className="text-xs text-slate-300 font-medium">

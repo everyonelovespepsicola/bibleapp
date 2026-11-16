@@ -75,7 +75,7 @@ export const EgwChapterReader: React.FC<EgwChapterReaderProps> = ({
             >
               <p className="indent-6 sm:indent-8 text-justify">
                 {p.text}
-                <span className="ml-2 inline-block font-sans font-bold text-xs tracking-wide bg-slate-800/80 text-amber-400/90 px-2 py-0.5 rounded border border-slate-700/80">
+                <span className="ml-2 inline-block font-sans font-bold text-xs tracking-wide bg-amber-950/40 text-yellow-400 px-2 py-0.5 rounded border border-yellow-600/50">
                   {chapterData.bookAbbrev} {p.pageRef}
                 </span>
               </p>

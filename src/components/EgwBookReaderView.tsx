@@ -131,7 +131,7 @@ export const EgwBookReaderView: React.FC<EgwBookReaderViewProps> = ({
 
         {/* Book & Chapter Indicator */}
         <div className="flex items-center space-x-2">
-          <span className="text-xs font-mono font-bold text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-lg border border-amber-500/20">
+          <span className="text-xs font-mono font-bold text-yellow-400 bg-amber-950/40 px-3 py-1 rounded-full border border-yellow-600/50">
             {bookAbbrev.toUpperCase()} • Ch. {currentChapterNum}
           </span>
         </div>
@@ -174,7 +174,7 @@ export const EgwBookReaderView: React.FC<EgwBookReaderViewProps> = ({
                 >
                   <p className="indent-6 sm:indent-10 text-justify">
                     {renderFormattedText(p.text, highlightQuery)}
-                    <span className="ml-2.5 inline-block font-sans font-bold text-xs tracking-wide bg-slate-800/90 text-amber-400/90 px-2 py-0.5 rounded border border-slate-700/80 select-none">
+                    <span className="ml-2.5 inline-block font-sans font-bold text-xs tracking-wide bg-amber-950/40 text-yellow-400 px-2 py-0.5 rounded border border-yellow-600/50 select-none">
                       {chapterData.bookAbbrev} {p.pageRef}
                     </span>
                   </p>

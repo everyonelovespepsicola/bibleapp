@@ -326,10 +326,10 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
                       </td>
                       <td className="py-3 px-4">
                         <span
-                          className={`px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider ${
+                          className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
                             isHebrew
-                              ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30'
-                              : 'bg-sky-500/15 text-sky-300 border border-sky-500/30'
+                              ? 'bg-amber-950/40 text-yellow-400 border border-yellow-600/50'
+                              : 'bg-sky-950/40 text-sky-400 border border-sky-600/50'
                           }`}
                         >
                           {isHebrew ? 'Ancient Hebrew' : 'Koine Greek'}
@@ -426,7 +426,7 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
                     <span className="font-serif font-bold text-amber-300">
                       {c.sourceBook}
                     </span>
-                    <span className="font-mono text-amber-400/90 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/30 font-bold">
+                    <span className="font-mono text-yellow-400 bg-amber-950/40 px-2 py-0.5 rounded border border-yellow-600/50 font-bold">
                       {c.sourceAbbrev} {c.pageRef}
                     </span>
                   </div>
@@ -434,7 +434,7 @@ export const SearchResultsView: React.FC<SearchResultsViewProps> = ({
                     <button
                       type="button"
                       onClick={() => onOpenEgwComment(c)}
-                      className="flex items-center space-x-1 px-2.5 py-1 text-xs font-semibold bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 rounded-lg transition cursor-pointer shadow-xs"
+                      className="flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-950/40 hover:bg-amber-900/50 text-yellow-400 hover:text-yellow-300 border border-yellow-600/50 hover:border-yellow-500/70 transition cursor-pointer shadow-xs"
                       title="Read full context chapter"
                     >
                       <BookOpen className="w-3.5 h-3.5" />
